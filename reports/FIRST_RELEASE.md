@@ -4,7 +4,7 @@ Release 1 of this library is the formula set already checked in [FORMULA_VERIFIC
 
 ## In this release
 
-Published formula topics: 25.
+Published formula topics: 78.
 
 | Site | Document | Tool ID |
 |------|----------|---------|
@@ -36,39 +36,92 @@ Published formula topics: 25.
 
 Five domain folders have no topic file: AIMarkTool, DataFileLab, DevEngineerLab, PCDog, PrivacyFileLab. Their READMEs say `Published topics: 0`.
 
+
+## Batch 2
+
+Batch 2 added 53 topics on 2026-11-04. Water has 9 new topics and Structural has 4. The shortfall is recorded in [FORMULA_VERIFICATION.md](FORMULA_VERIFICATION.md). No placeholder formula was added.
+
+| Site | Document | Tool ID |
+|------|----------|---------|
+| NetEngineerLab | [Data center power usage effectiveness](../NetEngineerLab/data-center-pue.md) | `pue-data-center-energy-efficiency` |
+| NetEngineerLab | [Ethernet serialization delay](../NetEngineerLab/ethernet-serialization-delay.md) | `ethernet-serialization-delay-calculator` |
+| NetEngineerLab | [IPv4 subnet size](../NetEngineerLab/ipv4-subnet.md) | `subnet-calculator` |
+| NetEngineerLab | [Polarization-mode dispersion budget](../NetEngineerLab/pmd-budget.md) | `pmd-budget-calculator` |
+| NetEngineerLab | [PoE switch power budget](../NetEngineerLab/poe-power-budget.md) | `poe-power-budget-calculator` |
+| NetEngineerLab | [PoE pair voltage drop](../NetEngineerLab/poe-voltage-drop.md) | `poe-voltage-drop-calculator` |
+| NetEngineerLab | [PON maximum optical distance](../NetEngineerLab/pon-maximum-distance.md) | `pon-distance` |
+| NetEngineerLab | [PON splitter and link loss budget](../NetEngineerLab/pon-splitter-loss.md) | `pon-splitter-loss` |
+| NetEngineerLab | [Ring all-reduce traffic and time](../NetEngineerLab/ring-all-reduce.md) | `all-reduce-traffic-estimator` |
+| NetEngineerLab | [Wireless free-space link budget](../NetEngineerLab/wireless-link-budget.md) | `wireless-link-budget-calculator` |
+| PowerEngineerLab | [AC apparent real and reactive power](../PowerEngineerLab/ac-power.md) | `ac-power` |
+| PowerEngineerLab | [Battery charging time](../PowerEngineerLab/battery-charging-time.md) | `battery-charging-time` |
+| PowerEngineerLab | [Battery energy and runtime](../PowerEngineerLab/battery-runtime.md) | `battery-runtime` |
+| PowerEngineerLab | [Conductor resistance and temperature](../PowerEngineerLab/conductor-resistance.md) | `conductor-resistance` |
+| PowerEngineerLab | [Electrical efficiency and loss](../PowerEngineerLab/electrical-efficiency.md) | `electrical-efficiency` |
+| PowerEngineerLab | [Three-phase motor line current](../PowerEngineerLab/motor-line-current.md) | `motor-current` |
+| PowerEngineerLab | [Power-factor correction kvar](../PowerEngineerLab/power-factor-correction.md) | `power-factor-correction` |
+| PowerEngineerLab | [Series RC time constant](../PowerEngineerLab/rc-time-constant.md) | `rc-time-constant` |
+| PowerEngineerLab | [Series and parallel resistance](../PowerEngineerLab/series-parallel-resistance.md) | `series-parallel-resistance` |
+| PowerEngineerLab | [Shaft torque from power and speed](../PowerEngineerLab/shaft-torque.md) | `motor-torque` |
+| HVACEngineerLab | [Chilled-water flow and plant power](../HVACEngineerLab/chilled-water-flow.md) | `chilled-water-system-planner` |
+| HVACEngineerLab | [Condensate from latent cooling load](../HVACEngineerLab/condensate-from-latent-load.md) | `condensate-drain-planner` |
+| HVACEngineerLab | [Data-center sensible cooling airflow](../HVACEngineerLab/data-center-sensible-airflow.md) | `data-center-cooling-planner` |
+| HVACEngineerLab | [Fan air power and input](../HVACEngineerLab/fan-air-power.md) | `fan-selection-system-curve` |
+| HVACEngineerLab | [HVAC cooling electrical energy](../HVACEngineerLab/hvac-cooling-energy-cost.md) | `hvac-energy-operating-cost-analyzer` |
+| HVACEngineerLab | [Site energy use intensity](../HVACEngineerLab/illustrative-site-eui.md) | `building-energy-benchmark` |
+| HVACEngineerLab | [Outdoor-air ventilation flow](../HVACEngineerLab/outdoor-air-ventilation-flow.md) | `outdoor-air-ventilation-planner` |
+| HVACEngineerLab | [Darcy pipe pressure drop](../HVACEngineerLab/pipe-darcy-pressure-drop.md) | `pipe-flow-pressure-drop` |
+| HVACEngineerLab | [Predicted mean vote](../HVACEngineerLab/pmv-ppd.md) | `thermal-comfort-pmv-planner` |
+| HVACEngineerLab | [Pump head and hydraulic power](../HVACEngineerLab/pump-tdh-hydraulic-power.md) | `pump-sizing-system-curve` |
+| WaterEngineerLab | [Area-weighted runoff coefficient](../WaterEngineerLab/composite-runoff-coefficient.md) | `TOOL-016` |
+| WaterEngineerLab | [Darcy required pipe diameter](../WaterEngineerLab/darcy-required-pipe-diameter.md) | `TOOL-011` |
+| WaterEngineerLab | [Design-storm rainfall depth](../WaterEngineerLab/design-storm-rainfall-depth.md) | `TOOL-002` |
+| WaterEngineerLab | [Hydraulic and energy grade lines](../WaterEngineerLab/hydraulic-energy-grade-line.md) | `TOOL-009` |
+| WaterEngineerLab | [Log-log IDF intensity](../WaterEngineerLab/idf-log-log-interpolation.md) | `TOOL-018` |
+| WaterEngineerLab | [Kirpich time of concentration](../WaterEngineerLab/kirpich-time-of-concentration.md) | `TOOL-004` |
+| WaterEngineerLab | [Manning full-flow pipe diameter](../WaterEngineerLab/manning-storm-drain-diameter.md) | `TOOL-005` |
+| WaterEngineerLab | [Pump duty head and power](../WaterEngineerLab/pump-duty-head-power.md) | `TOOL-013` |
+| WaterEngineerLab | [Residual pressure from a head balance](../WaterEngineerLab/residual-pressure-head.md) | `TOOL-012` |
+| StructuralEngineerLab | [Elastic section modulus](../StructuralEngineerLab/elastic-section-modulus.md) | `TOOL-009` |
+| StructuralEngineerLab | [Geometric section properties](../StructuralEngineerLab/geometric-section-properties.md) | `TOOL-002` |
+| StructuralEngineerLab | [Section normal stress at four script points](../StructuralEngineerLab/section-normal-stress.md) | `TOOL-012` |
+| StructuralEngineerLab | [User-defined demand over allowable](../StructuralEngineerLab/user-defined-utilization.md) | `TOOL-010` |
+| DIYCalcLab | [Rectangular prism volume](../DIYCalcLab/cubic-yard.md) | `cubic-yard` |
+| DIYCalcLab | [Deck board count](../DIYCalcLab/deck-board-count.md) | `deck-board` |
+| DIYCalcLab | [Drywall sheet count](../DIYCalcLab/drywall-sheets.md) | `drywall` |
+| DIYCalcLab | [Gravel volume and mass](../DIYCalcLab/gravel-tonnage.md) | `gravel` |
+| DIYCalcLab | [Interior wall paint quantity](../DIYCalcLab/interior-paint.md) | `paint` |
+| DIYCalcLab | [Mulch bed volume](../DIYCalcLab/mulch-volume.md) | `mulch` |
+| DIYCalcLab | [Round column concrete volume](../DIYCalcLab/sonotube-concrete.md) | `sonotube` |
+| DIYCalcLab | [Plan area](../DIYCalcLab/square-footage.md) | `square-footage` |
+| DIYCalcLab | [Stair rise and run](../DIYCalcLab/stair-geometry.md) | `stair` |
+| DIYCalcLab | [Tile count with joints](../DIYCalcLab/tile-quantity.md) | `tile` |
 ## Deferred topics
 
 A tool listed below has an inventory row and no formula page. That is a scope decision. It is not a claim that the tool is wrong, and it is not a placeholder article.
 
-Some tools were opened during batch 1 and then left out for a specific reason. Those notes stay in [FORMULA_VERIFICATION.md](FORMULA_VERIFICATION.md) under “Deferred on purpose” (voltage-drop cable sizing, simply-supported beam tools, HVAC psychrometric and plant planners, PoE voltage drop, bandwidth and MTU tools, the unread DIYCalcLab calculators, and the five non-batch sites).
+Some tools were opened and then left without a page. The current reasons are in [FORMULA_VERIFICATION.md](FORMULA_VERIFICATION.md) under “Deferred on purpose”. Batch 2 published the PoE voltage-drop page, ten HVAC closed forms, and ten DIY pages. Still deferred: voltage-drop cable sizing, structural beam integrators, the HVAC psychrometric analyzer and cooling-load planner, bandwidth and MTU tools, and the five sites that were outside this request.
 
 ### NetEngineerLab
 
-Inventory tools: 46. Published: 6. Deferred: 40.
+Inventory tools: 46. Published: 16. Deferred: 30.
 
 | Tool ID | Name |
 |---------|------|
-| `pon-splitter-loss` | PON Splitter Loss Calculator |
 | `onu-rx-power` | ONU RX Power Diagnosis |
-| `pon-distance` | PON Maximum Distance Calculator |
 | `otdr-event` | OTDR Event Analyzer |
 | `mtu-calculator` | MTU & MSS Calculator |
-| `subnet-calculator` | IP Subnet Calculator |
 | `bandwidth-calculator` | Bandwidth & Transfer Time Calculator |
 | `48v-battery-runtime` | -48V Telecom Battery Runtime Calculator |
 | `ipv6-nat-planner` | IPv6 & NAT Planning Calculator |
 | `wifi-coverage-capacity-planner` | Wi-Fi Coverage & Capacity Planner |
-| `poe-power-budget-calculator` | PoE Power Budget Calculator |
 | `sfp-qsfp-compatibility-calculator` | SFP & QSFP Compatibility Checker |
-| `wireless-link-budget-calculator` | Wireless Link Budget Calculator |
-| `poe-voltage-drop-calculator` | Ethernet Cable PoE Voltage Drop Calculator |
 | `network-rack-power-cooling-calculator` | Network Rack Power & Cooling Calculator |
 | `vlan-ip-capacity-planner` | VLAN & IP Subnet Capacity Planner |
 | `switch-uplink-oversubscription-calculator` | Switch Uplink Bandwidth & Oversubscription Calculator |
 | `dns-ttl-propagation-calculator` | DNS TTL & Propagation Time Calculator |
 | `acl-generator-validator` | Multi-Vendor ACL Generator & Validator |
 | `network-change-planner-mop-generator` | Network Change Planner & MOP Generator |
-| `pue-data-center-energy-efficiency` | PUE & Data Center Energy Efficiency Analyzer |
 | `telecom-solar-battery-sizing-calculator` | Telecom Solar Power & Battery Sizing Calculator |
 | `generator-fuel-runtime-calculator` | Generator Fuel Consumption & Runtime Calculator |
 | `telecom-rectifier-dc-power-sizing` | Telecom Rectifier & DC Power System Sizing Calculator |
@@ -85,9 +138,6 @@ Inventory tools: 46. Published: 6. Deferred: 40.
 | `odf-odn-resource-planner` | ODF / ODN Fiber Resource & Split Planning Planner |
 | `network-capacity-forecast-planner` | Network Capacity Forecast Planner |
 | `engineering-report-batch-export-center` | Engineering Report & Batch Export Center |
-| `pmd-budget-calculator` | PMD Budget Calculator |
-| `ethernet-serialization-delay-calculator` | Ethernet Serialization Delay Calculator |
-| `all-reduce-traffic-estimator` | All-Reduce Traffic Estimator |
 
 ### PCDog
 
@@ -164,24 +214,19 @@ Inventory tools: 32. Published: 0. Deferred: 32.
 
 ### PowerEngineerLab
 
-Inventory tools: 52. Published: 9. Deferred: 43.
+Inventory tools: 52. Published: 19. Deferred: 33.
 
 | Tool ID | Name |
 |---------|------|
-| `ac-power` | Ac Power |
 | `appliance-electricity-cost` | Appliance Electricity Cost |
 | `appliance-replacement-payback` | Appliance Replacement Payback |
-| `battery-charging-time` | Battery Charging Time |
-| `battery-runtime` | Battery Runtime |
 | `cable-ampacity-estimate` | Cable Ampacity Estimate |
 | `cable-short-circuit-withstand` | Cable Short Circuit Withstand |
 | `compressor-leak` | Compressor Leak |
-| `conductor-resistance` | Conductor Resistance |
 | `data-center-energy` | Data Center Energy |
 | `data-center-pue` | Data Center Pue |
 | `demand-factor` | Demand Factor |
 | `diversity-factor` | Diversity Factor |
-| `electrical-efficiency` | Electrical Efficiency |
 | `energy-cost-comparison` | Energy Cost Comparison |
 | `energy-project-portfolio` | Energy Project Portfolio |
 | `ev-charging` | Ev Charging |
@@ -193,14 +238,9 @@ Inventory tools: 52. Published: 9. Deferred: 43.
 | `lighting-energy-savings` | Lighting Energy Savings |
 | `load-factor` | Load Factor |
 | `maximum-demand` | Maximum Demand |
-| `motor-current` | Motor Current |
-| `motor-torque` | Motor Torque |
 | `neutral-conductor-current-screen` | Neutral Conductor Current Screen |
-| `power-factor-correction` | Power Factor Correction |
 | `pump-energy` | Pump Energy |
 | `pv-string-design-estimate` | Pv String Design Estimate |
-| `rc-time-constant` | Rc Time Constant |
-| `series-parallel-resistance` | Series Parallel Resistance |
 | `solar-dc-current-estimate` | Solar Dc Current Estimate |
 | `solar-energy-payback` | Solar Energy Payback |
 | `solar-inverter-capacity-estimate` | Solar Inverter Capacity Estimate |
@@ -214,22 +254,12 @@ Inventory tools: 52. Published: 9. Deferred: 43.
 
 ### HVACEngineerLab
 
-Inventory tools: 13. Published: 1. Deferred: 12.
+Inventory tools: 13. Published: 11. Deferred: 2.
 
 | Tool ID | Name |
 |---------|------|
-| `building-energy-benchmark` | Building Energy Benchmark |
-| `chilled-water-system-planner` | Chilled Water System Planner |
-| `condensate-drain-planner` | Condensate Drain Planner |
 | `cooling-heating-load-planner` | Cooling Heating Load Planner |
-| `data-center-cooling-planner` | Data Center Cooling Planner |
-| `fan-selection-system-curve` | Fan Selection System Curve |
-| `hvac-energy-operating-cost-analyzer` | Hvac Energy Operating Cost Analyzer |
-| `outdoor-air-ventilation-planner` | Outdoor Air Ventilation Planner |
-| `pipe-flow-pressure-drop` | Pipe Flow Pressure Drop |
 | `psychrometric-process-analyzer` | Psychrometric Process Analyzer |
-| `pump-sizing-system-curve` | Pump Sizing System Curve |
-| `thermal-comfort-pmv-planner` | Thermal Comfort Pmv Planner |
 
 ### PrivacyFileLab
 
@@ -302,39 +332,27 @@ Inventory tools: 43. Published: 0. Deferred: 43.
 
 ### WaterEngineerLab
 
-Inventory tools: 18. Published: 3. Deferred: 15.
+Inventory tools: 18. Published: 12. Deferred: 6.
 
 | Tool ID | Name |
 |---------|------|
 | `TOOL-001` | Stormwater Drainage Design Planner |
-| `TOOL-002` | Rainfall / IDF Design Storm Helper |
-| `TOOL-004` | Time of Concentration Calculator |
-| `TOOL-005` | Storm Drain Pipe Capacity & Sizing |
 | `TOOL-006` | Detention / Storage Preliminary Sizing |
 | `TOOL-008` | Culvert Capacity Preliminary Check |
-| `TOOL-009` | Hydraulic Grade / Energy Grade Helper |
-| `TOOL-011` | Pipe Diameter Sizing Calculator |
-| `TOOL-012` | Pressure / Static Head / Residual Pressure Check |
-| `TOOL-013` | Pump Duty Point Helper |
 | `TOOL-014` | Water Distribution Network Preliminary Planner |
 | `TOOL-015` | Site Drainage Layout / Scenario Comparator |
-| `TOOL-016` | Composite Runoff Coefficient Calculator |
 | `TOOL-017` | Catchment Area Breakdown & Runoff Summary |
-| `TOOL-018` | IDF Curve Interpolator |
 
 ### StructuralEngineerLab
 
-Inventory tools: 25. Published: 3. Deferred: 22.
+Inventory tools: 25. Published: 7. Deferred: 18.
 
 | Tool ID | Name |
 |---------|------|
 | `TOOL-001` | Beam Analysis Calculator |
-| `TOOL-002` | Section Properties Calculator |
 | `TOOL-005` | Simply Supported Beam Calculator |
 | `TOOL-006` | Cantilever Beam Calculator |
 | `TOOL-007` | Beam Deflection Calculator |
-| `TOOL-009` | Section Modulus Calculator |
-| `TOOL-010` | User-Defined Utilization Calculator |
 | `TOOL-018` | Beam Load Case Normalizer & Validator |
 | `TOOL-019` | Beam Load Resultant & Centroid Calculator |
 | `TOOL-020` | Beam Reaction Equilibrium Checker |
@@ -344,7 +362,6 @@ Inventory tools: 25. Published: 3. Deferred: 22.
 | `TOOL-031` | Maxwell–Betti Displacement Reciprocity Checker |
 | `TOOL-032` | Single Redundant Compatibility Solver |
 | `TOOL-011` | Beam Slope & Rotation Calculator |
-| `TOOL-012` | Section Stress Distribution Calculator |
 | `TOOL-013` | Beam Load Combination Envelope |
 | `TOOL-014` | Beam Critical Location Report |
 | `TOOL-015` | Beam Response Comparison Calculator |
@@ -427,31 +444,21 @@ Inventory tools: 67. Published: 0. Deferred: 67.
 
 ### DIYCalcLab
 
-Inventory tools: 40. Published: 3. Deferred: 37.
+Inventory tools: 40. Published: 13. Deferred: 27.
 
 | Tool ID | Name |
 |---------|------|
 | `concrete-bag` | Concrete Bags |
-| `paint` | Paint |
-| `tile` | Tile |
 | `flooring` | Flooring |
-| `square-footage` | Square Footage |
-| `mulch` | Mulch |
-| `gravel` | Gravel |
-| `drywall` | Drywall |
 | `roofing` | Roofing Shingles |
-| `deck-board` | Deck Boards |
 | `fence` | Fence |
 | `topsoil` | Topsoil |
 | `paver` | Pavers |
 | `brick` | Bricks |
-| `stair` | Stairs |
 | `wallpaper` | Wallpaper |
-| `cubic-yard` | Cubic Yards |
 | `feet-inches` | Feet & Inches |
 | `concrete-block` | Concrete Block |
 | `rebar` | Rebar |
-| `sonotube` | Sonotube |
 | `concrete-step` | Concrete Steps |
 | `insulation` | Insulation |
 | `roof-area` | Roofing |
@@ -469,11 +476,12 @@ Inventory tools: 40. Published: 3. Deferred: 37.
 | `stain` | Deck & Fence Stain |
 | `epoxy-floor` | Epoxy Floor |
 
-Deferred inventory rows: 350. Inventory rows: 375. Published topic files: 25.
+Deferred inventory rows: 297. Inventory rows: 375. Published topic files: 78.
 
 ## What the next batch should do
 
-- Read the production script for one deferred tool, recompute one example, and add one topic file. Do not generate the rest of that site in the same pass.
-- Prefer the tools already named in the GATE 4 deferred table when the equation is closed-form (PoE voltage drop is the shortest known candidate).
-- Leave DNS, file, OCR, and API tools as algorithm notes only when a formula page would be false.
+- Read the production script for a deferred tool, recompute one example, and add a topic file only when the equation is the one the page runs.
+- Do not add pages for inventory URLs that return HTTP 404.
+- Leave DNS, file, OCR, API, and generator tools as algorithm notes when a formula page would be false.
+- Leave structural beam singularity and virtual-work tools out until the integrator is recomputed and written as that integrator, not as a borrowed closed form.
 - Fill a “Reference Standards” section only after the cited document is opened. Pending is the correct label until then.

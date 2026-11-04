@@ -10,6 +10,8 @@
 
 **25 formula topics published.** That is inside the requested 15–25 band. There is no count shortfall.
 
+This file records batch 1 only. Batch 2 added 53 topics. Current published and deferred counts are in [FORMULA_VERIFICATION.md](FORMULA_VERIFICATION.md) and [FIRST_RELEASE.md](FIRST_RELEASE.md).
+
 Every published topic was checked against the production JavaScript that implements the calculator, and at least one numerical example was recomputed outside the page. A boundary case is in each document. Details, deferred tools, and standards that are still pending are in [FORMULA_VERIFICATION.md](FORMULA_VERIFICATION.md) and [FORMULA_VERIFICATION.json](FORMULA_VERIFICATION.json).
 
 ## How source was obtained
