@@ -12,7 +12,7 @@ This file records checks that were actually run. It does not describe a merge, a
 | Base | `main` |
 | Merge | not performed |
 
-The commit SHA for this acceptance snapshot is written in [FINAL_ACCEPTANCE.json](FINAL_ACCEPTANCE.json) after `git rev-parse HEAD`. If that field is `PENDING_AFTER_COMMIT`, the SHA was not known yet because the commit that adds this file did not exist.
+Doc checks ran on commit `30756538b83a22e9d6c67d508e3ad054f0905a08`. The machine-readable copy is [FINAL_ACCEPTANCE.json](FINAL_ACCEPTANCE.json).
 
 ## Site directories
 
@@ -72,14 +72,20 @@ Workflow file: `.github/workflows/doc-checks.yml`.
 
 It is set to run on `push` and `pull_request`, check out this repo, run `python3 scripts/check-docs.py`, and upload the JSON artifact. It does not commit and it does not edit the eleven product sites (those repos are not in this workspace).
 
-No Actions run for this commit had been queried when this paragraph was written. Local exit code 0 is not an Actions result. See the `actions` object in the JSON file; it is updated only after `gh run list` returns a real run.
+Queried with `gh run view` after the push of `30756538b83a22e9d6c67d508e3ad054f0905a08`:
+
+| Run | Event | Conclusion | Head SHA |
+|-----|--------|------------|----------|
+| https://github.com/ddcodedog/Calculator/actions/runs/41800933879 | push | success | `30756538b83a22e9d6c67d508e3ad054f0905a08` |
+| https://github.com/ddcodedog/Calculator/actions/runs/41800933911 | pull_request | success | `30756538b83a22e9d6c67d508e3ad054f0905a08` |
+
+The push log shows `python3 scripts/check-docs.py` and `failures=0 warnings=0 formulas=25`, with 36 URL results classified `ok` and `urlsSkipped` false. A later commit that only updates this report starts another run. That later run is not the table above.
 
 ## Unfinished
 
 - 350 inventory tools have no formula page. Names and IDs are in [FIRST_RELEASE.md](FIRST_RELEASE.md). No filler pages were added.
 - External standards are still pending on most topics. ITU, IEEE, and textbook PDFs cited by the product pages were not re-read, except NIST FS 376B for the mechanical horsepower factor.
-- GitHub Actions for the commit that contains this file was not yet observed at first write.
-- This branch is not merged.
+- This branch is not merged. The commit that records the Actions URLs is newer than `3075653` and is not the run in the table above.
 
 ## Later increments
 
@@ -89,6 +95,6 @@ No Actions run for this commit had been queried when this paragraph was written.
 
 ## Status
 
-`PASS_WITH_WARNINGS`
+`PASS`
 
-Local doc checks passed with no URL or Markdown failures. The warning is the unobserved Actions run, plus standards text that is still pending. This is not `FAIL` and not `BLOCKED`.
+Local `scripts/check-docs.py` exited 0 with no failures and no warnings. Both GitHub Actions runs on `30756538b83a22e9d6c67d508e3ad054f0905a08` completed with conclusion `success`. Deferred tools and unread standards are unfinished scope, recorded above, and did not fail these checks.

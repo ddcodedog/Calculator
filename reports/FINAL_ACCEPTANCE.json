@@ -1,7 +1,7 @@
 {
   "repository": "https://github.com/ddcodedog/Calculator",
   "branch": "cursor/gate3-first-formulas-7b21",
-  "commit": "PENDING_AFTER_COMMIT",
+  "commit": "30756538b83a22e9d6c67d508e3ad054f0905a08",
   "pullRequest": "https://github.com/ddcodedog/Calculator/pull/2",
   "base": "main",
   "merged": false,
@@ -58,22 +58,37 @@
   },
   "actions": {
     "workflow": ".github/workflows/doc-checks.yml",
-    "observed": false,
-    "conclusion": null,
-    "htmlUrl": null,
-    "headSha": null,
-    "note": "Not queried yet. Local exit code 0 is not an Actions result."
+    "observed": true,
+    "conclusion": "success",
+    "headSha": "30756538b83a22e9d6c67d508e3ad054f0905a08",
+    "runs": [
+      {
+        "id": 41800933879,
+        "event": "push",
+        "conclusion": "success",
+        "htmlUrl": "https://github.com/ddcodedog/Calculator/actions/runs/41800933879",
+        "headSha": "30756538b83a22e9d6c67d508e3ad054f0905a08",
+        "log": "failures=0 warnings=0 formulas=25; 36 URL results class ok; urlsSkipped false"
+      },
+      {
+        "id": 41800933911,
+        "event": "pull_request",
+        "conclusion": "success",
+        "htmlUrl": "https://github.com/ddcodedog/Calculator/actions/runs/41800933911",
+        "headSha": "30756538b83a22e9d6c67d508e3ad054f0905a08"
+      }
+    ],
+    "note": "These runs are for commit 3075653. A later commit that records them is not included in this object until it is queried."
   },
   "unfinished": [
     "350 inventory tools have no formula page",
     "20 of 25 verification records still mark external standards pending or not fully re-read",
-    "GitHub Actions for this commit was not observed when the file was first written",
-    "Branch is not merged"
+    "Branch is not merged. The commit that writes these Actions URLs is newer than 3075653 and was not one of the runs above."
   ],
   "incrementalUpdates": [
     "Publish one deferred tool at a time after reading its production script and recomputing an example. PoE voltage drop is the shortest closed form left out of batch 1.",
     "Re-run scripts/check-docs.py when a production route changes.",
     "Replace a pending standards line only after opening the cited document."
   ],
-  "finalStatus": "PASS_WITH_WARNINGS"
+  "finalStatus": "PASS"
 }
