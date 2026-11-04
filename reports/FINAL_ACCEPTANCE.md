@@ -1,5 +1,7 @@
 # Final acceptance (GATE 8)
 
+This file records the GATE 8 check of the first 25 topics. It is not the current library count. Batch 2 counts live in [FORMULA_VERIFICATION.md](FORMULA_VERIFICATION.md) and [FIRST_RELEASE.md](FIRST_RELEASE.md).
+
 This file records checks that were actually run. It does not describe a merge, a deploy, or a GitHub Actions run that had not finished.
 
 ## Repository

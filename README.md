@@ -30,25 +30,25 @@ This library collects that material per domain site. Content is English-first, e
 
 | Domain | Folder | Published topics | Production site |
 |--------|--------|------------------|-----------------|
-| NetEngineerLab | [NetEngineerLab/](NetEngineerLab/) | 6 | https://netengineerlab.com |
+| NetEngineerLab | [NetEngineerLab/](NetEngineerLab/) | 16 | https://netengineerlab.com |
 | PCDog | [PCDog/](PCDog/) | 0 | https://pcdog.com |
 | AIMarkTool | [AIMarkTool/](AIMarkTool/) | 0 | https://aimarktool.com |
-| PowerEngineerLab | [PowerEngineerLab/](PowerEngineerLab/) | 9 | https://powerengineerlab.com |
-| HVACEngineerLab | [HVACEngineerLab/](HVACEngineerLab/) | 1 | https://hvacengineerlab.com |
+| PowerEngineerLab | [PowerEngineerLab/](PowerEngineerLab/) | 19 | https://powerengineerlab.com |
+| HVACEngineerLab | [HVACEngineerLab/](HVACEngineerLab/) | 11 | https://hvacengineerlab.com |
 | PrivacyFileLab | [PrivacyFileLab/](PrivacyFileLab/) | 0 | https://privacyfilelab.com |
 | DataFileLab | [DataFileLab/](DataFileLab/) | 0 | https://datafilelab.com |
-| WaterEngineerLab | [WaterEngineerLab/](WaterEngineerLab/) | 3 | https://waterengineerlab.com |
-| StructuralEngineerLab | [StructuralEngineerLab/](StructuralEngineerLab/) | 3 | https://structuralengineerlab.com |
+| WaterEngineerLab | [WaterEngineerLab/](WaterEngineerLab/) | 12 | https://waterengineerlab.com |
+| StructuralEngineerLab | [StructuralEngineerLab/](StructuralEngineerLab/) | 7 | https://structuralengineerlab.com |
 | DevEngineerLab | [DevEngineerLab/](DevEngineerLab/) | 0 | https://devengineerlab.com |
-| DIYCalcLab | [DIYCalcLab/](DIYCalcLab/) | 3 | https://diycalclab.com |
+| DIYCalcLab | [DIYCalcLab/](DIYCalcLab/) | 13 | https://diycalclab.com |
 
-Each folder README is the topic index for that site. A zero means batch 1 published no formula file there. Deferred inventory rows are listed in [reports/FIRST_RELEASE.md](reports/FIRST_RELEASE.md), not as extra pages.
+Each folder README is the topic index for that site. A zero means that folder has no formula file. Deferred inventory rows are listed in [reports/FIRST_RELEASE.md](reports/FIRST_RELEASE.md), not as extra pages.
 
 ---
 
 ## 3. Formula knowledge-base navigation
 
-Published formula topics: 25
+Published formula topics: 78
 
 1. Open a domain folder from the table above.
 2. Read that domain’s README topic index.
@@ -67,6 +67,16 @@ Chinese outreach drafts keyed by site live under [promo/zh/](promo/zh/README.md)
 - [Chromatic dispersion coefficient D(λ)](NetEngineerLab/chromatic-dispersion.md)
 - [OSPF interface cost](NetEngineerLab/ospf-interface-cost.md)
 - [STP port path cost](NetEngineerLab/stp-path-cost.md)
+- [Data center power usage effectiveness](NetEngineerLab/data-center-pue.md)
+- [Ethernet serialization delay](NetEngineerLab/ethernet-serialization-delay.md)
+- [IPv4 subnet size](NetEngineerLab/ipv4-subnet.md)
+- [Polarization-mode dispersion budget](NetEngineerLab/pmd-budget.md)
+- [PoE switch power budget](NetEngineerLab/poe-power-budget.md)
+- [PoE pair voltage drop](NetEngineerLab/poe-voltage-drop.md)
+- [PON maximum optical distance](NetEngineerLab/pon-maximum-distance.md)
+- [PON splitter and link loss budget](NetEngineerLab/pon-splitter-loss.md)
+- [Ring all-reduce traffic and time](NetEngineerLab/ring-all-reduce.md)
+- [Wireless free-space link budget](NetEngineerLab/wireless-link-budget.md)
 
 ### PowerEngineerLab
 
@@ -79,30 +89,73 @@ Chinese outreach drafts keyed by site live under [promo/zh/](promo/zh/README.md)
 - [AC machine synchronous speed](PowerEngineerLab/synchronous-speed.md)
 - [Induction-motor slip](PowerEngineerLab/induction-motor-slip.md)
 - [Kilowatt to mechanical horsepower](PowerEngineerLab/kilowatt-to-horsepower.md)
+- [AC apparent real and reactive power](PowerEngineerLab/ac-power.md)
+- [Battery charging time](PowerEngineerLab/battery-charging-time.md)
+- [Battery energy and runtime](PowerEngineerLab/battery-runtime.md)
+- [Conductor resistance and temperature](PowerEngineerLab/conductor-resistance.md)
+- [Electrical efficiency and loss](PowerEngineerLab/electrical-efficiency.md)
+- [Three-phase motor line current](PowerEngineerLab/motor-line-current.md)
+- [Power-factor correction kvar](PowerEngineerLab/power-factor-correction.md)
+- [Series RC time constant](PowerEngineerLab/rc-time-constant.md)
+- [Series and parallel resistance](PowerEngineerLab/series-parallel-resistance.md)
+- [Shaft torque from power and speed](PowerEngineerLab/shaft-torque.md)
 
 ### StructuralEngineerLab
 
 - [Euler elastic column buckling load](StructuralEngineerLab/euler-column-buckling.md)
 - [Elastic beam bending stress](StructuralEngineerLab/beam-bending-stress.md)
 - [Centroidal area and section modulus](StructuralEngineerLab/section-properties.md)
+- [Elastic section modulus](StructuralEngineerLab/elastic-section-modulus.md)
+- [Geometric section properties](StructuralEngineerLab/geometric-section-properties.md)
+- [Section normal stress at four script points](StructuralEngineerLab/section-normal-stress.md)
+- [User-defined demand over allowable](StructuralEngineerLab/user-defined-utilization.md)
 
 ### WaterEngineerLab
 
 - [Manning open-channel discharge](WaterEngineerLab/manning-open-channel-flow.md)
 - [Rational-method peak runoff](WaterEngineerLab/rational-method-peak-runoff.md)
 - [Darcy-Weisbach major pipe headloss](WaterEngineerLab/darcy-weisbach-pipe-headloss.md)
+- [Area-weighted runoff coefficient](WaterEngineerLab/composite-runoff-coefficient.md)
+- [Darcy required pipe diameter](WaterEngineerLab/darcy-required-pipe-diameter.md)
+- [Design-storm rainfall depth](WaterEngineerLab/design-storm-rainfall-depth.md)
+- [Hydraulic and energy grade lines](WaterEngineerLab/hydraulic-energy-grade-line.md)
+- [Log-log IDF intensity](WaterEngineerLab/idf-log-log-interpolation.md)
+- [Kirpich time of concentration](WaterEngineerLab/kirpich-time-of-concentration.md)
+- [Manning full-flow pipe diameter](WaterEngineerLab/manning-storm-drain-diameter.md)
+- [Pump duty head and power](WaterEngineerLab/pump-duty-head-power.md)
+- [Residual pressure from a head balance](WaterEngineerLab/residual-pressure-head.md)
 
 ### HVACEngineerLab
 
 - [Duct friction and local pressure drop](HVACEngineerLab/duct-friction-pressure-drop.md)
+- [Chilled-water flow and plant power](HVACEngineerLab/chilled-water-flow.md)
+- [Condensate from latent cooling load](HVACEngineerLab/condensate-from-latent-load.md)
+- [Data-center sensible cooling airflow](HVACEngineerLab/data-center-sensible-airflow.md)
+- [Fan air power and input](HVACEngineerLab/fan-air-power.md)
+- [HVAC cooling electrical energy](HVACEngineerLab/hvac-cooling-energy-cost.md)
+- [Site energy use intensity](HVACEngineerLab/illustrative-site-eui.md)
+- [Outdoor-air ventilation flow](HVACEngineerLab/outdoor-air-ventilation-flow.md)
+- [Darcy pipe pressure drop](HVACEngineerLab/pipe-darcy-pressure-drop.md)
+- [Predicted mean vote](HVACEngineerLab/pmv-ppd.md)
+- [Pump head and hydraulic power](HVACEngineerLab/pump-tdh-hydraulic-power.md)
 
 ### DIYCalcLab
 
 - [Concrete slab volume and bag count](DIYCalcLab/concrete-slab-volume.md)
 - [Roof pitch and slope factor](DIYCalcLab/roof-pitch.md)
 - [Board-foot lumber volume](DIYCalcLab/board-foot.md)
+- [Rectangular prism volume](DIYCalcLab/cubic-yard.md)
+- [Deck board count](DIYCalcLab/deck-board-count.md)
+- [Drywall sheet count](DIYCalcLab/drywall-sheets.md)
+- [Gravel volume and mass](DIYCalcLab/gravel-tonnage.md)
+- [Interior wall paint quantity](DIYCalcLab/interior-paint.md)
+- [Mulch bed volume](DIYCalcLab/mulch-volume.md)
+- [Round column concrete volume](DIYCalcLab/sonotube-concrete.md)
+- [Plan area](DIYCalcLab/square-footage.md)
+- [Stair rise and run](DIYCalcLab/stair-geometry.md)
+- [Tile count with joints](DIYCalcLab/tile-quantity.md)
 
-### No published topic in batch 1
+### No published topic
 
 [AIMarkTool](AIMarkTool/), [DataFileLab](DataFileLab/), [DevEngineerLab](DevEngineerLab/), [PCDog](PCDog/), and [PrivacyFileLab](PrivacyFileLab/) link to the inventory and the deferred list. They do not contain formula pages.
 
