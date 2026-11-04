@@ -4,7 +4,9 @@
 - Machine: 00CDFFFH-QBB66G (50a3bca8-2fbc-46d1-96ce-ff84a34ff401)
 - Local path: D:\Calculator
 - Remote: https://github.com/ddcodedog/Calculator
-- Branch: gate2-scaffold (PR to main; not merged in this gate)
+- Branch: `gate2-scaffold`
+- Commit: `d4784b122b05568906dbe7bef4cb4c2fe9486b06`
+- Pull request: https://github.com/ddcodedog/Calculator/pull/1 (not merged)
 
 ## Created
 
