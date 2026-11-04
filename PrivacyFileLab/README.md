@@ -8,25 +8,17 @@ Privacy-focused file utilities — hashing, redaction, and local processing prin
 
 **Production site:** [https://privacyfilelab.com](https://privacyfilelab.com)
 
-## Topic index (placeholder)
+## Topic index
 
-Formula and technical-topic Markdown files will be added here **after** source audit and independent verification (GATE 3+).
+Published topics: 0
 
-Until then:
+Batch 1 did not publish formula pages in this folder. Deferred tool IDs are listed in [First release strategy](../reports/FIRST_RELEASE.md). Registered tools stay in the [GATE1 tool inventory](../reports/GATE1_TOOL_INVENTORY.md).
 
-- Do **not** treat this directory as a complete formula set.
-- No document in this folder is marked `VERIFIED` yet.
-- See [GATE1 tool inventory](../reports/GATE1_TOOL_INVENTORY.md) for registered tools and documentation status.
-
-### Planned structure
-
-| Status | Document | Notes |
-|--------|----------|-------|
-| Pending | _(to be added)_ | Selected from GATE1 inventory after engineering checks |
+No document in this folder is marked `VERIFIED`.
 
 ## Online calculators
 
-Use the production site above for live tools. Individual topic pages will link only to the matching calculator URL once verified.
+Use the production site above. This folder has no topic page, so it does not add calculator URLs.
 
 ## Contribution
 

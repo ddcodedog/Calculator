@@ -1,4 +1,4 @@
-# Concrete slab volume
+# Concrete slab volume and bag count
 
 ## Overview
 
@@ -88,8 +88,8 @@ Inventory tool ID: `concrete-slab`.
 
 ## Related Formulas
 
-- [Board foot](board-foot.md)
-- [Roof pitch](roof-pitch.md)
+- [Board-foot lumber volume](board-foot.md)
+- [Roof pitch and slope factor](roof-pitch.md)
 
 ## Verification
 

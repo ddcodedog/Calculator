@@ -71,8 +71,8 @@ Inventory tool ID: `motor-slip`.
 
 ## Related Formulas
 
-- [Synchronous speed](synchronous-speed.md)
-- [Kilowatt to horsepower](kilowatt-to-horsepower.md)
+- [AC machine synchronous speed](synchronous-speed.md)
+- [Kilowatt to mechanical horsepower](kilowatt-to-horsepower.md)
 
 ## Verification
 

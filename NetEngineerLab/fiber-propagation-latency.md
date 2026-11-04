@@ -1,4 +1,4 @@
-# Fiber propagation latency
+# Fiber propagation delay and RTT
 
 ## Overview
 
@@ -91,9 +91,9 @@ Inventory tool ID: `fiber-latency-calculator`.
 
 ## Related Formulas
 
-- [Fiber link loss](fiber-link-loss.md)
-- [Chromatic dispersion](chromatic-dispersion.md)
-- [STP path cost](stp-path-cost.md)
+- [Single-span fiber link loss](fiber-link-loss.md)
+- [Chromatic dispersion coefficient D(λ)](chromatic-dispersion.md)
+- [STP port path cost](stp-path-cost.md)
 
 ## Verification
 

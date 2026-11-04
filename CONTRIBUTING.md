@@ -18,7 +18,7 @@ Thank you for helping improve this engineering formula library.
 4. Filenames: English lowercase kebab-case, e.g. `optical-power-budget.md`.
 5. Link only **real** production calculator URLs from the GATE1 inventory (or freshly verified routes).
 6. Do **not** mark a document `VERIFIED` without independent checks against source and at least one worked example.
-7. Run any available doc checks in `scripts/` / CI before requesting review.
+7. Run `python3 scripts/check-docs.py` before requesting review. CI runs the same script and only reports the result.
 8. Open a Pull Request with: what changed, which tool IDs, verification evidence, and remaining risks.
 
 ## Content standards

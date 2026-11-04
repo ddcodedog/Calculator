@@ -82,8 +82,8 @@ Inventory tool ID: `TOOL-003`.
 
 ## Related Formulas
 
-- [Manning open-channel flow](manning-open-channel-flow.md)
-- [Darcy-Weisbach pipe headloss](darcy-weisbach-pipe-headloss.md)
+- [Manning open-channel discharge](manning-open-channel-flow.md)
+- [Darcy-Weisbach major pipe headloss](darcy-weisbach-pipe-headloss.md)
 
 ## Verification
 

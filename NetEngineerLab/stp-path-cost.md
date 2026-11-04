@@ -1,4 +1,4 @@
-# STP path cost
+# STP port path cost
 
 ## Overview
 
@@ -84,7 +84,7 @@ Inventory tool ID: `stp-path-cost-calculator`.
 ## Related Formulas
 
 - [OSPF interface cost](ospf-interface-cost.md)
-- [Fiber propagation latency](fiber-propagation-latency.md)
+- [Fiber propagation delay and RTT](fiber-propagation-latency.md)
 
 ## Verification
 

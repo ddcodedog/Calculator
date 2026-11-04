@@ -1,4 +1,4 @@
-# Inductive reactance
+# Ideal inductive reactance
 
 ## Overview
 
@@ -60,9 +60,9 @@ Inventory tool ID: `inductive-reactance`.
 
 ## Related Formulas
 
-- [Capacitive reactance](capacitive-reactance.md)
-- [Ohm’s law](ohms-law.md)
-- [Power triangle](power-triangle.md)
+- [Ideal capacitive reactance](capacitive-reactance.md)
+- [DC Ohm’s law](ohms-law.md)
+- [Sinusoidal power triangle](power-triangle.md)
 
 ## Verification
 

@@ -74,8 +74,8 @@ Inventory tool ID: `voltage-divider`.
 
 ## Related Formulas
 
-- [Ohm’s law](ohms-law.md)
-- [Capacitive reactance](capacitive-reactance.md)
+- [DC Ohm’s law](ohms-law.md)
+- [Ideal capacitive reactance](capacitive-reactance.md)
 
 ## Verification
 

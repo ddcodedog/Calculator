@@ -1,4 +1,4 @@
-# Manning open-channel flow
+# Manning open-channel discharge
 
 ## Overview
 
@@ -84,7 +84,7 @@ Inventory tool ID: `TOOL-007`. The inventory URL with a trailing slash redirects
 ## Related Formulas
 
 - [Rational-method peak runoff](rational-method-peak-runoff.md)
-- [Darcy-Weisbach pipe headloss](darcy-weisbach-pipe-headloss.md)
+- [Darcy-Weisbach major pipe headloss](darcy-weisbach-pipe-headloss.md)
 
 ## Verification
 

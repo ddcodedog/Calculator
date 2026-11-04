@@ -1,4 +1,4 @@
-# Ohm’s law (DC)
+# DC Ohm’s law
 
 ## Overview
 
@@ -70,10 +70,10 @@ Inventory tool ID: `ohms-law`.
 
 ## Related Formulas
 
-- [Voltage divider](voltage-divider.md)
-- [Power triangle](power-triangle.md)
-- [Inductive reactance](inductive-reactance.md)
-- [Capacitive reactance](capacitive-reactance.md)
+- [Resistive voltage divider](voltage-divider.md)
+- [Sinusoidal power triangle](power-triangle.md)
+- [Ideal inductive reactance](inductive-reactance.md)
+- [Ideal capacitive reactance](capacitive-reactance.md)
 
 ## Verification
 

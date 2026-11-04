@@ -1,4 +1,4 @@
-# Section properties
+# Centroidal area and section modulus
 
 ## Overview
 
@@ -99,8 +99,8 @@ Inventory tool ID: `TOOL-008`.
 
 ## Related Formulas
 
-- [Beam bending stress](beam-bending-stress.md)
-- [Euler column buckling](euler-column-buckling.md)
+- [Elastic beam bending stress](beam-bending-stress.md)
+- [Euler elastic column buckling load](euler-column-buckling.md)
 
 ## Verification
 

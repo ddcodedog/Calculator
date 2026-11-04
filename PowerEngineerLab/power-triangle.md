@@ -1,4 +1,4 @@
-# Power triangle
+# Sinusoidal power triangle
 
 ## Overview
 
@@ -64,9 +64,9 @@ Inventory tool ID: `power-triangle`.
 
 ## Related Formulas
 
-- [Ohm’s law](ohms-law.md)
-- [Inductive reactance](inductive-reactance.md)
-- [Capacitive reactance](capacitive-reactance.md)
+- [DC Ohm’s law](ohms-law.md)
+- [Ideal inductive reactance](inductive-reactance.md)
+- [Ideal capacitive reactance](capacitive-reactance.md)
 - [Transformer full-load current](transformer-full-load-current.md)
 
 ## Verification

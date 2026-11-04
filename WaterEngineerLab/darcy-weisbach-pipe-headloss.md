@@ -1,4 +1,4 @@
-# Darcy-Weisbach pipe headloss
+# Darcy-Weisbach major pipe headloss
 
 ## Overview
 
@@ -74,8 +74,8 @@ Inventory tool ID: `TOOL-010`.
 
 ## Related Formulas
 
-- [Manning open-channel flow](manning-open-channel-flow.md)
-- [Duct friction pressure drop](../HVACEngineerLab/duct-friction-pressure-drop.md)
+- [Manning open-channel discharge](manning-open-channel-flow.md)
+- [Duct friction and local pressure drop](../HVACEngineerLab/duct-friction-pressure-drop.md)
 
 ## Verification
 

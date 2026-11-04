@@ -10,6 +10,8 @@ HVAC engineering calculators — heating, cooling, airflow, and psychrometric-re
 
 ## Topic index
 
+Published topics: 1
+
 GATE 3 batch 1. Psychrometrics and the other HVAC planners are not in this batch. Status labels are in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
 | Status | Document | Tool |
@@ -18,7 +20,7 @@ GATE 3 batch 1. Psychrometrics and the other HVAC planners are not in this batch
 
 ## Online calculators
 
-Use the production site above for live tools. Individual topic pages will link only to the matching calculator URL once verified.
+Each published topic links to its own production calculator. This index does not list every tool on the site.
 
 ## Contribution
 

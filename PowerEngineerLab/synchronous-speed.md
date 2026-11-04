@@ -1,4 +1,4 @@
-# Synchronous speed
+# AC machine synchronous speed
 
 ## Overview
 
@@ -62,7 +62,7 @@ Inventory tool ID: `synchronous-speed`.
 ## Related Formulas
 
 - [Induction-motor slip](induction-motor-slip.md)
-- [Kilowatt to horsepower](kilowatt-to-horsepower.md)
+- [Kilowatt to mechanical horsepower](kilowatt-to-horsepower.md)
 - [Transformer full-load current](transformer-full-load-current.md)
 
 ## Verification

@@ -67,8 +67,8 @@ Inventory tool ID: `ospf-cost-calculator`.
 
 ## Related Formulas
 
-- [STP path cost](stp-path-cost.md)
-- [Fiber propagation latency](fiber-propagation-latency.md)
+- [STP port path cost](stp-path-cost.md)
+- [Fiber propagation delay and RTT](fiber-propagation-latency.md)
 
 ## Verification
 

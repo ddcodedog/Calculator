@@ -1,4 +1,4 @@
-# Chromatic dispersion
+# Chromatic dispersion coefficient D(λ)
 
 ## Overview
 
@@ -93,9 +93,9 @@ Inventory tool ID: `chromatic-dispersion-calculator`.
 
 ## Related Formulas
 
-- [Fiber link loss](fiber-link-loss.md)
-- [Optical power budget](optical-power-budget.md)
-- [Fiber propagation latency](fiber-propagation-latency.md)
+- [Single-span fiber link loss](fiber-link-loss.md)
+- [Optical link power budget](optical-power-budget.md)
+- [Fiber propagation delay and RTT](fiber-propagation-latency.md)
 
 ## Verification
 

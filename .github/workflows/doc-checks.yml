@@ -1,0 +1,28 @@
+name: doc checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  markdown:
+    name: Markdown and tool URL checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out this documentation repository
+        uses: actions/checkout@v4
+
+      - name: Run read-only documentation checks
+        run: python3 scripts/check-docs.py --json-out "$RUNNER_TEMP/doc-check.json"
+
+      - name: Upload the check report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: doc-check-report
+          path: ${{ runner.temp }}/doc-check.json
+          if-no-files-found: warn

@@ -1,4 +1,4 @@
-# Roof pitch
+# Roof pitch and slope factor
 
 ## Overview
 
@@ -80,8 +80,8 @@ Inventory tool ID: `roof-pitch`.
 
 ## Related Formulas
 
-- [Concrete slab volume](concrete-slab-volume.md)
-- [Board foot](board-foot.md)
+- [Concrete slab volume and bag count](concrete-slab-volume.md)
+- [Board-foot lumber volume](board-foot.md)
 
 ## Verification
 

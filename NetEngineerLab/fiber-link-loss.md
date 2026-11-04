@@ -1,4 +1,4 @@
-# Fiber link loss
+# Single-span fiber link loss
 
 ## Overview
 
@@ -106,9 +106,9 @@ Inventory tool ID: `fiber-loss`.
 
 ## Related Formulas
 
-- [Optical power budget](optical-power-budget.md)
-- [Chromatic dispersion](chromatic-dispersion.md)
-- [Fiber propagation latency](fiber-propagation-latency.md)
+- [Optical link power budget](optical-power-budget.md)
+- [Chromatic dispersion coefficient D(λ)](chromatic-dispersion.md)
+- [Fiber propagation delay and RTT](fiber-propagation-latency.md)
 
 ## Verification
 

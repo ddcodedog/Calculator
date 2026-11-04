@@ -100,7 +100,7 @@ Inventory tool ID: `duct-airflow-design`. The inventory URL with a trailing slas
 
 ## Related Formulas
 
-- [Darcy-Weisbach pipe headloss](../WaterEngineerLab/darcy-weisbach-pipe-headloss.md)
+- [Darcy-Weisbach major pipe headloss](../WaterEngineerLab/darcy-weisbach-pipe-headloss.md)
 
 ## Verification
 

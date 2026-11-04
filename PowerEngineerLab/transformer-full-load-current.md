@@ -71,9 +71,9 @@ Inventory tool ID: `transformer-full-load-current`.
 
 ## Related Formulas
 
-- [Power triangle](power-triangle.md)
-- [Ohm’s law](ohms-law.md)
-- [Synchronous speed](synchronous-speed.md)
+- [Sinusoidal power triangle](power-triangle.md)
+- [DC Ohm’s law](ohms-law.md)
+- [AC machine synchronous speed](synchronous-speed.md)
 
 ## Verification
 

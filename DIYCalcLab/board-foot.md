@@ -1,4 +1,4 @@
-# Board foot
+# Board-foot lumber volume
 
 ## Overview
 
@@ -71,8 +71,8 @@ Inventory tool ID: `board-foot`.
 
 ## Related Formulas
 
-- [Concrete slab volume](concrete-slab-volume.md)
-- [Roof pitch](roof-pitch.md)
+- [Concrete slab volume and bag count](concrete-slab-volume.md)
+- [Roof pitch and slope factor](roof-pitch.md)
 
 ## Verification
 

@@ -10,17 +10,19 @@ Structural engineering calculators — member sizing, loads, and related verifie
 
 ## Topic index
 
+Published topics: 3
+
 GATE 3 batch 1. Beam singularity solvers and the other structural tools are not in this batch. Status labels are in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
 | Status | Document | Tool |
 |--------|----------|------|
-| VERIFIED | [Euler column buckling](euler-column-buckling.md) | `TOOL-004` |
-| VERIFIED | [Elastic bending stress](beam-bending-stress.md) | `TOOL-003` |
-| VERIFIED | [Section properties](section-properties.md) | `TOOL-008` |
+| VERIFIED | [Euler elastic column buckling load](euler-column-buckling.md) | `TOOL-004` |
+| VERIFIED | [Elastic beam bending stress](beam-bending-stress.md) | `TOOL-003` |
+| VERIFIED | [Centroidal area and section modulus](section-properties.md) | `TOOL-008` |
 
 ## Online calculators
 
-Use the production site above for live tools. Individual topic pages will link only to the matching calculator URL once verified.
+Each published topic links to its own production calculator. This index does not list every tool on the site.
 
 ## Contribution
 

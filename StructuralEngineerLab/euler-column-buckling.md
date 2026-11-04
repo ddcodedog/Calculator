@@ -1,4 +1,4 @@
-# Euler column buckling
+# Euler elastic column buckling load
 
 ## Overview
 
@@ -70,8 +70,8 @@ Inventory tool ID: `TOOL-004`.
 
 ## Related Formulas
 
-- [Section properties](section-properties.md)
-- [Beam bending stress](beam-bending-stress.md)
+- [Centroidal area and section modulus](section-properties.md)
+- [Elastic beam bending stress](beam-bending-stress.md)
 
 ## Verification
 

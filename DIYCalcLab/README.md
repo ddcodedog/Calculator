@@ -10,17 +10,19 @@ DIY and everyday engineering calculators — practical formulas with worked exam
 
 ## Topic index
 
+Published topics: 3
+
 GATE 3 batch 1. The other DIY material calculators remain undocumented until each module is read the same way. Status labels are in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
 | Status | Document | Tool |
 |--------|----------|------|
-| VERIFIED | [Concrete slab volume](concrete-slab-volume.md) | `concrete-slab` |
-| VERIFIED | [Roof pitch](roof-pitch.md) | `roof-pitch` |
-| VERIFIED | [Board foot](board-foot.md) | `board-foot` |
+| VERIFIED | [Concrete slab volume and bag count](concrete-slab-volume.md) | `concrete-slab` |
+| VERIFIED | [Roof pitch and slope factor](roof-pitch.md) | `roof-pitch` |
+| VERIFIED | [Board-foot lumber volume](board-foot.md) | `board-foot` |
 
 ## Online calculators
 
-Use the production site above for live tools. Individual topic pages will link only to the matching calculator URL once verified.
+Each published topic links to its own production calculator. This index does not list every tool on the site.
 
 ## Contribution
 

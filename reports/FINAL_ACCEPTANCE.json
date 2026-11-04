@@ -1,0 +1,79 @@
+{
+  "repository": "https://github.com/ddcodedog/Calculator",
+  "branch": "cursor/gate3-first-formulas-7b21",
+  "commit": "PENDING_AFTER_COMMIT",
+  "pullRequest": "https://github.com/ddcodedog/Calculator/pull/2",
+  "base": "main",
+  "merged": false,
+  "siteDirectories": [
+    "AIMarkTool",
+    "DIYCalcLab",
+    "DataFileLab",
+    "DevEngineerLab",
+    "HVACEngineerLab",
+    "NetEngineerLab",
+    "PCDog",
+    "PowerEngineerLab",
+    "PrivacyFileLab",
+    "StructuralEngineerLab",
+    "WaterEngineerLab"
+  ],
+  "publishedFormulaCount": 25,
+  "verifiedCount": 25,
+  "pendingVerificationCount": 0,
+  "reviewRequiredCount": 0,
+  "deferredInventoryCount": 350,
+  "inventoryCount": 375,
+  "standardsRecordsMentioningPending": 20,
+  "urlCheck": {
+    "command": "python3 scripts/check-docs.py",
+    "ranOn": "2026-11-04",
+    "exitCode": 0,
+    "requests": 36,
+    "ok": 36,
+    "finalHttp200": 36,
+    "hard404": 0,
+    "otherHttpError": 0,
+    "networkError": 0,
+    "redirectThen200": [
+      "https://hvacengineerlab.com/tools/duct-airflow-design/",
+      "https://waterengineerlab.com/tools/manning-open-channel-flow/",
+      "https://waterengineerlab.com/tools/rational-method-peak-runoff/",
+      "https://waterengineerlab.com/tools/water-pipe-flow-headloss/"
+    ]
+  },
+  "markdownCheck": {
+    "command": "python3 scripts/check-docs.py",
+    "ranOn": "2026-11-04",
+    "exitCode": 0,
+    "failures": 0,
+    "warnings": 0,
+    "formulaCount": 25,
+    "duplicateTitles": 0,
+    "brokenRelativeLinks": 0,
+    "mathFenceFailures": 0,
+    "verificationMismatches": 0,
+    "tocMismatches": 0,
+    "secretMatches": 0
+  },
+  "actions": {
+    "workflow": ".github/workflows/doc-checks.yml",
+    "observed": false,
+    "conclusion": null,
+    "htmlUrl": null,
+    "headSha": null,
+    "note": "Not queried yet. Local exit code 0 is not an Actions result."
+  },
+  "unfinished": [
+    "350 inventory tools have no formula page",
+    "20 of 25 verification records still mark external standards pending or not fully re-read",
+    "GitHub Actions for this commit was not observed when the file was first written",
+    "Branch is not merged"
+  ],
+  "incrementalUpdates": [
+    "Publish one deferred tool at a time after reading its production script and recomputing an example. PoE voltage drop is the shortest closed form left out of batch 1.",
+    "Re-run scripts/check-docs.py when a production route changes.",
+    "Replace a pending standards line only after opening the cited document."
+  ],
+  "finalStatus": "PASS_WITH_WARNINGS"
+}

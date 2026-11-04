@@ -1,4 +1,4 @@
-# Kilowatt to horsepower
+# Kilowatt to mechanical horsepower
 
 ## Overview
 
@@ -74,9 +74,9 @@ Inventory tool ID: `kw-to-hp`.
 
 ## Related Formulas
 
-- [Synchronous speed](synchronous-speed.md)
+- [AC machine synchronous speed](synchronous-speed.md)
 - [Induction-motor slip](induction-motor-slip.md)
-- [Power triangle](power-triangle.md)
+- [Sinusoidal power triangle](power-triangle.md)
 
 ## Verification
 
