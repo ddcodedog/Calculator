@@ -3,7 +3,7 @@
 Helper scripts for this documentation repository.
 
 - `extract-gate1-inventory.cjs`, `patch-gate1.cjs`, and `patch-pcdog.cjs` rebuild inventory notes from a local export. They are not run in CI.
-- `check-docs.py` is read-only. It scans Markdown in this repository and requests tool URLs. It does not rewrite files.
+- `check-docs.py` is read-only. It scans Markdown in this repository and requests tool URLs. It does not rewrite files. Paths under `promo/` are outreach drafts and are skipped by the title, relative-link, and formula-verification gates.
 
 ```bash
 python3 scripts/check-docs.py
