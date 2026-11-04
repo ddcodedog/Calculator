@@ -8,21 +8,15 @@ Water and hydraulic engineering calculators — flow, head loss, pipe, and relat
 
 **Production site:** [https://waterengineerlab.com](https://waterengineerlab.com)
 
-## Topic index (placeholder)
+## Topic index
 
-Formula and technical-topic Markdown files will be added here **after** source audit and independent verification (GATE 3+).
+GATE 3 batch 1. Status labels are in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
-Until then:
-
-- Do **not** treat this directory as a complete formula set.
-- No document in this folder is marked `VERIFIED` yet.
-- See [GATE1 tool inventory](../reports/GATE1_TOOL_INVENTORY.md) for registered tools and documentation status.
-
-### Planned structure
-
-| Status | Document | Notes |
-|--------|----------|-------|
-| Pending | _(to be added)_ | Selected from GATE1 inventory after engineering checks |
+| Status | Document | Tool |
+|--------|----------|------|
+| VERIFIED | [Manning open-channel flow](manning-open-channel-flow.md) | `TOOL-007` |
+| VERIFIED | [Rational-method peak runoff](rational-method-peak-runoff.md) | `TOOL-003` |
+| VERIFIED | [Darcy-Weisbach pipe headloss](darcy-weisbach-pipe-headloss.md) | `TOOL-010` |
 
 ## Online calculators
 

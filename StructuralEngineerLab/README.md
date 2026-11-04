@@ -8,21 +8,15 @@ Structural engineering calculators — member sizing, loads, and related verifie
 
 **Production site:** [https://structuralengineerlab.com](https://structuralengineerlab.com)
 
-## Topic index (placeholder)
+## Topic index
 
-Formula and technical-topic Markdown files will be added here **after** source audit and independent verification (GATE 3+).
+GATE 3 batch 1. Beam singularity solvers and the other structural tools are not in this batch. Status labels are in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
-Until then:
-
-- Do **not** treat this directory as a complete formula set.
-- No document in this folder is marked `VERIFIED` yet.
-- See [GATE1 tool inventory](../reports/GATE1_TOOL_INVENTORY.md) for registered tools and documentation status.
-
-### Planned structure
-
-| Status | Document | Notes |
-|--------|----------|-------|
-| Pending | _(to be added)_ | Selected from GATE1 inventory after engineering checks |
+| Status | Document | Tool |
+|--------|----------|------|
+| VERIFIED | [Euler column buckling](euler-column-buckling.md) | `TOOL-004` |
+| VERIFIED | [Elastic bending stress](beam-bending-stress.md) | `TOOL-003` |
+| VERIFIED | [Section properties](section-properties.md) | `TOOL-008` |
 
 ## Online calculators
 

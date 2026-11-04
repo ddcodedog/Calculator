@@ -53,7 +53,7 @@ Each domain folder contains a README topic index. Individual formula files (keba
 3. Open a topic file (when present) for Overview, Formula, Variables, Principles, Worked Example, Limitations, Standards, Online Calculator, Related Formulas, and Verification.
 4. Cross-check status in [reports/](reports/) (inventory and later verification reports).
 
-**Current stage:** GATE 2 scaffold — domain folders and indexes exist; **no formula topic files yet** (GATE 3+).
+**Current stage:** GATE 3/4 first batch — 25 formula topics are published and marked `VERIFIED` against production calculator code. The other registered tools are not documented yet. See [reports/FORMULA_VERIFICATION.md](reports/FORMULA_VERIFICATION.md) and [reports/GATE3_STATUS.md](reports/GATE3_STATUS.md).
 
 Audit inventory (375 registered tools):
 
@@ -113,7 +113,7 @@ Third-party trademarks and product names belong to their owners. Linked calculat
 | CI | Upcoming GitHub Actions doc checks (GATE 6) |
 | Releases | Prefer PR review into `main`; no unverified bulk dumps |
 
-Status notes for gates live under [reports/](reports/) (e.g. `GATE0_STATUS.md`, `GATE2_STATUS.md`).
+Status notes for gates live under [reports/](reports/) (`GATE0_STATUS.md`, `GATE2_STATUS.md`, `GATE3_STATUS.md`, `FORMULA_VERIFICATION.md`).
 
 ---
 

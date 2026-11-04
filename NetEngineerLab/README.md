@@ -8,21 +8,18 @@ Network engineering calculators — fiber optics, RF/link budgets, IP and cablin
 
 **Production site:** [https://netengineerlab.com](https://netengineerlab.com)
 
-## Topic index (placeholder)
+## Topic index
 
-Formula and technical-topic Markdown files will be added here **after** source audit and independent verification (GATE 3+).
+GATE 3 batch 1. These files match production calculator code checked on 2026-11-04. They are not a complete set of the 46 NetEngineerLab tools. Status labels are defined in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
-Until then:
-
-- Do **not** treat this directory as a complete formula set.
-- No document in this folder is marked `VERIFIED` yet.
-- See [GATE1 tool inventory](../reports/GATE1_TOOL_INVENTORY.md) for registered tools and documentation status.
-
-### Planned structure
-
-| Status | Document | Notes |
-|--------|----------|-------|
-| Pending | _(to be added)_ | Selected from GATE1 inventory after engineering checks |
+| Status | Document | Tool |
+|--------|----------|------|
+| VERIFIED | [Fiber link loss](fiber-link-loss.md) | `fiber-loss` |
+| VERIFIED | [Optical power budget](optical-power-budget.md) | `optical-power-budget` |
+| VERIFIED | [Fiber propagation latency](fiber-propagation-latency.md) | `fiber-latency-calculator` |
+| VERIFIED | [Chromatic dispersion](chromatic-dispersion.md) | `chromatic-dispersion-calculator` |
+| VERIFIED | [OSPF interface cost](ospf-interface-cost.md) | `ospf-cost-calculator` |
+| VERIFIED | [STP path cost](stp-path-cost.md) | `stp-path-cost-calculator` |
 
 ## Online calculators
 

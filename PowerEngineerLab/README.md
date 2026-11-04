@@ -8,21 +8,21 @@ Power systems and electrical engineering calculators — load, cable, protection
 
 **Production site:** [https://powerengineerlab.com](https://powerengineerlab.com)
 
-## Topic index (placeholder)
+## Topic index
 
-Formula and technical-topic Markdown files will be added here **after** source audit and independent verification (GATE 3+).
+GATE 3 batch 1. Nine closed-form electrical calculations. The other PowerEngineerLab tools stay undocumented until their production functions are checked the same way. Status labels are in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
-Until then:
-
-- Do **not** treat this directory as a complete formula set.
-- No document in this folder is marked `VERIFIED` yet.
-- See [GATE1 tool inventory](../reports/GATE1_TOOL_INVENTORY.md) for registered tools and documentation status.
-
-### Planned structure
-
-| Status | Document | Notes |
-|--------|----------|-------|
-| Pending | _(to be added)_ | Selected from GATE1 inventory after engineering checks |
+| Status | Document | Tool |
+|--------|----------|------|
+| VERIFIED | [Ohm’s law](ohms-law.md) | `ohms-law` |
+| VERIFIED | [Power triangle](power-triangle.md) | `power-triangle` |
+| VERIFIED | [Inductive reactance](inductive-reactance.md) | `inductive-reactance` |
+| VERIFIED | [Capacitive reactance](capacitive-reactance.md) | `capacitive-reactance` |
+| VERIFIED | [Voltage divider](voltage-divider.md) | `voltage-divider` |
+| VERIFIED | [Transformer full-load current](transformer-full-load-current.md) | `transformer-full-load-current` |
+| VERIFIED | [Synchronous speed](synchronous-speed.md) | `synchronous-speed` |
+| VERIFIED | [Induction-motor slip](induction-motor-slip.md) | `motor-slip` |
+| VERIFIED | [Kilowatt to horsepower](kilowatt-to-horsepower.md) | `kw-to-hp` |
 
 ## Online calculators
 

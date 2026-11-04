@@ -8,21 +8,13 @@ HVAC engineering calculators — heating, cooling, airflow, and psychrometric-re
 
 **Production site:** [https://hvacengineerlab.com](https://hvacengineerlab.com)
 
-## Topic index (placeholder)
+## Topic index
 
-Formula and technical-topic Markdown files will be added here **after** source audit and independent verification (GATE 3+).
+GATE 3 batch 1. Psychrometrics and the other HVAC planners are not in this batch. Status labels are in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
-Until then:
-
-- Do **not** treat this directory as a complete formula set.
-- No document in this folder is marked `VERIFIED` yet.
-- See [GATE1 tool inventory](../reports/GATE1_TOOL_INVENTORY.md) for registered tools and documentation status.
-
-### Planned structure
-
-| Status | Document | Notes |
-|--------|----------|-------|
-| Pending | _(to be added)_ | Selected from GATE1 inventory after engineering checks |
+| Status | Document | Tool |
+|--------|----------|------|
+| VERIFIED | [Duct friction and local pressure drop](duct-friction-pressure-drop.md) | `duct-airflow-design` |
 
 ## Online calculators
 

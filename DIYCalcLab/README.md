@@ -8,21 +8,15 @@ DIY and everyday engineering calculators — practical formulas with worked exam
 
 **Production site:** [https://diycalclab.com](https://diycalclab.com)
 
-## Topic index (placeholder)
+## Topic index
 
-Formula and technical-topic Markdown files will be added here **after** source audit and independent verification (GATE 3+).
+GATE 3 batch 1. The other DIY material calculators remain undocumented until each module is read the same way. Status labels are in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
-Until then:
-
-- Do **not** treat this directory as a complete formula set.
-- No document in this folder is marked `VERIFIED` yet.
-- See [GATE1 tool inventory](../reports/GATE1_TOOL_INVENTORY.md) for registered tools and documentation status.
-
-### Planned structure
-
-| Status | Document | Notes |
-|--------|----------|-------|
-| Pending | _(to be added)_ | Selected from GATE1 inventory after engineering checks |
+| Status | Document | Tool |
+|--------|----------|------|
+| VERIFIED | [Concrete slab volume](concrete-slab-volume.md) | `concrete-slab` |
+| VERIFIED | [Roof pitch](roof-pitch.md) | `roof-pitch` |
+| VERIFIED | [Board foot](board-foot.md) | `board-foot` |
 
 ## Online calculators
 
