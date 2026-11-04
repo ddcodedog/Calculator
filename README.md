@@ -57,6 +57,8 @@ Published formula topics: 25
 
 Audit inventory (375 registered tools): [reports/GATE1_TOOL_INVENTORY.md](reports/GATE1_TOOL_INVENTORY.md), [reports/GATE1_TOOL_INVENTORY.json](reports/GATE1_TOOL_INVENTORY.json).
 
+Chinese outreach drafts keyed by site live under [promo/zh/](promo/zh/README.md). They are not formula topics, are not counted above, and are outside the verified-topic checks.
+
 ### NetEngineerLab
 
 - [Single-span fiber link loss](NetEngineerLab/fiber-link-loss.md)
@@ -119,7 +121,7 @@ Audit inventory (375 registered tools): [reports/GATE1_TOOL_INVENTORY.md](report
 | No marketing filler | Engineering explanation over SEO spam. No fake FAQs and no ranking claims |
 | No site source edits | This repo must not modify the eleven website codebases |
 
-`python3 scripts/check-docs.py` checks duplicate titles, relative links, math fences, verification status, topic indexes, and tool URLs. [`.github/workflows/doc-checks.yml`](.github/workflows/doc-checks.yml) runs that script on push and pull request and uploads the JSON report. The job does not edit this repository or the eleven product sites.
+`python3 scripts/check-docs.py` checks duplicate titles, relative links, math fences, verification status, topic indexes, and tool URLs. Paths under `promo/` are skipped by those formula gates. [`.github/workflows/doc-checks.yml`](.github/workflows/doc-checks.yml) runs that script on push and pull request and uploads the JSON report. The job does not edit this repository or the eleven product sites.
 
 ---
 
@@ -169,6 +171,7 @@ Calculator/
 ├── .gitignore
 ├── .github/workflows/doc-checks.yml
 ├── NetEngineerLab/ … DIYCalcLab/   # domain docs
+├── promo/zh/                       # Chinese outreach drafts, keyed by site
 ├── scripts/                        # inventory helpers and check-docs.py
 └── reports/                        # gate audits, verification, release scope
 ```

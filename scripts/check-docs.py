@@ -51,9 +51,15 @@ def rel(path: Path) -> str:
 
 
 def markdown_files() -> list[Path]:
+    """Markdown subject to title and link checks.
+
+    ``promo/`` holds outreach drafts, not formula topics, so it stays out of
+    those gates. Verification still reads only top-level site folders.
+    """
     files = []
     for path in ROOT.rglob("*.md"):
-        if any(part.startswith(".") for part in path.relative_to(ROOT).parts):
+        rel_parts = path.relative_to(ROOT).parts
+        if any(part.startswith(".") for part in rel_parts) or "promo" in rel_parts:
             continue
         files.append(path)
     return sorted(files)
