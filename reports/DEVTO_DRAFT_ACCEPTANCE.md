@@ -1,27 +1,43 @@
 # DEV.to Wave-1 draft acceptance
 
-Scaffolding for GATE 4. Local drafts exist. DEV.to draft IDs are not assigned yet. This file does not publish anything.
+GATE 2 upload is recorded. Three DEV.to drafts exist with `published: false` on the request. The API returned `published: null` for each draft, which is the unpublished state. This file does not publish anything.
 
 ## Status
 
 | Item | Value |
 |---|---|
-| Status | **LOCAL_READY** |
-| DEV.to draft IDs | **TBD** — parent fills the table below after the API upload |
-| `published` | **false** on every Wave-1 file. Required. |
-| Auto-publish | **No.** Do not send `published: true`. Do not call a publish endpoint. |
-| API key in this repository | **None.** This run did not call the DEV.to write API. |
-| Account checked | `netengineerlabcom` (user id 4179691), public `GET` only, 2026-11-05 |
+| Status | **DRAFTS_CREATED_UNPUBLISHED** |
+| Prior local status | `LOCAL_READY` (GATE 1 files, before the API upload) |
+| Request `published` | **false** on all three creates |
+| API `published` | **null** on all three responses (draft, not a live post) |
+| Auto-publish | **No.** No publish endpoint was called. |
+| Series used | **NetEngineerLab Fiber Engineering** |
+| API key in this repository | **None.** |
+| Account | `netengineerlabcom` (user id 4179691) |
+| Upload | 2026-11-05, parent API upload. Uploader name is not recorded in this file. |
 
-Parent fill-in after upload:
-
-| Draft | DEV.to id | API `published` flag observed | Notes |
+| Draft | DEV.to id | URL | API `published` |
 |---|---|---|---|
-| How to Calculate Fiber Optic Power Budget | TBD | must be false | |
-| Understanding Optical Loss: dB, dBm and Link Margin | TBD | must be false | |
-| Fiber Latency Calculation Explained | TBD | must be false | |
+| How to Calculate Fiber Optic Power Budget | 4979932 | https://dev.to/netengineerlabcom/how-to-calculate-fiber-optic-power-budget-2aon-temp-slug-2176682 | null |
+| Understanding Optical Loss: dB, dBm and Link Margin | 4979933 | https://dev.to/netengineerlabcom/understanding-optical-loss-db-dbm-and-link-margin-1fmi-temp-slug-4501061 | null |
+| Fiber Latency Calculation Explained | 4979934 | https://dev.to/netengineerlabcom/fiber-latency-calculation-explained-3hkg-temp-slug-6537799 | null |
 
-Upload date: TBD. Uploaded by: TBD.
+The `-temp-slug-` segment in each URL is normal for an unpublished DEV.to draft. It is not a failed slug and it is not a published permalink.
+
+## GATE 2 results
+
+| Check | Result |
+|---|---|
+| Drafts created | 3 (ids 4979932, 4979933, 4979934) |
+| Request flag | `published: false` |
+| Response flag | `published: null` on each draft |
+| Pre-upload inventory | 0 unpublished, 3 published (VLAN / LACP / stack uplinks) |
+| Pre-upload title collision | none |
+| Post-upload inventory | 3 unpublished drafts, still 3 published |
+| Series sent | NetEngineerLab Fiber Engineering |
+| Article bodies edited in this gate | no |
+
+The three published posts are unchanged: id 4839123 (stack uplinks), id 4909590 (LACP), id 4933430 (VLAN trunk troubleshooting). They were not attached to this series.
 
 ## Drafts
 
@@ -80,6 +96,11 @@ Public read on 2026-11-05:
 
 Case-insensitive comparison of those three titles with the three Wave-1 titles: **no collision**. VLAN trunk troubleshooting, LACP member imbalance, and stack-uplink count are different topics. They stay out of this series. This gate does not edit those posts, their slugs, or their canonicals.
 
+GATE 2 counts for the same account:
+
+- Pre-upload: **0 unpublished**, **3 published**. No title collision with the Wave-1 titles.
+- After upload: **3 unpublished drafts**, **3 published** still. The new rows are ids 4979932, 4979933, and 4979934.
+
 Tag probe the same day, `GET https://dev.to/api/articles?tag={name}&per_page=1` → HTTP 200 and one article each for `networking`, `fiberoptics`, `tutorial`, `networkengineering`, `beginners`, and `performance`.
 
 ## Series and tag note for the uploader
@@ -88,20 +109,22 @@ GATE 0 ([DEVTO_GROWTH_PLAN.md](DEVTO_GROWTH_PLAN.md), [DEVTO_CONTENT_MATRIX.csv]
 
 This run's brief locks the front matter to series **NetEngineerLab Fiber Engineering** and to the subject tag `fiberoptics`, with the same fourth tags as the matrix. The markdown files follow that brief. Both `fiber` and `fiberoptics` returned at least one public article on 2026-11-05.
 
-Before the API call, pick one series name and send that name. Do not create the series by publishing. GATE 0 files on this branch are unchanged.
+GATE 2 sent series **NetEngineerLab Fiber Engineering**. The drafts were created unpublished. GATE 0 files on this branch are unchanged.
 
-## Checklist for GATE 2 API upload
+## GATE 2 upload checklist
 
-1. Keep the DEV.to API key in the parent environment only. Do not commit it, do not echo it into a log that lands in git, and do not put it in this file.
-2. Upload the three markdown files as drafts. `published` must be false on the request and on the response. If a response comes back published, stop and do not "fix" it by editing the live post in this gate.
-3. Send `title`, `description`, `body_markdown`, the four tags, and the chosen series. Max four tags. Do not append a hashtag line to the body.
-4. Leave `canonical_url` empty. Do not point canonical at the calculator. After a DEV.to URL exists, that DEV.to URL is the canonical until a real article page exists on the product site (GATE 0 rule 7).
-5. Record the returned draft ids in the fill-in table above. Status stays short of published until a person approves a later publish gate.
-6. Re-GET the three tool URLs. A 404 or 410 stops the upload for that article.
-7. Re-GET `https://dev.to/api/articles?username=netengineerlabcom&per_page=30` and compare titles case-insensitively with the three drafts plus the VLAN, LACP, and stack-uplink posts. Any collision stops the upload.
-8. Confirm each body still contains one production tool URL: power budget → `https://netengineerlab.com/tools/optical-power-budget/`, loss → `https://netengineerlab.com/tools/fiber-loss/`, latency → `https://netengineerlab.com/tools/fiber-latency-calculator/`.
-9. Do not publish two of these on the same calendar day to catch up (GATE 0 rule 10). The matrix dates are 2026-11-05, 2026-11-06, and 2026-11-07 (Asia/Shanghai).
-10. Do not attach the existing VLAN, LACP, or uplink posts to this series as part of the upload.
+Completed 2026-11-05 by the parent upload. Article bodies were not changed in the follow-up that recorded these results.
+
+1. API key stayed out of this repository. It is not in this file.
+2. Three drafts were created with request `published: false`. Each response has `published: null`. None came back as a published post.
+3. Series sent: **NetEngineerLab Fiber Engineering**. Titles are the three Wave-1 titles. Local front matter still has four tags and an empty `canonical_url`.
+4. `canonical_url` was left empty. Calculator pages were not used as canonicals. The temp-slug URLs above are draft URLs, not a reason to set a canonical.
+5. Returned ids are recorded in the status table: 4979932, 4979933, 4979934. Status is **DRAFTS_CREATED_UNPUBLISHED**.
+6. Tool URL HTTP checks from GATE 1 (2026-11-05) were 200 for all three calculators. No 404 or 410 was recorded.
+7. Pre-upload duplicate check: 0 unpublished, 3 published, no title collision. After upload: 3 unpublished drafts and the same 3 published posts.
+8. Local bodies still contain one production tool URL each (power budget, fiber loss, fiber latency). Bodies were not edited for GATE 2.
+9. No publish, and no second post published on the same day to catch up. Matrix dates remain 2026-11-05, 2026-11-06, and 2026-11-07 (Asia/Shanghai).
+10. The existing VLAN, LACP, and uplink posts were not attached to this series.
 
 ## GATE 0 files on this branch
 
