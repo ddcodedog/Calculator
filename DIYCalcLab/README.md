@@ -10,7 +10,7 @@ DIY and everyday engineering calculators — practical formulas with worked exam
 
 ## Topic index
 
-Published topics: 3
+Published topics: 5
 
 GATE 3 batch 1. The other DIY material calculators remain undocumented until each module is read the same way. Status labels are in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
@@ -19,6 +19,8 @@ GATE 3 batch 1. The other DIY material calculators remain undocumented until eac
 | VERIFIED | [Concrete slab volume and bag count](concrete-slab-volume.md) | `concrete-slab` |
 | VERIFIED | [Roof pitch and slope factor](roof-pitch.md) | `roof-pitch` |
 | VERIFIED | [Board-foot lumber volume](board-foot.md) | `board-foot` |
+| VERIFIED | [Fence posts, rails, and pickets](fence-post-and-picket-count.md) | `fence` |
+| VERIFIED | [Slab rebar grid count](slab-rebar-grid.md) | `rebar` |
 
 ## Online calculators
 
