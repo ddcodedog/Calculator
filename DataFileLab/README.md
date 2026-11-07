@@ -10,15 +10,18 @@ Data and file format utilities — conversion, inspection, and data-handling wor
 
 ## Topic index
 
-Published topics: 0
+Published topics: 2
 
-Batch 1 did not publish formula pages in this folder. Deferred tool IDs are listed in [First release strategy](../reports/FIRST_RELEASE.md). Registered tools stay in the [GATE1 tool inventory](../reports/GATE1_TOOL_INVENTORY.md).
+Checked against the production page, script, or API on 2026-11-07. These are algorithm or input-output notes where the tool is not a physics formula. Status labels are defined in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
-No document in this folder is marked `VERIFIED`.
+| Status | Document | Tool |
+|--------|----------|------|
+| VERIFIED | [CSV value frequency counts](csv-value-frequency.md) | `csv-frequency` |
+| VERIFIED | [CSV encoding detection](csv-encoding-detection.md) | `encoding` |
 
 ## Online calculators
 
-Use the production site above. This folder has no topic page, so it does not add calculator URLs.
+Each published topic links to its own production tool. This index does not list every tool on the site.
 
 ## Contribution
 

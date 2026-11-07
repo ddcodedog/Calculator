@@ -85,3 +85,25 @@ These were looked at far enough to see that a honest page would be longer than a
 ## Reproduction
 
 Python 3, standard library `math` only, using the constants copied from the bundles (`Math.PI`, 0.3048, 0.0254, 9.80665, 299792.458, 745.6999, Manning \(1/n\), rational-method scale factors, duct \(f\) branches). Results are recorded in the topic files. No production POST endpoint was required; the calculators run in the browser from these scripts.
+
+## Tool notes added 2026-11-07
+
+Twenty-two topic files were added after batch 1. The machine-readable list in [FORMULA_VERIFICATION.json](FORMULA_VERIFICATION.json) is the full set. `countVerified` counts rows whose status is `VERIFIED` only.
+
+| Site | Topics added | Status |
+|---|---:|---|
+| NetEngineerLab | bandwidth transfer time, MTU/MSS | VERIFIED |
+| PowerEngineerLab | transformer turns ratio, same-interval load factor | VERIFIED |
+| HVACEngineerLab | cooling/heating load components, psychrometric process | VERIFIED |
+| WaterEngineerLab | catchment runoff summary, tree residual head | VERIFIED |
+| StructuralEngineerLab | cantilever tip case, simply supported midspan case | REVIEW_REQUIRED |
+| DIYCalcLab | fence quantities, rebar grid | VERIFIED |
+| AIMarkTool | ROAS, order-value LTV/CAC | VERIFIED |
+| DataFileLab | CSV frequency, encoding detection | VERIFIED |
+| DevEngineerLab | Unix timestamp, integer base conversion | VERIFIED |
+| PCDog | IPv4 longest prefix, static-route command text | VERIFIED |
+| PrivacyFileLab | local SHA-256, text-pattern redaction | VERIFIED |
+
+The two structural pages recompute the closed form printed on the public guide. The page script confirms the support conditions. The general EI integrator was not extracted line by line, so those two rows stay `REVIEW_REQUIRED`. Batch 1’s deferred list above is the historical scope note; it is not a claim that those later files are absent.
+
+AIMarkTool results were checked with the production POST API. The other new pages were recomputed from production JavaScript or, for the beam closed forms, from the published guide identity. Non-formula tools are documented as the algorithm or input-output rule they actually implement.
