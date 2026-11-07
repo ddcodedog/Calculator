@@ -10,7 +10,7 @@ Water and hydraulic engineering calculators — flow, head loss, pipe, and relat
 
 ## Topic index
 
-Published topics: 3
+Published topics: 5
 
 GATE 3 batch 1. Status labels are in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
@@ -19,6 +19,8 @@ GATE 3 batch 1. Status labels are in [FORMULA_VERIFICATION.md](../reports/FORMUL
 | VERIFIED | [Manning open-channel discharge](manning-open-channel-flow.md) | `TOOL-007` |
 | VERIFIED | [Rational-method peak runoff](rational-method-peak-runoff.md) | `TOOL-003` |
 | VERIFIED | [Darcy-Weisbach major pipe headloss](darcy-weisbach-pipe-headloss.md) | `TOOL-010` |
+| VERIFIED | [Catchment breakdown and peak runoff sum](catchment-runoff-summary.md) | `TOOL-017` |
+| VERIFIED | [Single-source tree residual head](tree-network-residual-head.md) | `water-distribution-network-preliminary-planner` |
 
 ## Online calculators
 

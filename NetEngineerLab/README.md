@@ -10,7 +10,7 @@ Network engineering calculators — fiber optics, RF/link budgets, IP and cablin
 
 ## Topic index
 
-Published topics: 6
+Published topics: 8
 
 GATE 3 batch 1. These files match production calculator code checked on 2026-11-04. They are not a complete set of the 46 NetEngineerLab tools. Status labels are defined in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
@@ -22,6 +22,8 @@ GATE 3 batch 1. These files match production calculator code checked on 2026-11-
 | VERIFIED | [Chromatic dispersion coefficient D(λ)](chromatic-dispersion.md) | `chromatic-dispersion-calculator` |
 | VERIFIED | [OSPF interface cost](ospf-interface-cost.md) | `ospf-cost-calculator` |
 | VERIFIED | [STP port path cost](stp-path-cost.md) | `stp-path-cost-calculator` |
+| VERIFIED | [File transfer time from link rate](bandwidth-transfer-time.md) | `bandwidth-calculator` |
+| VERIFIED | [MTU, MSS, and encapsulation overhead](mtu-mss-overhead.md) | `mtu-calculator` |
 
 ## Online calculators
 

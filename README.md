@@ -30,25 +30,25 @@ This library collects that material per domain site. Content is English-first, e
 
 | Domain | Folder | Published topics | Production site |
 |--------|--------|------------------|-----------------|
-| NetEngineerLab | [NetEngineerLab/](NetEngineerLab/) | 6 | https://netengineerlab.com |
-| PCDog | [PCDog/](PCDog/) | 0 | https://pcdog.com |
-| AIMarkTool | [AIMarkTool/](AIMarkTool/) | 0 | https://aimarktool.com |
-| PowerEngineerLab | [PowerEngineerLab/](PowerEngineerLab/) | 9 | https://powerengineerlab.com |
-| HVACEngineerLab | [HVACEngineerLab/](HVACEngineerLab/) | 1 | https://hvacengineerlab.com |
-| PrivacyFileLab | [PrivacyFileLab/](PrivacyFileLab/) | 0 | https://privacyfilelab.com |
-| DataFileLab | [DataFileLab/](DataFileLab/) | 0 | https://datafilelab.com |
-| WaterEngineerLab | [WaterEngineerLab/](WaterEngineerLab/) | 3 | https://waterengineerlab.com |
-| StructuralEngineerLab | [StructuralEngineerLab/](StructuralEngineerLab/) | 3 | https://structuralengineerlab.com |
-| DevEngineerLab | [DevEngineerLab/](DevEngineerLab/) | 0 | https://devengineerlab.com |
-| DIYCalcLab | [DIYCalcLab/](DIYCalcLab/) | 3 | https://diycalclab.com |
+| NetEngineerLab | [NetEngineerLab/](NetEngineerLab/) | 8 | https://netengineerlab.com |
+| PCDog | [PCDog/](PCDog/) | 2 | https://pcdog.com |
+| AIMarkTool | [AIMarkTool/](AIMarkTool/) | 2 | https://aimarktool.com |
+| PowerEngineerLab | [PowerEngineerLab/](PowerEngineerLab/) | 11 | https://powerengineerlab.com |
+| HVACEngineerLab | [HVACEngineerLab/](HVACEngineerLab/) | 3 | https://hvacengineerlab.com |
+| PrivacyFileLab | [PrivacyFileLab/](PrivacyFileLab/) | 2 | https://privacyfilelab.com |
+| DataFileLab | [DataFileLab/](DataFileLab/) | 2 | https://datafilelab.com |
+| WaterEngineerLab | [WaterEngineerLab/](WaterEngineerLab/) | 5 | https://waterengineerlab.com |
+| StructuralEngineerLab | [StructuralEngineerLab/](StructuralEngineerLab/) | 5 | https://structuralengineerlab.com |
+| DevEngineerLab | [DevEngineerLab/](DevEngineerLab/) | 2 | https://devengineerlab.com |
+| DIYCalcLab | [DIYCalcLab/](DIYCalcLab/) | 5 | https://diycalclab.com |
 
-Each folder README is the topic index for that site. A zero means batch 1 published no formula file there. Deferred inventory rows are listed in [reports/FIRST_RELEASE.md](reports/FIRST_RELEASE.md), not as extra pages.
+Each folder README is the topic index for that site. The count is the number of topic files in that folder. Deferred inventory rows stay listed in [reports/FIRST_RELEASE.md](reports/FIRST_RELEASE.md), not as extra pages.
 
 ---
 
 ## 3. Formula knowledge-base navigation
 
-Published formula topics: 25
+Published formula topics: 47
 
 1. Open a domain folder from the table above.
 2. Read that domain’s README topic index.
@@ -67,6 +67,8 @@ Chinese outreach drafts keyed by site live under [promo/zh/](promo/zh/README.md)
 - [Chromatic dispersion coefficient D(λ)](NetEngineerLab/chromatic-dispersion.md)
 - [OSPF interface cost](NetEngineerLab/ospf-interface-cost.md)
 - [STP port path cost](NetEngineerLab/stp-path-cost.md)
+- [File transfer time from link rate](NetEngineerLab/bandwidth-transfer-time.md)
+- [MTU, MSS, and encapsulation overhead](NetEngineerLab/mtu-mss-overhead.md)
 
 ### PowerEngineerLab
 
@@ -79,32 +81,63 @@ Chinese outreach drafts keyed by site live under [promo/zh/](promo/zh/README.md)
 - [AC machine synchronous speed](PowerEngineerLab/synchronous-speed.md)
 - [Induction-motor slip](PowerEngineerLab/induction-motor-slip.md)
 - [Kilowatt to mechanical horsepower](PowerEngineerLab/kilowatt-to-horsepower.md)
+- [Ideal transformer turns and voltage ratio](PowerEngineerLab/transformer-turns-ratio.md)
+- [Same-interval load factor](PowerEngineerLab/interval-load-factor.md)
 
 ### StructuralEngineerLab
 
 - [Euler elastic column buckling load](StructuralEngineerLab/euler-column-buckling.md)
 - [Elastic beam bending stress](StructuralEngineerLab/beam-bending-stress.md)
 - [Centroidal area and section modulus](StructuralEngineerLab/section-properties.md)
+- [Cantilever tip load and deflection](StructuralEngineerLab/cantilever-tip-deflection.md)
+- [Simply supported midspan deflection](StructuralEngineerLab/simply-supported-midspan-deflection.md)
 
 ### WaterEngineerLab
 
 - [Manning open-channel discharge](WaterEngineerLab/manning-open-channel-flow.md)
 - [Rational-method peak runoff](WaterEngineerLab/rational-method-peak-runoff.md)
 - [Darcy-Weisbach major pipe headloss](WaterEngineerLab/darcy-weisbach-pipe-headloss.md)
+- [Catchment breakdown and peak runoff sum](WaterEngineerLab/catchment-runoff-summary.md)
+- [Single-source tree residual head](WaterEngineerLab/tree-network-residual-head.md)
 
 ### HVACEngineerLab
 
 - [Duct friction and local pressure drop](HVACEngineerLab/duct-friction-pressure-drop.md)
+- [Cooling and heating load components](HVACEngineerLab/cooling-heating-load-components.md)
+- [Psychrometric process between two states](HVACEngineerLab/psychrometric-process-states.md)
 
 ### DIYCalcLab
 
 - [Concrete slab volume and bag count](DIYCalcLab/concrete-slab-volume.md)
 - [Roof pitch and slope factor](DIYCalcLab/roof-pitch.md)
 - [Board-foot lumber volume](DIYCalcLab/board-foot.md)
+- [Fence posts, rails, and pickets](DIYCalcLab/fence-post-and-picket-count.md)
+- [Slab rebar grid count](DIYCalcLab/slab-rebar-grid.md)
 
-### No published topic in batch 1
+### AIMarkTool
 
-[AIMarkTool](AIMarkTool/), [DataFileLab](DataFileLab/), [DevEngineerLab](DevEngineerLab/), [PCDog](PCDog/), and [PrivacyFileLab](PrivacyFileLab/) link to the inventory and the deferred list. They do not contain formula pages.
+- [Return on ad spend](AIMarkTool/return-on-ad-spend.md)
+- [Order-value LTV to CAC](AIMarkTool/order-value-ltv-to-cac.md)
+
+### DataFileLab
+
+- [CSV value frequency counts](DataFileLab/csv-value-frequency.md)
+- [CSV encoding detection](DataFileLab/csv-encoding-detection.md)
+
+### DevEngineerLab
+
+- [Unix timestamp conversion](DevEngineerLab/unix-timestamp-conversion.md)
+- [Integer base conversion](DevEngineerLab/integer-base-conversion.md)
+
+### PCDog
+
+- [IPv4 longest prefix match](PCDog/ipv4-longest-prefix-match.md)
+- [IPv4 static route commands](PCDog/ipv4-static-route-commands.md)
+
+### PrivacyFileLab
+
+- [Local SHA-256 file digest](PrivacyFileLab/sha256-file-digest.md)
+- [Sensitive text pattern redaction](PrivacyFileLab/sensitive-text-redaction.md)
 
 ---
 

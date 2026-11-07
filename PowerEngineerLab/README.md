@@ -10,7 +10,7 @@ Power systems and electrical engineering calculators — load, cable, protection
 
 ## Topic index
 
-Published topics: 9
+Published topics: 11
 
 GATE 3 batch 1. Nine closed-form electrical calculations. The other PowerEngineerLab tools stay undocumented until their production functions are checked the same way. Status labels are in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
@@ -25,6 +25,8 @@ GATE 3 batch 1. Nine closed-form electrical calculations. The other PowerEnginee
 | VERIFIED | [AC machine synchronous speed](synchronous-speed.md) | `synchronous-speed` |
 | VERIFIED | [Induction-motor slip](induction-motor-slip.md) | `motor-slip` |
 | VERIFIED | [Kilowatt to mechanical horsepower](kilowatt-to-horsepower.md) | `kw-to-hp` |
+| VERIFIED | [Ideal transformer turns and voltage ratio](transformer-turns-ratio.md) | `transformer-ratio` |
+| VERIFIED | [Same-interval load factor](interval-load-factor.md) | `load-factor` |
 
 ## Online calculators
 
