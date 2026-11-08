@@ -10,7 +10,7 @@ DIY and everyday engineering calculators — practical formulas with worked exam
 
 ## Topic index
 
-Published topics: 5
+Published topics: 7
 
 GATE 3 batch 1. The other DIY material calculators remain undocumented until each module is read the same way. Status labels are in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
@@ -21,6 +21,8 @@ GATE 3 batch 1. The other DIY material calculators remain undocumented until eac
 | VERIFIED | [Board-foot lumber volume](board-foot.md) | `board-foot` |
 | VERIFIED | [Fence posts, rails, and pickets](fence-post-and-picket-count.md) | `fence` |
 | VERIFIED | [Slab rebar grid count](slab-rebar-grid.md) | `rebar` |
+| VERIFIED | [Modular bricks for a wall with one opening](modular-brick-wall-count.md) | `brick` |
+| VERIFIED | [Blown-fiberglass bags for an attic top-up](blown-fiberglass-attic-bags.md) | `insulation` |
 
 ## Online calculators
 

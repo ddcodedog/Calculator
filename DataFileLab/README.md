@@ -10,7 +10,7 @@ Data and file format utilities — conversion, inspection, and data-handling wor
 
 ## Topic index
 
-Published topics: 2
+Published topics: 4
 
 Checked against the production page, script, or API on 2026-11-07. These are algorithm or input-output notes where the tool is not a physics formula. Status labels are defined in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
@@ -18,6 +18,8 @@ Checked against the production page, script, or API on 2026-11-07. These are alg
 |--------|----------|------|
 | VERIFIED | [CSV value frequency counts](csv-value-frequency.md) | `csv-frequency` |
 | VERIFIED | [CSV encoding detection](csv-encoding-detection.md) | `encoding` |
+| VERIFIED | [Dropping CSV records whose cells are all empty](csv-blank-record-removal.md) | `csv-blank-rows` |
+| VERIFIED | [A leading row-number column](csv-row-number-column.md) | `csv-row-numberer` |
 
 ## Online calculators
 

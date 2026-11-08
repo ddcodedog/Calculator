@@ -10,7 +10,7 @@ Network engineering calculators — fiber optics, RF/link budgets, IP and cablin
 
 ## Topic index
 
-Published topics: 8
+Published topics: 10
 
 GATE 3 batch 1. These files match production calculator code checked on 2026-11-04. They are not a complete set of the 46 NetEngineerLab tools. Status labels are defined in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
@@ -24,6 +24,8 @@ GATE 3 batch 1. These files match production calculator code checked on 2026-11-
 | VERIFIED | [STP port path cost](stp-path-cost.md) | `stp-path-cost-calculator` |
 | VERIFIED | [File transfer time from link rate](bandwidth-transfer-time.md) | `bandwidth-calculator` |
 | VERIFIED | [MTU, MSS, and encapsulation overhead](mtu-mss-overhead.md) | `mtu-calculator` |
+| VERIFIED | [DNS TTL window before a record change](dns-ttl-cache-window.md) | `dns-ttl-propagation-calculator` |
+| VERIFIED | [Access-switch demand against uplink headroom](switch-uplink-safe-capacity.md) | `switch-uplink-oversubscription-calculator` |
 
 ## Online calculators
 
