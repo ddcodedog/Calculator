@@ -10,7 +10,7 @@ Privacy-focused file utilities — hashing, redaction, and local processing prin
 
 ## Topic index
 
-Published topics: 2
+Published topics: 4
 
 Checked against the production page, script, or API on 2026-11-07. These are algorithm or input-output notes where the tool is not a physics formula. Status labels are defined in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
@@ -18,6 +18,8 @@ Checked against the production page, script, or API on 2026-11-07. These are alg
 |--------|----------|------|
 | VERIFIED | [Local SHA-256 file digest](sha256-file-digest.md) | `hash` |
 | VERIFIED | [Sensitive text pattern redaction](sensitive-text-redaction.md) | `text-redactor` |
+| VERIFIED | [Which sensitive-text types disappeared](metadata-finding-type-diff.md) | `metadata-diff` |
+| VERIFIED | [When the clean-file verifier allows a download](clean-file-verifier-status.md) | `clean-file-verifier` |
 
 ## Online calculators
 

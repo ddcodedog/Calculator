@@ -107,3 +107,21 @@ Twenty-two topic files were added after batch 1. The machine-readable list in [F
 The two structural pages recompute the closed form printed on the public guide. The page script confirms the support conditions. The general EI integrator was not extracted line by line, so those two rows stay `REVIEW_REQUIRED`. Batch 1’s deferred list above is the historical scope note; it is not a claim that those later files are absent.
 
 AIMarkTool results were checked with the production POST API. The other new pages were recomputed from production JavaScript or, for the beam closed forms, from the published guide identity. Non-formula tools are documented as the algorithm or input-output rule they actually implement.
+
+## Original tool notes added 2026-11-08
+
+Nineteen topic files were added from tools that were not already written up on main and were not the same formulas as unmerged PR 4. Examples were newly chosen and recomputed. `countVerified` is 64 because the two earlier structural rows remain `REVIEW_REQUIRED`. HVAC has no new file: its 13 English sitemap tools are already on main or in that PR. Water has one new file. The stormwater planner’s executed diameter path repeats the Manning relation already proposed in PR 4, so a second water note was not written.
+
+| Site | Topics added | Status |
+|---|---:|---|
+| NetEngineerLab | DNS TTL baseline, switch-uplink baseline | VERIFIED |
+| PowerEngineerLab | demand factor, appliance period energy | VERIFIED |
+| HVACEngineerLab | none | gap of 2 |
+| WaterEngineerLab | site-drainage scenario score | VERIFIED, gap of 1 |
+| StructuralEngineerLab | off-center point load, full uniform load | VERIFIED from `solver.js` |
+| DIYCalcLab | modular brick count, blown-fiberglass bags | VERIFIED |
+| AIMarkTool | funnel counts, equal-group sample size | VERIFIED via production POST |
+| DataFileLab | blank-record removal, row-number column | VERIFIED |
+| DevEngineerLab | grapheme wrap, text size counts | VERIFIED |
+| PCDog | backing-pixel estimate, refresh-interval summary | VERIFIED from production JS, not a browser run |
+| PrivacyFileLab | metadata type diff, clean-file verifier status | VERIFIED |

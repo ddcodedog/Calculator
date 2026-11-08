@@ -10,7 +10,7 @@ Structural engineering calculators — member sizing, loads, and related verifie
 
 ## Topic index
 
-Published topics: 5
+Published topics: 7
 
 GATE 3 batch 1. Beam singularity solvers and the other structural tools are not in this batch. Status labels are in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
@@ -21,6 +21,8 @@ GATE 3 batch 1. Beam singularity solvers and the other structural tools are not 
 | VERIFIED | [Centroidal area and section modulus](section-properties.md) | `TOOL-008` |
 | REVIEW_REQUIRED | [Cantilever tip load and deflection](cantilever-tip-deflection.md) | `cantilever-beam-calculator` |
 | REVIEW_REQUIRED | [Simply supported midspan deflection](simply-supported-midspan-deflection.md) | `beam-deflection-calculator` |
+| VERIFIED | [Off-center point load on a simple span](simply-supported-offcenter-point-load.md) | `simply-supported-beam-calculator` |
+| VERIFIED | [Full uniform load on a simple span](simply-supported-uniform-load.md) | `TOOL-001` |
 
 ## Online calculators
 
