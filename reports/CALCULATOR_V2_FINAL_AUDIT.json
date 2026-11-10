@@ -69,8 +69,28 @@
       "technical-documentation"
     ]
   },
-  "actionsRunUrl": "https://github.com/ddcodedog/Calculator/actions/runs/42819636911",
-  "actionsRunSha": "044f7b4a78cde39ca41f7a5a51e6a303252c3869",
+  "actionsRunUrl": "https://github.com/ddcodedog/Calculator/actions/runs/42819850601",
+  "actionsRunSha": "3327efa9722720b128548abbbe95cc618404307c",
   "actionsRunConclusion": "success",
-  "actionsRunLogLine": "failures=0 warnings=0 formulas=88 chinese=12"
+  "actionsRunLogLine": "failures=0 warnings=0 formulas=88 chinese=12",
+  "actionsRuns": [
+    {
+      "url": "https://github.com/ddcodedog/Calculator/actions/runs/42819636911",
+      "sha": "044f7b4a78cde39ca41f7a5a51e6a303252c3869",
+      "event": "push",
+      "conclusion": "success"
+    },
+    {
+      "url": "https://github.com/ddcodedog/Calculator/actions/runs/42819791233",
+      "sha": "3327efa9722720b128548abbbe95cc618404307c",
+      "event": "push",
+      "conclusion": "success"
+    },
+    {
+      "url": "https://github.com/ddcodedog/Calculator/actions/runs/42819850601",
+      "sha": "3327efa9722720b128548abbbe95cc618404307c",
+      "event": "pull_request",
+      "conclusion": "success"
+    }
+  ]
 }
