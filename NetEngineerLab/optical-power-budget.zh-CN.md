@@ -1,13 +1,19 @@
 # 光链路功率预算
 
+Locale: zh-CN
+
 本文是同目录英文稿的简体中文版，英文原文保持不变：[Optical link power budget](optical-power-budget.md)。
 
-## 概述
+## 直接回答
+
+本文回答光功率预算：发射光功率与接收灵敏度之间的分贝，扣掉光纤、无源损耗、代价和工程余量，并检查过载。
 
 光功率预算计算器由最小发送功率和接收灵敏度构成链路预算，先减去路径代价，再减去光纤、熔接、连接器、三项分光、其他无源损耗和工程余量。它还用同一物理损耗检查最大发送功率是否超过接收机过载。
 
-引擎：`https://netengineerlab.com/tools/optical-power-budget/js/engine.js`（`NELOpticalPowerBudgetEngine`），取于 2026-11-04。
 
+## 概述
+
+引擎：`https://netengineerlab.com/tools/optical-power-budget/js/engine.js`（`NELOpticalPowerBudgetEngine`），取于 2026-11-04。
 ## 公式
 
 $$
@@ -60,6 +66,18 @@ $$
 | \(N_{\mathrm{c}}\)，\(\ell_{\mathrm{c}}\) | `cc`，`cl` | 个，dB | 个数为安全整数 |
 | \(L_1,L_2,L_3\) | `s1`，`s2`，`s3` | dB | \(\ge 0\) |
 | \(L_{\mathrm{other}}\)，\(M\) | `other`，`margin` | dB | \(\ge 0\) |
+
+
+## 约束
+
+- \(P_{\mathrm{tx,min}}\)，\(P_{\mathrm{tx,max}}\): 有限，\(P_{\mathrm{tx,min}} \le P_{\mathrm{tx,max}}\)
+- \(P_{\mathrm{sens}}\)，\(P_{\mathrm{over}}\): 有限，\(P_{\mathrm{sens}} < P_{\mathrm{over}}\)
+- \(P_{\mathrm{pen}}\): \(\ge 0\)
+- \(d\)，\(\alpha\): \(d \ge 0\)，\(\alpha > 0\)
+- \(N_{\mathrm{s}}\)，\(\ell_{\mathrm{s}}\): 个数为安全整数
+- \(N_{\mathrm{c}}\)，\(\ell_{\mathrm{c}}\): 个数为安全整数
+- \(L_1,L_2,L_3\): \(\ge 0\)
+- \(L_{\mathrm{other}}\)，\(M\): \(\ge 0\)
 
 ## 工程含义
 
@@ -127,3 +145,5 @@ https://netengineerlab.com/tools/optical-power-budget/zh/
 | 日期 | 2026-11-04 |
 | 文档版本 | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

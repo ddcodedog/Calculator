@@ -1,5 +1,11 @@
 # Header bytes, then the safe uplink, then the clock
 
+Locale: en
+
+## Direct Answer
+
+This note answers an on-wire sizing question: header bytes go into the byte count before the safe uplink rate is used for transfer time.
+
 Simplified Chinese edition: [先把报头算进字节，再取安全上行，最后算时间](on-wire-bytes-at-safe-uplink.zh-CN.md).
 
 ## Question
@@ -88,3 +94,5 @@ https://netengineerlab.com/tools/bandwidth-calculator/
 | Example result | 519,863,013,732 wire bytes at 5 Gbit/s → 831.781 s |
 | Date | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

@@ -1,11 +1,15 @@
 # Ideal transformer turns and voltage ratio
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The transformer ratio calculator solves either the secondary voltage from a turns ratio, or the turns ratio from two voltages. It uses ideal magnitude only: primary and secondary phase voltages are in the same ratio as the turns. Winding resistance, leakage, taps, and regulation are outside the model.
 
-Production chunk for `transformer-ratio`, tool model 1.1.0, read 2026-11-07. The page method line is \(N_1/N_2 = V_{\varphi 1}/V_{\varphi 2}\). A wye winding uses \(V_{\varphi} = V_{LL}/\sqrt{3}\). A delta winding, and any single-phase winding, uses the entered voltage as the phase voltage (https://powerengineerlab.com/calculators/transformer-ratio/).
 
+## Overview
+
+Production chunk for `transformer-ratio`, tool model 1.1.0, read 2026-11-07. The page method line is \(N_1/N_2 = V_{\varphi 1}/V_{\varphi 2}\). A wye winding uses \(V_{\varphi} = V_{LL}/\sqrt{3}\). A delta winding, and any single-phase winding, uses the entered voltage as the phase voltage (https://powerengineerlab.com/calculators/transformer-ratio/).
 ## Formula
 
 Turns ratio in voltage-solve mode is the positive integer ratio \(t = N_1/N_2\). Phase voltage converts first, then the secondary is written back in the requested line or phase form.
@@ -77,3 +81,5 @@ https://powerengineerlab.com/calculators/transformer-ratio/
 | Date | 2026-11-07 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

@@ -1,11 +1,15 @@
 # Successive funnel counts from stage percents
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 This funnel tool starts with a visitor count and applies three stage percents in order. Each percent multiplies the previous unrounded count. The two-decimal strings are for reading. Multiplying those strings again would drift. The result is the count on the path you typed. The API’s own note says that count is not an industry benchmark.
 
-Checked with a production POST to the funnel tool on 2026-11-08, tool version 1.0.0. Inputs were numbers. The worked example lists the counts the response returned (https://aimarktool.com/tools/funnel-conversion-calculator).
 
+## Overview
+
+Checked with a production POST to the funnel tool on 2026-11-08, tool version 1.0.0. Inputs were numbers. The worked example lists the counts the response returned (https://aimarktool.com/tools/funnel-conversion-calculator).
 ## Formula
 
 $$
@@ -68,3 +72,5 @@ https://aimarktool.com/tools/funnel-conversion-calculator
 | Date | 2026-11-08 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

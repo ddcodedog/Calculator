@@ -1,11 +1,15 @@
 # Concrete slab volume and bag count
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The Concrete Slab calculator returns the volume of one or more rectangular or circular slabs, applies a waste factor, and rounds the number of premix bags up.
 
-Production functions `slabVolume` and `bagsFor` in the DIYCalcLab calculator bundle (calculator id `concrete-slab`), fetched 2026-11-04 from https://diycalclab.com/concrete/slab-calculator/. Lengths are converted to metres before the volume formula. The page’s illustrated math uses a 10 ft by 10 ft by 4 in slab.
 
+## Overview
+
+Production functions `slabVolume` and `bagsFor` in the DIYCalcLab calculator bundle (calculator id `concrete-slab`), fetched 2026-11-04 from https://diycalclab.com/concrete/slab-calculator/. Lengths are converted to metres before the volume formula. The page’s illustrated math uses a 10 ft by 10 ft by 4 in slab.
 ## Formula
 
 Rectangular area \(b \times w\), or circular area \(\pi (d/2)^{2}\), times thickness \(t\) and a count of identical slabs \(N\):
@@ -102,3 +106,5 @@ Inventory tool ID: `concrete-slab`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

@@ -1,13 +1,19 @@
 # OSPF interface cost
 
+Locale: en
+
 Simplified Chinese edition: [OSPF 接口开销](ospf-interface-cost.zh-CN.md).
 
-## Overview
+## Direct Answer
+
+This note answers an OSPF interface cost question: reference bandwidth divided by link rate, then the integer cost clamp.
 
 The OSPF Cost Calculator turns a reference bandwidth and an interface bandwidth, both in Mbit/s, into an integer OSPF cost. Costs are clamped to the range 1 through 65535. A manual metric override replaces the calculated cost when it is inside that range. Optional paths sum the costs of their interfaces.
 
-Engine: `https://netengineerlab.com/tools/ospf-cost-calculator/js/engine.js` (`OspfCostEngine`, schema `ospf-cost-engine/1.0`), fetched 2026-11-04.
 
+## Overview
+
+Engine: `https://netengineerlab.com/tools/ospf-cost-calculator/js/engine.js` (`OspfCostEngine`, schema `ospf-cost-engine/1.0`), fetched 2026-11-04.
 ## Formula
 
 $$
@@ -83,3 +89,5 @@ Inventory tool ID: `ospf-cost-calculator`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

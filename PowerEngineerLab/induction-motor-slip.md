@@ -1,11 +1,15 @@
 # Induction-motor slip
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The Motor Slip Calculator computes synchronous speed, per-unit slip, percent slip, and slip frequency from frequency, pole count, and rotor speed.
 
-Production function in the motor-slip page bundle (`BACKLOG-071`), fetched 2026-11-04 from https://powerengineerlab.com/calculators/motor-slip/. The bundle lists https://www.engineeringtoolbox.com/electrical-motor-slip-d_652.html among its page strings.
 
+## Overview
+
+Production function in the motor-slip page bundle (`BACKLOG-071`), fetched 2026-11-04 from https://powerengineerlab.com/calculators/motor-slip/. The bundle lists https://www.engineeringtoolbox.com/electrical-motor-slip-d_652.html among its page strings.
 ## Formula
 
 $$
@@ -85,3 +89,5 @@ Inventory tool ID: `motor-slip`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

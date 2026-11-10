@@ -1,11 +1,15 @@
 # Ideal inductive reactance
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The Inductive Reactance Calculator returns the magnitude of ideal inductive reactance in sinusoidal steady state.
 
-Production calculation in the inductive-reactance page bundle (`TOOL-009`), fetched 2026-11-04 from https://powerengineerlab.com/calculators/inductive-reactance/.
 
+## Overview
+
+Production calculation in the inductive-reactance page bundle (`TOOL-009`), fetched 2026-11-04 from https://powerengineerlab.com/calculators/inductive-reactance/.
 ## Formula
 
 For \(f > 0\),
@@ -25,6 +29,13 @@ The reported value is a magnitude in ohms. The warning text states that the idea
 | \(f\) | `frequency` | Hz | finite, \(\ge 0\) |
 | \(L\) | `inductance` | H | finite, \(> 0\) |
 | \(X_L\) | `inductiveReactance` | Ω | derived |
+
+
+## Constraints
+
+- \(f\): finite, \(\ge 0\)
+- \(L\): finite, \(> 0\)
+- \(X_L\): derived
 
 ## Engineering Principles
 
@@ -75,3 +86,5 @@ Inventory tool ID: `inductive-reactance`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

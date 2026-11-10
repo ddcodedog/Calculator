@@ -1,11 +1,15 @@
 # Psychrometric process between two states
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The psychrometric process analyzer builds two moist-air states, subtracts them, and, if you enter a dry-air mass flow, turns the enthalpy change into watts. Positive \(\Delta h\) means the leaving state carries more energy per kilogram of dry air. Negative \(\Delta h\) means it carries less. The page text says to treat that as a direction check before coil selection, not as a selected coil.
 
-State properties and the delta are in the production page chunk, read 2026-11-07. Each state takes dry-bulb temperature and exactly one moisture input (relative humidity or humidity ratio) and exactly one pressure input (pascal or elevation). The default screen is relative humidity at a typed pressure (https://hvacengineerlab.com/tools/psychrometric-process-analyzer).
 
+## Overview
+
+State properties and the delta are in the production page chunk, read 2026-11-07. Each state takes dry-bulb temperature and exactly one moisture input (relative humidity or humidity ratio) and exactly one pressure input (pascal or elevation). The default screen is relative humidity at a typed pressure (https://hvacengineerlab.com/tools/psychrometric-process-analyzer).
 ## Formula
 
 Saturation vapor pressure uses the adapter’s two exponential fits, with \(T\) in kelvin. At \(t \le 0.01\,^\circ\mathrm{C}\):
@@ -116,3 +120,5 @@ https://hvacengineerlab.com/tools/psychrometric-process-analyzer
 | Date | 2026-11-07 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

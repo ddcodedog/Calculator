@@ -1,11 +1,15 @@
 # Unix timestamp conversion
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The timestamp converter maps a date string to Unix milliseconds and maps a numeric Unix time back to an ISO-8601 UTC string. Local wall time is `Date.toString()`, which follows the browser timezone, so this note records only the UTC fields that stay the same on every machine.
 
-The converter is TOOL-007 in the production page script, read 2026-11-07. Date mode uses `new Date(input)`. Numeric mode uses `Number` on the trimmed text (https://devengineerlab.com/tools/timestamp-converter).
 
+## Overview
+
+The converter is TOOL-007 in the production page script, read 2026-11-07. Date mode uses `new Date(input)`. Numeric mode uses `Number` on the trimmed text (https://devengineerlab.com/tools/timestamp-converter).
 ## Formula
 
 Date mode, after a valid `Date`:
@@ -70,3 +74,5 @@ https://devengineerlab.com/tools/timestamp-converter
 | Date | 2026-11-07 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

@@ -1,11 +1,15 @@
 # Local SHA-256 file digest
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The hash tool reads a file in the browser, runs SHA-256 over those bytes, and prints the digest as lowercase hex with no separators. The page states that the file stays in the browser and that the hash is not sent to analytics. This note checks the digest function against known byte strings. It does not claim a particular file was clicked in a browser session.
 
-`sha256File` in the production hash chunk, read 2026-11-07, copies the bytes, calls `crypto.subtle.digest("SHA-256")`, and returns `algorithm: SHA-256`, the hex digest, `bytes` equal to `byteLength`, and version `1.0.0` (https://privacyfilelab.com/hash).
 
+## Overview
+
+`sha256File` in the production hash chunk, read 2026-11-07, copies the bytes, calls `crypto.subtle.digest("SHA-256")`, and returns `algorithm: SHA-256`, the hex digest, `bytes` equal to `byteLength`, and version `1.0.0` (https://privacyfilelab.com/hash).
 ## Formula
 
 SHA-256 is the digest named in that call. For an input of \(n\) bytes the tool reports `bytes: n` and a 64-character hex string. There is no salt and no HMAC in this function. The empty input is a defined case: zero bytes still have a digest.
@@ -70,3 +74,5 @@ https://privacyfilelab.com/hash
 | Date | 2026-11-07 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

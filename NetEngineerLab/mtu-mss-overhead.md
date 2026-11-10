@@ -1,13 +1,19 @@
 # MTU, MSS, and encapsulation overhead
 
+Locale: en
+
 Simplified Chinese edition: [MTU、MSS 与封装开销](mtu-mss-overhead.zh-CN.md).
 
-## Overview
+## Direct Answer
+
+This note answers an MTU and MSS question: which encapsulation bytes sit between the interface MTU and the TCP payload.
 
 The MTU calculator subtracts each encapsulation layer from an underlay MTU, then reports the remaining inner packet, the TCP MSS that fits inside it, and the Ethernet wire length of that packet. It is a header budget, not a path-MTU probe.
 
-Engine: `js/engine.js` and `js/mtu-library.js` on the production tool, read 2026-11-07. The underlay must be a finite number of at least 576 bytes. A smaller underlay is `underlay_mtu_out_of_range` (https://netengineerlab.com/tools/mtu-calculator/).
 
+## Overview
+
+Engine: `js/engine.js` and `js/mtu-library.js` on the production tool, read 2026-11-07. The underlay must be a finite number of at least 576 bytes. A smaller underlay is `underlay_mtu_out_of_range` (https://netengineerlab.com/tools/mtu-calculator/).
 ## Formula
 
 VLAN overhead is \(4\) bytes per outer tag, and the tag count is `min(16, floor(count))`. If strict VLAN accounting is off, those bytes are not removed from the inner packet.
@@ -89,3 +95,5 @@ https://netengineerlab.com/tools/mtu-calculator/
 | Date | 2026-11-07 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

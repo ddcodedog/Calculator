@@ -1,11 +1,15 @@
 # Same-interval load factor
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 Load factor here is the average demand over one interval divided by the peak demand in that same interval. The calculator does not estimate a monthly billing demand, a diversity factor, or a plant efficiency. If the average would exceed the peak, it rejects the inputs instead of returning a number above 1.
 
-Production chunk for `load-factor`, model 1.0.0, read 2026-11-07. The source note in the chunk points at the EIA glossary entry for load factor and marks the license status review-required (https://powerengineerlab.com/calculators/load-factor/).
 
+## Overview
+
+Production chunk for `load-factor`, model 1.0.0, read 2026-11-07. The source note in the chunk points at the EIA glossary entry for load factor and marks the license status review-required (https://powerengineerlab.com/calculators/load-factor/).
 ## Formula
 
 $$
@@ -67,3 +71,5 @@ https://powerengineerlab.com/calculators/load-factor/
 | Date | 2026-11-07 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

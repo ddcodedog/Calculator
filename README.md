@@ -197,6 +197,58 @@ Simplified Chinese editions of those twelve topics. They are not additional form
 
 ---
 
+
+## Formula search index
+
+Published formula topics: the count above is English topic files only. `*.zh-CN.md` companions are the same topics in Simplified Chinese.
+
+Machine-readable indexes:
+
+- [indexes/topics.json](indexes/topics.json) — one row per English topic, with tool id, Chinese companion, and both statuses
+- [indexes/verification-index.json](indexes/verification-index.json) — calculation status, standards status, and the evidence fields
+- [config/locale-routes.json](config/locale-routes.json) — production English and Chinese URLs checked on 2026-11-10
+- [llms.txt](llms.txt) — a short map for automated readers. It does not claim inclusion in any search or answer engine
+
+Each site block below is that site's topic list. The per-site index is the folder README.
+
+## English and Chinese entries
+
+English is the source text. Simplified Chinese companions exist for the twelve NetEngineerLab topics and stay in the same directory as `*.zh-CN.md`. They are linked from [NetEngineerLab/README.md](NetEngineerLab/README.md). A Chinese file is not an extra English topic.
+
+Other production sites do have live localized pages. Those URLs were probed and recorded in [reports/LOCALE_ROUTE_MATRIX.md](reports/LOCALE_ROUTE_MATRIX.md). This round does not add Chinese topic files for them.
+
+## Verification method
+
+A calculation `VERIFIED` row means the formula, units, one worked example, and a boundary case were checked against the production calculator, as recorded in [reports/FORMULA_VERIFICATION.md](reports/FORMULA_VERIFICATION.md). It does not mean a design-code PDF was re-audited.
+
+Standards status is separate. `PENDING` means the cited standard text and version were not both checked. One mechanical-horsepower factor is `VERIFIED` from Fed. Std. 376B. The audit is [reports/FORMULA_STANDARDS_AUDIT.md](reports/FORMULA_STANDARDS_AUDIT.md).
+
+## Standards citation notes
+
+Cite the standard number, the section that supports the formula, and the URL that was actually opened. If the PDF was not read, say so and leave standards status `PENDING`. Do not replace an official source with a secondary page because the official page returned 403 or a login wall.
+
+How to cite a topic is written in [docs/CITATION.md](docs/CITATION.md).
+
+## How to use the online calculators
+
+1. Open the topic and read the formula, the units, and the worked example.
+2. Use the single Online Calculator link in that topic. A site homepage is not a substitute for the tool page.
+3. On NetEngineerLab, the Chinese tool page is `/tools/<slug>/zh/` when that page was checked. A `/zh-CN/tools/...` path is not the NetEngineerLab Chinese route.
+4. Keep the topic's limits. The page does not become a code-compliance check because the arithmetic was verified.
+
+## How to cite
+
+Name the site, the tool id, the topic path, the calculation status, the standards status, and the verification date from the topic. Details and an example are in [docs/CITATION.md](docs/CITATION.md).
+
+## How to contribute
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Add a branch and a pull request. Include the production source and the example you recomputed. Do not invent a tool URL, a standard, or a locale route.
+
+## Version and changelog
+
+- 2026-11-10 — Documentation V2.0. Navigation, citation notes, a checked locale matrix, separate calculation and standards status, and stricter documentation checks. No new formula topics were added. Nothing here deploys the eleven product sites.
+- 2026-11-04 through 2026-11-10 — The topic batches and their evidence stay in [reports/FORMULA_VERIFICATION.md](reports/FORMULA_VERIFICATION.md).
+
 ## 4. Documentation and verification principles
 
 | Principle | Requirement |

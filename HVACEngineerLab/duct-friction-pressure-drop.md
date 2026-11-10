@@ -1,11 +1,15 @@
 # Duct friction and local pressure drop
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The Duct & Airflow Design tool computes cross-section area, mean velocity, Reynolds number, a friction factor, Darcy friction pressure drop, and a \(K\) local loss for one round or rectangular duct section.
 
-Production function in the duct-airflow page bundle, fetched 2026-11-04 from https://hvacengineerlab.com/tools/duct-airflow-design/. The page describes the method as continuity, hydraulic diameter, Darcy–Weisbach friction, a Blasius or Haaland-style turbulent factor, and local loss \(K\rho V^{2}/2\).
 
+## Overview
+
+Production function in the duct-airflow page bundle, fetched 2026-11-04 from https://hvacengineerlab.com/tools/duct-airflow-design/. The page describes the method as continuity, hydraulic diameter, Darcy–Weisbach friction, a Blasius or Haaland-style turbulent factor, and local loss \(K\rho V^{2}/2\).
 ## Formula
 
 Round duct, diameter \(D\):
@@ -54,6 +58,17 @@ Warnings that do not change the numbers: laminar correlation when \(\mathrm{Re} 
 | \(\rho\) | `airDensity_kg_m3` | kg/m³ | \(> 0\) |
 | \(\mu\) | `dynamicViscosity_Pa_s` | Pa·s | \(> 0\) |
 | \(K\) | `localLossCoefficient` | 1 | \(\ge 0\) |
+
+
+## Constraints
+
+- \(\dot{V}\): \(> 0\)
+- \(D\) or \(w,h\): \(> 0\)
+- \(L\): \(> 0\)
+- \(\varepsilon\): \(\ge 0\)
+- \(\rho\): \(> 0\)
+- \(\mu\): \(> 0\)
+- \(K\): \(\ge 0\)
 
 ## Engineering Principles
 
@@ -113,3 +128,5 @@ Inventory tool ID: `duct-airflow-design`. The inventory URL with a trailing slas
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

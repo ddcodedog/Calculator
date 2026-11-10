@@ -1,5 +1,7 @@
 # The coil’s volume flow can enter the duct tool. Its watts cannot.
 
+Locale: en
+
 ## Decision
 
 A supply stream is specified as dry-air mass flow. The duct tool wants cubic metres per second. The load planner also speaks in watts. Only one of those can be typed into the duct diameter field’s partner, the airflow box, and it is the volume flow.
@@ -74,3 +76,5 @@ https://hvacengineerlab.com/tools/duct-airflow-design/
 | Example result | 0.128829 m³/s → 6.407 m/s and 34.542 Pa; wall stays 117.6 W |
 | Date | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

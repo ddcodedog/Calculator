@@ -1,11 +1,15 @@
 # IPv4 longest prefix match
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The longest-prefix tool picks one route for an IPv4 address. A route matches when the address, masked to that prefix, equals the route’s network. Among matches, the longest prefix wins. Equal prefixes break toward the lower metric, and equal metrics break toward the earlier line. No matching route is a warning and an empty selection, not a thrown error.
 
-Implementation `test.network.longest-prefix-match` version 1.12.0 in the production bundle, read 2026-11-07. The default target and the three default routes are the worked example (https://pcdog.com/tools/longest-prefix-match).
 
+## Overview
+
+Implementation `test.network.longest-prefix-match` version 1.12.0 in the production bundle, read 2026-11-07. The default target and the three default routes are the worked example (https://pcdog.com/tools/longest-prefix-match).
 ## Formula
 
 Parse each route line on newlines, commas, or semicolons, up to three fields: CIDR, gateway, optional metric. More than three fields is `invalid-route-line`. A repeated CIDR plus gateway plus metric is `duplicate-route`. The metric, when present, must be finite and ≥ 0. A missing metric sorts as \(+\infty\), so a stated metric is preferred.
@@ -72,3 +76,5 @@ https://pcdog.com/tools/longest-prefix-match
 | Date | 2026-11-07 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

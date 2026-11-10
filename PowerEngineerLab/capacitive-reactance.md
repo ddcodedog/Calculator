@@ -1,11 +1,15 @@
 # Ideal capacitive reactance
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The Capacitive Reactance Calculator returns the magnitude of ideal capacitive reactance in sinusoidal steady state.
 
-Production calculation in the capacitive-reactance page bundle (`TOOL-008`), fetched 2026-11-04 from https://powerengineerlab.com/calculators/capacitive-reactance/.
 
+## Overview
+
+Production calculation in the capacitive-reactance page bundle (`TOOL-008`), fetched 2026-11-04 from https://powerengineerlab.com/calculators/capacitive-reactance/.
 ## Formula
 
 For \(f > 0\),
@@ -23,6 +27,13 @@ The code evaluates \(\exp(-\ln(2\pi)-\ln f-\ln C)\). At \(f = 0\), the metric va
 | \(f\) | `frequency` | Hz | finite, \(\ge 0\) |
 | \(C\) | `capacitance` | F | finite, \(> 0\) |
 | \(X_C\) | `capacitiveReactance` | Ω | derived, or null at DC |
+
+
+## Constraints
+
+- \(f\): finite, \(\ge 0\)
+- \(C\): finite, \(> 0\)
+- \(X_C\): derived, or null at DC
 
 ## Engineering Principles
 
@@ -73,3 +84,5 @@ Inventory tool ID: `capacitive-reactance`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

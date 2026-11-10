@@ -1,5 +1,7 @@
 # Keep the longer prefix, then print that route
 
+Locale: en
+
 ## Two decisions in order
 
 The longest-prefix page chooses a route. The static-route page prints a command for a route you already chose. Printing the command for the shorter prefix, because its metric is prettier, undoes the first decision.
@@ -65,3 +67,5 @@ https://pcdog.com/tools/static-route-generator
 | Example result | `10.8.3.19` selects `10.8.3.0/24` metric 50; Linux command as printed |
 | Date | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

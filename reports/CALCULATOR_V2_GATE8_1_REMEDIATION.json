@@ -1,0 +1,132 @@
+{
+  "gate": "GATE8.1",
+  "verdict": "REMEDIATION_PASS",
+  "finalStatus": "READY_FOR_INDEPENDENT_REAUDIT",
+  "approvedForMerge": false,
+  "git": {
+    "oldHead": "c3ac9672dd581623c2a8bf0af3eec273d3381b77",
+    "fixCommit": "32c920cea5d81b73b93959f7576b225f1d16f753",
+    "main": "0952aa2cb4d52e94b7a53777a50087e43b1db2db",
+    "mainMoved": false,
+    "pr": "https://github.com/ddcodedog/Calculator/pull/14",
+    "prState": "OPEN",
+    "branch": "codex/calculator-v2.0-seo-geo-i18n-ci-20261110",
+    "historyRewrite": false,
+    "fixDiff": {
+      "files": 3,
+      "insertions": 949,
+      "deletions": 53,
+      "filesDeleted": 0
+    },
+    "filesChangedInFix": [
+      "scripts/check-docs.py",
+      "tests/test_doc_checks.py",
+      "reports/CALCULATOR_V2_GATE8_1_BASELINE.md"
+    ],
+    "unexpectedEdits": []
+  },
+  "g8_001": {
+    "serverErrorRange": "500-599 inclusive",
+    "attempts": 3,
+    "failureClass": "HTTP_SERVER_ERROR",
+    "downgradeToWarning": false,
+    "requestEvidence": [
+      {"status": 499, "requests": 1, "class": "inconclusive", "failures": 0, "warnings": 1, "exit": 0, "http5xx": 0},
+      {"status": 500, "requests": 3, "class": "HTTP_SERVER_ERROR", "failures": 1, "warnings": 0, "exit": 1, "http5xx": 1},
+      {"status": 501, "requests": 3, "class": "HTTP_SERVER_ERROR", "failures": 1, "warnings": 0, "exit": 1, "http5xx": 1},
+      {"status": 502, "requests": 3, "class": "HTTP_SERVER_ERROR", "failures": 1, "warnings": 0, "exit": 1, "http5xx": 1},
+      {"status": 503, "requests": 3, "class": "HTTP_SERVER_ERROR", "failures": 1, "warnings": 0, "exit": 1, "http5xx": 1},
+      {"status": 504, "requests": 3, "class": "HTTP_SERVER_ERROR", "failures": 1, "warnings": 0, "exit": 1, "http5xx": 1},
+      {"status": 505, "requests": 3, "class": "HTTP_SERVER_ERROR", "failures": 1, "warnings": 0, "exit": 1, "http5xx": 1},
+      {"status": 507, "requests": 3, "class": "HTTP_SERVER_ERROR", "failures": 1, "warnings": 0, "exit": 1, "http5xx": 1},
+      {"status": 599, "requests": 3, "class": "HTTP_SERVER_ERROR", "failures": 1, "warnings": 0, "exit": 1, "http5xx": 1},
+      {"status": 600, "requests": 1, "class": "inconclusive", "failures": 0, "warnings": 1, "exit": 0, "http5xx": 0},
+      {"status": 403, "requests": 1, "class": "inconclusive", "failures": 0, "warnings": 1, "exit": 0, "http5xx": 0},
+      {"status": 429, "requests": 1, "class": "inconclusive", "failures": 0, "warnings": 1, "exit": 0, "http5xx": 0}
+    ],
+    "transport": {"attempts": 3, "class": "inconclusive", "status": null, "finalUrl": null, "failures": 0, "warnings": 1, "exit": 0}
+  },
+  "g8_002": {
+    "baseline": "formula files plus reports/FORMULA_VERIFICATION.json",
+    "indexesRewritten": false,
+    "conclusionsChanged": false,
+    "realRepositoryAuditFailures": 0,
+    "negativeCasesFailedAsRequired": [
+      "empty verification-index topics",
+      "deleted formula row",
+      "nonexistent document",
+      "duplicate document",
+      "tampered title",
+      "tampered productionUrl",
+      "tampered toolId",
+      "tampered standardsStatus",
+      "tampered calculationStatus",
+      "removed evidence",
+      "missing companion",
+      "summary counts disagree"
+    ]
+  },
+  "g8_003": {
+    "configEdited": false,
+    "verifiedRows": 50,
+    "verifiedTargets": 100,
+    "uniqueUrls": 77,
+    "notSupportedRows": 38,
+    "sharedUrls": 23,
+    "notSupportedCountedAsVerified": false,
+    "livePass": 100,
+    "liveInconclusive": 0,
+    "localeNegatives": [
+      "zh-CN 200 lang=zh-CN PASS",
+      "Chinese URL lang=en WRONG_LANGUAGE",
+      "English URL wrong language WRONG_LANGUAGE",
+      "redirect /zh/ LOCALIZED_HOMEPAGE_FALLBACK",
+      "redirect /zh-CN/ LOCALIZED_HOMEPAGE_FALLBACK",
+      "redirect / LOCALIZED_HOMEPAGE_FALLBACK",
+      "redirect other tool WRONG_TOOL",
+      "wrong canonical WRONG_CANONICAL",
+      "404 hard_404",
+      "410 hard_404",
+      "500-599 HTTP_SERVER_ERROR after 3 requests",
+      "403 inconclusive",
+      "429 inconclusive",
+      "transport inconclusive after 3 attempts"
+    ]
+  },
+  "tests": {
+    "original": 10,
+    "newMethods": 8,
+    "total": 18,
+    "passed": 18,
+    "failed": 0,
+    "skipped": 0,
+    "originalTestsChanged": false
+  },
+  "localCheck": {
+    "skipUrlsExit": 0,
+    "fullCheckExit": 0,
+    "urlChecks": 117,
+    "attempts": 1,
+    "http200": 117,
+    "http404Or410": 0,
+    "http5xx": 0,
+    "inconclusive": 0,
+    "inconclusiveUrls": []
+  },
+  "actions": {
+    "fixSha": "32c920cea5d81b73b93959f7576b225f1d16f753",
+    "pushRun": "https://github.com/ddcodedog/Calculator/actions/runs/42829219740",
+    "pullRequestRun": "https://github.com/ddcodedog/Calculator/actions/runs/42829232131",
+    "unitTests": "Ran 18 tests OK",
+    "checker": "failures=0 warnings=0 formulas=88 chinese=12 localeRows=50 localeUniqueUrls=77 localeNotSupported=38 localeLivePass=100 localeLiveInconclusive=0",
+    "artifactUploaded": true,
+    "deployJob": false,
+    "permissions": "contents: read",
+    "weeklyJobOnPushAndPullRequest": "skipped"
+  },
+  "leftoversUnchanged": {
+    "standardsPending": 87,
+    "calculationReviewRequired": 2,
+    "repositoryDescriptionAndTopics": "unset"
+  }
+}

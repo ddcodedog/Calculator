@@ -10,4 +10,4 @@ python3 scripts/check-docs.py
 python3 scripts/check-docs.py --skip-urls
 ```
 
-Exit 0 means no hard failure. A connection error or a non-404 HTTP status is a warning. HTTP 404 and 410 on a tool URL are failures. GitHub Actions runs the same command from `.github/workflows/doc-checks.yml` and uploads the JSON. That workflow does not commit changes and does not touch the eleven product-site repositories.
+Exit 0 means no hard failure. On a tool URL, HTTP 404 and 410 fail, a final site homepage fails, and HTTP 5xx fails after the retry budget. HTTP 403, 429, DNS errors, and other network errors are INCONCLUSIVE warnings, not passes. `python3 scripts/build_indexes.py` rewrites `indexes/topics.json` and `indexes/verification-index.json` from the verification file. GitHub Actions runs the unit tests and `check-docs.py` from `.github/workflows/doc-checks.yml` and uploads the JSON. A weekly job also requests cited external standards URLs and records inconclusive results without replacing those URLs. The workflow does not commit changes and does not touch the eleven product-site repositories.

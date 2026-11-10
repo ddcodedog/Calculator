@@ -1,11 +1,15 @@
 # AC machine synchronous speed
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The Synchronous Speed Calculator returns the rotating-field speed of an AC machine from supply frequency and pole count.
 
-Production function in the synchronous-speed page bundle (`BACKLOG-070`), fetched 2026-11-04 from https://powerengineerlab.com/calculators/synchronous-speed/.
 
+## Overview
+
+Production function in the synchronous-speed page bundle (`BACKLOG-070`), fetched 2026-11-04 from https://powerengineerlab.com/calculators/synchronous-speed/.
 ## Formula
 
 $$
@@ -76,3 +80,5 @@ Inventory tool ID: `synchronous-speed`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

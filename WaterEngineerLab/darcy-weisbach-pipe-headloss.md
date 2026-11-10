@@ -1,11 +1,15 @@
 # Darcy-Weisbach major pipe headloss
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The Water Pipe Flow / Velocity / Headloss Calculator returns mean velocity and major headloss for a circular pipe flowing full. The Darcy friction factor is an explicit input.
 
-Production module (`FORMULA-TOOL010-CONTINUITY-001` and the Darcy-Weisbach formula id, engine version 1.0.0), fetched 2026-11-04 from https://waterengineerlab.com/tools/water-pipe-flow-headloss/.
 
+## Overview
+
+Production module (`FORMULA-TOOL010-CONTINUITY-001` and the Darcy-Weisbach formula id, engine version 1.0.0), fetched 2026-11-04 from https://waterengineerlab.com/tools/water-pipe-flow-headloss/.
 ## Formula
 
 $$
@@ -88,3 +92,5 @@ Inventory tool ID: `TOOL-010`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

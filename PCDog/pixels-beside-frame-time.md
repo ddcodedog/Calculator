@@ -1,5 +1,7 @@
 # Backing-store pixels sit beside frame time. They do not multiply.
 
+Locale: en
+
 ## Two instruments
 
 The screen-information page can report a backing-store size from `screen.width`, `screen.height`, and `devicePixelRatio`. The refresh-rate page summarizes intervals from `requestAnimationFrame`. A 2560×1440 panel at device pixel ratio 2 is not a frame time, and a 8.3 ms interval is not a resolution. Their product is not a bitrate and not a bandwidth this site will accept.
@@ -65,3 +67,5 @@ https://pcdog.com/tools/screen-information
 | Example result | 5120×2880 beside 120.5 Hz, score 67, confidence low |
 | Date | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

@@ -1,5 +1,7 @@
 # Three readings from one heater shop
 
+Locale: en
+
 ## What the shop is asking
 
 Four 1800 W heaters, run 5 hours a day for 14 days, duty 1. The tariff on the energy tool is 0.21 currency units per kWh. Separately, the meter for those same 14 days shows a peak of 6.4 kW, and the nameplate sum is 7.2 kW. Someone will want a single “efficiency.” These tools will not give one.
@@ -80,3 +82,5 @@ https://powerengineerlab.com/calculators/load-factor/
 | Example result | 504 kWh, load factor 0.234375, demand factor 0.888… |
 | Date | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

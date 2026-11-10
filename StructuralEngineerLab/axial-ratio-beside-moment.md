@@ -1,5 +1,7 @@
 # Put the axial load over Euler. Leave the moment out.
 
+Locale: en
+
 ## Two demands, two families
 
 The same 80 mm × 160 mm rectangle that produced a 10 kN·m strip moment can also be asked to stand as a 4.5 m pinned column. The utilization tool will divide a demand by an allowable **in one family**. Force over force is legal. A bending stress over an Euler load is not, and the page rejects cross-dimension comparisons.
@@ -75,3 +77,5 @@ https://structuralengineerlab.com/tools/user-defined-utilization-calculator/
 | Example result | 2661.8 kN or 665.45 kN; 40 kN gives 1.503% or 6.011% |
 | Date | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

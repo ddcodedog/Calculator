@@ -1,5 +1,7 @@
 # A positive latent term is not condensate
 
+Locale: en
+
 ## Read the sign before naming a drain
 
 Air enters at 26 °C and 40% RH and leaves at 18 °C and 70% RH, both at 101325 Pa, with 0.15 kg/s of dry air. Dry-bulb temperature falls. That feels like a cooling coil. The latent watt from the psychrometric split does not agree, and the sign is the result that matters.
@@ -85,3 +87,5 @@ https://hvacengineerlab.com/tools/psychrometric-process-analyzer
 | Example result | \(\Delta W > 0\), latent +240.72 W, not a condensate rate |
 | Date | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

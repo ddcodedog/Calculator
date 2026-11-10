@@ -1,11 +1,15 @@
 # IPv4 static route commands
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The static-route generator checks an IPv4 destination and gateway, normalizes host bits in the destination, and prints command text for several platforms. It does not log into a router and it does not test whether the gateway answers. The result field `reachability` is the constant `not-tested`.
 
-Implementation `test.network.static-route-generator` version 1.11.0 in the production bundle, read 2026-11-07. Defaults: destination `192.168.10.0/24`, gateway `192.168.1.1`, interface `eth0`, metric `20`, persistent `true`, platform `linux` (https://pcdog.com/tools/static-route-generator).
 
+## Overview
+
+Implementation `test.network.static-route-generator` version 1.11.0 in the production bundle, read 2026-11-07. Defaults: destination `192.168.10.0/24`, gateway `192.168.1.1`, interface `eth0`, metric `20`, persistent `true`, platform `linux` (https://pcdog.com/tools/static-route-generator).
 ## Formula
 
 The destination must parse as an IPv4 CIDR. The gateway must parse as an IPv4 address (`/32` in the checker). A metric, when present, must be finite and ≥ 0. An omitted metric becomes 1 inside the command builder. The typed default is the string `20`, so the default commands use 20.
@@ -92,3 +96,5 @@ https://pcdog.com/tools/static-route-generator
 | Date | 2026-11-07 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

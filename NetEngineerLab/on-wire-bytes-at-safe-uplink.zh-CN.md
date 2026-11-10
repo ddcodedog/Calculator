@@ -1,5 +1,11 @@
 # 先把报头算进字节，再取安全上行，最后算时间
 
+Locale: zh-CN
+
+## 直接回答
+
+本文回答在线字节：报头字节先计入字节数，再用安全上联速率计算传输时间。
+
 本文是同目录英文稿的简体中文版，英文原文保持不变：[Header bytes, then the safe uplink, then the clock](on-wire-bytes-at-safe-uplink.md)。
 
 ## 问题
@@ -90,3 +96,5 @@ https://netengineerlab.com/tools/bandwidth-calculator/zh/
 | 算例结果 | 519,863,013,732 线上字节，5 Gbit/s 下为 831.781 s |
 | 日期 | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

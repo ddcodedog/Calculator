@@ -1,5 +1,7 @@
 # A 5 m strip’s moment, then the fiber stress
 
+Locale: en
+
 ## Order
 
 Geometry first, so the section modulus exists before the moment does. Then a simply supported uniform load on a 5 m span. Then \(\sigma = M/S\). Deflection is not required for that stress, and Euler buckling is a different check on a different demand.
@@ -75,3 +77,5 @@ https://structuralengineerlab.com/tools/beam-bending-stress-calculator/
 | Example result | \(S_x = 3.413\times 10^{-4}\,\mathrm{m^3}\), \(M = 10\,\mathrm{kN\cdot m}\), 29.297 MPa |
 | Date | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

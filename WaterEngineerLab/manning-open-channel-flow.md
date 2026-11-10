@@ -1,11 +1,15 @@
 # Manning open-channel discharge
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The Manning Open Channel Flow Calculator computes area, wetted perimeter, hydraulic radius, mean velocity, and discharge for a rectangular or trapezoidal channel at a known depth. A second mode solves normal depth by bisection so that the same Manning discharge matches a target flow.
 
-Production module in the manning-open-channel-flow page bundle (`FORMULA-TOOL007-MANNING-OPEN-CHANNEL-001`, engine version 1.0.0), fetched 2026-11-04 from https://waterengineerlab.com/tools/manning-open-channel-flow/.
 
+## Overview
+
+Production module in the manning-open-channel-flow page bundle (`FORMULA-TOOL007-MANNING-OPEN-CHANNEL-001`, engine version 1.0.0), fetched 2026-11-04 from https://waterengineerlab.com/tools/manning-open-channel-flow/.
 ## Formula
 
 Rectangular channel, bottom width \(b\), depth \(y\):
@@ -97,3 +101,5 @@ Inventory tool ID: `TOOL-007`. The inventory URL with a trailing slash redirects
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

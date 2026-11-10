@@ -1,13 +1,19 @@
 # MTU、MSS 与封装开销
 
+Locale: zh-CN
+
 本文是同目录英文稿的简体中文版，英文原文保持不变：[MTU, MSS, and encapsulation overhead](mtu-mss-overhead.md)。
 
-## 概述
+## 直接回答
+
+本文回答 MTU 与 MSS：接口 MTU 和 TCP 载荷之间有哪些封装字节。
 
 MTU 计算器从底层 MTU 逐层减去封装，然后报告剩余的内层包、能放进其中的 TCP MSS，以及该包的以太网帧长。这是报头预算，不是路径 MTU 探测。
 
-引擎：生产工具上的 `js/engine.js` 和 `js/mtu-library.js`，读于 2026-11-07。底层必须是至少 576 字节的有限数。更小的底层为 `underlay_mtu_out_of_range`。
 
+## 概述
+
+引擎：生产工具上的 `js/engine.js` 和 `js/mtu-library.js`，读于 2026-11-07。底层必须是至少 576 字节的有限数。更小的底层为 `underlay_mtu_out_of_range`。
 ## 公式
 
 VLAN 开销是每个外层标签 4 字节，标签数是 `min(16, floor(count))`。若关闭严格 VLAN 记账，这些字节不从内层包中扣除。
@@ -93,3 +99,5 @@ https://netengineerlab.com/tools/mtu-calculator/zh/
 | 日期 | 2026-11-07 |
 | 文档版本 | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

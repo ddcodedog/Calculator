@@ -1,5 +1,11 @@
 # A cutover wait is not a fiber round trip
 
+Locale: en
+
+## Direct Answer
+
+This note answers a cutover question: a DNS cache wait and a fiber round trip are different clocks and are not added.
+
 Simplified Chinese edition: [割接等待不是光纤往返时延](cutover-wait-versus-fiber-delay.zh-CN.md).
 
 ## The decision
@@ -81,3 +87,5 @@ https://netengineerlab.com/tools/dns-ttl-propagation-calculator/
 | Example result | 90.0 / 45.3 / 90.3 min beside 132.21 µs one way |
 | Date | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

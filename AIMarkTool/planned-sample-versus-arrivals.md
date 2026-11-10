@@ -1,5 +1,7 @@
 # Eight thousand planned visitors are not the forty you already have
 
+Locale: en
+
 ## Two different visitor words
 
 The sample-size tool asks how many visitors to **collect** before comparing two conversion rates. The funnel tool describes visitors you **already chose as a scenario**. The shop in the companion note has 800 landing visitors and 40 customers. That history does not satisfy a sample-size plan, and the plan does not create customers.
@@ -61,3 +63,5 @@ https://aimarktool.com/tools/ab-test-sample-size-calculator
 | Example result | 8155 per variation against an 800-visitor scenario |
 | Date | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

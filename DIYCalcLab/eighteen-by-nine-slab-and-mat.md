@@ -1,5 +1,7 @@
 # One 18 by 9 ft pad, then the steel that sits in it
 
+Locale: en
+
 ## Bill, not two unrelated projects
 
 The concrete tool counts bags from a volume. The rebar tool counts bars from the same rectangle’s clear spans. The patio case already on the site is 14 by 12 ft at 4 in and does not continue into this mat. The default rebar example is a 20 ft square. This pad is 18 ft by 9 ft.
@@ -73,3 +75,5 @@ https://diycalclab.com/concrete/slab-calculator/
 | Example result | 97 bags; 14 and 7 bars; 15 sticks; 163.66 lb |
 | Date | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

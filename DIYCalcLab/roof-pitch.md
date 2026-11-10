@@ -1,11 +1,15 @@
 # Roof pitch and slope factor
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The Roof Pitch calculator converts a rise and a run, or a roof angle, into a pitch in the form \(x/12\), a slope angle, a percent grade, and a pitch factor. If a building span is entered, it also estimates ridge height and common-rafter line length.
 
-Production module `roof-pitch` (`pitchFrom`, `angleOf`, and `pitchFactor` from the roofing module), fetched 2026-11-04 from https://diycalclab.com/roofing/roof-pitch-calculator/.
 
+## Overview
+
+Production module `roof-pitch` (`pitchFrom`, `angleOf`, and `pitchFactor` from the roofing module), fetched 2026-11-04 from https://diycalclab.com/roofing/roof-pitch-calculator/.
 ## Formula
 
 Rise-and-run mode, after both lengths are converted to metres (the ratio is dimensionless):
@@ -94,3 +98,5 @@ Inventory tool ID: `roof-pitch`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

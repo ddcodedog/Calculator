@@ -1,11 +1,15 @@
 # Return on ad spend
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The ROAS calculator divides attributed revenue by advertising spend and formats the ratio. If either input is missing or not a finite number, the API says so instead of inserting a benchmark. The ratio is not a profit figure: revenue is the numerator, and cost of goods is not an input.
 
-The production page schema, read 2026-11-07, requires `revenue` ≥ 0 and `adSpend` > 0. The calculator POSTs JSON `{inputs, locale}` to `/api/tools/roas-calculator`. The worked numbers below are responses from that endpoint on the same date (https://aimarktool.com/tools/roas-calculator).
 
+## Overview
+
+The production page schema, read 2026-11-07, requires `revenue` ≥ 0 and `adSpend` > 0. The calculator POSTs JSON `{inputs, locale}` to `/api/tools/roas-calculator`. The worked numbers below are responses from that endpoint on the same date (https://aimarktool.com/tools/roas-calculator).
 ## Formula
 
 $$
@@ -22,6 +26,12 @@ The formatted field is the ratio with two fraction digits and an `x` suffix. `Ma
 | Ad spend | Finite number > 0 | money |
 
 Strings are rejected with “must be a finite number”. Spend of 0 is HTTP 400, `adSpend must be greater than 0`. Revenue of 0 is allowed and returns ROAS 0.
+
+
+## Constraints
+
+- Revenue: Finite number ≥ 0
+- Ad spend: Finite number > 0
 
 ## Engineering Principles
 
@@ -67,3 +77,5 @@ https://aimarktool.com/tools/roas-calculator
 | Date | 2026-11-07 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

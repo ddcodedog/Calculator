@@ -1,11 +1,15 @@
 # A leading row-number column
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The row-number tool inserts one column at the left of every CSV record. With the default header option, the first record receives a header name and the following records receive integers. The number does not come from a value already in the file. Existing cells are copied after the new column.
 
-Production `row-numberer.js`, read 2026-11-08. Default start is 1. Default header name is `row_number`. Start must be a safe integer ≥ 0. The last issued number must not pass `Number.MAX_SAFE_INTEGER`. The header name may be at most 1 Mi characters. Column, cell, and output-size caps match the other CSV tools: 1,000 columns after the insert, 2,000,000 cells, 16 MiB of output characters (https://datafilelab.com/csv-row-numberer).
 
+## Overview
+
+Production `row-numberer.js`, read 2026-11-08. Default start is 1. Default header name is `row_number`. Start must be a safe integer ≥ 0. The last issued number must not pass `Number.MAX_SAFE_INTEGER`. The header name may be at most 1 Mi characters. Column, cell, and output-size caps match the other CSV tools: 1,000 columns after the insert, 2,000,000 cells, 16 MiB of output characters (https://datafilelab.com/csv-row-numberer).
 ## Formula
 
 For record index \(i\) starting at 0, with a header present:
@@ -77,3 +81,5 @@ https://datafilelab.com/csv-row-numberer
 | Date | 2026-11-08 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

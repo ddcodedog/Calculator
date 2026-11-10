@@ -1,0 +1,41 @@
+# Calculator
+
+This file is a map of the documentation repository. It does not place these pages in a search index, a generative answer, or a citation graph.
+
+## Purpose
+
+Engineering formula notes for 11 calculator websites. Each English topic names a production tool, a formula or algorithm, a worked example, limits, and the calculation check. Standards citations stay pending until the cited text and version have been read.
+
+## Languages
+
+English topic files are the source. Twelve NetEngineerLab topics have Simplified Chinese companions named `*.zh-CN.md` in the same directory. Those companions are not extra English topics. Other sites have live localized calculator pages recorded in `config/locale-routes.json`. This repository does not yet have Chinese topic files for those sites.
+
+## The 11 domains
+
+- NetEngineerLab — NetEngineerLab/ — https://netengineerlab.com — optical loss, power budget, latency, dispersion, OSPF cost, STP cost, transfer time, MTU, DNS TTL, switch uplinks
+- PCDog — PCDog/ — https://pcdog.com — IPv4 longest prefix, static routes, screen pixels, frame intervals
+- AIMarkTool — AIMarkTool/ — https://aimarktool.com — ROAS, LTV/CAC, funnels, sample size
+- PowerEngineerLab — PowerEngineerLab/ — https://powerengineerlab.com — Ohm's law, power triangle, reactance, machines, demand and load factor
+- HVACEngineerLab — HVACEngineerLab/ — https://hvacengineerlab.com — duct pressure, loads, psychrometrics
+- PrivacyFileLab — PrivacyFileLab/ — https://privacyfilelab.com — local SHA-256, redaction, verifier status
+- DataFileLab — DataFileLab/ — https://datafilelab.com — CSV frequency, encoding, blank rows, row numbers
+- WaterEngineerLab — WaterEngineerLab/ — https://waterengineerlab.com — Manning, rational runoff, Darcy-Weisbach
+- StructuralEngineerLab — StructuralEngineerLab/ — https://structuralengineerlab.com — buckling, bending stress, beam deflection
+- DevEngineerLab — DevEngineerLab/ — https://devengineerlab.com — timestamps, base conversion, text counts
+- DIYCalcLab — DIYCalcLab/ — https://diycalclab.com — concrete, lumber, roof pitch, fence, rebar
+
+## Verification
+
+- Machine-readable topics: indexes/topics.json
+- Calculation and standards status: indexes/verification-index.json and reports/FORMULA_VERIFICATION.json
+- Locale probes dated 2026-11-10: config/locale-routes.json
+- Citation form: docs/CITATION.md
+
+Calculation status VERIFIED means the arithmetic was checked against the production calculator or the published identity. It does not mean a design standard was re-audited. Standards status VERIFIED is limited to the Fed. Std. 376B mechanical horsepower factor checked on 2026-11-10. Two structural beam notes remain calculation REVIEW_REQUIRED because their general integrator was not line-traced.
+
+## Limits
+
+- Do not treat a site homepage as the tool page.
+- Do not invent a locale path. On NetEngineerLab the checked Chinese tool path is `/tools/<slug>/zh/`. `/zh-CN/tools/...` on that site returned 404.
+- Do not read a pending standards row as confirmation of the standard.
+- Promo drafts under promo/ are not formula topics.

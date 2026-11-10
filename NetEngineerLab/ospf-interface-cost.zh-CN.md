@@ -1,13 +1,19 @@
 # OSPF 接口开销
 
+Locale: zh-CN
+
 本文是同目录英文稿的简体中文版，英文原文保持不变：[OSPF interface cost](ospf-interface-cost.md)。
 
-## 概述
+## 直接回答
+
+本文回答 OSPF 接口开销：参考带宽除以链路速率，再取整数开销钳位。
 
 OSPF 开销计算器把参考带宽和接口带宽都按 Mbit/s 换成整数 OSPF 开销。开销被限制在 1 到 65535。手工度量覆盖值若落在这个范围内，就替换计算值。可选路径把各接口开销相加。
 
-引擎：`https://netengineerlab.com/tools/ospf-cost-calculator/js/engine.js`（`OspfCostEngine`，schema `ospf-cost-engine/1.0`），取于 2026-11-04。
 
+## 概述
+
+引擎：`https://netengineerlab.com/tools/ospf-cost-calculator/js/engine.js`（`OspfCostEngine`，schema `ospf-cost-engine/1.0`），取于 2026-11-04。
 ## 公式
 
 $$
@@ -86,3 +92,5 @@ https://netengineerlab.com/tools/ospf-cost-calculator/zh/
 | 日期 | 2026-11-04 |
 | 文档版本 | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

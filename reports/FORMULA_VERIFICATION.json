@@ -19,7 +19,9 @@
       "boundary": "budget 28 dB fails",
       "standards": "pending ITU/IEEE PDFs not re-read; URLs are on the production page",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "NetEngineerLab",
@@ -32,7 +34,9 @@
       "boundary": "overload -8 dBm fails",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "NetEngineerLab",
@@ -45,7 +49,9 @@
       "boundary": "n_g outside 1..1.6 rejected",
       "standards": "pending G.652 table fetch",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "NetEngineerLab",
@@ -54,11 +60,13 @@
       "productionUrl": "https://netengineerlab.com/tools/chromatic-dispersion-calculator/",
       "sourceEvidence": "https://netengineerlab.com/tools/chromatic-dispersion-calculator/js/engine.js",
       "status": "VERIFIED",
-      "exampleResult": "D=17.4606188 ps/(nm\u00b7km) at 1550/1310/0.092",
+      "exampleResult": "D=17.4606188 ps/(nm·km) at 1550/1310/0.092",
       "boundary": "tolerance 800 ps/nm fails",
       "standards": "ITU URLs cited on page; PDF not re-read",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "NetEngineerLab",
@@ -71,7 +79,9 @@
       "boundary": "cost clamps to 1",
       "standards": "pending external RFC",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "NetEngineerLab",
@@ -84,7 +94,9 @@
       "boundary": "short rejects 100G",
       "standards": "IEEE URLs on page; PDFs not re-read",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PowerEngineerLab",
@@ -97,7 +109,9 @@
       "boundary": "R=0 rejected",
       "standards": "OpenStax URL HTTP 200; body not transcribed",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PowerEngineerLab",
@@ -110,7 +124,9 @@
       "boundary": "zero power null pf",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PowerEngineerLab",
@@ -123,7 +139,9 @@
       "boundary": "f=0 yields 0",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PowerEngineerLab",
@@ -136,7 +154,9 @@
       "boundary": "f=0 yields null",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PowerEngineerLab",
@@ -149,7 +169,9 @@
       "boundary": "no load -> 6 V",
       "standards": "pending; SRC-001 url null",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PowerEngineerLab",
@@ -162,7 +184,9 @@
       "boundary": "single-phase 41.6667 A",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PowerEngineerLab",
@@ -175,7 +199,9 @@
       "boundary": "odd poles rejected",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PowerEngineerLab",
@@ -188,7 +214,9 @@
       "boundary": "rotor > 2*ns rejected",
       "standards": "Engineering Toolbox URL present; article not re-fetched",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PowerEngineerLab",
@@ -201,7 +229,11 @@
       "boundary": "metric PS path is separate",
       "standards": "NIST 745.6999 verified from PDF; 735.49875 code only",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "VERIFIED",
+      "standardsCheckedDate": "2026-11-10",
+      "standardsEvidence": "Fed. Std. 376B PDF hosted at NIST, fetched 2026-11-10. Section 5.2.13: horsepower to watt multiplies by 745.699 9. Section 4.3.3 lists metric horsepower as not to be used. 735.49875 was not in the extracted text and is not part of this standards verdict."
     },
     {
       "website": "StructuralEngineerLab",
@@ -214,7 +246,9 @@
       "boundary": "K=2 quarters the load",
       "standards": "pending textbook source id only",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "StructuralEngineerLab",
@@ -227,7 +261,9 @@
       "boundary": "M=0 -> 0",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "StructuralEngineerLab",
@@ -240,7 +276,9 @@
       "boundary": "invalid hollow circle rejected",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "WaterEngineerLab",
@@ -253,7 +291,9 @@
       "boundary": "bisection returns y=1 m",
       "standards": "pending FHWA source id has no URL",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "WaterEngineerLab",
@@ -266,7 +306,9 @@
       "boundary": "C>1 rejected",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "WaterEngineerLab",
@@ -279,7 +321,9 @@
       "boundary": "f=0 rejected",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "HVACEngineerLab",
@@ -292,7 +336,9 @@
       "boundary": "laminar f=64/Re at Re 844",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "DIYCalcLab",
@@ -305,7 +351,9 @@
       "boundary": "0% waste -> 56 bags",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "DIYCalcLab",
@@ -318,7 +366,9 @@
       "boundary": "angle clamped at 80 deg",
       "standards": "IRC citation pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "DIYCalcLab",
@@ -331,7 +381,9 @@
       "boundary": "zero thickness -> 0",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "NetEngineerLab",
@@ -344,7 +396,9 @@
       "boundary": "eta 0 is non-finite; required bandwidth infinity when setup exceeds the deadline",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "NetEngineerLab",
@@ -357,7 +411,9 @@
       "boundary": "desired 1493 exceeds effective; underlay 575 rejected",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PowerEngineerLab",
@@ -370,7 +426,9 @@
       "boundary": "turns 0 rejected",
       "standards": "pending OpenStax citation not re-read",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PowerEngineerLab",
@@ -383,7 +441,9 @@
       "boundary": "3000 kWh / 24 h / 100 kW rejected as INTERVAL_BOUNDARY",
       "standards": "pending EIA glossary not re-read; chunk licenseStatus review-required",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "HVACEngineerLab",
@@ -396,7 +456,9 @@
       "boundary": "margin 31 rejected; both infiltration inputs rejected",
       "standards": "pending EnergyPlus eng ref not re-read",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "HVACEngineerLab",
@@ -409,7 +471,9 @@
       "boundary": "RH outside 0-100 rejected; negative mass flow rejected",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "WaterEngineerLab",
@@ -422,7 +486,9 @@
       "boundary": "duplicate id and C>1 rejected; C=0 contributes zero peak",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "WaterEngineerLab",
@@ -435,7 +501,9 @@
       "boundary": "loop or segment count mismatch rejected",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "StructuralEngineerLab",
@@ -448,7 +516,9 @@
       "boundary": "deflection omitted when I is missing",
       "standards": "pending Hibbeler/Roark edition not pinned",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "REVIEW_REQUIRED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "StructuralEngineerLab",
@@ -461,7 +531,9 @@
       "boundary": "E and I mandatory on this page",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "REVIEW_REQUIRED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "DIYCalcLab",
@@ -474,7 +546,9 @@
       "boundary": "waste 0 leaves 210 pickets and 36 rails",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "DIYCalcLab",
@@ -487,7 +561,9 @@
       "boundary": "clear span erased returns 0 bars",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "AIMarkTool",
@@ -500,7 +576,9 @@
       "boundary": "adSpend 0 is HTTP 400; revenue 0 returns 0",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "AIMarkTool",
@@ -513,7 +591,9 @@
       "boundary": "spend 0 returns ltvToCac null",
       "standards": "pending; order value not gross profit",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "DataFileLab",
@@ -526,7 +606,9 @@
       "boundary": "short row increments missingCells",
       "standards": "pending; splitter.js quotes not re-derived",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "DataFileLab",
@@ -539,7 +621,9 @@
       "boundary": "lone 0xFF is unknown",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "DevEngineerLab",
@@ -552,7 +636,9 @@
       "boundary": "non-numeric timestamp rejected",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "DevEngineerLab",
@@ -565,7 +651,9 @@
       "boundary": "digit 2 in base 2 rejected",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PCDog",
@@ -578,7 +666,9 @@
       "boundary": "no match is a warning, not a throw; four-field line invalid",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PCDog",
@@ -591,7 +681,9 @@
       "boundary": "192.168.10.5/24 normalizes; bad gateway rejected",
       "standards": "pending; reachability not-tested",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PrivacyFileLab",
@@ -604,7 +696,9 @@
       "boundary": "different bytes, different digest",
       "standards": "pending FIPS 180-4 not re-read",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PrivacyFileLab",
@@ -617,7 +711,9 @@
       "boundary": "replacement containing the match throws; empty replacement rejected",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "NetEngineerLab",
@@ -630,7 +726,9 @@
       "boundary": "lowerBefore 0.5 h warns; new TTL 30 s adds highAuthoritativeQps without changing pass",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "NetEngineerLab",
@@ -643,7 +741,9 @@
       "boundary": "48x1G into one 10G uplink fails",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PowerEngineerLab",
@@ -656,7 +756,9 @@
       "boundary": "160 kW over 150 kW rejected",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PowerEngineerLab",
@@ -669,7 +771,9 @@
       "boundary": "blank tariff returns null cost",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "WaterEngineerLab",
@@ -682,7 +786,9 @@
       "boundary": "weights that do not sum to 1 are rejected",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "StructuralEngineerLab",
@@ -695,7 +801,9 @@
       "boundary": "load position outside the span fails assertPosition",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "StructuralEngineerLab",
@@ -708,7 +816,9 @@
       "boundary": "zero span fails validation",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "DIYCalcLab",
@@ -721,7 +831,9 @@
       "boundary": "zero waste still ceilings 658.2857 to 659",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "DIYCalcLab",
@@ -734,7 +846,9 @@
       "boundary": "target equal to existing returns 0 bags",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "AIMarkTool",
@@ -747,7 +861,9 @@
       "boundary": "zero visitors yields zeros",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "AIMarkTool",
@@ -760,7 +876,9 @@
       "boundary": "zero lift is not a detectable difference",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "DataFileLab",
@@ -773,7 +891,9 @@
       "boundary": "whitespace-only space cell kept unless that option is on",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "DataFileLab",
@@ -786,7 +906,9 @@
       "boundary": "start -1 throws; header off start 10 numbers every record",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "DevEngineerLab",
@@ -799,7 +921,9 @@
       "boundary": "width 0 and tab rejected",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "DevEngineerLab",
@@ -812,7 +936,9 @@
       "boundary": "empty string has 0 lines",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PCDog",
@@ -825,7 +951,9 @@
       "boundary": "missing ratio uses 1",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PCDog",
@@ -838,7 +966,9 @@
       "boundary": "19 positive intervals return null hertz",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PrivacyFileLab",
@@ -851,7 +981,9 @@
       "boundary": "clearing both types is VERIFIED and still no download on this page",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PrivacyFileLab",
@@ -864,7 +996,9 @@
       "boundary": "new LOW IPv4 stays VERIFIED; remaining phone fails",
       "standards": "pending",
       "unitsChecked": true,
-      "workedExampleChecked": true
+      "workedExampleChecked": true,
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "NetEngineerLab",
@@ -878,7 +1012,9 @@
       "standards": "pending",
       "unitsChecked": true,
       "workedExampleChecked": true,
-      "batch": "2026-11-10-cross-tool"
+      "batch": "2026-11-10-cross-tool",
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "NetEngineerLab",
@@ -892,7 +1028,9 @@
       "standards": "pending",
       "unitsChecked": true,
       "workedExampleChecked": true,
-      "batch": "2026-11-10-cross-tool"
+      "batch": "2026-11-10-cross-tool",
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PowerEngineerLab",
@@ -906,7 +1044,9 @@
       "standards": "pending",
       "unitsChecked": true,
       "workedExampleChecked": true,
-      "batch": "2026-11-10-cross-tool"
+      "batch": "2026-11-10-cross-tool",
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PowerEngineerLab",
@@ -920,7 +1060,9 @@
       "standards": "pending",
       "unitsChecked": true,
       "workedExampleChecked": true,
-      "batch": "2026-11-10-cross-tool"
+      "batch": "2026-11-10-cross-tool",
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "HVACEngineerLab",
@@ -934,7 +1076,9 @@
       "standards": "pending",
       "unitsChecked": true,
       "workedExampleChecked": true,
-      "batch": "2026-11-10-cross-tool"
+      "batch": "2026-11-10-cross-tool",
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "HVACEngineerLab",
@@ -948,7 +1092,9 @@
       "standards": "pending",
       "unitsChecked": true,
       "workedExampleChecked": true,
-      "batch": "2026-11-10-cross-tool"
+      "batch": "2026-11-10-cross-tool",
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "WaterEngineerLab",
@@ -962,7 +1108,9 @@
       "standards": "pending",
       "unitsChecked": true,
       "workedExampleChecked": true,
-      "batch": "2026-11-10-cross-tool"
+      "batch": "2026-11-10-cross-tool",
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "WaterEngineerLab",
@@ -976,7 +1124,9 @@
       "standards": "pending",
       "unitsChecked": true,
       "workedExampleChecked": true,
-      "batch": "2026-11-10-cross-tool"
+      "batch": "2026-11-10-cross-tool",
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "StructuralEngineerLab",
@@ -990,7 +1140,9 @@
       "standards": "pending",
       "unitsChecked": true,
       "workedExampleChecked": true,
-      "batch": "2026-11-10-cross-tool"
+      "batch": "2026-11-10-cross-tool",
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "StructuralEngineerLab",
@@ -1004,7 +1156,9 @@
       "standards": "pending; labels are not code compliance",
       "unitsChecked": true,
       "workedExampleChecked": true,
-      "batch": "2026-11-10-cross-tool"
+      "batch": "2026-11-10-cross-tool",
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "DIYCalcLab",
@@ -1018,7 +1172,9 @@
       "standards": "pending",
       "unitsChecked": true,
       "workedExampleChecked": true,
-      "batch": "2026-11-10-cross-tool"
+      "batch": "2026-11-10-cross-tool",
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "DIYCalcLab",
@@ -1032,7 +1188,9 @@
       "standards": "pending",
       "unitsChecked": true,
       "workedExampleChecked": true,
-      "batch": "2026-11-10-cross-tool"
+      "batch": "2026-11-10-cross-tool",
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "AIMarkTool",
@@ -1046,7 +1204,9 @@
       "standards": "pending",
       "unitsChecked": true,
       "workedExampleChecked": true,
-      "batch": "2026-11-10-cross-tool"
+      "batch": "2026-11-10-cross-tool",
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "AIMarkTool",
@@ -1060,7 +1220,9 @@
       "standards": "pending",
       "unitsChecked": true,
       "workedExampleChecked": true,
-      "batch": "2026-11-10-cross-tool"
+      "batch": "2026-11-10-cross-tool",
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "DataFileLab",
@@ -1074,7 +1236,9 @@
       "standards": "pending",
       "unitsChecked": true,
       "workedExampleChecked": true,
-      "batch": "2026-11-10-cross-tool"
+      "batch": "2026-11-10-cross-tool",
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "DataFileLab",
@@ -1088,7 +1252,9 @@
       "standards": "pending",
       "unitsChecked": true,
       "workedExampleChecked": true,
-      "batch": "2026-11-10-cross-tool"
+      "batch": "2026-11-10-cross-tool",
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "DevEngineerLab",
@@ -1102,7 +1268,9 @@
       "standards": "pending",
       "unitsChecked": true,
       "workedExampleChecked": true,
-      "batch": "2026-11-10-cross-tool"
+      "batch": "2026-11-10-cross-tool",
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "DevEngineerLab",
@@ -1116,7 +1284,9 @@
       "standards": "pending",
       "unitsChecked": true,
       "workedExampleChecked": true,
-      "batch": "2026-11-10-cross-tool"
+      "batch": "2026-11-10-cross-tool",
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PCDog",
@@ -1130,7 +1300,9 @@
       "standards": "pending",
       "unitsChecked": true,
       "workedExampleChecked": true,
-      "batch": "2026-11-10-cross-tool"
+      "batch": "2026-11-10-cross-tool",
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PCDog",
@@ -1144,7 +1316,9 @@
       "standards": "pending",
       "unitsChecked": true,
       "workedExampleChecked": true,
-      "batch": "2026-11-10-cross-tool"
+      "batch": "2026-11-10-cross-tool",
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PrivacyFileLab",
@@ -1158,7 +1332,9 @@
       "standards": "pending",
       "unitsChecked": true,
       "workedExampleChecked": true,
-      "batch": "2026-11-10-cross-tool"
+      "batch": "2026-11-10-cross-tool",
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     },
     {
       "website": "PrivacyFileLab",
@@ -1172,7 +1348,9 @@
       "standards": "pending",
       "unitsChecked": true,
       "workedExampleChecked": true,
-      "batch": "2026-11-10-cross-tool"
+      "batch": "2026-11-10-cross-tool",
+      "calculationStatus": "VERIFIED",
+      "standardsStatus": "PENDING"
     }
   ],
   "laterBatch": {
@@ -1192,5 +1370,9 @@
     "date": "2026-11-10",
     "added": 22,
     "note": "Cross-tool thematic notes. Two per site. countVerified still excludes the two earlier REVIEW_REQUIRED structural rows."
-  }
+  },
+  "countStandardsVerified": 1,
+  "countStandardsPending": 87,
+  "countStandardsNotApplicable": 0,
+  "statusSplit": "status and calculationStatus are the arithmetic check against the production engine. standardsStatus is separate and is VERIFIED only after the cited standard text and version were read."
 }

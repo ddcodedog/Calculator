@@ -1,13 +1,19 @@
 # DNS TTL window before a record change
 
+Locale: en
+
 Simplified Chinese edition: [记录变更前的 DNS TTL 窗口](dns-ttl-cache-window.zh-CN.md).
 
-## Overview
+## Direct Answer
+
+This note answers a DNS TTL question: how long a cache may keep a record before a change is visible.
 
 A resolver that cached a record keeps the old answer until that cached TTL expires. This calculator turns the old TTL, the time already spent, the new TTL, and a small authoritative delay into three clock estimates and a daily query-rate ratio. It does not query a live resolver, and it does not prove that every recursive server on the internet has dropped the old answer.
 
-The numbers below come from `dns-ttl-engine/2.0.0` in the production `engine.js` for this tool, read on 2026-11-08. The example omits `peakOldTtl`, so the engine returns the baseline scenario only (https://netengineerlab.com/tools/dns-ttl-propagation-calculator/).
 
+## Overview
+
+The numbers below come from `dns-ttl-engine/2.0.0` in the production `engine.js` for this tool, read on 2026-11-08. The example omits `peakOldTtl`, so the engine returns the baseline scenario only (https://netengineerlab.com/tools/dns-ttl-propagation-calculator/).
 ## Formula
 
 Remaining cache time is what is left of the old TTL:
@@ -88,3 +94,5 @@ https://netengineerlab.com/tools/dns-ttl-propagation-calculator/
 | Date | 2026-11-08 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

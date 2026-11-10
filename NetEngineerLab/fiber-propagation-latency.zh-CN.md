@@ -1,13 +1,19 @@
 # 光纤传播时延与往返时间
 
+Locale: zh-CN
+
 本文是同目录英文稿的简体中文版，英文原文保持不变：[Fiber propagation delay and RTT](fiber-propagation-latency.md)。
 
-## 概述
+## 直接回答
+
+本文回答光纤传播时延：由长度、群折射率和光速得到单向时延和往返时间。
 
 光纤时延计算器根据路由距离、路由系数、群折射率、每台设备的设备时延，以及可选的串行化时延，估算单向时延和往返时间。
 
-引擎：`https://netengineerlab.com/tools/fiber-latency-calculator/js/engine.js`（`NELFiberLatencyEngine`），取于 2026-11-04。
 
+## 概述
+
+引擎：`https://netengineerlab.com/tools/fiber-latency-calculator/js/engine.js`（`NELFiberLatencyEngine`），取于 2026-11-04。
 ## 公式
 
 距离先换成公里（\(1\,\mathrm{mi} = 1.609344\,\mathrm{km}\)，\(1\,\mathrm{m} = 0.001\,\mathrm{km}\)）。
@@ -111,3 +117,5 @@ https://netengineerlab.com/tools/fiber-latency-calculator/zh/
 | 日期 | 2026-11-04 |
 | 文档版本 | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

@@ -1,13 +1,19 @@
 # 单段光纤链路损耗
 
+Locale: zh-CN
+
 本文是同目录英文稿的简体中文版，英文原文保持不变：[Single-span fiber link loss](fiber-link-loss.md)。
 
-## 概述
+## 直接回答
+
+本文回答单段光纤链路损耗：光纤衰减，加上熔接、连接器和分光器损耗，再加上设计余量。
 
 光纤损耗计算器把光纤段的衰减，与熔接、连接器、分光级和其他无源器件的离散损耗相加，再加上使用者输入的工程余量，然后把这个设计损耗与可用功率预算比较，并比较估算接收电平与接收门限。
 
-本页记录生产引擎 `https://netengineerlab.com/tools/fiber-loss/js/engine.js`（`NELFiberLossEngine`，取于 2026-11-04）。公开仓库 `ddcodedog/fiber-loss-calculator` 是另一个静态页面，不是这些公式的来源。
 
+## 概述
+
+本页记录生产引擎 `https://netengineerlab.com/tools/fiber-loss/js/engine.js`（`NELFiberLossEngine`，取于 2026-11-04）。公开仓库 `ddcodedog/fiber-loss-calculator` 是另一个静态页面，不是这些公式的来源。
 ## 公式
 
 光纤、熔接和连接器：
@@ -52,6 +58,20 @@ $$
 | \(B_{\mathrm{avail}}\) | `availableBudget` | dB | 有限，\(\ge 0\) |
 | \(P_{\mathrm{tx}}\) | `txPower` | dBm | 有限 |
 | \(P_{\mathrm{th}}\) | `rxThreshold` | dBm | 有限 |
+
+
+## 约束
+
+- \(d\): 有限，\(\ge 0\)
+- \(\alpha\): 有限，\(\ge 0\)
+- \(N_{\mathrm{s}}\)，\(N_{\mathrm{c}}\): 安全整数，\(\ge 0\)
+- \(\ell_{\mathrm{s}}\)，\(\ell_{\mathrm{c}}\): 有限，\(\ge 0\)
+- \(L_{\mathrm{s1}}\)，\(L_{\mathrm{s2}}\): 有限，\(\ge 0\)
+- \(L_{\mathrm{other}}\): 有限，\(\ge 0\)
+- \(M\): 有限，\(\ge 0\)
+- \(B_{\mathrm{avail}}\): 有限，\(\ge 0\)
+- \(P_{\mathrm{tx}}\): 有限
+- \(P_{\mathrm{th}}\): 有限
 
 ## 工程含义
 
@@ -126,3 +146,5 @@ https://netengineerlab.com/tools/fiber-loss/zh/
 | 日期 | 2026-11-04 |
 | 文档版本 | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

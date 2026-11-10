@@ -1,11 +1,15 @@
 # Centroidal area and section modulus
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The Moment of Inertia Calculator returns area, centroid, second moments \(I_x\) and \(I_y\), elastic section moduli, and radii of gyration for five built-up shapes: solid rectangle, hollow rectangle, solid circle, hollow circle, and a doubly symmetric I-section.
 
-Production `switch` on `shape` in the moment-of-inertia page bundle, fetched 2026-11-04 from https://structuralengineerlab.com/tools/moment-of-inertia-calculator/. Dimensions are in one consistent length unit; outputs use that unit to the matching power (the formulas below are written as lengths, so a metre input yields m² and m⁴).
 
+## Overview
+
+Production `switch` on `shape` in the moment-of-inertia page bundle, fetched 2026-11-04 from https://structuralengineerlab.com/tools/moment-of-inertia-calculator/. Dimensions are in one consistent length unit; outputs use that unit to the matching power (the formulas below are written as lengths, so a metre input yields m² and m⁴).
 ## Formula
 
 Rectangle, width \(b\), height \(h\), centroid at the center:
@@ -113,3 +117,5 @@ Inventory tool ID: `TOOL-008`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

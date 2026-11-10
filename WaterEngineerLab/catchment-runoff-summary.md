@@ -1,11 +1,15 @@
 # Catchment breakdown and peak runoff sum
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The catchment runoff summary splits one site into sub-areas, computes a composite runoff coefficient, and adds a rational-method peak for each sub-area under one rainfall intensity. The peaks are added directly. There is no routing delay between catchments, so the sum can sit above the peak a real outfall would see.
 
-Production page chunk for TOOL-017, read 2026-11-07. Each catchment needs a unique id, area > 0, and \(C\) in \([0,1]\). Intensity must be > 0. SI entry is m² and mm/h. US entry is ft² and in/h (https://waterengineerlab.com/tools/catchment-area-breakdown-runoff-summary).
 
+## Overview
+
+Production page chunk for TOOL-017, read 2026-11-07. Each catchment needs a unique id, area > 0, and \(C\) in \([0,1]\). Intensity must be > 0. SI entry is m² and mm/h. US entry is ft² and in/h (https://waterengineerlab.com/tools/catchment-area-breakdown-runoff-summary).
 ## Formula
 
 Composite \(C\) is the area-weighted mean. Area fraction is each area over the total area.
@@ -78,3 +82,5 @@ https://waterengineerlab.com/tools/catchment-area-breakdown-runoff-summary
 | Date | 2026-11-07 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

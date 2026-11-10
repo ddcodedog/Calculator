@@ -1,5 +1,7 @@
 # A new digest does not clear a phone the diff still sees
 
+Locale: en
+
 ## The failure
 
 The metadata diff and the clean-file verifier are the same comparison. They do not hash. The hash page will digest any string you paste, including a string the comparison has already refused. A changed digest is evidence the bytes changed. It is not a `VERIFIED` status.
@@ -69,3 +71,5 @@ https://privacyfilelab.com/metadata-diff
 | Example result | `VERIFICATION_FAILED`; digest `0b2ccca6…c3fc7a` is not a pass |
 | Date | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

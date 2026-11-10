@@ -1,11 +1,15 @@
 # Modular bricks for a wall with one opening
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The brick calculator counts masonry units from a net wall area, a brick size, a mortar joint, a number of skins, and a waste percent, then rounds up. Mortar bags are a separate volume estimate. The example is a US modular brick wall 18 ft long and 6 ft high with one 3 ft by 4 ft opening, not the 20 ft by 4 ft sample filled in on the form.
 
-The production module `brick.BB34k2FS.js` and the unit table in `prefs.B8zLZl5V.js` were read on 2026-11-08. Imperial lengths are multiplied by 0.3048 before the count. The joint, when the field is left blank, uses the brick’s own joint. US modular brick is 7.625 in by 2.25 in by 3.625 in with a 0.375 in joint. Those inches become metres by multiplying by 0.0254. Positive counts use \(\lceil x-10^{-9}\rceil\). Waste multiplies by \(1+\max(0,p)/100\) (https://diycalclab.com/masonry/brick-calculator/).
 
+## Overview
+
+The production module `brick.BB34k2FS.js` and the unit table in `prefs.B8zLZl5V.js` were read on 2026-11-08. Imperial lengths are multiplied by 0.3048 before the count. The joint, when the field is left blank, uses the brick’s own joint. US modular brick is 7.625 in by 2.25 in by 3.625 in with a 0.375 in joint. Those inches become metres by multiplying by 0.0254. Positive counts use \(\lceil x-10^{-9}\rceil\). Waste multiplies by \(1+\max(0,p)/100\) (https://diycalclab.com/masonry/brick-calculator/).
 ## Formula
 
 Bricks per square metre of one skin:
@@ -91,3 +95,5 @@ https://diycalclab.com/masonry/brick-calculator/
 | Date | 2026-11-08 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

@@ -1,13 +1,19 @@
 # Single-span fiber link loss
 
+Locale: en
+
 Simplified Chinese edition: [单段光纤链路损耗](fiber-link-loss.zh-CN.md).
 
-## Overview
+## Direct Answer
+
+This note answers a single-span fiber link loss question: fiber attenuation plus splice, connector, and splitter loss, then the design margin.
 
 The Fiber Loss Calculator sums attenuation of the fiber span with discrete losses from splices, connectors, splitter stages, and other passive components. It then adds a user-entered engineering margin and compares that design loss with an available power budget and with the estimated receive level versus a receive threshold.
 
-This page documents the production engine at `https://netengineerlab.com/tools/fiber-loss/js/engine.js` (`NELFiberLossEngine`, fetched 2026-11-04). The separate public repository `ddcodedog/fiber-loss-calculator` is a different static page and is not the source of these equations.
 
+## Overview
+
+This page documents the production engine at `https://netengineerlab.com/tools/fiber-loss/js/engine.js` (`NELFiberLossEngine`, fetched 2026-11-04). The separate public repository `ddcodedog/fiber-loss-calculator` is a different static page and is not the source of these equations.
 ## Formula
 
 Fiber, splice, and connector contributions:
@@ -53,11 +59,26 @@ Values with absolute value at most \(10^{-9}\,\mathrm{dB}\) are treated as zero.
 | \(P_{\mathrm{tx}}\) | `txPower` | dBm | finite |
 | \(P_{\mathrm{th}}\) | `rxThreshold` | dBm | finite |
 
+
+## Constraints
+
+- \(d\): finite, \(\ge 0\)
+- \(\alpha\): finite, \(\ge 0\)
+- \(N_{\mathrm{s}}\), \(N_{\mathrm{c}}\): safe integers, \(\ge 0\)
+- \(\ell_{\mathrm{s}}\), \(\ell_{\mathrm{c}}\): finite, \(\ge 0\)
+- \(L_{\mathrm{s1}}\), \(L_{\mathrm{s2}}\): finite, \(\ge 0\)
+- \(L_{\mathrm{other}}\): finite, \(\ge 0\)
+- \(M\): finite, \(\ge 0\)
+- \(B_{\mathrm{avail}}\): finite, \(\ge 0\)
+- \(P_{\mathrm{tx}}\): finite
+- \(P_{\mathrm{th}}\): finite
+
 ## Engineering Principles
 
 Attenuation in dB adds along a passive single-span path. The engine does not convert wavelength into \(\alpha\); the user (or a preset in the page) supplies dB/km. Splitter loss is an entered insertion loss, not \(10\log_{10}(N)\) computed inside this engine. The \(3\,\mathrm{dB}\) warning band is a planning rule in this calculator, not a pass/fail limit taken from a cited standard.
 
 ## Worked Example
+
 
 Inputs matching the production page’s “10 km PON feeder” case, plus the budget and power fields the engine requires:
 
@@ -69,6 +90,9 @@ Inputs matching the production page’s “10 km PON feeder” case, plus the bu
 | Splitter 1 / splitter 2 / other | 21.0 / 0 / 0 dB |
 | Engineering margin | 3 dB |
 | Available budget, transmit power, receive threshold | 32 dB, 3 dBm, −27 dBm |
+
+
+## Calculation Steps
 
 Steps:
 
@@ -82,7 +106,6 @@ Steps:
 Result: physical loss **25.30 dB**, design loss **28.30 dB**, status **healthy**. The engine keeps IEEE-754 doubles; these inputs are exact in decimal tenths, so two-decimal dB figures match the engine.
 
 Boundary: same passive losses with available budget \(28\,\mathrm{dB}\) gives \(B_{\mathrm{rem}} = -0.30\,\mathrm{dB}\) and status **failed**. Distance \(0\,\mathrm{km}\) drops only the fiber term (\(L_{\mathrm{physical}} = 22.80\,\mathrm{dB}\)).
-
 ## Limitations
 
 - One attenuation coefficient for the whole length. No splice-map, bidirectional, or dual-wavelength calculation.
@@ -123,3 +146,5 @@ Inventory tool ID: `fiber-loss`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

@@ -1,13 +1,19 @@
 # Chromatic dispersion coefficient D(λ)
 
+Locale: en
+
 Simplified Chinese edition: [色度色散系数 D(λ)](chromatic-dispersion.zh-CN.md).
 
-## Overview
+## Direct Answer
+
+This note answers a chromatic dispersion question: the coefficient D(λ) and the dispersion that length accumulates.
 
 The Chromatic Dispersion Calculator evaluates the G.652-style dispersion coefficient, or a manually entered coefficient, then accumulates it over length, subtracts compensation, and compares the residual with a tolerance. It also reports a length window and a spectral-width pulse-broadening term.
 
-Engine: `https://netengineerlab.com/tools/chromatic-dispersion-calculator/js/engine.js` (`NELChromaticDispersionEngine`), fetched 2026-11-04.
 
+## Overview
+
+Engine: `https://netengineerlab.com/tools/chromatic-dispersion-calculator/js/engine.js` (`NELChromaticDispersionEngine`), fetched 2026-11-04.
 ## Formula
 
 Model mode:
@@ -53,6 +59,18 @@ Display rounding in the engine: \(D\) to 3 decimal places, accumulated and resid
 | \(C\) | `compensation` | ps/nm | finite |
 | \(T\) | `tolerance` | ps/nm | \(> 0\) |
 | \(\Delta\lambda\) | `spectralWidth` | nm | \(\ge 0\) |
+
+
+## Constraints
+
+- \(\lambda\): 1200 to 1700
+- \(\lambda_0\): 1200 to 1700
+- \(S_0\): \(0 < S_0 \le 0.2\)
+- \(D\): absolute value \(\le 50\)
+- \(L\): \(0 < L \le 20000\)
+- \(C\): finite
+- \(T\): \(> 0\)
+- \(\Delta\lambda\): \(\ge 0\)
 
 ## Engineering Principles
 
@@ -110,3 +128,5 @@ Inventory tool ID: `chromatic-dispersion-calculator`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

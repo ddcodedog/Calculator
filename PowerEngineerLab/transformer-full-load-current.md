@@ -1,11 +1,15 @@
 # Transformer full-load current
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The Transformer Full-Load Current Calculator converts a rated apparent power and one winding voltage into ideal full-load current. Single-phase and balanced three-phase are separate modes. Primary and secondary are not solved together.
 
-Production function in the transformer-full-load-current page bundle (`BACKLOG-054`), fetched 2026-11-04 from https://powerengineerlab.com/calculators/transformer-full-load-current/.
 
+## Overview
+
+Production function in the transformer-full-load-current page bundle (`BACKLOG-054`), fetched 2026-11-04 from https://powerengineerlab.com/calculators/transformer-full-load-current/.
 ## Formula
 
 Rated power is entered in kVA and multiplied by 1000 to obtain volt-amperes.
@@ -29,6 +33,15 @@ $$
 | phase | `phase` | `single` or `three` | required |
 | \(I\) | `currentA` | A | derived |
 | \(k\) | `factor` | 1 | 1 or \(\sqrt{3}\) |
+
+
+## Constraints
+
+- \(S\): \(> 0\)
+- \(V\): \(> 0\)
+- phase: required
+- \(I\): derived
+- \(k\): 1 or \(\sqrt{3}\)
 
 ## Engineering Principles
 
@@ -86,3 +99,5 @@ Inventory tool ID: `transformer-full-load-current`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

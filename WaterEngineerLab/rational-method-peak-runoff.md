@@ -1,11 +1,15 @@
 # Rational-method peak runoff
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The Rational Method Peak Runoff Calculator estimates peak discharge as the product of a runoff coefficient, rainfall intensity, and catchment area, after converting the inputs to metres and seconds.
 
-Production module (`FORMULA-TOOL003-RATIONAL-001`, engine version 1.0.0), fetched 2026-11-04 from https://waterengineerlab.com/tools/rational-method-peak-runoff/.
 
+## Overview
+
+Production module (`FORMULA-TOOL003-RATIONAL-001`, engine version 1.0.0), fetched 2026-11-04 from https://waterengineerlab.com/tools/rational-method-peak-runoff/.
 ## Formula
 
 $$
@@ -96,3 +100,5 @@ Inventory tool ID: `TOOL-003`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

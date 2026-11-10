@@ -1,5 +1,7 @@
 # Label the bytes, drop the empty record, then tally the city
 
+Locale: en
+
 ## Pipeline
 
 Three tools, one file, and the middle step changes the tally. Encoding detection does not count cities. Blank-row removal does not guess an encoding. Frequency counts whatever cells remain.
@@ -73,3 +75,5 @@ https://datafilelab.com/csv-frequency
 | Example result | `utf-8` medium; 1 record removed; Lima 2, Oslo 1 |
 | Date | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

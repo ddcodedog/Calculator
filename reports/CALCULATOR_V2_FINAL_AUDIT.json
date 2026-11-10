@@ -1,0 +1,96 @@
+{
+  "verdict": "READY_FOR_HUMAN_REVIEW",
+  "baselineSha": "0952aa2cb4d52e94b7a53777a50087e43b1db2db",
+  "branch": "codex/calculator-v2.0-seo-geo-i18n-ci-20261110",
+  "counts": {
+    "inventoryTools": 375,
+    "publishedFormulaTopics": 88,
+    "uniqueSiteToolPairs": 70,
+    "distinctToolIdStrings": 69,
+    "publishedInventoryTools": 62,
+    "inventoryToolsWithoutExactTopicUrl": 313,
+    "reviewedTopics": 88,
+    "calculationVerified": 86,
+    "calculationReviewRequired": 2,
+    "chineseEditions": 12,
+    "standardsVerified": 1,
+    "standardsPending": 87,
+    "standardsNotApplicable": 0,
+    "localeRouteVerified": 50,
+    "localeRouteNotSupported": 38,
+    "localeRouteMissing": 0,
+    "localeRouteRedirected": 0,
+    "localeRouteInconclusive": 0,
+    "newFormulaTopics": 0,
+    "liveUrlChecks": 88,
+    "liveUrlFailures": 0,
+    "newHttp404Or410": 0
+  },
+  "countSources": [
+    "reports/GATE1_TOOL_INVENTORY.json#totalTools",
+    "indexes/topics.json#englishFormulaCount",
+    "indexes/topics.json#uniqueSiteToolPairs",
+    "indexes/topics.json#distinctToolIdStrings",
+    "indexes/topics.json#publishedInventoryTools",
+    "indexes/topics.json#inventoryToolsWithoutTopic",
+    "indexes/verification-index.json#calculationVerified",
+    "indexes/verification-index.json#calculationReviewRequired",
+    "indexes/verification-index.json#standardsVerified",
+    "indexes/verification-index.json#standardsPending",
+    "indexes/topics.json#chineseFormulaCount",
+    "config/locale-routes.json#routes[].routeStatus"
+  ],
+  "sections": {
+    "A": "SEO navigation and direct answers are in the repo. Description and topics were not changed because the GitHub API returned 403.",
+    "B": "Direct answers, citation doc, llms.txt, and machine-readable indexes are present. No ranking or inclusion claim.",
+    "C": "Twelve Chinese companions checked. Fifty topic rows have a live Chinese production URL. Thirty-eight topic rows have no supported Chinese route. No mass translation.",
+    "D": "check-docs.py and the workflow add pairing, status split, and URL classes without removing the old failure conditions. Local live check: failures 0, warnings 0.",
+    "E": "Calculation VERIFIED 86, REVIEW_REQUIRED 2, standards VERIFIED 1, standards PENDING 87. No new formula topic.",
+    "F": "Branch from 0952aa2cb4d52e94b7a53777a50087e43b1db2db. PR is for human review. No merge and no deploy."
+  },
+  "repositorySettings": {
+    "descriptionUpdated": false,
+    "topicsUpdated": false,
+    "homepageUpdated": false,
+    "apiStatus": 403,
+    "apiMessage": "Resource not accessible by integration",
+    "suggestedDescription": "Engineering formula library for 11 specialized calculator websites. Verified calculations, worked examples, technical references, and multilingual engineering documentation.",
+    "suggestedTopics": [
+      "engineering-formulas",
+      "engineering-calculators",
+      "network-engineering",
+      "electrical-engineering",
+      "hvac",
+      "water-engineering",
+      "structural-engineering",
+      "diy-calculators",
+      "data-analysis",
+      "worked-examples",
+      "technical-documentation"
+    ]
+  },
+  "actionsRunUrl": "https://github.com/ddcodedog/Calculator/actions/runs/42819850601",
+  "actionsRunSha": "3327efa9722720b128548abbbe95cc618404307c",
+  "actionsRunConclusion": "success",
+  "actionsRunLogLine": "failures=0 warnings=0 formulas=88 chinese=12",
+  "actionsRuns": [
+    {
+      "url": "https://github.com/ddcodedog/Calculator/actions/runs/42819636911",
+      "sha": "044f7b4a78cde39ca41f7a5a51e6a303252c3869",
+      "event": "push",
+      "conclusion": "success"
+    },
+    {
+      "url": "https://github.com/ddcodedog/Calculator/actions/runs/42819791233",
+      "sha": "3327efa9722720b128548abbbe95cc618404307c",
+      "event": "push",
+      "conclusion": "success"
+    },
+    {
+      "url": "https://github.com/ddcodedog/Calculator/actions/runs/42819850601",
+      "sha": "3327efa9722720b128548abbbe95cc618404307c",
+      "event": "pull_request",
+      "conclusion": "success"
+    }
+  ]
+}

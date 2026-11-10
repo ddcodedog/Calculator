@@ -1,11 +1,15 @@
 # Fence posts, rails, and pickets
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The fence calculator turns a run length into a count of sections, posts, rails or panels, pickets, and post-hole concrete bags. It is a quantity takeoff. It does not check post embedment against a soil report or a fence code.
 
-The `fence` calculator in the production Astro bundle, read 2026-11-07, uses the shared length factors 0.3048 m/ft and 0.0254 m/in. Counts use `ceil(x - 1e-9)` so a value that is already an integer is not bumped, and anything above an integer rounds up. Waste is `count × (1 + waste%/100)` before that rounding (https://diycalclab.com/fencing/fence-calculator/).
 
+## Overview
+
+The `fence` calculator in the production Astro bundle, read 2026-11-07, uses the shared length factors 0.3048 m/ft and 0.0254 m/in. Counts use `ceil(x - 1e-9)` so a value that is already an integer is not bumped, and anything above an integer rounds up. Waste is `count × (1 + waste%/100)` before that rounding (https://diycalclab.com/fencing/fence-calculator/).
 ## Formula
 
 Gate width is removed first. Infill length is \(\max(0,\ L - n_{\mathrm{gates}} w_{\mathrm{gate}})\).
@@ -86,3 +90,5 @@ https://diycalclab.com/fencing/fence-calculator/
 | Date | 2026-11-07 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

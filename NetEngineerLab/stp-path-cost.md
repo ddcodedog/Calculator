@@ -1,13 +1,19 @@
 # STP port path cost
 
+Locale: en
+
 Simplified Chinese edition: [STP 端口路径开销](stp-path-cost.zh-CN.md).
 
-## Overview
+## Direct Answer
+
+This note answers an STP path cost question: the long rate formula and the short rate table, then which path sum is smaller.
 
 The STP Path Cost Calculator assigns a port path cost to each link speed and sums those costs for two candidate paths. The lower sum is the path this tool reports as preferred. A tie is reported as a warning because the bridge ID, not the cost, would break it.
 
-Engine: `https://netengineerlab.com/tools/stp-path-cost-calculator/js/engine.js` (`NELStpPathCostEngine`), fetched 2026-11-04.
 
+## Overview
+
+Engine: `https://netengineerlab.com/tools/stp-path-cost-calculator/js/engine.js` (`NELStpPathCostEngine`), fetched 2026-11-04.
 ## Formula
 
 Long method (the engine comment identifies IEEE 802.1D-2004 / 802.1Q):
@@ -99,3 +105,5 @@ Inventory tool ID: `stp-path-cost-calculator`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |
