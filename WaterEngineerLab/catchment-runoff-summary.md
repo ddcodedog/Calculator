@@ -4,7 +4,7 @@
 
 The catchment runoff summary splits one site into sub-areas, computes a composite runoff coefficient, and adds a rational-method peak for each sub-area under one rainfall intensity. The peaks are added directly. There is no routing delay between catchments, so the sum can sit above the peak a real outfall would see.
 
-Production page chunk for TOOL-017, read 2026-11-07. Each catchment needs a unique id, area > 0, and \(C\) in \([0,1]\). Intensity must be > 0. SI entry is m² and mm/h. US entry is ft² and in/h.
+Production page chunk for TOOL-017, read 2026-11-07. Each catchment needs a unique id, area > 0, and \(C\) in \([0,1]\). Intensity must be > 0. SI entry is m² and mm/h. US entry is ft² and in/h (https://waterengineerlab.com/tools/catchment-area-breakdown-runoff-summary).
 
 ## Formula
 
@@ -56,7 +56,6 @@ Boundary: a repeated id, a blank id, \(C = 1.1\), or a non-positive area is reje
 ## Reference Standards
 
 The rational-method product \(Q = CiA\) is the expression in the production chunk. The drainage-manual chapter that would justify \(C\) and \(i\) was not re-read. Status: pending.
-
 ## Online Calculator
 
 The two-catchment default is on the runoff summary:

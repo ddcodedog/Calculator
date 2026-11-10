@@ -1,5 +1,7 @@
 # Fiber propagation delay and RTT
 
+Simplified Chinese edition: [光纤传播时延与往返时间](fiber-propagation-latency.zh-CN.md).
+
 ## Overview
 
 The Fiber Latency Calculator estimates one-way delay and round-trip time from route distance, a route factor, group index, per-device equipment delay, and optional serialization delay.

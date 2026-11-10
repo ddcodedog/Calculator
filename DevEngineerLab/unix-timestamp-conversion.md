@@ -4,7 +4,7 @@
 
 The timestamp converter maps a date string to Unix milliseconds and maps a numeric Unix time back to an ISO-8601 UTC string. Local wall time is `Date.toString()`, which follows the browser timezone, so this note records only the UTC fields that stay the same on every machine.
 
-The converter is TOOL-007 in the production page script, read 2026-11-07. Date mode uses `new Date(input)`. Numeric mode uses `Number` on the trimmed text.
+The converter is TOOL-007 in the production page script, read 2026-11-07. Date mode uses `new Date(input)`. Numeric mode uses `Number` on the trimmed text (https://devengineerlab.com/tools/timestamp-converter).
 
 ## Formula
 
@@ -49,7 +49,6 @@ Boundary: `abc` in numeric mode is non-finite and is rejected. An empty date str
 ## Reference Standards
 
 The epoch and the ISO string are the behavior of the production `Date` calls. ECMA-262 was not re-read. Status: pending.
-
 ## Online Calculator
 
 Enter `1700000000` as seconds:

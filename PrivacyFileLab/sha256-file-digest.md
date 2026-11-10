@@ -4,7 +4,7 @@
 
 The hash tool reads a file in the browser, runs SHA-256 over those bytes, and prints the digest as lowercase hex with no separators. The page states that the file stays in the browser and that the hash is not sent to analytics. This note checks the digest function against known byte strings. It does not claim a particular file was clicked in a browser session.
 
-`sha256File` in the production hash chunk, read 2026-11-07, copies the bytes, calls `crypto.subtle.digest("SHA-256")`, and returns `algorithm: SHA-256`, the hex digest, `bytes` equal to `byteLength`, and version `1.0.0`.
+`sha256File` in the production hash chunk, read 2026-11-07, copies the bytes, calls `crypto.subtle.digest("SHA-256")`, and returns `algorithm: SHA-256`, the hex digest, `bytes` equal to `byteLength`, and version `1.0.0` (https://privacyfilelab.com/hash).
 
 ## Formula
 
@@ -49,7 +49,6 @@ Boundary: a different length is a different input. The three bytes `abd` do not 
 ## Reference Standards
 
 FIPS 180-4 defines SHA-256. The PDF was not re-read for this note; the examples are the standard empty-string and `abc` digests, recomputed locally. Status: pending.
-
 ## Online Calculator
 
 Select a file on the hash page to run the same browser digest:

@@ -4,7 +4,7 @@
 
 The blank-row tool deletes logical CSV records that have no content, and it can keep the first record even when that record is blank because that record is the header. A record counts as blank when every cell is `""`. If you turn on whitespace-only mode, a cell that is only spaces, tabs, or line breaks also counts as empty. Cells that contain text stay byte-for-byte. This is not a statistics routine and it does not impute missing values.
 
-Production `blank-rows.js`, read 2026-11-08. The example uses a comma and unquoted fields so the record split is obvious without re-deriving the quoted-field state machine. Limits in the module are 25 MiB input, 250,000 records, 1,000 columns, and 2,000,000 cells.
+Production `blank-rows.js`, read 2026-11-08. The example uses a comma and unquoted fields so the record split is obvious without re-deriving the quoted-field state machine. Limits in the module are 25 MiB input, 250,000 records, 1,000 columns, and 2,000,000 cells (https://datafilelab.com/csv-blank-rows).
 
 ## Formula
 
@@ -75,7 +75,6 @@ Boundary: the same file with `firstRowHeader` false still removes the empty reco
 ## Reference Standards
 
 RFC 4180 is the usual CSV reference. It was not re-read against this splitter. Status: pending.
-
 ## Online Calculator
 
 Paste the four-line sample into the production tool:

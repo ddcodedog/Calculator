@@ -4,7 +4,7 @@
 
 Demand factor in this calculator is the highest demand divided by the connected load, both in kW. It is a different ratio from the load factor already published for this site, which divides average power by peak power inside one energy interval. A maximum that is larger than the connected load is rejected. The tool does not apply a code table of demand factors for dwellings or kitchens.
 
-Production demand-factor chunk, tool id `BACKLOG-028`, read 2026-11-08.
+Production demand-factor chunk, tool id `BACKLOG-028`, read 2026-11-08 (https://powerengineerlab.com/calculators/demand-factor/).
 
 ## Formula
 
@@ -43,7 +43,6 @@ Boundary: 160 kW maximum against the same 150 kW connected load returns `BOUNDAR
 ## Reference Standards
 
 The chunk does not attach a NEC or IEC table. Those demand-factor tables were not used. Status: pending.
-
 ## Online Calculator
 
 Check 42 kW over 150 kW on the production calculator:

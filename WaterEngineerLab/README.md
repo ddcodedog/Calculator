@@ -4,7 +4,7 @@
 
 ## Domain
 
-Water and hydraulic engineering calculators — flow, head loss, pipe, and related civil/water tools.
+Published notes cover rational-method peak runoff, a catchment breakdown of that peak, Darcy-Weisbach major pipe headloss, Manning open-channel discharge, residual head on a single-source tree, and a weighted score for two drainage layouts. Two further notes ask whether a ditch passes the lot peak, and when a one-pipe residual is the Darcy loss. Run the tools on the production site below.
 
 **Production site:** [https://waterengineerlab.com](https://waterengineerlab.com)
 

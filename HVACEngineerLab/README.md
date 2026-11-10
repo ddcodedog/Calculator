@@ -4,7 +4,7 @@
 
 ## Domain
 
-HVAC engineering calculators — heating, cooling, airflow, and psychrometric-related tools.
+Published notes cover cooling and heating load components for one zone, duct friction and local pressure drop, and the psychrometric change between two moist-air states. Two further notes keep a positive latent term from being read as condensate, and pass the coil’s volume flow into the duct tool. Run the tools on the production site below.
 
 **Production site:** [https://hvacengineerlab.com](https://hvacengineerlab.com)
 

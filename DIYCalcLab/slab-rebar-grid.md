@@ -4,7 +4,7 @@
 
 The rebar calculator counts bars in a rectangular grid, splices a bar that is longer than the stock length, and rounds up a purchase quantity with a spare percentage. Weight uses the kilograms-per-metre value stored for that bar size. It does not design spacing or development length.
 
-Production module `rebar.vrhyH9u0.js`, read 2026-11-07. Imperial length is feet times 0.3048. Spacing and cover are inches times 0.0254. The pound-per-foot labels are converted with \(0.45359237/0.3048\).
+Production module `rebar.vrhyH9u0.js`, read 2026-11-07. Imperial length is feet times 0.3048. Spacing and cover are inches times 0.0254. The pound-per-foot labels are converted with \(0.45359237/0.3048\) (https://diycalclab.com/concrete/rebar-calculator/).
 
 ## Formula
 
@@ -59,7 +59,6 @@ Boundary: spacing above 24 in raises the module’s warning that the spacing is 
 ## Reference Standards
 
 No reinforcing-steel standard is cited in the module that was read. Status: pending.
-
 ## Online Calculator
 
 The 20 ft × 20 ft, #4, 18 in grid is the imperial default:

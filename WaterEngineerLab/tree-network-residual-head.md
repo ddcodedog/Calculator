@@ -4,7 +4,7 @@
 
 The distribution-network planner checks one source feeding a tree: every node has one incoming pipe, the graph is connected, and there are no loops. Flow in each pipe is the downstream demand. Headloss on that pipe uses Darcy-Weisbach with the friction factor you type. Residual pressure at each node is source head minus elevation change minus those losses. It does not run EPANET, and it does not decide whether a code minimum is met beyond comparing the number you typed.
 
-Production planner chunk, read 2026-11-07. Segment count must equal node count. The demo topology is SOURCE → A → B.
+Production planner chunk, read 2026-11-07. Segment count must equal node count. The demo topology is SOURCE → A → B (https://waterengineerlab.com/tools/water-distribution-network-preliminary-planner).
 
 ## Formula
 
@@ -62,7 +62,6 @@ Boundary: a second incoming pipe, a disconnected node, or a segment count that i
 ## Reference Standards
 
 Darcy-Weisbach with \(2g = 19.6133\) is the expression in the production chunk, the same constant used by the single-pipe headloss topic. No pipe-design code was re-read. Status: pending.
-
 ## Online Calculator
 
 The SOURCE → A → B demo is the SI starting point:

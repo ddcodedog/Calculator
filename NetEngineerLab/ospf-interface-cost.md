@@ -1,5 +1,7 @@
 # OSPF interface cost
 
+Simplified Chinese edition: [OSPF 接口开销](ospf-interface-cost.zh-CN.md).
+
 ## Overview
 
 The OSPF Cost Calculator turns a reference bandwidth and an interface bandwidth, both in Mbit/s, into an integer OSPF cost. Costs are clamped to the range 1 through 65535. A manual metric override replaces the calculated cost when it is inside that range. Optional paths sum the costs of their interfaces.

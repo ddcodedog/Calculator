@@ -1,5 +1,7 @@
 # Header bytes, then the safe uplink, then the clock
 
+Simplified Chinese edition: [先把报头算进字节，再取安全上行，最后算时间](on-wire-bytes-at-safe-uplink.zh-CN.md).
+
 ## Question
 
 A 500 GB decimal payload (exactly \(500\times 10^{9}\) bytes) has to cross one 10 Gbit/s uplink. The access ports could nameplate 16 Gbit/s. The MSS is not 1500 bytes. Which rate belongs in the transfer-time division, and which byte count belongs in the numerator?

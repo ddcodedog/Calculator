@@ -4,7 +4,7 @@
 
 ## Domain
 
-PC and hardware helper tools — unit conversions, performance estimates, and practical PC engineering utilities.
+Published notes cover IPv4 longest-prefix match, the static-route commands for a chosen prefix, backing-store pixels from the screen API, and a refresh estimate from a list of frame intervals. Two further notes keep the longer prefix when printing the route, and keep pixel counts beside frame time. Run the tools on the production site below.
 
 **Production site:** [https://pcdog.com](https://pcdog.com)
 

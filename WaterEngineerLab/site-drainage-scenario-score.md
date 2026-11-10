@@ -2,7 +2,7 @@
 
 ## Overview
 
-The site-drainage comparator ranks layouts you have already sized. It normalizes the metrics you type and applies weights you type. The production page says no new hydraulic solver is introduced. Peak flow, capacity, pipe length, excavation, diameter, and outfall count are inputs. This note does not solve Manning flow or a rainfall hydrograph.
+The site-drainage comparator ranks layouts you have already sized. It normalizes the metrics you type and applies weights you type. The production page says no new hydraulic solver is introduced. Peak flow, capacity, pipe length, excavation, diameter, and outfall count are inputs. This note does not solve Manning flow or a rainfall hydrograph (https://waterengineerlab.com/tools/site-drainage-layout-scenario-comparator).
 
 Production function in the TOOL-015 page chunk, engine 1.0.0, formula id `FORMULA-TOOL015-SCENARIO-COMPARATOR-001`, read 2026-11-08. The worked pair is not the pair prefilled in the form.
 
@@ -65,7 +65,6 @@ Moving 0.10 from pipe length onto capacity margin, so the weights become 0.50, 0
 ## Reference Standards
 
 Source ids stored in the chunk are `SRC-SCENARIO-COMPARATOR-TOOL015-001` and `SRC-PROJECT-METHOD-TOOL015-001`, version 1.0.0. The underlying method statements were not re-read. Status: pending.
-
 ## Online Calculator
 
 Compare a pair you have already sized on the production page:

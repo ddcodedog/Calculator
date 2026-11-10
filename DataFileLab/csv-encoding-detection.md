@@ -4,7 +4,7 @@
 
 The encoding detector labels a CSV as UTF-8 with BOM, UTF-16 LE, UTF-16 BE, UTF-8 without BOM, or unknown. It does not convert the file and it does not name a legacy code page. Bytes that are not valid UTF-8 and do not look like UTF-16 come back as `unknown` with the offset of the first failing byte.
 
-`detectCsvEncoding` in production `encoding-browser.js`, read 2026-11-07. The file comment says it matches `src/core/csv/encoding.ts`.
+`detectCsvEncoding` in production `encoding-browser.js`, read 2026-11-07. The file comment says it matches `src/core/csv/encoding.ts` (https://datafilelab.com/encoding).
 
 ## Formula
 
@@ -45,7 +45,6 @@ Boundary: a single byte `FF` fails the BOM checks, is too short for the UTF-16 z
 ## Reference Standards
 
 The UTF-8 and BOM byte values are the ones in `encoding-browser.js`. Unicode’s encoding specifications were not re-read. Status: pending.
-
 ## Online Calculator
 
 Upload the same byte prefixes in the encoding detector:

@@ -68,7 +68,7 @@ $$
 - 上行切片：https://netengineerlab.com/tools/switch-uplink-oversubscription-calculator/zh/
 - 传输时间：https://netengineerlab.com/tools/bandwidth-calculator/zh/
 
-## Online Calculator
+## 在线计算器
 
 回答“要多久”的是带宽工具，另外两个工具已经给出字节和速率：
 
@@ -80,7 +80,7 @@ https://netengineerlab.com/tools/bandwidth-calculator/zh/
 - [接入交换机需求与上行余量](switch-uplink-safe-capacity.zh-CN.md)
 - [由链路速率得到的文件传输时间](bandwidth-transfer-time.zh-CN.md)
 
-## Verification
+## 核对
 
 | 项 | 值 |
 |---|---|

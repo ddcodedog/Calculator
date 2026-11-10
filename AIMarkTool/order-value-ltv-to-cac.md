@@ -4,7 +4,7 @@
 
 The CAC/LTV calculator divides marketing-and-sales spend by new customers, multiplies average order value by purchases per year and retention years, and divides those two results. The lifetime value in this tool is order value, not gross profit. A sentence on the page about “lifetime gross profit of 800” is a separate illustration; the five-input form does not ask for margin and does not apply one.
 
-Schema and description on the production page, read 2026-11-07. The calculator POSTs `{inputs, locale}` to `/api/tools/cac-ltv-calculator`. The numbers below are API responses from that date.
+Schema and description on the production page, read 2026-11-07. The calculator POSTs `{inputs, locale}` to `/api/tools/cac-ltv-calculator`. The numbers below are API responses from that date (https://aimarktool.com/tools/cac-ltv-calculator).
 
 ## Formula
 
@@ -54,7 +54,6 @@ Boundary: spend 0, 10 customers, order value 80, 1 purchase per year, 1 year ret
 ## Reference Standards
 
 No marketing-finance standard is referenced by the schema that was read. Status: pending.
-
 ## Online Calculator
 
 The 24000 / 120 / 99 / 12 / 2.5 case is accepted by the form:

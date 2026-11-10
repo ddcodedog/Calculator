@@ -4,7 +4,7 @@
 
 Load factor here is the average demand over one interval divided by the peak demand in that same interval. The calculator does not estimate a monthly billing demand, a diversity factor, or a plant efficiency. If the average would exceed the peak, it rejects the inputs instead of returning a number above 1.
 
-Production chunk for `load-factor`, model 1.0.0, read 2026-11-07. The source note in the chunk points at the EIA glossary entry for load factor and marks the license status review-required.
+Production chunk for `load-factor`, model 1.0.0, read 2026-11-07. The source note in the chunk points at the EIA glossary entry for load factor and marks the license status review-required (https://powerengineerlab.com/calculators/load-factor/).
 
 ## Formula
 
@@ -45,7 +45,6 @@ Boundary: 3000 kWh in 24 h with the same 100 kW peak gives an average of 125 kW.
 ## Reference Standards
 
 EIA glossary, “Load factor,” is the citation stored in the calculator chunk, with `licenseStatus: review-required`. The glossary page was not re-read for this note. Status: pending.
-
 ## Online Calculator
 
 Enter the 1200 kWh, 24 h, 100 kW case here:

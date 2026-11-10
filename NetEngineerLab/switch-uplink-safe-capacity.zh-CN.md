@@ -72,7 +72,7 @@ $$
 引擎内部没有采用 IEEE 或厂商的容量标准。状态：待定。
 
 
-## Online Calculator
+## 在线计算器
 
 在生产页输入 24 端口、两条上行的案例：
 
@@ -85,7 +85,7 @@ https://netengineerlab.com/tools/switch-uplink-oversubscription-calculator/zh/
 - [OSPF 接口开销](ospf-interface-cost.zh-CN.md)
 - [STP 端口路径开销](stp-path-cost.zh-CN.md)
 
-## Verification
+## 核对
 
 | 项 | 值 |
 |---|---|

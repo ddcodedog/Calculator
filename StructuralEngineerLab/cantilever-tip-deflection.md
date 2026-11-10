@@ -4,7 +4,7 @@
 
 The cantilever beam calculator treats the left end as fixed and the right end as free. Downward point loads and full or partial uniform loads are the inputs. This note checks the published tip-load case, which has a closed form. Other load patterns go through the page’s EI integrator. That integrator was not extracted line by line, so the status below stays `REVIEW_REQUIRED` even though the tip-load arithmetic was recomputed.
 
-The support rule and the formula ids `FORMULA-BEAM-EQUILIBRIUM-CANTILEVER-001` and `FORMULA-BEAM-EI-DEFLECTION-001` are in the production page script, read 2026-11-07. The numeric case is the one printed on the public guide at `/guides/cantilever-beam-calculation/`.
+The support rule and the formula ids `FORMULA-BEAM-EQUILIBRIUM-CANTILEVER-001` and `FORMULA-BEAM-EI-DEFLECTION-001` are in the production page script, read 2026-11-07. The numeric case is the one printed on the public guide at `/guides/cantilever-beam-calculation/` (https://structuralengineerlab.com/tools/cantilever-beam-calculator/).
 
 ## Formula
 
@@ -50,7 +50,6 @@ Boundary: omit \(I\) and the deflection field is absent while the 10 kN and 40 k
 ## Reference Standards
 
 The page cites Hibbeler and Roark for those formula ids without edition or year in the script that was read. Those books were not re-opened. Status: pending.
-
 ## Online Calculator
 
 The 4 m, 10 kN tip case is the worked example on the calculator and its guide:

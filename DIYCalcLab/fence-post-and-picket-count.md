@@ -4,7 +4,7 @@
 
 The fence calculator turns a run length into a count of sections, posts, rails or panels, pickets, and post-hole concrete bags. It is a quantity takeoff. It does not check post embedment against a soil report or a fence code.
 
-The `fence` calculator in the production Astro bundle, read 2026-11-07, uses the shared length factors 0.3048 m/ft and 0.0254 m/in. Counts use `ceil(x - 1e-9)` so a value that is already an integer is not bumped, and anything above an integer rounds up. Waste is `count × (1 + waste%/100)` before that rounding.
+The `fence` calculator in the production Astro bundle, read 2026-11-07, uses the shared length factors 0.3048 m/ft and 0.0254 m/in. Counts use `ceil(x - 1e-9)` so a value that is already an integer is not bumped, and anything above an integer rounds up. Waste is `count × (1 + waste%/100)` before that rounding (https://diycalclab.com/fencing/fence-calculator/).
 
 ## Formula
 
@@ -64,7 +64,6 @@ Boundary: spacing that does not divide evenly ceils the section count. Two gates
 ## Reference Standards
 
 No fence standard was cited in the calculator module that was read. Status: pending.
-
 ## Online Calculator
 
 The 100 ft picket default is the imperial starting point:

@@ -1,5 +1,7 @@
 # Single-span fiber link loss
 
+Simplified Chinese edition: [单段光纤链路损耗](fiber-link-loss.zh-CN.md).
+
 ## Overview
 
 The Fiber Loss Calculator sums attenuation of the fiber span with discrete losses from splices, connectors, splitter stages, and other passive components. It then adds a user-entered engineering margin and compares that design loss with an available power budget and with the estimated receive level versus a receive threshold.

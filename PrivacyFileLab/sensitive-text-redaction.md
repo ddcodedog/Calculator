@@ -4,7 +4,7 @@
 
 The text redactor scans a string for a fixed ruleset, replaces the ranges you confirm, and scans again. Verification passes only when that second scan finds none of the types you chose and the scan was not truncated. This is pattern replacement in the browser, not a guarantee that every secret in a document is gone.
 
-Rules and the replacement worker were read from the production chunks on 2026-11-07. Ruleset version on the text scanner is `1.0.0`. The default replacement is `[REDACTED]` and it must be non-empty. The worker throws if the replacement itself contains the matched source slice. Overlapping ranges are merged before replacement. A private-key match is expanded to the full begin/end block by the worker’s block regular expression. The worker timeout is 45 seconds.
+Rules and the replacement worker were read from the production chunks on 2026-11-07. Ruleset version on the text scanner is `1.0.0`. The default replacement is `[REDACTED]` and it must be non-empty. The worker throws if the replacement itself contains the matched source slice. Overlapping ranges are merged before replacement. A private-key match is expanded to the full begin/end block by the worker’s block regular expression. The worker timeout is 45 seconds (https://privacyfilelab.com/text-redactor).
 
 ## Formula
 
@@ -57,7 +57,6 @@ Boundary: replacement text that still contains `ada@example.com` throws. An empt
 ## Reference Standards
 
 The expressions were read from the production ruleset. No privacy regulation was re-read, and none is claimed as the source of the patterns. Status: pending.
-
 ## Online Calculator
 
 Paste the sample sentence into the text redactor:

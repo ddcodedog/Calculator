@@ -4,7 +4,7 @@
 
 ## Domain
 
-Power systems and electrical engineering calculators — load, cable, protection, and energy topics.
+Published notes cover DC Ohm’s law, the sinusoidal power triangle, a resistive voltage divider, ideal capacitive and inductive reactance, induction-motor slip, synchronous speed, ideal transformer turns and voltage ratio, transformer full-load current, kilowatt to mechanical horsepower, appliance energy over a stated duty, same-interval load factor, and demand factor. Two further notes keep a divider tap out of a winding calculation, and read three ratios from one heater schedule. Run the tools on the production site below.
 
 **Production site:** [https://powerengineerlab.com](https://powerengineerlab.com)
 

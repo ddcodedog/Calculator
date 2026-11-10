@@ -4,7 +4,7 @@
 
 ## Domain
 
-Data and file format utilities — conversion, inspection, and data-handling workflows (algorithms, not forced formulas).
+Published notes cover CSV encoding detection, dropping records whose cells are all empty, a leading row-number column, and exact cell-value frequency. Two further notes label the bytes before dropping an empty record and tallying a city, and number the kept rows. Run the tools on the production site below.
 
 **Production site:** [https://datafilelab.com](https://datafilelab.com)
 
