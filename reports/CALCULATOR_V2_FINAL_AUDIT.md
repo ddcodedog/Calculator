@@ -74,6 +74,7 @@ No PR 4 file was imported. PR 4, 5, 6, and 7 were not merged or closed.
 - Branch: `codex/calculator-v2.0-seo-geo-i18n-ci-20261110`
 - Base: `0952aa2cb4d52e94b7a53777a50087e43b1db2db`
 - Local URL check: failures 0, warnings 0, formulas 88, chinese 12, tool URL checks 88, 404/410 0, 5xx 0, inconclusive 0
+- GitHub Actions push run: https://github.com/ddcodedog/Calculator/actions/runs/42819636911 — success, `failures=0 warnings=0 formulas=88 chinese=12`
 - Unit tests: `python3 -m unittest tests.test_doc_checks` — 9 tests, OK
 - Rollback: close the pull request without merging. `main` stays at the baseline SHA.
 
@@ -88,7 +89,7 @@ No PR 4 file was imported. PR 4, 5, 6, and 7 were not merged or closed.
 | 5 | New tool links checked | The Chinese URLs already in the NetEngineerLab companions were fetched. No new topic URL was added. |
 | 6 | New 404/410 | 0 on the URLs this checker requests. |
 | 7 | No test regression | Existing status, count, and link checks still fail the run when broken. |
-| 8 | Actions run | Recorded after the push. |
+| 8 | Actions run | Push run https://github.com/ddcodedog/Calculator/actions/runs/42819636911 on `044f7b4a78cde39ca41f7a5a51e6a303252c3869` succeeded. Log: `failures=0 warnings=0 formulas=88 chinese=12`. |
 | 9 | New formulas have evidence | None were added. |
 | 10 | Standards statuses are truthful | 1 verified, 87 pending. |
 | 11 | Counts recomputable | Yes, from the JSON indexes. |
