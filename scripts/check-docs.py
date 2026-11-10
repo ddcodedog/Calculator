@@ -8,7 +8,7 @@ Tool-page HTTP rules:
 
 - 301 and 302 are acceptable when the final page is the tool page.
 - 404 and 410 fail.
-- 5xx after the retry budget fails.
+- Every HTTP status from 500 through 599 fails after the retry budget.
 - DNS and other network errors are INCONCLUSIVE, never a pass.
 - 403 and 429 are INCONCLUSIVE, never treated as 200.
 - A tool URL whose final path is the site root fails.
@@ -59,10 +59,10 @@ SECRET_PATTERNS = [
     ("aws_access_key", re.compile(r"\bAKIA[0-9A-Z]{16}\b")),
     ("stripe_live", re.compile(r"\bsk_live_[0-9a-zA-Z]{16,}\b")),
 ]
-RETRY_HTTP = {408, 500, 502, 503, 504}
+RETRY_HTTP = {408}
 HARD_HTTP = {404, 410}
 INCONCLUSIVE_HTTP = {403, 429}
-FIVE_XX = {500, 502, 503, 504}
+LOCALE_ROOTS = {"zh", "zh-cn", "en", "es"}
 USER_AGENT = "CalculatorDocCheck/2.0 (+https://github.com/ddcodedog/Calculator)"
 FORMULA_NAME = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*(?:\.zh-CN)?\.md$")
 NUMBER_RE = re.compile(r"(?<![\w.])[-+]?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?")
@@ -114,10 +114,11 @@ def is_locale_translation(path: Path) -> bool:
     return path.name.endswith(".zh-CN.md")
 
 
-def formula_files() -> list[Path]:
+def formula_files(root: Path | None = None) -> list[Path]:
+    base = ROOT if root is None else root
     found = []
     for site in SITES:
-        folder = ROOT / site
+        folder = base / site
         if not folder.is_dir():
             continue
         for path in sorted(folder.glob("*.md")):
@@ -126,14 +127,20 @@ def formula_files() -> list[Path]:
     return found
 
 
-def chinese_formula_files() -> list[Path]:
+def chinese_formula_files(root: Path | None = None) -> list[Path]:
+    base = ROOT if root is None else root
     found = []
     for site in SITES:
-        folder = ROOT / site
+        folder = base / site
         if not folder.is_dir():
             continue
         found.extend(sorted(folder.glob("*.zh-CN.md")))
     return found
+
+
+def is_http_server_error(status: object) -> bool:
+    """True only for HTTP 500 through 599. 499 and 600 are outside that range."""
+    return isinstance(status, int) and 500 <= status <= 599
 
 
 def strip_code_fences(text: str) -> str:
@@ -762,36 +769,209 @@ def check_locale_config(report: Report) -> None:
                 report.fail("locale_routes", f"{document} is VERIFIED but chineseHttpStatus is not 200")
         if row.get("routeStatus") == "VERIFIED":
             final = str(row.get("chineseFinalUrl") or "")
-            if url_is_site_root(final):
-                report.fail("locale_routes", f"{document} Chinese final URL is the site homepage")
+            if url_is_site_root(final) or is_localized_homepage(final):
+                report.fail("locale_routes", f"{document} Chinese final URL is a homepage")
+            if not row.get("englishPageLanguage") or not row.get("chinesePageLanguage"):
+                report.fail("locale_routes", f"{document} VERIFIED row has no expected language")
+        if row.get("routeStatus") == "NOT_SUPPORTED" and row.get("chineseHttpStatus") == 200 and str(row.get("chinesePageLanguage") or "").lower().startswith("zh"):
+            report.fail("locale_routes", f"{document} NOT_SUPPORTED row is recorded as a published Chinese page")
+
+
+def first_h1(path: Path) -> str:
+    titles = h1_titles(path.read_text(encoding="utf-8"))
+    return titles[0] if titles else ""
+
+
+def audit_indexes(report: Report, root: Path) -> None:
+    """Compare both index files with formula files and FORMULA_VERIFICATION.json.
+
+    The two JSON files are not treated as proof of each other. Counts are
+    recomputed from the files under ``root``. Chinese companions are not
+    English topics.
+    """
+    topic_path = root / "indexes" / "topics.json"
+    verify_path = root / "indexes" / "verification-index.json"
+    source_path = root / "reports" / "FORMULA_VERIFICATION.json"
+    for path in (topic_path, verify_path, source_path):
+        if not path.is_file():
+            report.fail("indexes", f"missing {path.relative_to(root).as_posix()}")
+            return
+    topics = json.loads(topic_path.read_text(encoding="utf-8"))
+    verification_index = json.loads(verify_path.read_text(encoding="utf-8"))
+    source = json.loads(source_path.read_text(encoding="utf-8"))
+    records = source.get("topics")
+    if not isinstance(records, list):
+        report.fail("indexes", "FORMULA_VERIFICATION.json has no topics list")
+        return
+    by_doc: dict[str, dict] = {}
+    for record in records:
+        document = record.get("document")
+        if not document or document in by_doc:
+            report.fail("indexes", f"verification source document is empty or duplicated: {document!r}")
+            continue
+        by_doc[document] = record
+
+    english = formula_files(root)
+    chinese = chinese_formula_files(root)
+    english_docs = {path.relative_to(root).as_posix() for path in english}
+    if english_docs & {path.relative_to(root).as_posix() for path in chinese}:
+        report.fail("indexes", "a Chinese companion was counted as an English topic")
+
+    def require_count(payload: dict, key: str, actual: int, label: str) -> None:
+        if payload.get(key) != actual:
+            report.fail("indexes", f"{label} {key} is {payload.get(key)}, recomputed {actual}")
+
+    require_count(topics, "englishFormulaCount", len(english), "topics index")
+    require_count(topics, "chineseFormulaCount", len(chinese), "topics index")
+    pairs = {(record.get("website"), record.get("toolId")) for record in by_doc.values()}
+    require_count(topics, "uniqueSiteToolPairs", len(pairs), "topics index")
+    topic_rows = topics.get("topics")
+    if not isinstance(topic_rows, list):
+        report.fail("indexes", "topics index has no topics list")
+        topic_rows = []
+    topic_docs = [row.get("document") for row in topic_rows]
+    if any(not doc for doc in topic_docs):
+        report.fail("indexes", "topics index has an empty document key")
+    if len(topic_docs) != len(set(topic_docs)):
+        report.fail("indexes", "topics index repeats a document key")
+    if set(topic_docs) != english_docs:
+        report.fail(
+            "indexes",
+            "topics index documents do not match English formula files",
+            missing=sorted(english_docs - set(topic_docs)),
+            extra=sorted(doc for doc in set(topic_docs) - english_docs if doc),
+        )
+    for row in topic_rows:
+        document = row.get("document")
+        if not document:
+            continue
+        path = root / document
+        if not path.is_file():
+            report.fail("indexes", f"topics index document is not a file: {document}")
+            continue
+        if row.get("title") != first_h1(path):
+            report.fail("indexes", f"{document} title does not match its H1", index=row.get("title"), h1=first_h1(path))
+        record = by_doc.get(document)
+        if record is None:
+            report.fail("indexes", f"{document} is missing from FORMULA_VERIFICATION.json")
+            continue
+        for key in ("toolId", "productionUrl", "calculationStatus", "standardsStatus"):
+            if row.get(key) != record.get(key):
+                report.fail("indexes", f"{document} {key} does not match the verification record")
+        companion = path.with_name(path.name.replace(".md", ".zh-CN.md"))
+        expected_companion = companion.relative_to(root).as_posix() if companion.is_file() else None
+        recorded_companion = row.get("chineseDocument")
+        if recorded_companion != expected_companion:
+            report.fail("indexes", f"{document} chineseDocument does not match the companion on disk")
+        if recorded_companion and not (root / recorded_companion).is_file():
+            report.fail("indexes", f"{document} chineseDocument does not exist: {recorded_companion}")
+        _require_evidence(report, document, record, record)
+
+    verify_rows = verification_index.get("topics")
+    if not isinstance(verify_rows, list):
+        report.fail("indexes", "verification index has no topics list")
+        verify_rows = []
+    verify_docs = [row.get("document") for row in verify_rows]
+    if any(not doc for doc in verify_docs):
+        report.fail("indexes", "verification index has an empty document key")
+    if len(verify_docs) != len(set(verify_docs)):
+        report.fail("indexes", "verification index repeats a document key")
+    if set(verify_docs) != english_docs:
+        report.fail("indexes", "verification index documents do not match English formula files")
+    calculation_verified = sum(1 for record in by_doc.values() if record.get("calculationStatus") == "VERIFIED")
+    calculation_review = sum(1 for record in by_doc.values() if record.get("calculationStatus") == "REVIEW_REQUIRED")
+    standards_verified = sum(1 for record in by_doc.values() if record.get("standardsStatus") == "VERIFIED")
+    standards_pending = sum(1 for record in by_doc.values() if record.get("standardsStatus") == "PENDING")
+    standards_na = sum(1 for record in by_doc.values() if record.get("standardsStatus") == "NOT_APPLICABLE")
+    require_count(verification_index, "englishFormulaCount", len(english), "verification index")
+    require_count(verification_index, "calculationVerified", calculation_verified, "verification index")
+    require_count(verification_index, "calculationReviewRequired", calculation_review, "verification index")
+    require_count(verification_index, "standardsVerified", standards_verified, "verification index")
+    require_count(verification_index, "standardsPending", standards_pending, "verification index")
+    require_count(verification_index, "standardsNotApplicable", standards_na, "verification index")
+    for row in verify_rows:
+        document = row.get("document")
+        if not document or not (root / document).is_file():
+            report.fail("indexes", f"verification index document is not a file: {document}")
+            continue
+        record = by_doc.get(document)
+        if record is None:
+            report.fail("indexes", f"{document} is in the verification index without a source record")
+            continue
+        for key in ("website", "toolId", "calculationStatus", "standardsStatus", "sourceEvidence", "exampleResult"):
+            if row.get(key) != record.get(key):
+                report.fail("indexes", f"verification index {document} {key} does not match the source record")
+        _require_evidence(report, document, record, row)
+
+
+def _require_evidence(report: Report, document: str, record: dict, row: dict) -> None:
+    if record.get("calculationStatus") == "VERIFIED" and not (row.get("sourceEvidence") or row.get("exampleResult")):
+        report.fail("indexes", f"{document} is calculation VERIFIED without sourceEvidence or exampleResult")
+    if record.get("standardsStatus") == "VERIFIED" and not (row.get("standardsEvidence") and row.get("standardsCheckedDate")):
+        report.fail("indexes", f"{document} is standards VERIFIED without evidence and a checked date")
 
 
 def check_indexes(report: Report) -> None:
-    topic_path = ROOT / "indexes" / "topics.json"
-    verify_path = ROOT / "indexes" / "verification-index.json"
-    if not topic_path.exists() or not verify_path.exists():
-        report.fail("indexes", "indexes/topics.json and indexes/verification-index.json are required")
-        return
-    topics = json.loads(topic_path.read_text(encoding="utf-8"))
-    verification = json.loads(verify_path.read_text(encoding="utf-8"))
-    disk = {rel(path) for path in formula_files()}
-    indexed = {item.get("document") for item in topics.get("topics", [])}
-    if indexed != disk:
-        report.fail("indexes", "topics index does not match English formula files")
-    if topics.get("englishFormulaCount") != len(formula_files()):
-        report.fail("indexes", "topics index englishFormulaCount is stale")
-    if topics.get("chineseFormulaCount") != len(chinese_formula_files()):
-        report.fail("indexes", "topics index chineseFormulaCount is stale")
-    if verification.get("englishFormulaCount") != len(formula_files()):
-        report.fail("indexes", "verification index count is stale")
-    pending = verification.get("standardsPending")
-    if pending != report.stats.get("standardsPending"):
-        report.fail("indexes", f"verification index standardsPending {pending} does not match records")
+    audit_indexes(report, ROOT)
 
 
 def url_is_site_root(url: str) -> bool:
     path = urlparse(url).path or "/"
     return path in {"", "/"}
+
+
+def is_localized_homepage(url: str) -> bool:
+    """Site root or a language-only homepage such as /zh/ or /zh-CN/."""
+    parts = [part for part in (urlparse(url).path or "/").split("/") if part]
+    if not parts:
+        return True
+    return len(parts) == 1 and parts[0].casefold() in LOCALE_ROOTS
+
+
+def tool_identity(url: str) -> str:
+    parts = [
+        part
+        for part in (urlparse(url).path or "").split("/")
+        if part and part.casefold() not in LOCALE_ROOTS
+    ]
+    return "/".join(parts).casefold()
+
+
+def same_tool(left: str, right: str) -> bool:
+    identity = tool_identity(left)
+    return bool(identity) and identity == tool_identity(right)
+
+
+def language_matches(expected: str | None, actual: str | None) -> bool:
+    if not expected or not actual:
+        return False
+    left = expected.strip().lower().replace("_", "-")
+    right = actual.strip().lower().replace("_", "-")
+    if left == right:
+        return True
+    left_primary = left.split("-", 1)[0]
+    right_primary = right.split("-", 1)[0]
+    if left_primary != right_primary:
+        return False
+    if "-" in left and "-" in right:
+        return left == right
+    return True
+
+
+def primary_content_language(header: str | None) -> str | None:
+    if not header:
+        return None
+    token = header.split(",", 1)[0].strip().split(";", 1)[0].strip()
+    return token or None
+
+
+def canonical_href(html: str) -> str | None:
+    for tag in re.findall(r"<link\b[^>]*>", html or "", re.I):
+        if re.search(r"rel=[\"']canonical[\"']", tag, re.I):
+            match = re.search(r"href=[\"']([^\"']+)", tag, re.I)
+            if match:
+                return match.group(1)
+    return None
 
 
 def looks_like_error_page(url: str, html: str) -> bool:
@@ -815,12 +995,33 @@ class RedirectRecorder(urllib.request.HTTPRedirectHandler):
         return super().redirect_request(req, fp, code, msg, headers, newurl)
 
 
-def fetch_url(url: str, timeout: float, retries: int, kind: str) -> dict:
+def _page_fields(html: str, headers) -> dict:
+    lang = re.search(r"<html[^>]*\blang=[\"']([^\"']+)", html or "", re.I)
+    content_language = None
+    if headers is not None:
+        content_language = headers.get("Content-Language")
+    return {
+        "pageLanguage": lang.group(1) if lang else None,
+        "contentLanguage": content_language,
+        "canonical": canonical_href(html),
+    }
+
+
+def fetch_url(url: str, timeout: float, retries: int, kind: str, sleeper=time.sleep) -> dict:
+    """Request ``url`` up to ``retries`` times.
+
+    HTTP 500–599 is retried and then classified ``HTTP_SERVER_ERROR``.
+    403 and 429 are inconclusive on the first response. DNS, TLS, timeout,
+    and other transport errors use the same retry budget and stay inconclusive.
+    """
     last_error = ""
     for attempt in range(1, retries + 1):
         recorder = RedirectRecorder()
         opener = urllib.request.build_opener(recorder)
-        request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8"})
+        request = urllib.request.Request(
+            url,
+            headers={"User-Agent": USER_AGENT, "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8"},
+        )
         try:
             with opener.open(request, timeout=timeout) as response:
                 html = response.read(65536).decode("utf-8", "replace")
@@ -833,19 +1034,18 @@ def fetch_url(url: str, timeout: float, retries: int, kind: str) -> dict:
                     "finalUrl": final,
                     "redirects": recorder.chain,
                     "attempts": attempt,
+                    **_page_fields(html, response.headers),
                 }
-                lang = re.search(r"<html[^>]*\blang=[\"']([^\"']+)", html, re.I)
-                item["pageLanguage"] = lang.group(1) if lang else None
-                if status in HARD_HTTP:
-                    item["class"] = "hard_404"
-                    return item
-                if status in FIVE_XX:
+                if is_http_server_error(status):
                     last_error = f"HTTP {status}"
                     if attempt < retries:
-                        time.sleep(2 ** (attempt - 1))
+                        sleeper(2 ** (attempt - 1))
                         continue
-                    item["class"] = "hard_5xx"
+                    item["class"] = "HTTP_SERVER_ERROR"
                     item["error"] = last_error
+                    return item
+                if status in HARD_HTTP:
+                    item["class"] = "hard_404"
                     return item
                 if status in INCONCLUSIVE_HTTP:
                     item["class"] = "inconclusive"
@@ -859,7 +1059,7 @@ def fetch_url(url: str, timeout: float, retries: int, kind: str) -> dict:
                     item["class"] = "error_page"
                     item["error"] = "final page is an error page"
                     return item
-                if "/zh/" in urlparse(url).path and item["pageLanguage"] and not item["pageLanguage"].lower().startswith("zh"):
+                if "/zh/" in urlparse(url).path and item["pageLanguage"] and not str(item["pageLanguage"]).lower().startswith("zh"):
                     item["class"] = "wrong_language"
                     item["error"] = f"page language is {item['pageLanguage']}"
                     return item
@@ -880,33 +1080,120 @@ def fetch_url(url: str, timeout: float, retries: int, kind: str) -> dict:
                 "redirects": recorder.chain,
                 "attempts": attempt,
                 "error": f"HTTP {status}",
+                **_page_fields(body, exc.headers),
             }
-            if status in HARD_HTTP or looks_like_error_page(exc.geturl(), body):
-                item["class"] = "hard_404"
-                return item
-            if status in FIVE_XX:
+            if is_http_server_error(status):
                 last_error = f"HTTP {status}"
                 if attempt < retries:
-                    time.sleep(2 ** (attempt - 1))
+                    sleeper(2 ** (attempt - 1))
                     continue
-                item["class"] = "hard_5xx"
+                item["class"] = "HTTP_SERVER_ERROR"
                 return item
-            if status in INCONCLUSIVE_HTTP or status in RETRY_HTTP:
-                item["class"] = "inconclusive"
+            if status in HARD_HTTP or looks_like_error_page(exc.geturl(), body):
+                item["class"] = "hard_404"
                 return item
             item["class"] = "inconclusive"
             return item
         except Exception as exc:  # noqa: BLE001 — classified for the report, not hidden
             last_error = f"{type(exc).__name__}: {exc}"
             if attempt < retries:
-                time.sleep(2 ** (attempt - 1))
+                sleeper(2 ** (attempt - 1))
                 continue
     return {
         "url": url,
         "kind": kind,
         "class": "inconclusive",
         "attempts": retries,
+        "status": None,
+        "finalUrl": None,
+        "pageLanguage": None,
         "error": last_error or "network error",
+    }
+
+
+def assess_locale_page(requested: str, expected_language: str | None, item: dict) -> str:
+    """Decide whether one fetched URL still supports a VERIFIED locale row.
+
+    HTTP 200 by itself is not enough. Expected language comes from the caller,
+    which reads it from that row rather than from a global language.
+    """
+    if item.get("class") == "HTTP_SERVER_ERROR" or is_http_server_error(item.get("status")):
+        return "HTTP_SERVER_ERROR"
+    if item.get("class") == "inconclusive" or item.get("status") in INCONCLUSIVE_HTTP:
+        return "inconclusive"
+    if item.get("class") == "hard_404" or item.get("status") in HARD_HTTP:
+        return "hard_404"
+    final = item.get("finalUrl") or ""
+    if not final or is_localized_homepage(final) or url_is_site_root(final):
+        return "LOCALIZED_HOMEPAGE_FALLBACK"
+    if not same_tool(requested, final):
+        return "WRONG_TOOL"
+    if not language_matches(expected_language, item.get("pageLanguage")):
+        return "WRONG_LANGUAGE"
+    header_language = primary_content_language(item.get("contentLanguage"))
+    if header_language and not language_matches(expected_language, header_language):
+        return "WRONG_LANGUAGE"
+    canonical = item.get("canonical")
+    if canonical:
+        resolved = urljoin(final, canonical)
+        if is_localized_homepage(resolved) or url_is_site_root(resolved) or not same_tool(requested, resolved):
+            return "WRONG_CANONICAL"
+    if item.get("status") != 200:
+        return "inconclusive"
+    return "ok"
+
+
+def locale_route_rows(root: Path | None = None) -> list[dict]:
+    base = ROOT if root is None else root
+    path = base / "config" / "locale-routes.json"
+    if not path.is_file():
+        return []
+    data = json.loads(path.read_text(encoding="utf-8"))
+    rows = data.get("routes")
+    return rows if isinstance(rows, list) else []
+
+
+def plan_locale_checks(rows: list[dict]) -> dict:
+    """Map every VERIFIED row to its English and Chinese URLs.
+
+    Requests are deduplicated by URL. Shared tool URLs stay attached to every
+    document and tool id. NOT_SUPPORTED rows are counted separately and are
+    not treated as published Chinese pages.
+    """
+    verified_rows = [row for row in rows if row.get("routeStatus") == "VERIFIED"]
+    not_supported_rows = [row for row in rows if row.get("routeStatus") == "NOT_SUPPORTED"]
+    targets: list[dict] = []
+    for row in verified_rows:
+        targets.append(
+            {
+                "document": row.get("englishDocument"),
+                "toolId": row.get("toolId"),
+                "side": "en",
+                "url": row.get("productionEnglishUrl"),
+                "expectedLanguage": row.get("englishPageLanguage"),
+            }
+        )
+        targets.append(
+            {
+                "document": row.get("englishDocument"),
+                "toolId": row.get("toolId"),
+                "side": "zh",
+                "url": row.get("productionChineseUrl"),
+                "expectedLanguage": row.get("chinesePageLanguage"),
+            }
+        )
+    unique_urls: list[str] = []
+    seen: set[str] = set()
+    for target in targets:
+        url = target.get("url")
+        if url and url not in seen:
+            seen.add(url)
+            unique_urls.append(url)
+    return {
+        "verifiedRows": verified_rows,
+        "notSupportedRows": not_supported_rows,
+        "targets": targets,
+        "uniqueUrls": unique_urls,
     }
 
 
@@ -961,7 +1248,7 @@ def classify_results(report: Report, results: list[dict]) -> None:
         kind = item["class"]
         if kind == "hard_404":
             report.fail("tool_urls", f"hard {item.get('status')} for {item['url']}", **item)
-        elif kind == "hard_5xx":
+        elif kind == "HTTP_SERVER_ERROR":
             report.fail("tool_urls", f"persistent {item.get('status')} for {item['url']}", **item)
         elif kind == "homepage":
             report.fail("tool_urls", f"tool URL landed on the homepage: {item['url']}", **item)
@@ -969,15 +1256,96 @@ def classify_results(report: Report, results: list[dict]) -> None:
             report.fail("tool_urls", f"tool URL landed on an error page: {item['url']}", **item)
         elif kind == "wrong_language":
             report.fail("tool_urls", f"wrong language for {item['url']}: {item.get('error')}", **item)
+        elif kind in {"LOCALIZED_HOMEPAGE_FALLBACK", "WRONG_TOOL", "WRONG_CANONICAL", "WRONG_LANGUAGE"}:
+            report.fail("locale_routes", f"{kind} for {item['url']}", **item)
         elif kind == "inconclusive":
             report.warn("tool_urls", f"INCONCLUSIVE for {item['url']}: {item.get('error')}", **item)
         elif kind != "ok":
             report.warn("tool_urls", f"unclassified result for {item['url']}", **item)
 
 
+def probe_status(url: str, retries: int = 3, timeout: float = 5.0, sleeper=time.sleep) -> tuple[dict, Report, int]:
+    """Fetch one URL and apply the same failure rules as the CLI."""
+    item = fetch_url(url, timeout, retries, "tool", sleeper=sleeper)
+    report = Report()
+    classify_results(report, [item])
+    return item, report, (1 if report.failures else 0)
+
+
+def probe_locale(url: str, expected_language: str, retries: int = 3, timeout: float = 5.0, sleeper=time.sleep) -> tuple[dict, str, Report, int]:
+    """Fetch one URL and apply the VERIFIED-route language, canonical, and tool checks."""
+    item = fetch_url(url, timeout, retries, "tool", sleeper=sleeper)
+    locale_class = assess_locale_page(url, expected_language, item)
+    judged = dict(item)
+    judged["class"] = locale_class
+    report = Report()
+    if locale_class == "inconclusive":
+        report.warn("locale_routes", f"INCONCLUSIVE for {url}: {item.get('error')}", **judged)
+    elif locale_class != "ok":
+        report.fail("locale_routes", f"{locale_class} for {url}", **judged)
+    return item, locale_class, report, (1 if report.failures else 0)
+
+
+def apply_locale_results(report: Report, fetched: dict[str, dict], plan: dict) -> list[dict]:
+    """Judge every VERIFIED row from URL results. Shared URLs are fetched once."""
+    judged: list[dict] = []
+    for target in plan["targets"]:
+        url = target.get("url")
+        item = fetched.get(url) if url else None
+        if item is None:
+            report.fail("locale_routes", f"{target.get('document')} has no fetch for {url}")
+            judged.append({**target, "localeClass": "missing_fetch"})
+            continue
+        if not target.get("expectedLanguage"):
+            report.fail("locale_routes", f"{target.get('document')} VERIFIED row has no expected language")
+            locale_class = "missing_language"
+        else:
+            locale_class = assess_locale_page(url, target.get("expectedLanguage"), item)
+        row_result = {
+            **target,
+            "localeClass": locale_class,
+            "status": item.get("status"),
+            "finalUrl": item.get("finalUrl"),
+            "pageLanguage": item.get("pageLanguage"),
+            "contentLanguage": item.get("contentLanguage"),
+            "canonical": item.get("canonical"),
+            "toolIdentity": tool_identity(item.get("finalUrl") or ""),
+            "attempts": item.get("attempts"),
+        }
+        judged.append(row_result)
+        if locale_class == "inconclusive":
+            report.warn(
+                "locale_routes",
+                f"INCONCLUSIVE {target.get('side')} {url} for {target.get('document')}: {item.get('error')}",
+                **row_result,
+            )
+        elif locale_class != "ok":
+            report.fail(
+                "locale_routes",
+                f"{locale_class} {target.get('side')} {url} for {target.get('document')}",
+                **row_result,
+            )
+    report.stats["localeVerifiedRows"] = len(plan["verifiedRows"])
+    report.stats["localeVerifiedUniqueUrls"] = len(plan["uniqueUrls"])
+    report.stats["localeNotSupportedRows"] = len(plan["notSupportedRows"])
+    report.stats["localeTargets"] = len(plan["targets"])
+    report.stats["localeLivePass"] = sum(1 for row in judged if row.get("localeClass") == "ok")
+    report.stats["localeLiveInconclusive"] = sum(1 for row in judged if row.get("localeClass") == "inconclusive")
+    return judged
+
+
 def check_urls(report: Report, timeout: float, retries: int, include_standards: bool) -> list[dict]:
     homes = domain_urls()
     urls = [(url, "domain" if url in homes else "tool") for url in tool_urls()]
+    plan = plan_locale_checks(locale_route_rows())
+    for row in plan["notSupportedRows"]:
+        if row.get("routeStatus") == "VERIFIED":
+            report.fail("locale_routes", f"{row.get('englishDocument')} NOT_SUPPORTED row is marked VERIFIED")
+    known = {url for url, _kind in urls}
+    for url in plan["uniqueUrls"]:
+        if url not in known:
+            known.add(url)
+            urls.append((url, "locale"))
     if include_standards:
         urls.extend((url, "standard") for url in standards_urls())
     results: list[dict] = []
@@ -986,12 +1354,15 @@ def check_urls(report: Report, timeout: float, retries: int, include_standards: 
         for future in as_completed(futures):
             results.append(future.result())
     results.sort(key=lambda item: (item.get("kind", ""), item["url"]))
+    by_url = {item["url"]: item for item in results}
     # Standards fetches are evidence. They do not fail the documentation gate.
     tool_results = [item for item in results if item.get("kind") != "standard"]
-    classify_results(report, tool_results)
+    classify_results(report, [item for item in tool_results if item.get("kind") != "locale"])
     for item in results:
         if item.get("kind") == "standard" and item["class"] != "ok":
             report.warn("standards_urls", f"INCONCLUSIVE standard URL {item['url']}: {item.get('error') or item['class']}", **item)
+    locale_judged = apply_locale_results(report, by_url, plan)
+    report.stats["localeJudged"] = locale_judged
     return results
 
 
@@ -1005,7 +1376,11 @@ def summary_counts(report: Report, files: list[Path], url_results: list[dict]) -
     )
     language_errors = sum(1 for item in report.failures if item["check"] in {"language_pair", "language_marker"})
     hard_404 = sum(1 for item in url_results if item.get("class") == "hard_404" and item.get("kind") != "standard")
-    hard_5xx = sum(1 for item in url_results if item.get("class") == "hard_5xx" and item.get("kind") != "standard")
+    hard_5xx = sum(
+        1
+        for item in url_results
+        if item.get("kind") != "standard" and item.get("class") == "HTTP_SERVER_ERROR"
+    )
     inconclusive = sum(
         1
         for item in url_results
@@ -1026,6 +1401,12 @@ def summary_counts(report: Report, files: list[Path], url_results: list[dict]) -
         "standardsCitationsPending": report.stats.get("standardsPending", 0),
         "totalFailures": len(report.failures),
         "okUrlChecks": classes.get("ok", 0),
+        "localeVerifiedRows": report.stats.get("localeVerifiedRows", 0),
+        "localeVerifiedUniqueUrls": report.stats.get("localeVerifiedUniqueUrls", 0),
+        "localeNotSupportedRows": report.stats.get("localeNotSupportedRows", 0),
+        "localeTargets": report.stats.get("localeTargets", 0),
+        "localeLivePass": report.stats.get("localeLivePass", 0),
+        "localeLiveInconclusive": report.stats.get("localeLiveInconclusive", 0),
     }
 
 
@@ -1056,6 +1437,12 @@ def main() -> int:
     check_language_pairs(report)
     check_locale_config(report)
     check_indexes(report)
+    if args.skip_urls:
+        plan = plan_locale_checks(locale_route_rows())
+        report.stats["localeVerifiedRows"] = len(plan["verifiedRows"])
+        report.stats["localeVerifiedUniqueUrls"] = len(plan["uniqueUrls"])
+        report.stats["localeNotSupportedRows"] = len(plan["notSupportedRows"])
+        report.stats["localeTargets"] = len(plan["targets"])
     url_results = [] if args.skip_urls else check_urls(report, args.timeout, args.retries, args.external_standards)
     counts = summary_counts(report, files, url_results)
 
@@ -1068,6 +1455,7 @@ def main() -> int:
         "formulaCount": len(formula_files()),
         "chineseFormulaCount": len(chinese_formula_files()),
         "urlChecks": url_results,
+        "localeChecks": report.stats.get("localeJudged", []),
         "urlsSkipped": args.skip_urls,
         "externalStandardsChecked": args.external_standards,
     }
@@ -1078,7 +1466,12 @@ def main() -> int:
     print(text)
     print(
         f"\nfailures={payload['failureCount']} warnings={payload['warningCount']} "
-        f"formulas={payload['formulaCount']} chinese={payload['chineseFormulaCount']}",
+        f"formulas={payload['formulaCount']} chinese={payload['chineseFormulaCount']} "
+        f"localeRows={counts.get('localeVerifiedRows', 0)} "
+        f"localeUniqueUrls={counts.get('localeVerifiedUniqueUrls', 0)} "
+        f"localeNotSupported={counts.get('localeNotSupportedRows', 0)} "
+        f"localeLivePass={counts.get('localeLivePass', 0)} "
+        f"localeLiveInconclusive={counts.get('localeLiveInconclusive', 0)}",
         file=sys.stderr,
     )
     return 1 if report.failures else 0
