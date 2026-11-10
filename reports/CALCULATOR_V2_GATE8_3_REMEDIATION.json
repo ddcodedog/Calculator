@@ -1,0 +1,41 @@
+{
+  "gate": "GATE8.3",
+  "mergeApproval": false,
+  "pr": "https://github.com/ddcodedog/Calculator/pull/14",
+  "previousHead": "adfadc69d6641a011a759803daea37e56c0e4f65",
+  "fixCommit": "6943d09a11543f542cb221ea088db24d856d8e27",
+  "main": "0952aa2cb4d52e94b7a53777a50087e43b1db2db",
+  "mainUnchanged": true,
+  "historyRewrite": false,
+  "filesChangedInFix": ["scripts/check-docs.py", "tests/test_doc_checks.py"],
+  "findings": {
+    "G82-001": "closed",
+    "G82-002": "closed",
+    "G82-003": "closed",
+    "G82-004": "closed",
+    "G82-005": "closed"
+  },
+  "tests": {"previous": 18, "added": 6, "total": 24, "passed": 24, "failed": 0, "skipped": 0},
+  "localFullCheck": {
+    "exit": 0,
+    "failures": 0,
+    "warnings": 0,
+    "urlChecks": 117,
+    "localeLivePass": 100,
+    "localeLiveInconclusive": 0,
+    "inconclusive": 0
+  },
+  "actions": {
+    "sha": "6943d09a11543f542cb221ea088db24d856d8e27",
+    "push": "https://github.com/ddcodedog/Calculator/actions/runs/42836400797",
+    "pullRequest": "https://github.com/ddcodedog/Calculator/actions/runs/42836408946",
+    "deployJob": false
+  },
+  "leftovers": {
+    "standardsPending": 87,
+    "calculationReviewRequired": 2,
+    "localeNotSupported": 38,
+    "repositoryTopics": "empty",
+    "repositoryDescription": "already set; not changed"
+  }
+}
