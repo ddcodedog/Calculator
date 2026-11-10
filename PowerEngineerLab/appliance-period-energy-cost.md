@@ -4,7 +4,7 @@
 
 This calculator estimates kilowatt-hours for one appliance rating, a quantity, a daily schedule, a day count, and a duty factor, then multiplies by a tariff if you type one. Currency is a label. The result is not a utility bill, because it has no taxes, demand charges, or time-of-use blocks.
 
-Production appliance calculator, `TOOL-011`, read 2026-11-08. The chunk states the method as watts times quantity times hours per day times days times duty, divided by 1000.
+Production appliance calculator, `TOOL-011`, read 2026-11-08. The chunk states the method as watts times quantity times hours per day times days times duty, divided by 1000 (https://powerengineerlab.com/calculators/appliance-electricity-cost/).
 
 ## Formula
 
@@ -47,7 +47,6 @@ Boundary: the same schedule with the tariff field left blank returns 30.888 kWh 
 ## Reference Standards
 
 No utility tariff schedule is bundled. Status: pending.
-
 ## Online Calculator
 
 Enter the three-fan, 22-day case on the production page:

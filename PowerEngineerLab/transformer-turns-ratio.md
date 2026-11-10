@@ -4,7 +4,7 @@
 
 The transformer ratio calculator solves either the secondary voltage from a turns ratio, or the turns ratio from two voltages. It uses ideal magnitude only: primary and secondary phase voltages are in the same ratio as the turns. Winding resistance, leakage, taps, and regulation are outside the model.
 
-Production chunk for `transformer-ratio`, tool model 1.1.0, read 2026-11-07. The page method line is \(N_1/N_2 = V_{\varphi 1}/V_{\varphi 2}\). A wye winding uses \(V_{\varphi} = V_{LL}/\sqrt{3}\). A delta winding, and any single-phase winding, uses the entered voltage as the phase voltage.
+Production chunk for `transformer-ratio`, tool model 1.1.0, read 2026-11-07. The page method line is \(N_1/N_2 = V_{\varphi 1}/V_{\varphi 2}\). A wye winding uses \(V_{\varphi} = V_{LL}/\sqrt{3}\). A delta winding, and any single-phase winding, uses the entered voltage as the phase voltage (https://powerengineerlab.com/calculators/transformer-ratio/).
 
 ## Formula
 
@@ -55,7 +55,6 @@ Boundary: a turns value of 0 is rejected. Average demand is not computed here; t
 ## Reference Standards
 
 The chunk cites OpenStax University Physics Volume 2, section 13.1, accessed 2026-10-14, as the ideal-transformer statement. That page was not re-read for this note. Status: pending.
-
 ## Online Calculator
 
 The 230 V, 100:10 case is the voltage-solve default:

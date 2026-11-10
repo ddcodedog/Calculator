@@ -4,7 +4,7 @@
 
 The longest-prefix tool picks one route for an IPv4 address. A route matches when the address, masked to that prefix, equals the route’s network. Among matches, the longest prefix wins. Equal prefixes break toward the lower metric, and equal metrics break toward the earlier line. No matching route is a warning and an empty selection, not a thrown error.
 
-Implementation `test.network.longest-prefix-match` version 1.12.0 in the production bundle, read 2026-11-07. The default target and the three default routes are the worked example.
+Implementation `test.network.longest-prefix-match` version 1.12.0 in the production bundle, read 2026-11-07. The default target and the three default routes are the worked example (https://pcdog.com/tools/longest-prefix-match).
 
 ## Formula
 
@@ -51,7 +51,6 @@ Equal-prefix boundary: add `192.168.1.0/24` via `gateway-backup` metric 10 and a
 ## Reference Standards
 
 The mask and the longest-prefix ordering are the ones in the production bundle. RFC 4632 was not re-read. Status: pending.
-
 ## Online Calculator
 
 The three-route default is filled on the longest-prefix tool:

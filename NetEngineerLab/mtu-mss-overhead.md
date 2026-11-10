@@ -1,10 +1,12 @@
 # MTU, MSS, and encapsulation overhead
 
+Simplified Chinese edition: [MTU、MSS 与封装开销](mtu-mss-overhead.zh-CN.md).
+
 ## Overview
 
 The MTU calculator subtracts each encapsulation layer from an underlay MTU, then reports the remaining inner packet, the TCP MSS that fits inside it, and the Ethernet wire length of that packet. It is a header budget, not a path-MTU probe.
 
-Engine: `js/engine.js` and `js/mtu-library.js` on the production tool, read 2026-11-07. The underlay must be a finite number of at least 576 bytes. A smaller underlay is `underlay_mtu_out_of_range`.
+Engine: `js/engine.js` and `js/mtu-library.js` on the production tool, read 2026-11-07. The underlay must be a finite number of at least 576 bytes. A smaller underlay is `underlay_mtu_out_of_range` (https://netengineerlab.com/tools/mtu-calculator/).
 
 ## Formula
 
@@ -65,7 +67,6 @@ Boundary: desired inner size 1493 on this path is `desired_exceeds_effective`. A
 ## Reference Standards
 
 The page names Ethernet, IP, and TCP header sizes as fixed constants in the engine. The standards documents themselves were not re-read. Status: pending.
-
 ## Online Calculator
 
 Run the same PPPoE case in the MTU calculator:

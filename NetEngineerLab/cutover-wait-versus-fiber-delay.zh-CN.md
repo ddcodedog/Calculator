@@ -61,7 +61,7 @@ $$
 
 站点上的光纤链路预算指南讲的是分贝和距离，带宽指南讲的是文件传输。二者都没有把 TTL 的分钟和传播的微秒放在一起比较。本篇不复用 100 km 时延例题，也不复用 100 GB 传输例题。
 
-## Online Calculator
+## 在线计算器
 
 先填上面的 TTL。中文页已在上一节核对：
 
@@ -72,7 +72,7 @@ https://netengineerlab.com/tools/dns-ttl-propagation-calculator/zh/
 - [记录变更前的 DNS TTL 窗口](dns-ttl-cache-window.zh-CN.md)
 - [光纤传播时延与往返时间](fiber-propagation-latency.zh-CN.md)
 
-## Verification
+## 核对
 
 | 项 | 值 |
 |---|---|

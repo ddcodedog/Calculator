@@ -1,5 +1,7 @@
 # Optical link power budget
 
+Simplified Chinese edition: [光链路功率预算](optical-power-budget.zh-CN.md).
+
 ## Overview
 
 The Optical Power Budget Calculator builds a link budget from minimum transmit power and receiver sensitivity, subtracts a path penalty, then subtracts fiber, splice, connector, three splitter entries, other passive loss, and an engineering margin. It also checks the maximum transmit power against receiver overload after the same physical loss.

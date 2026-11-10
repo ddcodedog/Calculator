@@ -86,7 +86,7 @@ $$
 速度 \(299792.458\,\mathrm{km/s}\) 是源码中使用的定义真空光速（`C_KM_S`）。
 
 
-## Online Calculator
+## 在线计算器
 
 中文工具页。2026-11-10 已在站点地图中核对，页面标题为中文。计算引擎仍取自英文路径下的脚本。
 
@@ -100,7 +100,7 @@ https://netengineerlab.com/tools/fiber-latency-calculator/zh/
 - [色度色散系数 D(λ)](chromatic-dispersion.zh-CN.md)
 - [STP 端口路径开销](stp-path-cost.zh-CN.md)
 
-## Verification
+## 核对
 
 | 项 | 值 |
 |---|---|

@@ -2,7 +2,7 @@
 
 ## Overview
 
-A simply supported beam with one point load that is not at midspan has unequal end reactions. The shear changes at the load, and the moment peaks at the load rather than at midspan. This note uses the production beam solver shared by the simply-supported calculator, engine `beam-core-0.2.0-gate2`, read on 2026-11-08. The 6 m beam with a 12 kN midspan load and the 33.75 mm midspan deflection printed on the public guide are a different case and are not repeated here.
+A simply supported beam with one point load that is not at midspan has unequal end reactions. The shear changes at the load, and the moment peaks at the load rather than at midspan. This note uses the production beam solver shared by the simply-supported calculator, engine `beam-core-0.2.0-gate2`, read on 2026-11-08. The 6 m beam with a 12 kN midspan load and the 33.75 mm midspan deflection printed on the public guide are a different case and are not repeated here (https://structuralengineerlab.com/tools/simply-supported-beam-calculator/).
 
 Downward load is positive. Upward reaction is positive. Sagging moment is positive. Downward deflection is negative.
 
@@ -71,7 +71,6 @@ A load placed at 0 or beyond the span is outside `assertPosition`. This 3 m posi
 ## Reference Standards
 
 Beam equilibrium and the \(M/EI\) integration are standard elastic-beam relations. The edition-specific tables were not opened. Status: pending.
-
 ## Online Calculator
 
 The simply-supported page calls this solver. The 8 m, 15 kN, 3 m case is the one to enter:

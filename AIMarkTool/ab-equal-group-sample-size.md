@@ -2,7 +2,7 @@
 
 ## Overview
 
-This sample-size tool plans how many visitors each of two equal groups needs before you compare conversion rates. The production API describes the test as two-sided, equal groups, unpooled variance, no continuity correction, alpha 0.05, and power 0.80. The lift is an absolute difference in percentage points. The count is rounded up. It is not a probability that a test has already won.
+This sample-size tool plans how many visitors each of two equal groups needs before you compare conversion rates. The production API describes the test as two-sided, equal groups, unpooled variance, no continuity correction, alpha 0.05, and power 0.80. The lift is an absolute difference in percentage points. The count is rounded up. It is not a probability that a test has already won (https://aimarktool.com/tools/ab-test-sample-size-calculator).
 
 The page’s own illustration is a 10% baseline plus 2 points. This note uses 8% and 1.5 points so the arithmetic is a separate case. The API was called on 2026-11-08.
 
@@ -48,7 +48,6 @@ The local NormalDist evaluation ceilings to the same 5567. A pooled calculator c
 ## Reference Standards
 
 The API names the two-sided unpooled z-test and contrasts it with a pooled calculator. A textbook derivation of the z quantiles was not attached by the service. Status: pending.
-
 ## Online Calculator
 
 Plan the 8% versus 9.5% comparison here:

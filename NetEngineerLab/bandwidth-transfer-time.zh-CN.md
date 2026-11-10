@@ -67,7 +67,7 @@ $$
 本篇没有重读标准 PDF。十进制 SI 速率表是 `bandwidth-units.js` 里的那一张。所引文件的状态：待定。
 
 
-## Online Calculator
+## 在线计算器
 
 可以把同样的输入填进带宽计算器：
 
@@ -80,7 +80,7 @@ https://netengineerlab.com/tools/bandwidth-calculator/zh/
 - [MTU、MSS 与封装开销](mtu-mss-overhead.zh-CN.md)
 - [光纤传播时延与往返时间](fiber-propagation-latency.zh-CN.md)
 
-## Verification
+## 核对
 
 | 项 | 值 |
 |---|---|

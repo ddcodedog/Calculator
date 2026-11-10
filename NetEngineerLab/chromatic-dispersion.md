@@ -1,5 +1,7 @@
 # Chromatic dispersion coefficient D(λ)
 
+Simplified Chinese edition: [色度色散系数 D(λ)](chromatic-dispersion.zh-CN.md).
+
 ## Overview
 
 The Chromatic Dispersion Calculator evaluates the G.652-style dispersion coefficient, or a manually entered coefficient, then accumulates it over length, subtracts compensation, and compares the residual with a tolerance. It also reports a length window and a spectral-width pulse-broadening term.

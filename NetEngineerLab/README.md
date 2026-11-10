@@ -4,7 +4,7 @@
 
 ## Domain
 
-Network engineering calculators — fiber optics, RF/link budgets, IP and cabling planning tools.
+Published notes cover single-span fiber loss, optical power budget, fiber propagation delay, chromatic dispersion, OSPF interface cost, STP path cost, file transfer time, MTU and MSS, the DNS TTL window before a record change, and access-switch demand against uplink headroom. Two further notes keep a DNS cutover wait separate from a fiber round trip, and pass header bytes through the safe uplink into transfer time. Each of these twelve notes has a Simplified Chinese edition in this folder. Run the tools on the production site below.
 
 **Production site:** [https://netengineerlab.com](https://netengineerlab.com)
 

@@ -102,7 +102,7 @@ $$
 在本引擎文件内，作为已引用版本的标准仍为待定。同站光纤损耗页链接了 ITU-T G.652、G.984.2 和 G.671；这个预算引擎没有嵌入那些 URL。除非把灵敏度、过载和代价按那些限值输入，不要把等级字母（B+、C+）当成这个函数的输出。
 
 
-## Online Calculator
+## 在线计算器
 
 中文工具页。2026-11-10 已在站点地图中核对，页面标题为中文。计算引擎仍取自英文路径下的脚本。
 
@@ -116,7 +116,7 @@ https://netengineerlab.com/tools/optical-power-budget/zh/
 - [色度色散系数 D(λ)](chromatic-dispersion.zh-CN.md)
 - [光纤传播时延与往返时间](fiber-propagation-latency.zh-CN.md)
 
-## Verification
+## 核对
 
 | 项 | 值 |
 |---|---|

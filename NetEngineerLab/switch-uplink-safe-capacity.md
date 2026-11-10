@@ -1,10 +1,12 @@
 # Access-switch demand against uplink headroom
 
+Simplified Chinese edition: [接入交换机需求与上行余量](switch-uplink-safe-capacity.zh-CN.md).
+
 ## Overview
 
 An access switch can offer far more edge bandwidth than its uplinks can carry. This tool multiplies port count, port rate, utilization, concurrency, and overhead into a demand, compares that demand with the uplink capacity and with a safer fraction of it, and reports how many uplinks the target fraction would need. The example leaves out `engineering`, `peakPorts`, `growthPct`, `burstPct`, and `failedUplinks`, so the engine returns the short baseline object.
 
-Production `js/engine.js` for the switch-uplink tool, model `switch-uplink-engine/2.0.0`, read 2026-11-08. Displayed gigabit figures use JavaScript `toFixed` and then a unary plus, so 4.536 becomes 4.54 at two decimals.
+Production `js/engine.js` for the switch-uplink tool, model `switch-uplink-engine/2.0.0`, read 2026-11-08. Displayed gigabit figures use JavaScript `toFixed` and then a unary plus, so 4.536 becomes 4.54 at two decimals (https://netengineerlab.com/tools/switch-uplink-oversubscription-calculator/).
 
 ## Formula
 
@@ -68,7 +70,6 @@ Boundary: 48 ports at 1000 Mbit/s, utilization 100%, concurrency 100%, overhead 
 ## Reference Standards
 
 No IEEE or vendor capacity standard is applied inside the engine. Status: pending.
-
 ## Online Calculator
 
 Enter the 24-port, two-uplink case on the production page:

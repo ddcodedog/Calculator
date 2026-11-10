@@ -78,7 +78,7 @@ $$
 长公式、钳位和短表已对照 `engine.js`。这一轮没有重读标准 PDF。页面上关于 802.1Q 条款的说明应保持未核实。
 
 
-## Online Calculator
+## 在线计算器
 
 中文工具页。2026-11-10 已在站点地图中核对，页面标题为中文。计算引擎仍取自英文路径下的脚本。
 
@@ -91,7 +91,7 @@ https://netengineerlab.com/tools/stp-path-cost-calculator/zh/
 - [OSPF 接口开销](ospf-interface-cost.zh-CN.md)
 - [光纤传播时延与往返时间](fiber-propagation-latency.zh-CN.md)
 
-## Verification
+## 核对
 
 | 项 | 值 |
 |---|---|

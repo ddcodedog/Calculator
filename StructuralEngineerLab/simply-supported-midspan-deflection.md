@@ -4,7 +4,7 @@
 
 The beam deflection calculator accepts a simply supported span or a left-fixed cantilever. \(E\) and \(I\) are required. Reactions, shear, and moment are read-only context from the beam solver; this page does not re-derive them. This note checks the published midspan point-load case. The general integrator was not extracted line by line, so the status is `REVIEW_REQUIRED`.
 
-Production page script, read 2026-11-07, records supports `simply_supported` and `cantilever_fixed_left`, with \(v(0)=v(L)=0\) on the simple span and \(v(0)=\theta(0)=0\) on the cantilever. The numeric case is the public guide at `/guides/beam-deflection-calculation/`.
+Production page script, read 2026-11-07, records supports `simply_supported` and `cantilever_fixed_left`, with \(v(0)=v(L)=0\) on the simple span and \(v(0)=\theta(0)=0\) on the cantilever. The numeric case is the public guide at `/guides/beam-deflection-calculation/` (https://structuralengineerlab.com/tools/beam-deflection-calculator/).
 
 ## Formula
 
@@ -48,7 +48,6 @@ Boundary: a cantilever tip load is a different formula (\(PL^3/3EI\)) and a diff
 ## Reference Standards
 
 The guide ties the case to the same beam formula ids used on the cantilever page and cites Hibbeler and Roark without a pinned edition in the script that was read. Those books were not re-opened. Status: pending.
-
 ## Online Calculator
 
 The 6 m, 12 kN midspan case is the guide example for this calculator:

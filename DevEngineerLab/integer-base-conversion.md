@@ -4,7 +4,7 @@
 
 The number-base converter reads an integer in one base from 2 through 36 and writes it in another base in that same range. Digits above 9 are letters. The output is lowercase. This is integer notation, not a floating-point format and not a checksum.
 
-TOOL-028 in the production page script, read 2026-11-07. The input may be at most 4096 UTF-16 code units, including spaces. The output may be at most 32768 code units.
+TOOL-028 in the production page script, read 2026-11-07. The input may be at most 4096 UTF-16 code units, including spaces. The output may be at most 32768 code units (https://devengineerlab.com/tools/number-base-converter).
 
 ## Formula
 
@@ -48,7 +48,6 @@ Boundary: digit `2` in base 2 is rejected because its value is not less than the
 ## Reference Standards
 
 Digit values are the ones in the production converter. No numeric-representation standard was re-read. Status: pending.
-
 ## Online Calculator
 
 Try `FF` from base 16 to base 10:

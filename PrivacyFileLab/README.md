@@ -4,7 +4,7 @@
 
 ## Domain
 
-Privacy-focused file utilities — hashing, redaction, and local processing principles (algorithms/protocols).
+Published notes cover a local SHA-256 file digest, sensitive-text pattern redaction, the clean-file verifier’s download gate, and which sensitive-text types a metadata diff still sees. Two further notes hash only the text the verifier accepted, and keep a new digest from clearing a phone number the diff still reports. The tools run in the browser on the production site below.
 
 **Production site:** [https://privacyfilelab.com](https://privacyfilelab.com)
 

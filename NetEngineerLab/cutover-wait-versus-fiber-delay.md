@@ -1,5 +1,7 @@
 # A cutover wait is not a fiber round trip
 
+Simplified Chinese edition: [割接等待不是光纤往返时延](cutover-wait-versus-fiber-delay.zh-CN.md).
+
 ## The decision
 
 A metro link is 27 km of fiber, and a DNS change is planned on that same afternoon. Two clocks show up in the ticket: how long resolvers may still hold the old record, and how long a packet spends on the glass. They are both “delay.” They are not one delay. Adding them does not produce a maintenance window.

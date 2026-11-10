@@ -4,7 +4,7 @@
 
 ## Domain
 
-DIY and everyday engineering calculators — practical formulas with worked examples for makers and field use.
+Published notes cover concrete slab volume and bag count, roof pitch and slope factor, board-foot volume, fence posts and pickets, a slab rebar grid, modular bricks for a wall with one opening, and blown-fiberglass bags for an attic top-up. Two further notes size one pad and then the steel in it, and use the pitch tool’s rafter length as the board-foot length. Run the tools on the production site below.
 
 **Production site:** [https://diycalclab.com](https://diycalclab.com)
 

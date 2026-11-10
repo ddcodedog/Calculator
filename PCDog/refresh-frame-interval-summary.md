@@ -4,7 +4,7 @@
 
 The refresh-rate test summarizes frame intervals the browser already collected. It does not read the monitor’s EDID refresh. Given at least 20 positive finite intervals, it drops long outliers, takes a median, and converts that median to hertz. The score that sits beside the hertz value is a penalty on jitter, long frames, and the outlier fraction. It is not a pass/fail from a display specification.
 
-The summary function in chunk `38jyx3t4_ei-3.js`, measurement prefix `measurement.display.refresh-rate-test`, was read on 2026-11-08. The intervals below are an assumed sample, long enough to pass the 20-interval gate and short enough to show the low-confidence branch. No `requestAnimationFrame` loop was run.
+The summary function in chunk `38jyx3t4_ei-3.js`, measurement prefix `measurement.display.refresh-rate-test`, was read on 2026-11-08. The intervals below are an assumed sample, long enough to pass the 20-interval gate and short enough to show the low-confidence branch. No `requestAnimationFrame` loop was run (https://pcdog.com/tools/refresh-rate-test).
 
 ## Formula
 
@@ -62,7 +62,6 @@ A list of 19 positive intervals returns null hertz and confidence `low` without 
 ## Reference Standards
 
 No VESA timing document is referenced in the summary function. Status: pending.
-
 ## Online Calculator
 
 The refresh-rate test collects its own intervals and then runs this summary:

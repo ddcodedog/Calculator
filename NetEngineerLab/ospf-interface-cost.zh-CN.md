@@ -62,7 +62,7 @@ $$
 引擎记录公式字符串 `cost = reference bandwidth / interface bandwidth`，以及界限 1…65535。生产页说明向上取整符合常见 Cisco 和 FRR 行为。本库没有为那句话去取 RFC 或厂商配置指南，所以外部引用仍为 **待定**。算术和钳位已按引擎核对。
 
 
-## Online Calculator
+## 在线计算器
 
 中文工具页。2026-11-10 已在站点地图中核对，页面标题为中文。计算引擎仍取自英文路径下的脚本。
 
@@ -75,7 +75,7 @@ https://netengineerlab.com/tools/ospf-cost-calculator/zh/
 - [STP 端口路径开销](stp-path-cost.zh-CN.md)
 - [光纤传播时延与往返时间](fiber-propagation-latency.zh-CN.md)
 
-## Verification
+## 核对
 
 | 项 | 值 |
 |---|---|

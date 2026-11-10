@@ -69,7 +69,7 @@ PPPoE 预设：底层 1500 字节，一层 8 字节 PPPoE，希望的内层尺�
 页面把以太网、IP 和 TCP 的报头大小当作引擎里的固定常数。标准文件本身没有重读。状态：待定。
 
 
-## Online Calculator
+## 在线计算器
 
 在 MTU 计算器中运行同一 PPPoE 案例：
 
@@ -82,7 +82,7 @@ https://netengineerlab.com/tools/mtu-calculator/zh/
 - [由链路速率得到的文件传输时间](bandwidth-transfer-time.zh-CN.md)
 - [光链路功率预算](optical-power-budget.zh-CN.md)
 
-## Verification
+## 核对
 
 | 项 | 值 |
 |---|---|

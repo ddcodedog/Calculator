@@ -4,7 +4,7 @@
 
 The cooling and heating load planner adds envelope, solar, people, lights, equipment, ventilation, and infiltration for one zone, then applies a sizing margin. It is a component worksheet. It does not pick a coil, a chiller, or a code-minimum outdoor-air rate.
 
-The component equations are in the production page chunk for `cooling-heating-load-planner` (model TOOL-001-V1.0), read 2026-11-07. Moist-air properties come from the PsychroLib V2.5.0 adapter in the shared chunk: saturation pressure, humidity ratio, enthalpy, and specific volume. EnergyPlus engineering reference 26.1 is named as a cross-check in the tool. That PDF was not re-read.
+The component equations are in the production page chunk for `cooling-heating-load-planner` (model TOOL-001-V1.0), read 2026-11-07. Moist-air properties come from the PsychroLib V2.5.0 adapter in the shared chunk: saturation pressure, humidity ratio, enthalpy, and specific volume. EnergyPlus engineering reference 26.1 is named as a cross-check in the tool. That PDF was not re-read (https://hvacengineerlab.com/tools/cooling-heating-load-planner).
 
 ## Formula
 
@@ -98,7 +98,6 @@ Boundary: a margin of 31 is rejected. Supplying both an ACH and an infiltration 
 ## Reference Standards
 
 PsychroLib V2.5.0 equations as copied into the production adapter. EnergyPlus engineering reference 26.1 is cited by the tool and was not re-opened. Status: pending.
-
 ## Online Calculator
 
 The office study is the built-in example on the load planner:

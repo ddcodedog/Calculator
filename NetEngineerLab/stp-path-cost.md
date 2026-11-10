@@ -1,5 +1,7 @@
 # STP port path cost
 
+Simplified Chinese edition: [STP 端口路径开销](stp-path-cost.zh-CN.md).
+
 ## Overview
 
 The STP Path Cost Calculator assigns a port path cost to each link speed and sums those costs for two candidate paths. The lower sum is the path this tool reports as preferred. A tie is reported as a warning because the bridge ID, not the cost, would break it.

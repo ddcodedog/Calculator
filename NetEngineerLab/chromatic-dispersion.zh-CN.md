@@ -88,7 +88,7 @@ $$
 - ITU-T G.655：https://www.itu.int/rec/T-REC-G.655/en 。页面说明这类光纤应使用数据表上的 \(D\)（手工模式）。
 
 
-## Online Calculator
+## 在线计算器
 
 中文工具页。2026-11-10 已在站点地图中核对，页面标题为中文。计算引擎仍取自英文路径下的脚本。
 
@@ -102,7 +102,7 @@ https://netengineerlab.com/tools/chromatic-dispersion-calculator/zh/
 - [光链路功率预算](optical-power-budget.zh-CN.md)
 - [光纤传播时延与往返时间](fiber-propagation-latency.zh-CN.md)
 
-## Verification
+## 核对
 
 | 项 | 值 |
 |---|---|

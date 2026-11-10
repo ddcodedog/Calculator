@@ -4,7 +4,7 @@
 
 ## Domain
 
-Developer engineering utilities — encoding, networking helpers, and software engineering calculators/algorithms.
+Published notes cover integer base conversion, Unix timestamp conversion, word wrap at a grapheme width, and local counts of code points, graphemes, and lines. Two further notes keep one integer from being both a clock and a hex string, and recount a note after it is wrapped. Run the tools on the production site below.
 
 **Production site:** [https://devengineerlab.com](https://devengineerlab.com)
 

@@ -4,7 +4,7 @@
 
 ## Domain
 
-AI model and API evaluation utilities — latency, cost, token, and capability checks (algorithm/docs, not forced math formulas).
+Published notes cover equal-group sample size for an absolute conversion lift, successive funnel counts, return on ad spend, and order-value LTV divided by CAC. Two further notes keep a planned visitor count separate from customers already in a funnel, and keep one customer count from being read as two different ratios. Run the tools on the production site below.
 
 **Production site:** [https://aimarktool.com](https://aimarktool.com)
 

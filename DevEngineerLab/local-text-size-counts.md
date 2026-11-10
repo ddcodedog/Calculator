@@ -2,7 +2,7 @@
 
 ## Overview
 
-The text-statistics tool reports several sizes of one string: UTF-16 length, Unicode code points, grapheme clusters, UTF-8 bytes, line breaks, whitespace code points, and whitespace-separated tokens. It does not score readability and it does not send the text to a server. The production handler is `TOOL-030` in the DevEngineerLab page bundle, read 2026-11-08.
+The text-statistics tool reports several sizes of one string: UTF-16 length, Unicode code points, grapheme clusters, UTF-8 bytes, line breaks, whitespace code points, and whitespace-separated tokens. It does not score readability and it does not send the text to a server. The production handler is `TOOL-030` in the DevEngineerLab page bundle, read 2026-11-08 (https://devengineerlab.com/tools/text-statistics).
 
 The input limit is 262,144 UTF-16 code units. Unpaired surrogates are rejected. An empty string reports 0 lines because the line counter starts at 1 only when the string is non-empty.
 
@@ -54,7 +54,6 @@ An empty string returns lines 0 and every other count 0. A string that ends with
 ## Reference Standards
 
 Unicode grapheme segmentation and UTF-8 are the relevant standards. The specification text was not re-read. Status: pending.
-
 ## Online Calculator
 
 Paste the two-line note into the production tool:

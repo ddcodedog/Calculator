@@ -4,7 +4,7 @@
 
 The text-wrap tool breaks a string into lines whose grapheme width you choose. Word mode, the default, collapses runs of spaces, trims the ends of each input line, and keeps words together until a word itself is longer than the width. Hard mode keeps the original spaces and cuts every width graphemes. Neither mode measures pixels or font advances.
 
-Production `TOOL-058` in the DevEngineerLab page bundle, read 2026-11-08. Width is an integer from 1 to 1,000, default 80. Input is at most 262,144 UTF-16 units and 20,000 lines. Output is at most 50,000 lines and 300,000 UTF-16 units. Unpaired surrogates, tabs, other C0/C1 controls, and a listed set of bidi and line-separator code points are rejected. The example is ASCII, so each grapheme is one code unit. Node’s `Intl.Segmenter` with grapheme granularity counted 29 graphemes in the sentence, matching its length. That is the same API the tool calls; this was not a click-through in a browser.
+Production `TOOL-058` in the DevEngineerLab page bundle, read 2026-11-08. Width is an integer from 1 to 1,000, default 80. Input is at most 262,144 UTF-16 units and 20,000 lines. Output is at most 50,000 lines and 300,000 UTF-16 units. Unpaired surrogates, tabs, other C0/C1 controls, and a listed set of bidi and line-separator code points are rejected. The example is ASCII, so each grapheme is one code unit. Node’s `Intl.Segmenter` with grapheme granularity counted 29 graphemes in the sentence, matching its length. That is the same API the tool calls; this was not a click-through in a browser (https://devengineerlab.com/tools/text-wrap-calculator).
 
 ## Formula
 
@@ -42,7 +42,6 @@ Hard mode on the same sentence keeps spaces and cuts at 12: `Ada shipped ` (12, 
 ## Reference Standards
 
 Unicode Standard Annex #29 describes grapheme clusters. The annex was not re-read. Status: pending.
-
 ## Online Calculator
 
 Wrap the Ada sentence at width 12 on the production tool:

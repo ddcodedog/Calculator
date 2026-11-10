@@ -1,8 +1,8 @@
 # Calculator — Engineering Formula Library
 
-Open engineering calculator formulas, worked examples, and links to online tools for eleven related product sites under the **ddcodedog** organization.
+Worked formulas, units, and numerical examples for eleven engineering calculator sites: network design, PC routing and display timing, marketing measurement, electrical power, HVAC loads and airflow, local file privacy, CSV inspection, water and drainage, structural members, developer text and time utilities, and DIY quantities.
 
-This repository is a **documentation and verification** library. Formula Markdown is written only after local source and production URL audit. Unverified content is never labeled `VERIFIED`.
+Each published note names the relation it uses, a case you can recompute, the limits of that model, and the live calculator on the product site. A `VERIFIED` label means that note was checked against the production source and an example. Notes that have not been checked that way keep their recorded label.
 
 **Repository:** https://github.com/ddcodedog/Calculator
 
@@ -16,7 +16,7 @@ Engineering teams and learners often need:
 - Worked numerical examples
 - Pointers to the matching online calculator
 
-This library collects that material per domain site. Content is English-first, engineering-oriented, and tied to real tools registered in GATE 1 inventory reports.
+This library collects that material per domain site. The notes are in English and are tied to real tools registered in the GATE 1 inventory. The twelve NetEngineerLab notes also have Simplified Chinese editions. Those editions are the same topics, linked from [NetEngineerLab/README.md](NetEngineerLab/README.md) and from each English note, and they are not an extra count.
 
 **Hard rules**
 

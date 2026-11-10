@@ -1,10 +1,12 @@
 # File transfer time from link rate
 
+Simplified Chinese edition: [由链路速率得到的文件传输时间](bandwidth-transfer-time.zh-CN.md).
+
 ## Overview
 
 The bandwidth calculator answers four planning questions from the same rate model: how long a file takes to cross a link, how much link rate a deadline needs, how many concurrent users fit, and how much volume a rate moves in a period. This note walks the transfer-time path, which is the one most people open first.
 
-Rates are decimal SI. 1 Mbps is \(1\times 10^{6}\) bit/s, not \(2^{20}\). File size can be decimal (kB, MB) or IEC (KiB, MiB). The engine is `js/engine.js` with `data/bandwidth-units.js` on the production tool, read 2026-11-07.
+Rates are decimal SI. 1 Mbps is \(1\times 10^{6}\) bit/s, not \(2^{20}\). File size can be decimal (kB, MB) or IEC (KiB, MiB). The engine is `js/engine.js` with `data/bandwidth-units.js` on the production tool, read 2026-11-07 (https://netengineerlab.com/tools/bandwidth-calculator/).
 
 ## Formula
 
@@ -63,7 +65,6 @@ Boundary: efficiency 0 or utilization 0 makes \(\eta = 0\), and the transfer-tim
 ## Reference Standards
 
 No standards PDF was re-read for this note. The SI decimal rate table is the one in `bandwidth-units.js`. Status of the cited documents: pending.
-
 ## Online Calculator
 
 The same inputs can be typed into the bandwidth calculator:

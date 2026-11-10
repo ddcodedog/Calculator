@@ -4,7 +4,7 @@
 
 ## Domain
 
-Structural engineering calculators — member sizing, loads, and related verified engineering topics.
+Published notes cover elastic beam bending stress, centroidal area and section modulus, Euler elastic column buckling, cantilever tip deflection, simply supported midspan deflection, an off-center point load, and a full uniform load on a simple span. Two further notes turn a strip moment into fiber stress, and put an axial load over the Euler load. Run the tools on the production site below.
 
 **Production site:** [https://structuralengineerlab.com](https://structuralengineerlab.com)
 

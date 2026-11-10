@@ -68,7 +68,7 @@ $$
 引擎没有为 0.5 这个系数引用 RFC 章节。RFC 1035 和 RFC 2308 描述 TTL 与负缓存；本篇没有重读那些文件。状态：待定。
 
 
-## Online Calculator
+## 在线计算器
 
 在生产页上运行 3600 s 改为 300 s、已过 600 s 的案例：
 
@@ -81,7 +81,7 @@ https://netengineerlab.com/tools/dns-ttl-propagation-calculator/zh/
 - [由链路速率得到的文件传输时间](bandwidth-transfer-time.zh-CN.md)
 - [MTU、MSS 与封装开销](mtu-mss-overhead.zh-CN.md)
 
-## Verification
+## 核对
 
 | 项 | 值 |
 |---|---|

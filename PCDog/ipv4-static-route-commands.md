@@ -4,7 +4,7 @@
 
 The static-route generator checks an IPv4 destination and gateway, normalizes host bits in the destination, and prints command text for several platforms. It does not log into a router and it does not test whether the gateway answers. The result field `reachability` is the constant `not-tested`.
 
-Implementation `test.network.static-route-generator` version 1.11.0 in the production bundle, read 2026-11-07. Defaults: destination `192.168.10.0/24`, gateway `192.168.1.1`, interface `eth0`, metric `20`, persistent `true`, platform `linux`.
+Implementation `test.network.static-route-generator` version 1.11.0 in the production bundle, read 2026-11-07. Defaults: destination `192.168.10.0/24`, gateway `192.168.1.1`, interface `eth0`, metric `20`, persistent `true`, platform `linux` (https://pcdog.com/tools/static-route-generator).
 
 ## Formula
 
@@ -71,7 +71,6 @@ Boundary: destination `192.168.10.5/24` normalizes to `192.168.10.0/24` and adds
 ## Reference Standards
 
 Mask construction and the command templates were read from the production bundle. Vendor command references were not re-read. Status: pending.
-
 ## Online Calculator
 
 The Linux default is the form’s starting point:

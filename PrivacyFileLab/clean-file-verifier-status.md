@@ -4,7 +4,7 @@
 
 The clean-file verifier scans the before text and the after text in the browser, then runs the same `verifyCleanScans` function version 1.0.0 that the metadata diff uses. The extra behavior on this page is the download: a `verified-cleaned.txt` blob is created only when the status is `VERIFIED`, and the blob is the after text. A failed comparison shows the type lists and does not create that link.
 
-Read from the production verifier chunk on 2026-11-08. The button sets `reopened` and `rescanned` true after both local scans return. This note uses a pair that passes, and a second pair that shows a new low-severity address still passing. No file was uploaded.
+Read from the production verifier chunk on 2026-11-08. The button sets `reopened` and `rescanned` true after both local scans return. This note uses a pair that passes, and a second pair that shows a new low-severity address still passing. No file was uploaded (https://privacyfilelab.com/clean-file-verifier).
 
 ## Formula
 
@@ -52,7 +52,6 @@ Boundary: before `Mail ada@example.com about the invoice.` and after `Reach 203.
 ## Reference Standards
 
 The status rules are the site’s verifier, version 1.0.0. No external redaction standard was re-read. Status: pending.
-
 ## Online Calculator
 
 Run the two sentences on the production verifier:
