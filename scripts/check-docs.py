@@ -821,10 +821,18 @@ def audit_indexes(report: Report, root: Path) -> None:
         if payload.get(key) != actual:
             report.fail("indexes", f"{label} {key} is {payload.get(key)}, recomputed {actual}")
 
+    inventory_path = root / "reports" / "GATE1_TOOL_INVENTORY.json"
+    inventory = None
+    if not inventory_path.is_file():
+        report.fail("indexes", "missing reports/GATE1_TOOL_INVENTORY.json")
+    else:
+        inventory = json.loads(inventory_path.read_text(encoding="utf-8"))
     require_count(topics, "englishFormulaCount", len(english), "topics index")
     require_count(topics, "chineseFormulaCount", len(chinese), "topics index")
     pairs = {(record.get("website"), record.get("toolId")) for record in by_doc.values()}
     require_count(topics, "uniqueSiteToolPairs", len(pairs), "topics index")
+    if inventory is not None:
+        _check_inventory_summary(report, topics, by_doc, english_docs, inventory)
     topic_rows = topics.get("topics")
     if not isinstance(topic_rows, list):
         report.fail("indexes", "topics index has no topics list")
@@ -858,6 +866,7 @@ def audit_indexes(report: Report, root: Path) -> None:
         for key in ("toolId", "productionUrl", "calculationStatus", "standardsStatus"):
             if row.get(key) != record.get(key):
                 report.fail("indexes", f"{document} {key} does not match the verification record")
+        _check_row_identity(report, document, row, record, inventory)
         companion = path.with_name(path.name.replace(".md", ".zh-CN.md"))
         expected_companion = companion.relative_to(root).as_posix() if companion.is_file() else None
         recorded_companion = row.get("chineseDocument")
@@ -898,10 +907,87 @@ def audit_indexes(report: Report, root: Path) -> None:
         if record is None:
             report.fail("indexes", f"{document} is in the verification index without a source record")
             continue
-        for key in ("website", "toolId", "calculationStatus", "standardsStatus", "sourceEvidence", "exampleResult"):
+        for key in (
+            "website",
+            "toolId",
+            "calculationStatus",
+            "standardsStatus",
+            "sourceEvidence",
+            "exampleResult",
+            "standardsEvidence",
+            "standardsCheckedDate",
+        ):
             if row.get(key) != record.get(key):
                 report.fail("indexes", f"verification index {document} {key} does not match the source record")
         _require_evidence(report, document, record, row)
+        site = document.split("/", 1)[0]
+        if row.get("website") != site or record.get("website") != site:
+            report.fail("indexes", f"{document} website does not match its site directory")
+
+
+def _check_inventory_summary(report: Report, topics: dict, by_doc: dict, english_docs: set[str], inventory: dict) -> None:
+    """Recompute inventory totals from the inventory file and the source records."""
+    tools = inventory.get("tools")
+    if not isinstance(tools, list):
+        report.fail("indexes", "inventory has no tools list")
+        return
+    urls = {}
+    for tool in tools:
+        url = str(tool.get("ProductionURL") or "").rstrip("/")
+        if url:
+            urls.setdefault(url, []).append(tool)
+    published = set()
+    tool_ids = set()
+    for document, record in by_doc.items():
+        if document not in english_docs:
+            continue
+        tool_ids.add(record.get("toolId"))
+        if record.get("productionUrl"):
+            published.add(str(record["productionUrl"]).rstrip("/"))
+    overlap = {url for url in published if url in urls}
+    total = len(tools)
+    require = {
+        "distinctToolIdStrings": len(tool_ids),
+        "inventoryTools": total,
+        "publishedInventoryTools": len(overlap),
+        "inventoryToolsWithoutTopic": total - len(overlap),
+    }
+    for key, actual in require.items():
+        if topics.get(key) != actual:
+            report.fail("indexes", f"topics index {key} is {topics.get(key)}, recomputed {actual}")
+
+
+def _check_row_identity(report: Report, document: str, row: dict, record: dict, inventory: dict | None) -> None:
+    """website follows the file's site directory. inventoryToolId is an inventory key, not toolId."""
+    site = document.split("/", 1)[0]
+    if row.get("website") != site or record.get("website") != site:
+        report.fail("indexes", f"{document} website does not match its site directory {site}")
+    if site not in SITES or inventory is None:
+        if site not in SITES:
+            report.fail("indexes", f"{document} website {site} is not a site in this repo")
+        return
+    known_sites = set((inventory.get("domainsAssumed") or {})) | set((inventory.get("countsByWebsite") or {}))
+    if site not in known_sites:
+        report.fail("indexes", f"{document} website {site} is not in the tool inventory")
+    expected = _inventory_tool_id(inventory, site, row.get("productionUrl") or record.get("productionUrl"))
+    if row.get("inventoryToolId") != expected:
+        report.fail(
+            "indexes",
+            f"{document} inventoryToolId does not match the inventory row for its production URL",
+            recorded=row.get("inventoryToolId"),
+            expected=expected,
+        )
+
+
+def _inventory_tool_id(inventory: dict, website: str, production_url: str | None) -> str | None:
+    if not production_url:
+        return None
+    target = str(production_url).rstrip("/")
+    for tool in inventory.get("tools") or []:
+        url = str(tool.get("ProductionURL") or "").rstrip("/")
+        if tool.get("Website") == website and url == target:
+            return tool.get("ToolID")
+    return None
 
 
 def _require_evidence(report: Report, document: str, record: dict, row: dict) -> None:
@@ -965,13 +1051,44 @@ def primary_content_language(header: str | None) -> str | None:
     return token or None
 
 
-def canonical_href(html: str) -> str | None:
+def canonical_hrefs(html: str) -> list[str]:
+    found = []
     for tag in re.findall(r"<link\b[^>]*>", html or "", re.I):
         if re.search(r"rel=[\"']canonical[\"']", tag, re.I):
             match = re.search(r"href=[\"']([^\"']+)", tag, re.I)
             if match:
-                return match.group(1)
-    return None
+                found.append(match.group(1))
+    return found
+
+
+def canonical_href(html: str) -> str | None:
+    found = canonical_hrefs(html)
+    return found[0] if found else None
+
+
+def controlled_url_key(url: str) -> tuple[str, str] | None:
+    """Host and path after the allowed alias rules.
+
+    Allowed differences are www versus apex, http versus https, the default
+    port, and a trailing slash. A foreign host is a different key.
+    """
+    parsed = urlparse(url)
+    if parsed.scheme not in {"http", "https"} or not parsed.hostname:
+        return None
+    host = parsed.hostname.lower()
+    if host.startswith("www."):
+        host = host[4:]
+    # Omitted, 80, and 443 are the same default port. Any other port must match exactly.
+    port = None if parsed.port in {None, 80, 443} else parsed.port
+    path = parsed.path or "/"
+    if path != "/":
+        path = path.rstrip("/")
+    return host, port, path.casefold()
+
+
+def same_controlled_target(left: str, right: str) -> bool:
+    key = controlled_url_key(left)
+    return key is not None and key == controlled_url_key(right)
 
 
 def looks_like_error_page(url: str, html: str) -> bool:
@@ -1000,10 +1117,12 @@ def _page_fields(html: str, headers) -> dict:
     content_language = None
     if headers is not None:
         content_language = headers.get("Content-Language")
+    hrefs = canonical_hrefs(html)
     return {
         "pageLanguage": lang.group(1) if lang else None,
         "contentLanguage": content_language,
-        "canonical": canonical_href(html),
+        "canonical": hrefs[0] if hrefs else None,
+        "canonicals": hrefs,
     }
 
 
@@ -1055,7 +1174,7 @@ def fetch_url(url: str, timeout: float, retries: int, kind: str, sleeper=time.sl
                     item["class"] = "homepage"
                     item["error"] = "final URL is the site homepage"
                     return item
-                if kind == "tool" and looks_like_error_page(final, html):
+                if kind in {"tool", "locale"} and looks_like_error_page(final, html):
                     item["class"] = "error_page"
                     item["error"] = "final page is an error page"
                     return item
@@ -1123,6 +1242,8 @@ def assess_locale_page(requested: str, expected_language: str | None, item: dict
         return "inconclusive"
     if item.get("class") == "hard_404" or item.get("status") in HARD_HTTP:
         return "hard_404"
+    if item.get("class") == "error_page":
+        return "error_page"
     final = item.get("finalUrl") or ""
     if not final or is_localized_homepage(final) or url_is_site_root(final):
         return "LOCALIZED_HOMEPAGE_FALLBACK"
@@ -1133,14 +1254,50 @@ def assess_locale_page(requested: str, expected_language: str | None, item: dict
     header_language = primary_content_language(item.get("contentLanguage"))
     if header_language and not language_matches(expected_language, header_language):
         return "WRONG_LANGUAGE"
-    canonical = item.get("canonical")
-    if canonical:
-        resolved = urljoin(final, canonical)
-        if is_localized_homepage(resolved) or url_is_site_root(resolved) or not same_tool(requested, resolved):
-            return "WRONG_CANONICAL"
+    canonical_class = _canonical_class(final, item)
+    if canonical_class != "ok":
+        return canonical_class
     if item.get("status") != 200:
         return "inconclusive"
     return "ok"
+
+
+def _canonical_class(final: str, item: dict) -> str:
+    """Compare canonical tags with the final URL, not with a language-stripped path.
+
+    VERIFIED rows declare canonicalStatus MATCH. A missing tag is NOT_PRESENT.
+    The same tool on the English route is not a match for a Chinese final URL.
+    Identical repeated tags are allowed and marked for a warning. Conflicting
+    tags fail. www, https, the default port, and a trailing slash are aliases.
+    """
+    raw = item.get("canonicals")
+    if not isinstance(raw, list):
+        raw = [item["canonical"]] if item.get("canonical") else []
+    resolved = [urljoin(final, href) for href in raw if href]
+    if not resolved:
+        return "NOT_PRESENT"
+    keys = []
+    for url in resolved:
+        key = controlled_url_key(url)
+        if key not in keys:
+            keys.append(key)
+    if len(keys) > 1:
+        return "CONFLICTING_CANONICAL"
+    if len(resolved) > 1:
+        item["duplicateCanonical"] = True
+    target = resolved[0]
+    if same_controlled_target(final, target):
+        return "ok"
+    final_key = controlled_url_key(final)
+    target_key = controlled_url_key(target)
+    if (
+        final_key
+        and target_key
+        and final_key[0] == target_key[0]
+        and same_tool(final, target)
+    ):
+        return "CANONICAL_NOT_LANGUAGE_ROUTE"
+    return "WRONG_CANONICAL"
 
 
 def locale_route_rows(root: Path | None = None) -> list[dict]:
@@ -1283,6 +1440,8 @@ def probe_locale(url: str, expected_language: str, retries: int = 3, timeout: fl
         report.warn("locale_routes", f"INCONCLUSIVE for {url}: {item.get('error')}", **judged)
     elif locale_class != "ok":
         report.fail("locale_routes", f"{locale_class} for {url}", **judged)
+    elif item.get("duplicateCanonical"):
+        report.warn("locale_routes", f"duplicate canonical for {url}", **judged)
     return item, locale_class, report, (1 if report.failures else 0)
 
 
@@ -1325,6 +1484,12 @@ def apply_locale_results(report: Report, fetched: dict[str, dict], plan: dict) -
                 f"{locale_class} {target.get('side')} {url} for {target.get('document')}",
                 **row_result,
             )
+        elif item.get("duplicateCanonical"):
+            report.warn(
+                "locale_routes",
+                f"duplicate canonical {target.get('side')} {url} for {target.get('document')}",
+                **row_result,
+            )
     report.stats["localeVerifiedRows"] = len(plan["verifiedRows"])
     report.stats["localeVerifiedUniqueUrls"] = len(plan["uniqueUrls"])
     report.stats["localeNotSupportedRows"] = len(plan["notSupportedRows"])
@@ -1334,10 +1499,22 @@ def apply_locale_results(report: Report, fetched: dict[str, dict], plan: dict) -
     return judged
 
 
-def check_urls(report: Report, timeout: float, retries: int, include_standards: bool) -> list[dict]:
-    homes = domain_urls()
-    urls = [(url, "domain" if url in homes else "tool") for url in tool_urls()]
-    plan = plan_locale_checks(locale_route_rows())
+def check_urls(
+    report: Report,
+    timeout: float,
+    retries: int,
+    include_standards: bool,
+    *,
+    locale_rows: list[dict] | None = None,
+    only_urls: list[tuple[str, str]] | None = None,
+) -> list[dict]:
+    if only_urls is None:
+        homes = domain_urls()
+        urls = [(url, "domain" if url in homes else "tool") for url in tool_urls()]
+        plan = plan_locale_checks(locale_route_rows() if locale_rows is None else locale_rows)
+    else:
+        urls = list(only_urls)
+        plan = plan_locale_checks([] if locale_rows is None else locale_rows)
     for row in plan["notSupportedRows"]:
         if row.get("routeStatus") == "VERIFIED":
             report.fail("locale_routes", f"{row.get('englishDocument')} NOT_SUPPORTED row is marked VERIFIED")

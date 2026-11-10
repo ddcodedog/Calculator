@@ -332,10 +332,27 @@ class Gate81IndexTests(unittest.TestCase):
             json.dumps({"topics": [record]}),
             encoding="utf-8",
         )
+        inventory = {
+            "domainsAssumed": {"NetEngineerLab": "https://example.com"},
+            "countsByWebsite": {"NetEngineerLab": 1},
+            "totalTools": 1,
+            "tools": [
+                {
+                    "Website": "NetEngineerLab",
+                    "ToolID": "sample-tool",
+                    "ProductionURL": "https://example.com/tools/sample/",
+                }
+            ],
+        }
+        (root / "reports" / "GATE1_TOOL_INVENTORY.json").write_text(json.dumps(inventory), encoding="utf-8")
         topics = {
             "englishFormulaCount": 1,
             "chineseFormulaCount": 1,
             "uniqueSiteToolPairs": 1,
+            "distinctToolIdStrings": 1,
+            "inventoryTools": 1,
+            "publishedInventoryTools": 1,
+            "inventoryToolsWithoutTopic": 0,
             "topics": [
                 {
                     "website": "NetEngineerLab",
@@ -346,6 +363,7 @@ class Gate81IndexTests(unittest.TestCase):
                     "productionUrl": "https://example.com/tools/sample/",
                     "calculationStatus": "VERIFIED",
                     "standardsStatus": "VERIFIED",
+                    "inventoryToolId": "sample-tool",
                 }
             ],
         }
@@ -566,6 +584,241 @@ class Gate81LocalePlanTests(unittest.TestCase):
         self.assertLessEqual(len(plan["uniqueUrls"]), len(plan["targets"]))
         self.assertTrue(all(row["chinesePageLanguage"] == "zh-CN" for row in verified))
         self.assertNotIn("NOT_SUPPORTED", {row["routeStatus"] for row in plan["verifiedRows"]})
+
+
+class Gate82IndexTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.mod = load_checker()
+        cls.helper = Gate81IndexTests("test_fixture_and_real_indexes_match_source_files")
+        cls.helper.mod = cls.mod
+
+    def audit(self, root: Path):
+        report = self.mod.Report()
+        self.mod.audit_indexes(report, root)
+        return report
+
+    def test_website_and_inventory_identity_mutations_fail(self):
+        import tempfile
+
+        def tamper_website(root: Path) -> None:
+            path = root / "indexes" / "topics.json"
+            data = json.loads(path.read_text(encoding="utf-8"))
+            data["topics"][0]["website"] = "PCDog"
+            path.write_text(json.dumps(data), encoding="utf-8")
+
+        def tamper_inventory_id(root: Path) -> None:
+            path = root / "indexes" / "topics.json"
+            data = json.loads(path.read_text(encoding="utf-8"))
+            data["topics"][0]["inventoryToolId"] = "not-a-real-inventory-id"
+            path.write_text(json.dumps(data), encoding="utf-8")
+
+        def sync_wrong_website(root: Path) -> None:
+            for relative in (
+                "reports/FORMULA_VERIFICATION.json",
+                "indexes/topics.json",
+                "indexes/verification-index.json",
+            ):
+                path = root / relative
+                data = json.loads(path.read_text(encoding="utf-8"))
+                data["topics"][0]["website"] = "PCDog"
+                path.write_text(json.dumps(data), encoding="utf-8")
+
+        for mutate in (tamper_website, tamper_inventory_id, sync_wrong_website):
+            with tempfile.TemporaryDirectory() as name:
+                root = Path(name)
+                self.helper.write_fixture(root)
+                mutate(root)
+                report = self.audit(root)
+                self.assertGreater(len(report.failures), 0, mutate.__name__)
+
+    def test_mismatched_standards_evidence_and_date_fail(self):
+        import tempfile
+
+        def tamper_evidence(root: Path) -> None:
+            path = root / "indexes" / "verification-index.json"
+            data = json.loads(path.read_text(encoding="utf-8"))
+            data["topics"][0]["standardsEvidence"] = "fabricated replacement"
+            path.write_text(json.dumps(data), encoding="utf-8")
+
+        def tamper_date(root: Path) -> None:
+            path = root / "indexes" / "verification-index.json"
+            data = json.loads(path.read_text(encoding="utf-8"))
+            data["topics"][0]["standardsCheckedDate"] = "1900-01-01"
+            path.write_text(json.dumps(data), encoding="utf-8")
+
+        for mutate in (tamper_evidence, tamper_date):
+            with tempfile.TemporaryDirectory() as name:
+                root = Path(name)
+                self.helper.write_fixture(root)
+                mutate(root)
+                report = self.audit(root)
+                self.assertGreater(len(report.failures), 0, mutate.__name__)
+                self.assertTrue(any("standards" in item["message"] for item in report.failures), mutate.__name__)
+
+    def test_recomputed_inventory_summary_fields_fail_when_tampered(self):
+        import tempfile
+
+        fields = (
+            "distinctToolIdStrings",
+            "inventoryTools",
+            "publishedInventoryTools",
+            "inventoryToolsWithoutTopic",
+        )
+        for field in fields:
+            with tempfile.TemporaryDirectory() as name:
+                root = Path(name)
+                self.helper.write_fixture(root)
+                path = root / "indexes" / "topics.json"
+                data = json.loads(path.read_text(encoding="utf-8"))
+                data[field] = data[field] + 9
+                path.write_text(json.dumps(data), encoding="utf-8")
+                report = self.audit(root)
+                self.assertGreater(len(report.failures), 0, field)
+
+
+class Gate82LocaleTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+
+        class Handler(BaseHTTPRequestHandler):
+            protocol_version = "HTTP/1.1"
+
+            def do_GET(self):
+                spec = self.server.routes[self.path]
+                body = spec["body"]
+                self.send_response(spec["status"])
+                self.send_header("Content-Type", "text/html; charset=utf-8")
+                self.send_header("Content-Length", str(len(body)))
+                self.end_headers()
+                self.wfile.write(body)
+
+            def log_message(self, fmt, *args):
+                return
+
+        cls.server = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
+        cls.server.routes = {}
+        cls.thread = __import__("threading").Thread(target=cls.server.serve_forever, daemon=True)
+        cls.thread.start()
+        cls.mod = load_checker()
+        cls.base = f"http://127.0.0.1:{cls.server.server_address[1]}"
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.server.shutdown()
+        cls.server.server_close()
+
+    def html(self, lang, canonicals, title="Sample tool"):
+        links = "".join(f"<link rel=\"canonical\" href=\"{href}\">" for href in canonicals)
+        return f"<html lang=\"{lang}\"><head><title>{title}</title>{links}</head><body>tool</body></html>".encode()
+
+    def put(self, path, body, status=200):
+        self.server.routes[path] = {"status": status, "body": body}
+
+    def judge(self, path, language="zh-CN"):
+        return self.mod.probe_locale(
+            self.base + path,
+            language,
+            retries=1,
+            timeout=2,
+            sleeper=lambda _delay: None,
+        )
+
+    def test_controlled_url_alias_rules(self):
+        same = self.mod.same_controlled_target
+        self.assertTrue(same("https://example.com/tools/a", "https://www.example.com/tools/a/"))
+        self.assertTrue(same("https://example.com/tools/a", "http://example.com:443/tools/a"))
+        self.assertFalse(same("https://example.com/zh-CN/tools/a", "https://example.com/tools/a"))
+        self.assertFalse(same("https://example.com/tools/a", "https://evil.example/tools/a"))
+        self.assertFalse(same("https://example.com/tools/a", "https://example.com:8080/tools/a"))
+
+    def test_canonical_and_error_page_negatives(self):
+        path = "/zh-CN/tools/sample"
+        self.put(path, self.html("zh-CN", [self.base + path]))
+        _item, judged, report, code = self.judge(path)
+        self.assertEqual(judged, "ok")
+        self.assertEqual(code, 0)
+        self.assertEqual(report.failures, [])
+
+        path = "/zh-CN/tools/english-canonical"
+        self.put(path, self.html("zh-CN", [self.base + "/tools/english-canonical"]))
+        _item, judged, report, code = self.judge(path)
+        self.assertEqual(judged, "CANONICAL_NOT_LANGUAGE_ROUTE")
+        self.assertEqual(code, 1)
+
+        path = "/zh-CN/tools/foreign"
+        self.put(path, self.html("zh-CN", ["https://evil.example/zh-CN/tools/foreign"]))
+        _item, judged, _report, code = self.judge(path)
+        self.assertEqual(judged, "WRONG_CANONICAL")
+        self.assertEqual(code, 1)
+        self.assertEqual(_item["finalUrl"], self.base + path)
+
+        path = "/zh-CN/tools/missing-canonical"
+        self.put(path, self.html("zh-CN", []))
+        _item, judged, _report, code = self.judge(path)
+        self.assertEqual(judged, "NOT_PRESENT")
+        self.assertEqual(code, 1)
+
+        path = "/zh-CN/tools/conflict"
+        self.put(
+            path,
+            self.html("zh-CN", [self.base + path, self.base + "/tools/conflict"]),
+        )
+        _item, judged, _report, code = self.judge(path)
+        self.assertEqual(judged, "CONFLICTING_CANONICAL")
+        self.assertEqual(code, 1)
+
+        path = "/zh-CN/tools/duplicate"
+        self.put(path, self.html("zh-CN", [self.base + path, self.base + path]))
+        _item, judged, report, code = self.judge(path)
+        self.assertEqual(judged, "ok")
+        self.assertEqual(code, 0)
+        self.assertEqual(len(report.warnings), 1)
+        self.assertEqual(report.failures, [])
+
+        path = "/zh-CN/tools/soft-404"
+        self.put(path, self.html("zh-CN", [self.base + path], title="Page not found"))
+        _item, judged, report, code = self.judge(path)
+        self.assertEqual(judged, "error_page")
+        self.assertEqual(_item["status"], 200)
+        self.assertEqual(_item["pageLanguage"], "zh-CN")
+        self.assertEqual(code, 1)
+        self.assertGreater(len(report.failures), 0)
+
+    def test_check_urls_rejects_locale_only_soft_404(self):
+        path = "/zh-CN/tools/locale-only"
+        url = self.base + path
+        self.put(path, self.html("zh-CN", [url], title="Page not found | Example"))
+        row = {
+            "routeStatus": "VERIFIED",
+            "englishDocument": "NetEngineerLab/sample.md",
+            "toolId": "sample-tool",
+            "productionEnglishUrl": self.base + "/tools/sample",
+            "productionChineseUrl": url,
+            "englishPageLanguage": "en",
+            "chinesePageLanguage": "zh-CN",
+            "englishCanonicalStatus": "MATCH",
+            "chineseCanonicalStatus": "MATCH",
+        }
+        english = self.base + "/tools/sample"
+        self.put("/tools/sample", self.html("en", [english], title="Sample tool"))
+        report = self.mod.Report()
+        self.mod.check_urls(
+            report,
+            2,
+            1,
+            False,
+            locale_rows=[row],
+            only_urls=[(english, "tool"), (url, "locale")],
+        )
+        chinese = [item for item in report.stats["localeJudged"] if item["side"] == "zh"]
+        self.assertEqual(len(chinese), 1)
+        self.assertEqual(chinese[0]["localeClass"], "error_page")
+        self.assertEqual(chinese[0]["status"], 200)
+        self.assertEqual(report.stats["localeLivePass"], 1)
+        self.assertGreater(len(report.failures), 0)
+        self.assertEqual(report.warnings, [])
 
 
 if __name__ == "__main__":
