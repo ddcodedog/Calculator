@@ -73,6 +73,7 @@ Chinese outreach drafts keyed by site live under [promo/zh/](promo/zh/README.md)
 - [Access-switch demand against uplink headroom](NetEngineerLab/switch-uplink-safe-capacity.md)
 - [A cutover wait is not a fiber round trip](NetEngineerLab/cutover-wait-versus-fiber-delay.md)
 - [Header bytes, then the safe uplink, then the clock](NetEngineerLab/on-wire-bytes-at-safe-uplink.md)
+- 同一专题的简体中文稿，不另计篇数：[先把报头算进字节，再取安全上行，最后算时间](NetEngineerLab/on-wire-bytes-at-safe-uplink.zh-CN.md)
 
 ### PowerEngineerLab
 

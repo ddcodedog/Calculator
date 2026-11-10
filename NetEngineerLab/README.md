@@ -29,6 +29,10 @@ GATE 3 batch 1. These files match production calculator code checked on 2026-11-
 | VERIFIED | [A cutover wait is not a fiber round trip](cutover-wait-versus-fiber-delay.md) | `dns-ttl-propagation-calculator` |
 | VERIFIED | [Header bytes, then the safe uplink, then the clock](on-wire-bytes-at-safe-uplink.md) | `bandwidth-calculator` |
 
+## 中文译本
+
+同一专题的简体中文稿，不另计 Published topics：[先把报头算进字节，再取安全上行，最后算时间](on-wire-bytes-at-safe-uplink.zh-CN.md)。
+
 ## Online calculators
 
 Each published topic links to its own production calculator. This index does not list every tool on the site.

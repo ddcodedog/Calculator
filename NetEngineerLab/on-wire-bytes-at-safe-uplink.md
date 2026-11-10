@@ -75,6 +75,7 @@ https://netengineerlab.com/tools/bandwidth-calculator/
 - [MTU, MSS, and encapsulation overhead](mtu-mss-overhead.md)
 - [Access-switch demand against uplink headroom](switch-uplink-safe-capacity.md)
 - [File transfer time from link rate](bandwidth-transfer-time.md)
+- [简体中文稿](on-wire-bytes-at-safe-uplink.zh-CN.md)
 
 ## Verification
 
