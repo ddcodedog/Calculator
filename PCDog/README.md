@@ -10,7 +10,7 @@ PC and hardware helper tools — unit conversions, performance estimates, and pr
 
 ## Topic index
 
-Published topics: 4
+Published topics: 6
 
 Checked against the production page, script, or API on 2026-11-07. These are algorithm or input-output notes where the tool is not a physics formula. Status labels are defined in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
@@ -20,6 +20,8 @@ Checked against the production page, script, or API on 2026-11-07. These are alg
 | VERIFIED | [IPv4 static route commands](ipv4-static-route-commands.md) | `static-route-generator` |
 | VERIFIED | [Estimated backing pixels from the screen API](screen-backing-pixel-estimate.md) | `screen-information` |
 | VERIFIED | [Refresh estimate from a list of frame intervals](refresh-frame-interval-summary.md) | `refresh-rate-test` |
+| VERIFIED | [Keep the longer prefix, then print that route](keep-the-longer-prefix-then-print-it.md) | `static-route-generator` |
+| VERIFIED | [Backing-store pixels sit beside frame time. They do not multiply.](pixels-beside-frame-time.md) | `screen-information` |
 
 ## Online calculators
 

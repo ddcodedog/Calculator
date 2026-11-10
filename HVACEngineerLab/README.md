@@ -10,7 +10,7 @@ HVAC engineering calculators — heating, cooling, airflow, and psychrometric-re
 
 ## Topic index
 
-Published topics: 3
+Published topics: 5
 
 GATE 3 batch 1. Psychrometrics and the other HVAC planners are not in this batch. Status labels are in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
@@ -19,6 +19,8 @@ GATE 3 batch 1. Psychrometrics and the other HVAC planners are not in this batch
 | VERIFIED | [Duct friction and local pressure drop](duct-friction-pressure-drop.md) | `duct-airflow-design` |
 | VERIFIED | [Cooling and heating load components](cooling-heating-load-components.md) | `cooling-heating-load-planner` |
 | VERIFIED | [Psychrometric process between two states](psychrometric-process-states.md) | `psychrometric-process-analyzer` |
+| VERIFIED | [The coil’s volume flow can enter the duct tool. Its watts cannot.](mass-flow-into-duct-velocity.md) | `duct-airflow-design` |
+| VERIFIED | [A positive latent term is not condensate](latent-sign-is-not-condensate.md) | `psychrometric-process-analyzer` |
 
 ## Online calculators
 

@@ -10,7 +10,7 @@ Developer engineering utilities — encoding, networking helpers, and software e
 
 ## Topic index
 
-Published topics: 4
+Published topics: 6
 
 Checked against the production page, script, or API on 2026-11-07. These are algorithm or input-output notes where the tool is not a physics formula. Status labels are defined in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
@@ -20,6 +20,8 @@ Checked against the production page, script, or API on 2026-11-07. These are alg
 | VERIFIED | [Integer base conversion](integer-base-conversion.md) | `number-base-converter` |
 | VERIFIED | [Word wrap at a grapheme width](word-wrap-grapheme-width.md) | `TOOL-058` |
 | VERIFIED | [Local counts of code points, graphemes, and lines](local-text-size-counts.md) | `TOOL-030` |
+| VERIFIED | [Wrap the relay note, then count again](wrap-then-recount-lines.md) | `TOOL-058` |
+| VERIFIED | [One integer, a clock in one tool and hex in the other](same-integer-two-tools.md) | `timestamp-converter` |
 
 ## Online calculators
 

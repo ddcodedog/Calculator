@@ -30,17 +30,17 @@ This library collects that material per domain site. Content is English-first, e
 
 | Domain | Folder | Published topics | Production site |
 |--------|--------|------------------|-----------------|
-| NetEngineerLab | [NetEngineerLab/](NetEngineerLab/) | 10 | https://netengineerlab.com |
-| PCDog | [PCDog/](PCDog/) | 4 | https://pcdog.com |
-| AIMarkTool | [AIMarkTool/](AIMarkTool/) | 4 | https://aimarktool.com |
-| PowerEngineerLab | [PowerEngineerLab/](PowerEngineerLab/) | 13 | https://powerengineerlab.com |
-| HVACEngineerLab | [HVACEngineerLab/](HVACEngineerLab/) | 3 | https://hvacengineerlab.com |
-| PrivacyFileLab | [PrivacyFileLab/](PrivacyFileLab/) | 4 | https://privacyfilelab.com |
-| DataFileLab | [DataFileLab/](DataFileLab/) | 4 | https://datafilelab.com |
-| WaterEngineerLab | [WaterEngineerLab/](WaterEngineerLab/) | 6 | https://waterengineerlab.com |
-| StructuralEngineerLab | [StructuralEngineerLab/](StructuralEngineerLab/) | 7 | https://structuralengineerlab.com |
-| DevEngineerLab | [DevEngineerLab/](DevEngineerLab/) | 4 | https://devengineerlab.com |
-| DIYCalcLab | [DIYCalcLab/](DIYCalcLab/) | 7 | https://diycalclab.com |
+| NetEngineerLab | [NetEngineerLab/](NetEngineerLab/) | 12 | https://netengineerlab.com |
+| PCDog | [PCDog/](PCDog/) | 6 | https://pcdog.com |
+| AIMarkTool | [AIMarkTool/](AIMarkTool/) | 6 | https://aimarktool.com |
+| PowerEngineerLab | [PowerEngineerLab/](PowerEngineerLab/) | 15 | https://powerengineerlab.com |
+| HVACEngineerLab | [HVACEngineerLab/](HVACEngineerLab/) | 5 | https://hvacengineerlab.com |
+| PrivacyFileLab | [PrivacyFileLab/](PrivacyFileLab/) | 6 | https://privacyfilelab.com |
+| DataFileLab | [DataFileLab/](DataFileLab/) | 6 | https://datafilelab.com |
+| WaterEngineerLab | [WaterEngineerLab/](WaterEngineerLab/) | 8 | https://waterengineerlab.com |
+| StructuralEngineerLab | [StructuralEngineerLab/](StructuralEngineerLab/) | 9 | https://structuralengineerlab.com |
+| DevEngineerLab | [DevEngineerLab/](DevEngineerLab/) | 6 | https://devengineerlab.com |
+| DIYCalcLab | [DIYCalcLab/](DIYCalcLab/) | 9 | https://diycalclab.com |
 
 Each folder README is the topic index for that site. The count is the number of topic files in that folder. Deferred inventory rows stay listed in [reports/FIRST_RELEASE.md](reports/FIRST_RELEASE.md), not as extra pages.
 
@@ -48,7 +48,7 @@ Each folder README is the topic index for that site. The count is the number of 
 
 ## 3. Formula knowledge-base navigation
 
-Published formula topics: 66
+Published formula topics: 88
 
 1. Open a domain folder from the table above.
 2. Read that domain’s README topic index.
@@ -71,6 +71,8 @@ Chinese outreach drafts keyed by site live under [promo/zh/](promo/zh/README.md)
 - [MTU, MSS, and encapsulation overhead](NetEngineerLab/mtu-mss-overhead.md)
 - [DNS TTL window before a record change](NetEngineerLab/dns-ttl-cache-window.md)
 - [Access-switch demand against uplink headroom](NetEngineerLab/switch-uplink-safe-capacity.md)
+- [A cutover wait is not a fiber round trip](NetEngineerLab/cutover-wait-versus-fiber-delay.md)
+- [Header bytes, then the safe uplink, then the clock](NetEngineerLab/on-wire-bytes-at-safe-uplink.md)
 
 ### PowerEngineerLab
 
@@ -87,6 +89,8 @@ Chinese outreach drafts keyed by site live under [promo/zh/](promo/zh/README.md)
 - [Same-interval load factor](PowerEngineerLab/interval-load-factor.md)
 - [Demand factor from maximum and connected load](PowerEngineerLab/maximum-demand-factor.md)
 - [Appliance energy over a stated duty](PowerEngineerLab/appliance-period-energy-cost.md)
+- [Three readings from one heater shop](PowerEngineerLab/three-shop-ratios.md)
+- [Do not feed a divider tap into a winding](PowerEngineerLab/divider-is-not-a-winding.md)
 
 ### StructuralEngineerLab
 
@@ -97,6 +101,8 @@ Chinese outreach drafts keyed by site live under [promo/zh/](promo/zh/README.md)
 - [Simply supported midspan deflection](StructuralEngineerLab/simply-supported-midspan-deflection.md)
 - [Off-center point load on a simple span](StructuralEngineerLab/simply-supported-offcenter-point-load.md)
 - [Full uniform load on a simple span](StructuralEngineerLab/simply-supported-uniform-load.md)
+- [A 5 m strip’s moment, then the fiber stress](StructuralEngineerLab/strip-moment-to-fiber-stress.md)
+- [Put the axial load over Euler. Leave the moment out.](StructuralEngineerLab/axial-ratio-beside-moment.md)
 
 ### WaterEngineerLab
 
@@ -106,12 +112,16 @@ Chinese outreach drafts keyed by site live under [promo/zh/](promo/zh/README.md)
 - [Catchment breakdown and peak runoff sum](WaterEngineerLab/catchment-runoff-summary.md)
 - [Single-source tree residual head](WaterEngineerLab/tree-network-residual-head.md)
 - [Weighted score for two drainage layouts](WaterEngineerLab/site-drainage-scenario-score.md)
+- [Does the ditch pass the lot peak?](WaterEngineerLab/ditch-capacity-versus-lot-peak.md)
+- [One pipe: the residual is the Darcy loss. A second pipe is not.](WaterEngineerLab/single-pipe-residual-matches-darcy.md)
 
 ### HVACEngineerLab
 
 - [Duct friction and local pressure drop](HVACEngineerLab/duct-friction-pressure-drop.md)
 - [Cooling and heating load components](HVACEngineerLab/cooling-heating-load-components.md)
 - [Psychrometric process between two states](HVACEngineerLab/psychrometric-process-states.md)
+- [The coil’s volume flow can enter the duct tool. Its watts cannot.](HVACEngineerLab/mass-flow-into-duct-velocity.md)
+- [A positive latent term is not condensate](HVACEngineerLab/latent-sign-is-not-condensate.md)
 
 ### DIYCalcLab
 
@@ -122,6 +132,8 @@ Chinese outreach drafts keyed by site live under [promo/zh/](promo/zh/README.md)
 - [Slab rebar grid count](DIYCalcLab/slab-rebar-grid.md)
 - [Modular bricks for a wall with one opening](DIYCalcLab/modular-brick-wall-count.md)
 - [Blown-fiberglass bags for an attic top-up](DIYCalcLab/blown-fiberglass-attic-bags.md)
+- [One 18 by 9 ft pad, then the steel that sits in it](DIYCalcLab/eighteen-by-nine-slab-and-mat.md)
+- [The pitch tool’s rafter length is the board-foot length](DIYCalcLab/rafter-length-into-board-feet.md)
 
 ### AIMarkTool
 
@@ -129,6 +141,8 @@ Chinese outreach drafts keyed by site live under [promo/zh/](promo/zh/README.md)
 - [Order-value LTV to CAC](AIMarkTool/order-value-ltv-to-cac.md)
 - [Successive funnel counts from stage percents](AIMarkTool/funnel-stage-counts.md)
 - [Equal-group sample size for an absolute rate lift](AIMarkTool/ab-equal-group-sample-size.md)
+- [Forty customers, then a ratio that sometimes equals ROAS](AIMarkTool/one-count-two-ratios.md)
+- [Eight thousand planned visitors are not the forty you already have](AIMarkTool/planned-sample-versus-arrivals.md)
 
 ### DataFileLab
 
@@ -136,6 +150,8 @@ Chinese outreach drafts keyed by site live under [promo/zh/](promo/zh/README.md)
 - [CSV encoding detection](DataFileLab/csv-encoding-detection.md)
 - [Dropping CSV records whose cells are all empty](DataFileLab/csv-blank-record-removal.md)
 - [A leading row-number column](DataFileLab/csv-row-number-column.md)
+- [Label the bytes, drop the empty record, then tally the city](DataFileLab/encoding-blank-then-city-tally.md)
+- [Number the kept rows. Do not frequency-count that new column.](DataFileLab/do-not-tally-the-row-number.md)
 
 ### DevEngineerLab
 
@@ -143,6 +159,8 @@ Chinese outreach drafts keyed by site live under [promo/zh/](promo/zh/README.md)
 - [Integer base conversion](DevEngineerLab/integer-base-conversion.md)
 - [Word wrap at a grapheme width](DevEngineerLab/word-wrap-grapheme-width.md)
 - [Local counts of code points, graphemes, and lines](DevEngineerLab/local-text-size-counts.md)
+- [Wrap the relay note, then count again](DevEngineerLab/wrap-then-recount-lines.md)
+- [One integer, a clock in one tool and hex in the other](DevEngineerLab/same-integer-two-tools.md)
 
 ### PCDog
 
@@ -150,6 +168,8 @@ Chinese outreach drafts keyed by site live under [promo/zh/](promo/zh/README.md)
 - [IPv4 static route commands](PCDog/ipv4-static-route-commands.md)
 - [Estimated backing pixels from the screen API](PCDog/screen-backing-pixel-estimate.md)
 - [Refresh estimate from a list of frame intervals](PCDog/refresh-frame-interval-summary.md)
+- [Keep the longer prefix, then print that route](PCDog/keep-the-longer-prefix-then-print-it.md)
+- [Backing-store pixels sit beside frame time. They do not multiply.](PCDog/pixels-beside-frame-time.md)
 
 ### PrivacyFileLab
 
@@ -157,6 +177,8 @@ Chinese outreach drafts keyed by site live under [promo/zh/](promo/zh/README.md)
 - [Sensitive text pattern redaction](PrivacyFileLab/sensitive-text-redaction.md)
 - [Which sensitive-text types disappeared](PrivacyFileLab/metadata-finding-type-diff.md)
 - [When the clean-file verifier allows a download](PrivacyFileLab/clean-file-verifier-status.md)
+- [Hash the text the verifier accepted](PrivacyFileLab/hash-only-after-the-verifier.md)
+- [A new digest does not clear a phone the diff still sees](PrivacyFileLab/different-digest-failed-diff.md)
 
 ---
 
