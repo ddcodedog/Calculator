@@ -74,6 +74,21 @@ Chinese outreach drafts keyed by site live under [promo/zh/](promo/zh/README.md)
 - [A cutover wait is not a fiber round trip](NetEngineerLab/cutover-wait-versus-fiber-delay.md)
 - [Header bytes, then the safe uplink, then the clock](NetEngineerLab/on-wire-bytes-at-safe-uplink.md)
 
+Simplified Chinese editions of those twelve topics. They are not additional formula counts:
+
+- [单段光纤链路损耗](NetEngineerLab/fiber-link-loss.zh-CN.md)
+- [光链路功率预算](NetEngineerLab/optical-power-budget.zh-CN.md)
+- [光纤传播时延与往返时间](NetEngineerLab/fiber-propagation-latency.zh-CN.md)
+- [色度色散系数 D(λ)](NetEngineerLab/chromatic-dispersion.zh-CN.md)
+- [OSPF 接口开销](NetEngineerLab/ospf-interface-cost.zh-CN.md)
+- [STP 端口路径开销](NetEngineerLab/stp-path-cost.zh-CN.md)
+- [由链路速率得到的文件传输时间](NetEngineerLab/bandwidth-transfer-time.zh-CN.md)
+- [MTU、MSS 与封装开销](NetEngineerLab/mtu-mss-overhead.zh-CN.md)
+- [记录变更前的 DNS TTL 窗口](NetEngineerLab/dns-ttl-cache-window.zh-CN.md)
+- [接入交换机需求与上行余量](NetEngineerLab/switch-uplink-safe-capacity.zh-CN.md)
+- [割接等待不是光纤往返时延](NetEngineerLab/cutover-wait-versus-fiber-delay.zh-CN.md)
+- [先把报头算进字节，再取安全上行，最后算时间](NetEngineerLab/on-wire-bytes-at-safe-uplink.zh-CN.md)
+
 ### PowerEngineerLab
 
 - [DC Ohm’s law](PowerEngineerLab/ohms-law.md)

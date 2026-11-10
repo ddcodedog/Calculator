@@ -1,14 +1,14 @@
-# 光纤传播时延与往返时间
+# Fiber propagation delay and RTT
 
-## 概述
+## Overview
 
-光纤时延计算器根据路由距离、路由系数、群折射率、每台设备的设备时延，以及可选的串行化时延，估算单向时延和往返时间。
+The Fiber Latency Calculator estimates one-way delay and round-trip time from route distance, a route factor, group index, per-device equipment delay, and optional serialization delay.
 
-引擎：`https://netengineerlab.com/tools/fiber-latency-calculator/js/engine.js`（`NELFiberLatencyEngine`），取于 2026-11-04。
+Engine: `https://netengineerlab.com/tools/fiber-latency-calculator/js/engine.js` (`NELFiberLatencyEngine`), fetched 2026-11-04.
 
-## 公式
+## Formula
 
-距离先换成公里（\(1\,\mathrm{mi} = 1.609344\,\mathrm{km}\)，\(1\,\mathrm{m} = 0.001\,\mathrm{km}\)）。
+Distance is converted to kilometres (\(1\,\mathrm{mi} = 1.609344\,\mathrm{km}\), \(1\,\mathrm{m} = 0.001\,\mathrm{km}\)).
 
 $$
 L_{\mathrm{km}} = d_{\mathrm{km}} \times f_{\mathrm{route}}
@@ -30,85 +30,79 @@ $$
 t_{\mathrm{ow}} = t_{\mathrm{prop}} + t_{\mathrm{eq}} + t_{\mathrm{ser}}, \qquad t_{\mathrm{rtt}} = 2\, t_{\mathrm{ow}}
 $$
 
-上面的 \(t\) 都以微秒为单位。显示舍入（`formatDelay`）：绝对值小于 \(1000\,\mu\mathrm{s}\) 时保留微秒并舍入到 2 位小数；否则换成毫秒并舍入到 3 位小数。舍入使用 `Math.round((value + Number.EPSILON) * 10^n)`。
+All of \(t\) above are in microseconds. Display rounding (`formatDelay`): if the absolute value is under \(1000\,\mu\mathrm{s}\), round to 2 decimal places and keep microseconds; otherwise convert to milliseconds and round to 3 decimal places. Rounding uses `Math.round((value + Number.EPSILON) * 10^n)`.
 
-引擎中群折射率的默认值是 1.468。允许范围是 1 到 1.6。路由系数至少为 1。
+Default group index in the engine is 1.468. Accepted range is 1 to 1.6. Route factor must be at least 1.
 
-## 变量
+## Variables
 
-| 符号 | 引擎字段 | 单位 |
+| Symbol | Engine field | Unit |
 |---|---|---|
-| \(d\) | `distance`，`distanceUnit` 为 `km`、`mi` 或 `m` | 随所选单位 |
+| \(d\) | `distance` with `distanceUnit` `km`, `mi`, or `m` | as selected |
 | \(f_{\mathrm{route}}\) | `routeFactor` | 1 |
 | \(n_g\) | `groupIndex` | 1 |
-| \(N_{\mathrm{eq}}\)，\(t_{\mathrm{dev}}\) | `equipmentCount`，`equipmentDelay` | 个，µs |
-| \(S_{\mathrm{bytes}}\) | `packetSize` | 字节 |
+| \(N_{\mathrm{eq}}\), \(t_{\mathrm{dev}}\) | `equipmentCount`, `equipmentDelay` | count, µs |
+| \(S_{\mathrm{bytes}}\) | `packetSize` | bytes |
 | \(R\) | `linkRate` | Gbit/s |
-| \(N_{\mathrm{hop}}\) | `serializationHops` | 个 |
+| \(N_{\mathrm{hop}}\) | `serializationHops` | count |
 
-## 工程含义
+## Engineering Principles
 
-决定调制脉冲时延的是群折射率，不是相位折射率。常数 \(c\) 是定义的光速，\(299792.458\,\mathrm{km/s}\)。串行化是 \(N\) 跳、每跳 \(8S/R\)，不是沿路径随包长变化的存储转发累加。往返正好是单向之和的两倍；没有不对称的回程。
+Group index, not the phase index, sets the delay of a modulated pulse. The constant \(c\) is the defined speed of light, \(299792.458\,\mathrm{km/s}\). Serialization is \(N\) times one hop of \(8S/R\), not a store-and-forward sum that changes with packet size along the path. Round trip is exactly twice the one-way sum; there is no asymmetric return path.
 
-引擎还给出若干比较时延，它们不加进 \(t_{\mathrm{ow}}\)：真空 \(10^{6}/c\)，微波为真空的 1.0003 倍，空芯为真空的 1.003 倍，以及 NVP 为 0.65 和 0.70 的铜缆（真空时延除以 NVP）。
+The engine also reports comparison delays that are not added into \(t_{\mathrm{ow}}\): vacuum \(10^{6}/c\), a microwave factor 1.0003 times vacuum, hollow-core factor 1.003 times vacuum, and copper at NVP 0.65 and 0.70 (vacuum delay divided by NVP).
 
-## 算例
+## Worked Example
 
-输入：100 km，路由系数 1，\(n_g = 1.468\)，无设备，包长 0，链路速率 10 Gbit/s，串行化跳数 0。
+Inputs: 100 km, route factor 1, \(n_g = 1.468\), no equipment, packet size 0, link rate 10 Gbit/s, 0 serialization hops.
 
-1. 光纤长度 \(= 100\,\mathrm{km}\)。
-2. \(t_{\mathrm{prop}} = 100 \times 1.468 / 299792.458 \times 10^{6} = 489.67209175\ldots\,\mu\mathrm{s}\)。
-3. 设备和串行化都是 0。单向时延等于传播时延。RTT 是它的两倍，\(979.3441835\ldots\,\mu\mathrm{s}\)。
+1. Fiber length \(= 100\,\mathrm{km}\).
+2. \(t_{\mathrm{prop}} = 100 \times 1.468 / 299792.458 \times 10^{6} = 489.67209175\ldots\,\mu\mathrm{s}\).
+3. Equipment and serialization are 0. One-way delay equals propagation. RTT is twice that, \(979.3441835\ldots\,\mu\mathrm{s}\).
 
-显示舍入：单向 **489.67 µs**，RTT **979.34 µs**。每公里时延为 \(4.8967209\ldots\,\mu\mathrm{s/km}\)。
+Display rounding: **489.67 µs** one way and **979.34 µs** RTT. Per-kilometre delay is \(4.8967209\ldots\,\mu\mathrm{s/km}\).
 
-边界：路由系数必须 \(\ge 1\)。小于 1 会被拒绝。同一 100 km 上群折射率 1.6 使单向时延升到 \(533.7025\ldots\,\mu\mathrm{s}\)（显示 **533.70 µs**）。群折射率低于 1 或高于 1.6 会被拒绝。距离必须大于 0。
+Boundary: route factor must be \(\ge 1\). A value below 1 is rejected. Group index 1.6 on the same 100 km raises one-way delay to \(533.7025\ldots\,\mu\mathrm{s}\) (display **533.70 µs**). Group index below 1 or above 1.6 is rejected. Distance must be greater than 0.
 
-串行化核对：1500 字节，1 Gbit/s，2 跳，其他时延为 0：
+Serialization check: 1500 bytes, 1 Gbit/s, 2 hops, other delays zero:
 
 $$
 t_{\mathrm{ser}} = 2 \times (1500 \times 8) / 10^{9} \times 10^{6} = 24\,\mu\mathrm{s}.
 $$
 
-## 限制
+## Limitations
 
-- 不含排队、FEC 或协议 ACK 时延。
-- 设备时延是每台设备一个常数，不是按平台查表。
-- 英里换算用国际英里，1.609344 km。
-- 用于比较的铜缆和微波数字是引擎里的标签，不是实测路径。
+- No queuing, FEC, or protocol ACK delay.
+- Equipment delay is a constant per device, not a lookup by platform.
+- Mile conversion is the international mile, 1.609344 km.
+- Comparison copper and microwave figures are labels in the engine, not measured paths.
 
-## 参考标准
+## Reference Standards
 
-页面把 G.652 群折射率预设（1310 nm 为 1.4677，1550 nm 为 1.4682）描述为选择器使用的已公布数值。引擎文件本身没有嵌入建议书 URL。在把这两个预设的数字表对应到已获取的条款之前，本库对具体 G.652 版本标为 **待定**。
+The page describes G.652 group-index presets (1.4677 at 1310 nm and 1.4682 at 1550 nm) as published values used by the selector. The engine file itself does not embed a recommendation URL. A specific G.652 edition for those two presets is **pending** in this library until the numeric table is tied to a fetched clause.
 
-速度 \(299792.458\,\mathrm{km/s}\) 是源码中使用的定义真空光速（`C_KM_S`）。
-
-## 中文工具页
-
-同一工具的中文页已在 2026-11-10 的站点地图中，打开后标题为中文：https://netengineerlab.com/tools/fiber-latency-calculator/zh/
-
-下一节的英文 URL 是验证记录中的生产页。引擎脚本从该路径读取，中文页没有另行抽取。
+The speed \(299792.458\,\mathrm{km/s}\) is the defined vacuum speed used in the source (`C_KM_S`).
 
 ## Online Calculator
 
 https://netengineerlab.com/tools/fiber-latency-calculator/
 
-工具 ID：`fiber-latency-calculator`。
+Inventory tool ID: `fiber-latency-calculator`.
 
-## 相关公式
+## Related Formulas
 
-- [单段光纤链路损耗](fiber-link-loss.md)
-- [色度色散系数 D(λ)](chromatic-dispersion.md)
-- [STP 端口路径开销](stp-path-cost.md)
+- [Single-span fiber link loss](fiber-link-loss.md)
+- [Chromatic dispersion coefficient D(λ)](chromatic-dispersion.md)
+- [STP port path cost](stp-path-cost.md)
 
 ## Verification
 
-| 项 | 值 |
+| Item | Value |
 |---|---|
-| 来源工具 | NetEngineerLab `fiber-latency-calculator` |
-| 证据 | 生产 `js/engine.js` 中的常数 `C_KM_S`、`MI_TO_KM`、`DEFAULT_GROUP_INDEX` 以及 `calculate` |
-| 方法 | 在 Python 中直接计算 \(L n_g / c\) |
-| 算例结果 | 显示舍入前单向 489.672 µs；显示为 489.67 µs |
-| 日期 | 2026-11-04 |
-| 文档版本 | 1.0.0 |
+| Source tool | NetEngineerLab `fiber-latency-calculator` |
+| Evidence | Production `js/engine.js` constants `C_KM_S`, `MI_TO_KM`, `DEFAULT_GROUP_INDEX`, and `calculate` |
+| Method | Direct evaluation of \(L n_g / c\) in Python |
+| Example result | 489.672 µs one way before display rounding; display 489.67 µs |
+| Date | 2026-11-04 |
+| Doc version | 1.0.0 |
 | Status | VERIFIED |
