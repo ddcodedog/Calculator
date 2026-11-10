@@ -1,90 +1,96 @@
-# MTU, MSS, and encapsulation overhead
+# MTU、MSS 与封装开销
 
-## Overview
+## 概述
 
-The MTU calculator subtracts each encapsulation layer from an underlay MTU, then reports the remaining inner packet, the TCP MSS that fits inside it, and the Ethernet wire length of that packet. It is a header budget, not a path-MTU probe.
+MTU 计算器从底层 MTU 逐层减去封装，然后报告剩余的内层包、能放进其中的 TCP MSS，以及该包的以太网帧长。这是报头预算，不是路径 MTU 探测。
 
-Engine: `js/engine.js` and `js/mtu-library.js` on the production tool, read 2026-11-07. The underlay must be a finite number of at least 576 bytes. A smaller underlay is `underlay_mtu_out_of_range`.
+引擎：生产工具上的 `js/engine.js` 和 `js/mtu-library.js`，读于 2026-11-07。底层必须是至少 576 字节的有限数。更小的底层为 `underlay_mtu_out_of_range`。
 
-## Formula
+## 公式
 
-VLAN overhead is \(4\) bytes per outer tag, and the tag count is `min(16, floor(count))`. If strict VLAN accounting is off, those bytes are not removed from the inner packet.
+VLAN 开销是每个外层标签 4 字节，标签数是 `min(16, floor(count))`。若关闭严格 VLAN 记账，这些字节不从内层包中扣除。
 
 $$
 L_{\mathrm{inner}} = \max\left(0,\ M_{\mathrm{underlay}} - \sum_i \mathrm{bytes}_i\times\mathrm{count}_i\right)
 $$
 
-Fixed headers inside that inner packet:
+内层包里的固定报头：
 
-| Protocol | Bytes |
+| 协议 | 字节 |
 |---|---:|
 | IPv4 | 20 |
 | IPv6 | 40 |
-| TCP, no options | 20 |
+| TCP，无选项 | 20 |
 | UDP | 8 |
 | ICMP | 8 |
 
-Advertised TCP MSS is \(\max(0, L_{\mathrm{inner}} - \mathrm{IP} - 20)\). Extra IP header bytes and TCP options are subtracted only from the actual TCP data length, not from the advertised MSS. The wire frame the tool reports is \(14 + \mathrm{VLAN} + \mathrm{payload} + 4\) (Ethernet header, tags, payload, FCS).
+对外通告的 TCP MSS 是 \(\max(0, L_{\mathrm{inner}} - \mathrm{IP} - 20)\)。额外的 IP 报头字节和 TCP 选项只从实际 TCP 数据长度中扣除，不从通告 MSS 中扣除。工具报告的线上帧是 \(14 + \mathrm{VLAN} + \mathrm{payload} + 4\)（以太网头、标签、载荷、FCS）。
 
-The path fails when the inner length cannot hold the IP header plus 8 bytes, or when the desired inner size is larger than \(L_{\mathrm{inner}}\). IPv6 warns below 1280 bytes. IPv4 warns below 576. Headroom in \([0, 40)\) adds `low_headroom`. Overhead of 10% or more adds `high_overhead`.
+内层长度放不下 IP 头加 8 字节，或者希望保留的内层尺寸大于 \(L_{\mathrm{inner}}\) 时，路径失败。IPv6 低于 1280 字节会告警。IPv4 低于 576 会告警。余量落在 \([0, 40)\) 时增加 `low_headroom`。开销达到或超过 10% 时增加 `high_overhead`。
 
-## Variables
+## 变量
 
-| Name | Meaning | Unit |
+| 名称 | 含义 | 单位 |
 |---|---|---|
-| Underlay MTU | Outer packet limit before the selected layers | bytes, ≥ 576 |
-| Layers | Named overhead from the library, each with a byte size and a count | bytes |
-| Desired inner size | The payload size you hoped to keep | bytes |
-| Address family | Chooses the 20-byte or 40-byte IP header | IPv4 or IPv6 |
-| Path count | Fewer than 2 paths adds a `single_path` warning | count |
+| 底层 MTU | 选定各层之前的外包上限 | 字节，≥ 576 |
+| 各层 | 库中有名称的开销，各有字节数和个数 | 字节 |
+| 希望的内层尺寸 | 你希望保住的载荷大小 | 字节 |
+| 地址族 | 选择 20 字节或 40 字节的 IP 头 | IPv4 或 IPv6 |
+| 路径数 | 少于 2 条路径时增加 `single_path` 告警 | 个 |
 
-## Engineering Principles
+## 工程含义
 
-MSS is what remains after the IP and TCP headers, so it is 40 bytes smaller than the inner IPv4 packet (20 + 20) and 60 bytes smaller for IPv6. Encapsulation does not change that 40 or 60; it shrinks the packet those headers sit in. A desired size equal to the effective inner size leaves no spare bytes for options, which is why headroom of 0 is a warning even when the arithmetic succeeds.
+MSS 是去掉 IP 头和 TCP 头之后剩下的部分，所以比内层 IPv4 包小 40 字节（20 + 20），IPv6 则小 60 字节。封装不改变这 40 或 60；它缩小的是这些报头所在的包。希望的尺寸等于有效内层尺寸时，没有多余字节留给选项，所以即使算术成功，余量为 0 仍是告警。
 
-## Worked Example
+## 算例
 
-PPPoE preset: underlay 1500 bytes, one 8-byte PPPoE layer, desired inner size 1492, IPv4, no VLAN, path count 1.
+PPPoE 预设：底层 1500 字节，一层 8 字节 PPPoE，希望的内层尺寸 1492，IPv4，无 VLAN，路径数 1。
 
-1. \(L_{\mathrm{inner}} = 1500 - 8 = 1492\). Desired size matches, so headroom is 0.
-2. Advertised MSS = \(1492 - 20 - 20 = 1452\) bytes.
-3. UDP payload = \(1492 - 20 - 8 = 1464\) bytes. ICMP payload is the same 1464.
-4. Wire frame = \(14 + 1492 + 4 = 1510\) bytes.
-5. Overhead = \(8 / 1500 = 0.5333\%\).
+1. \(L_{\mathrm{inner}} = 1500 - 8 = 1492\)。希望的尺寸与它相同，所以余量为 0。
+2. 通告 MSS = \(1492 - 20 - 20 = 1452\) 字节。
+3. UDP 载荷 = \(1492 - 20 - 8 = 1464\) 字节。ICMP 载荷同样是 1464。
+4. 线上帧 = \(14 + 1492 + 4 = 1510\) 字节。
+5. 开销 = \(8 / 1500 = 0.5333\%\)。
 
-Status stays healthy. Warnings are `low_headroom` (0 bytes spare) and `single_path`. Both sit in the tool’s priority-1 warning list, so the risk label is P1 even though the sizes fit.
+状态仍为 healthy。告警是 `low_headroom`（0 字节富余）和 `single_path`。二者都在工具的优先级 1 告警列表里，所以尺寸虽然放得下，风险标签仍是 P1。
 
-Boundary: desired inner size 1493 on this path is `desired_exceeds_effective`. An underlay of 575 is rejected before any layer math.
+边界：这条路径上希望的内层尺寸 1493 为 `desired_exceeds_effective`。底层 575 在任何层计算之前就被拒绝。
 
-## Limitations
+## 限制
 
-- Layer sizes are the library constants (PPPoE 8, GRE IPv4 24, VXLAN IPv4 50, WireGuard IPv4 60, MPLS 4 per label). They are not measured on a live tunnel.
-- Options, vendor tags, and double encapsulation that are not in the selected layer list are omitted.
-- The tool does not send packets.
+- 层大小是库中的常数（PPPoE 8，GRE IPv4 24，VXLAN IPv4 50，WireGuard IPv4 60，MPLS 每个标签 4）。它们不是在现网隧道上测到的。
+- 未列入所选层的选项、厂商标签和双重封装会被略去。
+- 工具不发送数据包。
 
-## Reference Standards
+## 参考标准
 
-The page names Ethernet, IP, and TCP header sizes as fixed constants in the engine. The standards documents themselves were not re-read. Status: pending.
+页面把以太网、IP 和 TCP 的报头大小当作引擎里的固定常数。标准文件本身没有重读。状态：待定。
+
+## 中文工具页
+
+同一工具的中文页已在 2026-11-10 的站点地图中，打开后标题为中文：https://netengineerlab.com/tools/mtu-calculator/zh/
+
+下一节的英文 URL 是验证记录中的生产页。引擎脚本从该路径读取，中文页没有另行抽取。
 
 ## Online Calculator
 
-Run the same PPPoE case in the MTU calculator:
+在 MTU 计算器中运行同一 PPPoE 案例：
 
 https://netengineerlab.com/tools/mtu-calculator/
 
-## Related Formulas
+## 相关公式
 
-- [File transfer time from link rate](bandwidth-transfer-time.md)
-- [Optical link power budget](optical-power-budget.md)
+- [由链路速率得到的文件传输时间](bandwidth-transfer-time.md)
+- [光链路功率预算](optical-power-budget.md)
 
 ## Verification
 
-| Item | Value |
+| 项 | 值 |
 |---|---|
-| Source tool | NetEngineerLab MTU calculator |
-| Evidence | Production `js/engine.js` inner-length, MSS, and wire-frame expressions; PPPoE size from `js/mtu-library.js` |
-| Method | Recomputed 1500 − 8 and the IPv4 header split |
-| Example result | Inner 1492, advertised MSS 1452, wire 1510, overhead 0.5333% |
-| Date | 2026-11-07 |
-| Doc version | 1.0.0 |
+| 来源工具 | NetEngineerLab MTU 计算器 |
+| 证据 | 生产 `js/engine.js` 的内层长度、MSS 和线上帧表达式；PPPoE 大小来自 `js/mtu-library.js` |
+| 方法 | 重算 1500 − 8 以及 IPv4 报头拆分 |
+| 算例结果 | 内层 1492，通告 MSS 1452，线上 1510，开销 0.5333% |
+| 日期 | 2026-11-07 |
+| 文档版本 | 1.0.0 |
 | Status | VERIFIED |

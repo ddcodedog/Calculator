@@ -1,83 +1,89 @@
-# OSPF interface cost
+# OSPF 接口开销
 
-## Overview
+## 概述
 
-The OSPF Cost Calculator turns a reference bandwidth and an interface bandwidth, both in Mbit/s, into an integer OSPF cost. Costs are clamped to the range 1 through 65535. A manual metric override replaces the calculated cost when it is inside that range. Optional paths sum the costs of their interfaces.
+OSPF 开销计算器把参考带宽和接口带宽都按 Mbit/s 换成整数 OSPF 开销。开销被限制在 1 到 65535。手工度量覆盖值若落在这个范围内，就替换计算值。可选路径把各接口开销相加。
 
-Engine: `https://netengineerlab.com/tools/ospf-cost-calculator/js/engine.js` (`OspfCostEngine`, schema `ospf-cost-engine/1.0`), fetched 2026-11-04.
+引擎：`https://netengineerlab.com/tools/ospf-cost-calculator/js/engine.js`（`OspfCostEngine`，schema `ospf-cost-engine/1.0`），取于 2026-11-04。
 
-## Formula
+## 公式
 
 $$
 \mathrm{cost} = \mathrm{clamp}\left(1,\ 65535,\ \mathrm{round}\left(\frac{B_{\mathrm{ref}}}{B_{\mathrm{if}}}\right)\right)
 $$
 
-`round` is `ceil` (default), `floor`, or `round` (`Math.ceil`, `Math.floor`, or `Math.round`). Default reference bandwidth, when the input omits it, is \(100000\,\mathrm{Mbit/s}\).
+`round` 可以是 `ceil`（默认）、`floor` 或 `round`（分别对应 `Math.ceil`、`Math.floor`、`Math.round`）。输入省略参考带宽时，默认值为 \(100000\,\mathrm{Mbit/s}\)。
 
-Active interface costs sum to `totalCost`. Disabled interfaces are excluded. Path cost is the same sum over that path’s interfaces. The best path is the minimum path total. ECMP count is how many paths share that minimum and are not invalid.
+处于活动状态的接口开销相加得到 `totalCost`。停用的接口不计入。路径开销是该路径上接口的同一求和。最佳路径是路径总和的最小值。ECMP 数量是有多少条路径等于这个最小值且不是无效路径。
 
-## Variables
+## 变量
 
-| Symbol | Engine field | Unit |
+| 符号 | 引擎字段 | 单位 |
 |---|---|---|
 | \(B_{\mathrm{ref}}\) | `referenceBandwidthMbps` | Mbit/s |
 | \(B_{\mathrm{if}}\) | `bandwidthMbps` | Mbit/s |
-| override | `metricOverride` | integer 1…65535, or empty |
-| mode | `calculationMode` | `ceil`, `floor`, or `round` |
+| 覆盖值 | `metricOverride` | 整数 1…65535，或留空 |
+| 模式 | `calculationMode` | `ceil`、`floor` 或 `round` |
 
-Bandwidth must be a finite number greater than 0 or the row is invalid.
+带宽必须是大于 0 的有限数，否则该行无效。
 
-## Engineering Principles
+## 工程含义
 
-This is the reference-bandwidth metric used by common OSPF implementations, not a hop count and not IS-IS wide metrics. The numerator and denominator must use the same unit. The engine assumes Mbit/s for both, so a 10 Gbit/s link is entered as 10000, not 10. Ceiling is the default because fractional costs are not used; a ratio of 1.01 becomes 2 in `ceil` mode and 1 in `floor` mode.
+这是常见 OSPF 实现使用的参考带宽度量，不是跳数，也不是 IS-IS 宽度量。分子和分母必须使用同一单位。引擎假定两者都是 Mbit/s，所以 10 Gbit/s 链路应输入 10000，而不是 10。默认使用向上取整，因为开销不用分数；比值为 1.01 时，`ceil` 模式得到 2，`floor` 模式得到 1。
 
-## Worked Example
+## 算例
 
-Reference \(100000\,\mathrm{Mbit/s}\), mode `ceil`, no overrides.
+参考带宽 \(100000\,\mathrm{Mbit/s}\)，模式 `ceil`，无覆盖。
 
-| Interface | Bandwidth (Mbit/s) | Ratio | Cost |
+| 接口 | 带宽（Mbit/s） | 比值 | 开销 |
 |---|---:|---:|---:|
-| Gigabit | 1000 | 100 | 100 |
-| Ten-gigabit | 10000 | 10 | 10 |
-| Fast Ethernet | 100 | 1000 | 1000 |
+| 千兆 | 1000 | 100 | 100 |
+| 万兆 | 10000 | 10 | 10 |
+| 快速以太网 | 100 | 1000 | 1000 |
 | 400 Gbit/s | 400000 | 0.25 | 1 |
 
-A path of one 10 Gbit/s hop plus one 1 Gbit/s hop has cost \(10 + 100 = 110\).
+一条 10 Gbit/s 加一条 1 Gbit/s 的路径，开销为 \(10 + 100 = 110\)。
 
-`floor` mode on a \(100000/3000 = 33.\overline{3}\) ratio yields 33. `ceil` yields 34. `round` yields 33 (`Math.round` half-up on positive numbers; this ratio is not a halfway case).
+\(100000/3000 = 33.\overline{3}\) 时，`floor` 得到 33，`ceil` 得到 34，`round` 得到 33（正数上 `Math.round` 是半数远离零；这个比值不是恰好半数）。
 
-Boundary: any interface faster than the reference still has cost **1**, not 0. An override of 50 replaces the calculated cost. An override of 0 or 70000 is an error (`metric_override_out_of_range`). A non-positive bandwidth is invalid.
+边界：比参考带宽更快的接口，开销仍是 **1**，不是 0。覆盖值 50 替换计算开销。覆盖值 0 或 70000 是错误（`metric_override_out_of_range`）。非正带宽无效。
 
-## Limitations
+## 限制
 
-- No auto-cost from a vendor “bandwidth” CLI string. The number must already be Mbit/s.
-- No OSPF area, network type, or LSA generation.
-- ECMP here means equal computed totals, not a check that the forwarding plane will load-share.
-- Cost 65535 is a clamp, not a statement that the link is unusable.
+- 不会从厂商 “bandwidth” CLI 字符串自动得到开销。数字必须已经是 Mbit/s。
+- 不含 OSPF 区域、网络类型或 LSA 生成。
+- 这里的 ECMP 指计算出的总和相等，不检查转发面是否会分担。
+- 开销 65535 是钳位，不是在说链路不可用。
 
-## Reference Standards
+## 参考标准
 
-The engine records the formula string `cost = reference bandwidth / interface bandwidth` and the bounds 1…65535. The production page states that ceiling matches common Cisco and FRR behavior. This library did not fetch an RFC or a vendor configuration guide for that sentence, so the external citation stays **pending**. The arithmetic and the clamp are verified from the engine.
+引擎记录公式字符串 `cost = reference bandwidth / interface bandwidth`，以及界限 1…65535。生产页说明向上取整符合常见 Cisco 和 FRR 行为。本库没有为那句话去取 RFC 或厂商配置指南，所以外部引用仍为 **待定**。算术和钳位已按引擎核对。
+
+## 中文工具页
+
+同一工具的中文页已在 2026-11-10 的站点地图中，打开后标题含中文：https://netengineerlab.com/tools/ospf-cost-calculator/zh/
+
+下一节的英文 URL 是验证记录中的生产页。引擎脚本从该路径读取，中文页没有另行抽取。
 
 ## Online Calculator
 
 https://netengineerlab.com/tools/ospf-cost-calculator/
 
-Inventory tool ID: `ospf-cost-calculator`.
+工具 ID：`ospf-cost-calculator`。
 
-## Related Formulas
+## 相关公式
 
-- [STP port path cost](stp-path-cost.md)
-- [Fiber propagation delay and RTT](fiber-propagation-latency.md)
+- [STP 端口路径开销](stp-path-cost.md)
+- [光纤传播时延与往返时间](fiber-propagation-latency.md)
 
 ## Verification
 
-| Item | Value |
+| 项 | 值 |
 |---|---|
-| Source tool | NetEngineerLab `ospf-cost-calculator` |
-| Evidence | Production `js/engine.js` `metricFor` and `calculate` |
-| Method | Python `math.ceil` / `floor` on the same ratios, then clamp |
-| Example result | 1 Gbit/s → 100; 10 Gbit/s → 10; 100 Mbit/s → 1000; 400 Gbit/s → 1, at reference 100000 Mbit/s, ceil |
-| Date | 2026-11-04 |
-| Doc version | 1.0.0 |
+| 来源工具 | NetEngineerLab `ospf-cost-calculator` |
+| 证据 | 生产 `js/engine.js` 的 `metricFor` 和 `calculate` |
+| 方法 | 用 Python 的 `math.ceil` / `floor` 计算同一比值，再钳位 |
+| 算例结果 | 参考 100000 Mbit/s、ceil：1 Gbit/s → 100；10 Gbit/s → 10；100 Mbit/s → 1000；400 Gbit/s → 1 |
+| 日期 | 2026-11-04 |
+| 文档版本 | 1.0.0 |
 | Status | VERIFIED |

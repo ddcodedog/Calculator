@@ -1,93 +1,99 @@
-# Access-switch demand against uplink headroom
+# 接入交换机需求与上行余量
 
-## Overview
+## 概述
 
-An access switch can offer far more edge bandwidth than its uplinks can carry. This tool multiplies port count, port rate, utilization, concurrency, and overhead into a demand, compares that demand with the uplink capacity and with a safer fraction of it, and reports how many uplinks the target fraction would need. The example leaves out `engineering`, `peakPorts`, `growthPct`, `burstPct`, and `failedUplinks`, so the engine returns the short baseline object.
+接入交换机可以提供远大于上行承载能力的边缘带宽。这个工具把端口数、端口速率、利用率、并发和开销乘成需求，再把需求与上行容量、以及容量中更安全的一部分比较，并报告目标比例需要多少条上行。算例留空 `engineering`、`peakPorts`、`growthPct`、`burstPct` 和 `failedUplinks`，所以引擎返回短基线对象。
 
-Production `js/engine.js` for the switch-uplink tool, model `switch-uplink-engine/2.0.0`, read 2026-11-08. Displayed gigabit figures use JavaScript `toFixed` and then a unary plus, so 4.536 becomes 4.54 at two decimals.
+交换机上行工具的生产 `js/engine.js`，模型 `switch-uplink-engine/2.0.0`，读于 2026-11-08。显示的吉比特数先用 JavaScript `toFixed`，再做一元加号，所以两位小数时 4.536 变成 4.54。
 
-## Formula
+## 公式
 
-Demand and the burst-adjusted peak, in Mbit/s:
+需求和经突发调整的峰值，单位 Mbit/s：
 
 $$
 D = N\,R\,\frac{u}{100}\,\frac{c}{100}\left(1+\frac{h}{100}\right), \qquad D_{\mathrm{peak}} = D\left(1+\frac{b}{100}\right)
 $$
 
-Capacity and the safe slice:
+容量和安全切片：
 
 $$
 C = R_{\mathrm{up}}\,N_{\mathrm{up}}, \qquad C_{\mathrm{safe}} = C\,\frac{t}{100}
 $$
 
-Oversubscription is \((N R / C)\) shown to one decimal with `:1`. Utilization percent is \(100\,D_{\mathrm{peak}}/C\) to one decimal. Required uplinks are
+超售比是 \((N R / C)\)，显示到一位小数并带 `:1`。利用率百分比是 \(100\,D_{\mathrm{peak}}/C\)，到一位小数。所需上行条数为
 
 $$
 N_{\mathrm{req}} = \left\lceil \frac{D_{\mathrm{peak}}}{R_{\mathrm{up}}\,t/100} \right\rceil
 $$
 
-Spare gigabits are \((C_{\mathrm{safe}}-D_{\mathrm{peak}})/1000\), two decimals. Status is `fail` when no uplink capacity exists or when the peak exceeds capacity, `pass` when the peak is at or under the safe slice, and `warning` when the peak sits between the safe slice and full capacity. Inputs must be finite. Port count, both rates, uplink count, utilization, concurrency, and target must be > 0. Utilization, concurrency, and target must be ≤ 100. Overhead must be ≥ 0.
+富余吉比特是 \((C_{\mathrm{safe}}-D_{\mathrm{peak}})/1000\)，两位小数。没有上行容量，或峰值超过容量时，状态为 `fail`；峰值不超过安全切片时为 `pass`；峰值位于安全切片和满容量之间时为 `warning`。输入必须有限。端口数、两种速率、上行条数、利用率、并发和目标必须 > 0。利用率、并发和目标必须 ≤ 100。开销必须 ≥ 0。
 
-## Variables
+## 变量
 
-| Name | Meaning | Unit |
+| 名称 | 含义 | 单位 |
 |---|---|---|
-| Ports | Access ports in the model | count |
-| Port rate | Each access port | Mbit/s |
-| Utilization | Fraction of port rate treated as busy | % |
-| Concurrency | Fraction of ports busy together | % |
-| Overhead | Extra on the demand | % |
-| Uplink rate | Each uplink | Mbit/s |
-| Uplinks | Active uplinks | count |
-| Target | Safe fraction of uplink capacity | % |
-| Burst | Extra on the demand; 0 in the short example | % |
+| 端口 | 模型中的接入端口 | 个 |
+| 端口速率 | 每个接入端口 | Mbit/s |
+| 利用率 | 当作忙碌的端口速率比例 | % |
+| 并发 | 同时忙碌的端口比例 | % |
+| 开销 | 加在需求上的额外部分 | % |
+| 上行速率 | 每条上行 | Mbit/s |
+| 上行条数 | 活动上行 | 个 |
+| 目标 | 上行容量中的安全比例 | % |
+| 突发 | 加在需求上的额外部分；短算例中为 0 | % |
 
-## Engineering Principles
+## 工程含义
 
-Oversubscription here is nameplate access bandwidth divided by uplink capacity. It ignores utilization. The demand path is the one that includes utilization, concurrency, and overhead, and that is what the safe-capacity test uses. A result under the target is planning headroom inside this model. It is not a queueing delay and not a promise about microbursts the burst field was left at zero to exclude.
+这里的超售比是接入标称带宽除以上行容量。它不考虑利用率。需求路径才计入利用率、并发和开销，安全容量检验用的是这条路径。低于目标的结果是本模型内部的规划余量。它不是排队时延，也不是对微突发的承诺；突发字段留在 0，就是为了把微突发留在模型外面。
 
-## Worked Example
+## 算例
 
-24 access ports at 1000 Mbit/s, 30% utilization, 60% concurrency, 5% overhead, two 10,000 Mbit/s uplinks, 70% target, burst 0.
+24 个接入端口，每个 1000 Mbit/s，利用率 30%，并发 60%，开销 5%，两条 10,000 Mbit/s 上行，目标 70%，突发 0。
 
-1. Demand = \(24\times 1000\times 0.30\times 0.60\times 1.05 = 4536\) Mbit/s, which is 4.536 Gbit/s and displays as 4.54.
-2. Peak equals demand because burst is 0. Capacity = \(10000\times 2 = 20000\) Mbit/s, displayed 20 Gbit/s. Safe slice = \(0.70\times 20 = 14\) Gbit/s.
-3. Oversubscription = \(24000/20000 = 1.2\), displayed `1.2:1`.
-4. Utilization = \(4536/20000\times 100 = 22.68\), displayed 22.7%.
-5. Required uplinks = \(\lceil 4536/7000\rceil = 1\). Spare = \((14000-4536)/1000 = 9.464\), displayed 9.46 Gbit/s.
-6. Peak is under the safe slice, two uplinks are active, and burst is 0, so status is `pass`.
+1. 需求 = \(24\times 1000\times 0.30\times 0.60\times 1.05 = 4536\) Mbit/s，即 4.536 Gbit/s，显示为 4.54。
+2. 突发为 0，所以峰值等于需求。容量 = \(10000\times 2 = 20000\) Mbit/s，显示 20 Gbit/s。安全切片 = \(0.70\times 20 = 14\) Gbit/s。
+3. 超售比 = \(24000/20000 = 1.2\)，显示 `1.2:1`。
+4. 利用率 = \(4536/20000\times 100 = 22.68\)，显示 22.7%。
+5. 所需上行 = \(\lceil 4536/7000\rceil = 1\)。富余 = \((14000-4536)/1000 = 9.464\)，显示 9.46 Gbit/s。
+6. 峰值低于安全切片，两条上行都活动，突发为 0，所以状态为 `pass`。
 
-Boundary: 48 ports at 1000 Mbit/s, utilization 100%, concurrency 100%, overhead 0, one 10,000 Mbit/s uplink, target 70%, burst 0. Peak is 48 Gbit/s against 10 Gbit/s of capacity, so status is `fail`. Required uplinks become \(\lceil 48000/7000\rceil = 7\).
+边界：48 个端口，每个 1000 Mbit/s，利用率 100%，并发 100%，开销 0，一条 10,000 Mbit/s 上行，目标 70%，突发 0。峰值 48 Gbit/s，容量 10 Gbit/s，状态为 `fail`。所需上行变为 \(\lceil 48000/7000\rceil = 7\)。
 
-## Limitations
+## 限制
 
-- The short return does not run the N-1 or growth scenarios. Those appear only after one of the engineering keys is present.
-- Utilization and concurrency are inputs. The tool does not read switch counters.
-- `toFixed` display is not the exact demand. Keep 4536 Mbit/s if you chain another calculation.
+- 短返回不计算 N-1 或增长情景。那些只在出现某个工程键之后才出现。
+- 利用率和并发是输入。工具不读取交换机计数器。
+- `toFixed` 的显示值不是精确需求。若要接到下一步计算，保留 4536 Mbit/s。
 
-## Reference Standards
+## 参考标准
 
-No IEEE or vendor capacity standard is applied inside the engine. Status: pending.
+引擎内部没有采用 IEEE 或厂商的容量标准。状态：待定。
+
+## 中文工具页
+
+同一工具的中文页已在 2026-11-10 的站点地图中，打开后标题为中文：https://netengineerlab.com/tools/switch-uplink-oversubscription-calculator/zh/
+
+下一节的英文 URL 是验证记录中的生产页。引擎脚本从该路径读取，中文页没有另行抽取。
 
 ## Online Calculator
 
-Enter the 24-port, two-uplink case on the production page:
+在生产页输入 24 端口、两条上行的案例：
 
 https://netengineerlab.com/tools/switch-uplink-oversubscription-calculator/
 
-## Related Formulas
+## 相关公式
 
-- [OSPF interface cost](ospf-interface-cost.md)
-- [STP port path cost](stp-path-cost.md)
+- [OSPF 接口开销](ospf-interface-cost.md)
+- [STP 端口路径开销](stp-path-cost.md)
 
 ## Verification
 
-| Item | Value |
+| 项 | 值 |
 |---|---|
-| Source tool | NetEngineerLab `switch-uplink-oversubscription-calculator` |
-| Evidence | Production `js/engine.js`, short return when engineering keys are omitted |
-| Method | Node replay of demand, `toFixed`, `Math.ceil`, and the status branches |
-| Example result | 4.54 Gbit/s demand, 1.2:1, 22.7% util, 1 uplink required, 9.46 Gbit/s spare, pass |
-| Date | 2026-11-08 |
-| Doc version | 1.0.0 |
+| 来源工具 | NetEngineerLab `switch-uplink-oversubscription-calculator` |
+| 证据 | 生产 `js/engine.js`；省略工程键时的短返回 |
+| 方法 | 用 Node 重放需求、`toFixed`、`Math.ceil` 和状态分支 |
+| 算例结果 | 需求 4.54 Gbit/s，1.2:1，利用率 22.7%，需要 1 条上行，富余 9.46 Gbit/s，状态 pass |
+| 日期 | 2026-11-08 |
+| 文档版本 | 1.0.0 |
 | Status | VERIFIED |
