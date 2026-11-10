@@ -10,7 +10,7 @@ Water and hydraulic engineering calculators — flow, head loss, pipe, and relat
 
 ## Topic index
 
-Published topics: 6
+Published topics: 8
 
 GATE 3 batch 1. Status labels are in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
@@ -22,6 +22,8 @@ GATE 3 batch 1. Status labels are in [FORMULA_VERIFICATION.md](../reports/FORMUL
 | VERIFIED | [Catchment breakdown and peak runoff sum](catchment-runoff-summary.md) | `TOOL-017` |
 | VERIFIED | [Single-source tree residual head](tree-network-residual-head.md) | `water-distribution-network-preliminary-planner` |
 | VERIFIED | [Weighted score for two drainage layouts](site-drainage-scenario-score.md) | `TOOL-015` |
+| VERIFIED | [Does the ditch pass the lot peak?](ditch-capacity-versus-lot-peak.md) | `manning-open-channel-flow` |
+| VERIFIED | [One pipe: the residual is the Darcy loss. A second pipe is not.](single-pipe-residual-matches-darcy.md) | `water-distribution-network-preliminary-planner` |
 
 ## Online calculators
 

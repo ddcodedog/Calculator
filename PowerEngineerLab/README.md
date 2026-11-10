@@ -10,7 +10,7 @@ Power systems and electrical engineering calculators — load, cable, protection
 
 ## Topic index
 
-Published topics: 13
+Published topics: 15
 
 GATE 3 batch 1. Nine closed-form electrical calculations. The other PowerEngineerLab tools stay undocumented until their production functions are checked the same way. Status labels are in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
@@ -29,6 +29,8 @@ GATE 3 batch 1. Nine closed-form electrical calculations. The other PowerEnginee
 | VERIFIED | [Same-interval load factor](interval-load-factor.md) | `load-factor` |
 | VERIFIED | [Demand factor from maximum and connected load](maximum-demand-factor.md) | `demand-factor` |
 | VERIFIED | [Appliance energy over a stated duty](appliance-period-energy-cost.md) | `TOOL-011` |
+| VERIFIED | [Three readings from one heater shop](three-shop-ratios.md) | `load-factor` |
+| VERIFIED | [Do not feed a divider tap into a winding](divider-is-not-a-winding.md) | `transformer-ratio` |
 
 ## Online calculators
 

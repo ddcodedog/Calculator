@@ -10,7 +10,7 @@ Structural engineering calculators — member sizing, loads, and related verifie
 
 ## Topic index
 
-Published topics: 7
+Published topics: 9
 
 GATE 3 batch 1. Beam singularity solvers and the other structural tools are not in this batch. Status labels are in [FORMULA_VERIFICATION.md](../reports/FORMULA_VERIFICATION.md).
 
@@ -23,6 +23,8 @@ GATE 3 batch 1. Beam singularity solvers and the other structural tools are not 
 | REVIEW_REQUIRED | [Simply supported midspan deflection](simply-supported-midspan-deflection.md) | `beam-deflection-calculator` |
 | VERIFIED | [Off-center point load on a simple span](simply-supported-offcenter-point-load.md) | `simply-supported-beam-calculator` |
 | VERIFIED | [Full uniform load on a simple span](simply-supported-uniform-load.md) | `TOOL-001` |
+| VERIFIED | [A 5 m strip’s moment, then the fiber stress](strip-moment-to-fiber-stress.md) | `beam-bending-stress-calculator` |
+| VERIFIED | [Put the axial load over Euler. Leave the moment out.](axial-ratio-beside-moment.md) | `user-defined-utilization-calculator` |
 
 ## Online calculators
 

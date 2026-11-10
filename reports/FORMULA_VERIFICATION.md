@@ -125,3 +125,23 @@ Nineteen topic files were added from tools that were not already written up on m
 | DevEngineerLab | grapheme wrap, text size counts | VERIFIED |
 | PCDog | backing-pixel estimate, refresh-interval summary | VERIFIED from production JS, not a browser run |
 | PrivacyFileLab | metadata type diff, clean-file verifier status | VERIFIED |
+
+## Cross-tool topics added 2026-11-10
+
+Twenty-two topic files, two per site, each built around one decision and at least two tools on that same site. They do not replace the single-tool notes above, and the two structural `REVIEW_REQUIRED` rows are unchanged. `countVerified` is 86.
+
+| Site | Topics added | What the pair decides |
+|---|---|---|
+| NetEngineerLab | cutover wait versus fiber delay; on-wire bytes at the safe uplink | Minutes of DNS cache are not a fiber RTT. Header bytes, safe uplink, and transfer time stay in that order. |
+| PowerEngineerLab | three shop ratios; divider is not a winding | Load factor and demand factor are not multiplied. A divider tap is not a transformer secondary. |
+| HVACEngineerLab | mass flow into duct velocity; latent sign is not condensate | Specific volume can become a duct flow. Watts are not pascals. A positive latent term is moisture added. |
+| WaterEngineerLab | ditch capacity versus lot peak; one-pipe residual matches Darcy | Rational peak is compared with Manning capacity. One pipe’s Darcy loss is the tree residual only until a second demand appears. |
+| StructuralEngineerLab | strip moment to fiber stress; axial ratio beside Euler | \(M/S\) uses the strip moment. Utilization is force over an Euler load, not stress over kilonewtons. |
+| DIYCalcLab | 18 by 9 slab and mat; rafter length into board feet | One pad feeds bags and a rebar mat. Pitch length is the board-foot length, and nominal and dressed are alternative bills. |
+| AIMarkTool | one count, two ratios; planned sample versus arrivals | Production POST on 2026-11-10. ROAS and LTV/CAC match only for this one-purchase case. 8155 planned visitors are not the 40 already counted. |
+| DataFileLab | encoding, blank row, then city tally; do not tally the row number | Order of the three file tools changes the city bucket. The inserted row-number column is not a city. |
+| DevEngineerLab | wrap then recount; one integer, two tools | Wrap changes lines and not tokens. The same digits are a UTC instant in one tool and hex in the other. |
+| PCDog | longer prefix then the route command; pixels beside frame time | The /24 wins, then the Linux template prints that prefix. Backing-store pixels are not multiplied by hertz. No `requestAnimationFrame` run. |
+| PrivacyFileLab | hash only after the verifier; a different digest on a failed diff | SHA-256 of the accepted after text. A remaining US phone stays `VERIFICATION_FAILED` even if the digest changed. No browser download. |
+
+Live guide, case, and topic pages closest to these decisions were read on 2026-11-10 so the datasets would not repeat those pages. That reading is not a web-wide similarity scan. Non-English site locales were not read in full.
