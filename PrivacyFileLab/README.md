@@ -30,3 +30,19 @@ Each published topic links to its own production tool. This index does not list 
 ## Contribution
 
 See [CONTRIBUTING.md](../CONTRIBUTING.md). Do not invent formulas, standards, or tool URLs.
+
+## Other domains
+
+The other ten calculator sites have their own indexes:
+- [NetEngineerLab](../NetEngineerLab/README.md) — https://netengineerlab.com
+- [PCDog](../PCDog/README.md) — https://pcdog.com
+- [AIMarkTool](../AIMarkTool/README.md) — https://aimarktool.com
+- [PowerEngineerLab](../PowerEngineerLab/README.md) — https://powerengineerlab.com
+- [HVACEngineerLab](../HVACEngineerLab/README.md) — https://hvacengineerlab.com
+- [DataFileLab](../DataFileLab/README.md) — https://datafilelab.com
+- [WaterEngineerLab](../WaterEngineerLab/README.md) — https://waterengineerlab.com
+- [StructuralEngineerLab](../StructuralEngineerLab/README.md) — https://structuralengineerlab.com
+- [DevEngineerLab](../DevEngineerLab/README.md) — https://devengineerlab.com
+- [DIYCalcLab](../DIYCalcLab/README.md) — https://diycalclab.com
+
+Local digests, redaction, and file checks. This index does not reuse another site's tools.

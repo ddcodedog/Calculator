@@ -1,5 +1,7 @@
 # Do not feed a divider tap into a winding
 
+Locale: en
+
 ## Two circuits that both “make a lower voltage”
 
 A bench supply is 48 V DC. A resistive divider with \(R_1 = 2200\,\Omega\) on top and \(R_2 = 5600\,\Omega\) below, load left empty, produces an open-circuit tap. Elsewhere in the same building, a single-phase transformer has 480 primary turns and 80 secondary turns and a 240 V primary winding. Both conversations use the word “ratio.” The numbers must not cross.
@@ -82,3 +84,5 @@ https://powerengineerlab.com/calculators/transformer-ratio/
 | Example result | 34.46 V at 6.15 mA beside 40 V and 37.5 A |
 | Date | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

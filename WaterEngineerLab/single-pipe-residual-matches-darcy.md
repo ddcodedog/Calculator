@@ -1,5 +1,7 @@
 # One pipe: the residual is the Darcy loss. A second pipe is not.
 
+Locale: en
+
 ## When the two tools are the same subtraction
 
 The Darcy tool reports major headloss for one full pipe. The tree planner reports residual head at a node as upstream residual head, plus upstream elevation, minus node elevation, minus the incoming pipe’s major loss. With a single pipe and no extra nodes, those sentences describe one subtraction. With a second pipe, the Darcy page no longer sees the downstream flow, and you cannot keep pasting the first \(h_f\).
@@ -74,3 +76,5 @@ https://waterengineerlab.com/tools/water-distribution-network-preliminary-planne
 | Example result | \(h_f = 2.131\,\mathrm{m}\), residual 21.362 m (209.49 kPa) |
 | Date | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

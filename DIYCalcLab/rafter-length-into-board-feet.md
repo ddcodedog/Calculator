@@ -1,5 +1,7 @@
 # The pitch tool’s rafter length is the board-foot length
 
+Locale: en
+
 ## Fork in the order
 
 A gable is 24 ft wide, overhang 1 ft each side, rise 6 in on a 12 in run. Rafters are spaced at 16 in along a 20 ft building. The pitch calculator returns a rafter length in feet. The board-foot calculator bills thickness × width × that length × piece count, divided by 12. Which thickness and width you type decides the bill, because the lumber tool does not convert nominal 2×8 into dressed 1½×7¼.
@@ -74,3 +76,5 @@ https://diycalclab.com/lumber/board-foot-calculator/
 | Example result | 14.534 ft rafters; 210.749 BF dressed or 310.068 BF nominal |
 | Date | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

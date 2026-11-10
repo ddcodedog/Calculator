@@ -1,5 +1,11 @@
 # 割接等待不是光纤往返时延
 
+Locale: zh-CN
+
+## 直接回答
+
+本文回答割接等待：DNS 缓存等待和光纤往返是两只钟，不能相加。
+
 本文是同目录英文稿的简体中文版，英文原文保持不变：[A cutover wait is not a fiber round trip](cutover-wait-versus-fiber-delay.md)。
 
 ## 要做的判断
@@ -83,3 +89,5 @@ https://netengineerlab.com/tools/dns-ttl-propagation-calculator/zh/
 | 算例结果 | 90.0 / 45.3 / 90.3 min，旁边是单向 132.21 µs |
 | 日期 | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

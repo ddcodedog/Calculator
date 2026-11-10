@@ -1,11 +1,15 @@
 # Full uniform load on a simple span
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 A uniform load covering a simply supported span produces equal end reactions, a midspan moment of \(wL^2/8\), and a midspan sag of \(5wL^4/(384EI)\). The beam-analysis page can also model a cantilever and a partial uniform load. This note stays on the full-span simple-beam case and uses a different intensity from the 5 kN/m illustration on that page.
 
-The page calls `analyzeBeam` from the same `beam-core-0.2.0-gate2` solver read on 2026-11-08. Downward load is positive, sagging moment is positive, and downward deflection is negative (https://structuralengineerlab.com/tools/beam-analysis-calculator/).
 
+## Overview
+
+The page calls `analyzeBeam` from the same `beam-core-0.2.0-gate2` solver read on 2026-11-08. Downward load is positive, sagging moment is positive, and downward deflection is negative (https://structuralengineerlab.com/tools/beam-analysis-calculator/).
 ## Formula
 
 For \(w\) constant from \(x=0\) to \(x=L\):
@@ -82,3 +86,5 @@ https://structuralengineerlab.com/tools/beam-analysis-calculator/
 | Date | 2026-11-08 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

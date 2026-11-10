@@ -1,13 +1,19 @@
 # STP 端口路径开销
 
+Locale: zh-CN
+
 本文是同目录英文稿的简体中文版，英文原文保持不变：[STP port path cost](stp-path-cost.md)。
 
-## 概述
+## 直接回答
+
+本文回答 STP 路径开销：长速率公式和短速率表，以及两条路径的开销之和哪一条更小。
 
 STP 路径开销计算器按链路速率给每个端口赋路径开销，再把两条候选路径的开销分别相加。和较小的那条，就是本工具报告的优先路径。和相等时报告为告警，因为打破平局的是桥 ID，不是开销。
 
-引擎：`https://netengineerlab.com/tools/stp-path-cost-calculator/js/engine.js`（`NELStpPathCostEngine`），取于 2026-11-04。
 
+## 概述
+
+引擎：`https://netengineerlab.com/tools/stp-path-cost-calculator/js/engine.js`（`NELStpPathCostEngine`），取于 2026-11-04。
 ## 公式
 
 长方法（引擎注释标明 IEEE 802.1D-2004 / 802.1Q）：
@@ -102,3 +108,5 @@ https://netengineerlab.com/tools/stp-path-cost-calculator/zh/
 | 日期 | 2026-11-04 |
 | 文档版本 | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

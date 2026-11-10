@@ -1,11 +1,15 @@
 # DC Ohm’s law
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The Ohm’s Law Calculator solves one of voltage, current, or resistance from the other two, then reports DC power. The model is a DC source and an ohmic resistance.
 
-Production function `computeOhmsLaw` in the page bundle for https://powerengineerlab.com/calculators/ohms-law/ (chunk containing tool id `TOOL-001`, model 1.0.0), fetched 2026-11-04. The page’s “Load example” uses 12 V and 6 Ω and solves for current.
 
+## Overview
+
+Production function `computeOhmsLaw` in the page bundle for https://powerengineerlab.com/calculators/ohms-law/ (chunk containing tool id `TOOL-001`, model 1.0.0), fetched 2026-11-04. The page’s “Load example” uses 12 V and 6 Ω and solves for current.
 ## Formula
 
 $$
@@ -62,6 +66,10 @@ https://openstax.org/books/university-physics-volume-2/pages/9-4-ohms-law
 
 Source id in the bundle: `SRC-001`, accessed 2026-11-02, `licenseStatus` `verified` in the tool metadata. This library confirmed the URL returns HTTP 200 and that `computeOhmsLaw` implements \(V=IR\) and \(P=VI\). The textbook page body was not transcribed.
 
+
+
+The live OpenStax page was read again on 2026-11-10. Section 9.4 states that current is proportional to voltage and, in the worked example, uses I = V/R. The fetched HTML does not print an ISBN or a numbered edition, so the standards status stays PENDING.
+
 ## Online Calculator
 
 https://powerengineerlab.com/calculators/ohms-law/
@@ -86,3 +94,5 @@ Inventory tool ID: `ohms-law`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

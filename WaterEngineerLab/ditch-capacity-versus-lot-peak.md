@@ -1,5 +1,7 @@
 # Does the ditch pass the lot peak?
 
+Locale: en
+
 ## Pass rule used here
 
 The rational-method tool produces a peak in cubic metres per second. The Manning tool produces a channel capacity in the same unit when you give it a depth. The ditch passes **this** check only when Manning \(Q\) is at least the rational \(Q\). The runoff coefficient and Manning \(n\) are not added, and neither tool certifies a permit.
@@ -73,3 +75,5 @@ https://waterengineerlab.com/tools/manning-open-channel-flow/
 | Example result | 0.091667 m³/s versus 0.220813 m³/s at slope 0.002; fail at slope 0.0002 |
 | Date | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

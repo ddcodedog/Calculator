@@ -1,13 +1,19 @@
 # Access-switch demand against uplink headroom
 
+Locale: en
+
 Simplified Chinese edition: [接入交换机需求与上行余量](switch-uplink-safe-capacity.zh-CN.md).
 
-## Overview
+## Direct Answer
+
+This note answers an access-switch uplink question: demand against uplink capacity and the headroom that remains.
 
 An access switch can offer far more edge bandwidth than its uplinks can carry. This tool multiplies port count, port rate, utilization, concurrency, and overhead into a demand, compares that demand with the uplink capacity and with a safer fraction of it, and reports how many uplinks the target fraction would need. The example leaves out `engineering`, `peakPorts`, `growthPct`, `burstPct`, and `failedUplinks`, so the engine returns the short baseline object.
 
-Production `js/engine.js` for the switch-uplink tool, model `switch-uplink-engine/2.0.0`, read 2026-11-08. Displayed gigabit figures use JavaScript `toFixed` and then a unary plus, so 4.536 becomes 4.54 at two decimals (https://netengineerlab.com/tools/switch-uplink-oversubscription-calculator/).
 
+## Overview
+
+Production `js/engine.js` for the switch-uplink tool, model `switch-uplink-engine/2.0.0`, read 2026-11-08. Displayed gigabit figures use JavaScript `toFixed` and then a unary plus, so 4.536 becomes 4.54 at two decimals (https://netengineerlab.com/tools/switch-uplink-oversubscription-calculator/).
 ## Formula
 
 Demand and the burst-adjusted peak, in Mbit/s:
@@ -92,3 +98,5 @@ https://netengineerlab.com/tools/switch-uplink-oversubscription-calculator/
 | Date | 2026-11-08 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

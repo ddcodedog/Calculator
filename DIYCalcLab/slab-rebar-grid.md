@@ -1,11 +1,15 @@
 # Slab rebar grid count
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The rebar calculator counts bars in a rectangular grid, splices a bar that is longer than the stock length, and rounds up a purchase quantity with a spare percentage. Weight uses the kilograms-per-metre value stored for that bar size. It does not design spacing or development length.
 
-Production module `rebar.vrhyH9u0.js`, read 2026-11-07. Imperial length is feet times 0.3048. Spacing and cover are inches times 0.0254. The pound-per-foot labels are converted with \(0.45359237/0.3048\) (https://diycalclab.com/concrete/rebar-calculator/).
 
+## Overview
+
+Production module `rebar.vrhyH9u0.js`, read 2026-11-07. Imperial length is feet times 0.3048. Spacing and cover are inches times 0.0254. The pound-per-foot labels are converted with \(0.45359237/0.3048\) (https://diycalclab.com/concrete/rebar-calculator/).
 ## Formula
 
 Clear span is the side minus two covers. Bar count across that side:
@@ -81,3 +85,5 @@ https://diycalclab.com/concrete/rebar-calculator/
 | Date | 2026-11-07 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

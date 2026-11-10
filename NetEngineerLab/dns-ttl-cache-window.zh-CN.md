@@ -1,13 +1,19 @@
 # 记录变更前的 DNS TTL 窗口
 
+Locale: zh-CN
+
 本文是同目录英文稿的简体中文版，英文原文保持不变：[DNS TTL window before a record change](dns-ttl-cache-window.md)。
 
-## 概述
+## 直接回答
+
+本文回答 DNS TTL：缓存在记录变更之后还可能保留多久。
 
 缓存了记录的解析器会保留旧答案，直到缓存中的 TTL 到期。这个计算器把旧 TTL、已经过去的时间、新 TTL 和一小段权威侧延迟，换成三个时钟估计和每日查询率之比。它不查询现网解析器，也不证明互联网上每台递归服务器都已丢掉旧答案。
 
-下面的数字来自该工具生产 `engine.js` 中的 `dns-ttl-engine/2.0.0`，读于 2026-11-08。算例省略 `peakOldTtl`，所以引擎只返回基线情景。
 
+## 概述
+
+下面的数字来自该工具生产 `engine.js` 中的 `dns-ttl-engine/2.0.0`，读于 2026-11-08。算例省略 `peakOldTtl`，所以引擎只返回基线情景。
 ## 公式
 
 剩余缓存时间是旧 TTL 还剩下的部分：
@@ -92,3 +98,5 @@ https://netengineerlab.com/tools/dns-ttl-propagation-calculator/zh/
 | 日期 | 2026-11-08 |
 | 文档版本 | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

@@ -1,5 +1,7 @@
 # Hash the text the verifier accepted
 
+Locale: en
+
 ## Order
 
 Redact, then the clean-file check, then a digest of the text that check would let you download. A digest of the before-text does not prove the after-text. A digest by itself does not prove a redaction happened.
@@ -73,3 +75,5 @@ https://privacyfilelab.com/hash
 | Example result | `VERIFIED`; after-text digest `31f169f9…055390a` |
 | Date | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

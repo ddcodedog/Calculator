@@ -1,11 +1,15 @@
 # Appliance energy over a stated duty
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 This calculator estimates kilowatt-hours for one appliance rating, a quantity, a daily schedule, a day count, and a duty factor, then multiplies by a tariff if you type one. Currency is a label. The result is not a utility bill, because it has no taxes, demand charges, or time-of-use blocks.
 
-Production appliance calculator, `TOOL-011`, read 2026-11-08. The chunk states the method as watts times quantity times hours per day times days times duty, divided by 1000 (https://powerengineerlab.com/calculators/appliance-electricity-cost/).
 
+## Overview
+
+Production appliance calculator, `TOOL-011`, read 2026-11-08. The chunk states the method as watts times quantity times hours per day times days times duty, divided by 1000 (https://powerengineerlab.com/calculators/appliance-electricity-cost/).
 ## Formula
 
 $$
@@ -69,3 +73,5 @@ https://powerengineerlab.com/calculators/appliance-electricity-cost/
 | Date | 2026-11-08 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

@@ -1,11 +1,15 @@
 # Equal-group sample size for an absolute rate lift
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 This sample-size tool plans how many visitors each of two equal groups needs before you compare conversion rates. The production API describes the test as two-sided, equal groups, unpooled variance, no continuity correction, alpha 0.05, and power 0.80. The lift is an absolute difference in percentage points. The count is rounded up. It is not a probability that a test has already won (https://aimarktool.com/tools/ab-test-sample-size-calculator).
 
-The page’s own illustration is a 10% baseline plus 2 points. This note uses 8% and 1.5 points so the arithmetic is a separate case. The API was called on 2026-11-08.
 
+## Overview
+
+The page’s own illustration is a 10% baseline plus 2 points. This note uses 8% and 1.5 points so the arithmetic is a separate case. The API was called on 2026-11-08.
 ## Formula
 
 Baseline rate \(p_1 = P_1/100\) and variant rate \(p_2 = p_1 + \Delta/100\), where \(\Delta\) is the absolute lift in percentage points. The unpooled two-sample expression that matches the API’s ceiling is
@@ -70,3 +74,5 @@ https://aimarktool.com/tools/ab-test-sample-size-calculator
 | Date | 2026-11-08 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

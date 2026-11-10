@@ -1,13 +1,19 @@
 # 由链路速率得到的文件传输时间
 
+Locale: zh-CN
+
 本文是同目录英文稿的简体中文版，英文原文保持不变：[File transfer time from link rate](bandwidth-transfer-time.md)。
 
-## 概述
+## 直接回答
+
+本文回答传输时间：给定的字节数在给定的链路速率下要多久。
 
 带宽计算器用同一速率模型回答四个规划问题：文件穿过链路要多久、截止日期需要多大链路速率、能容纳多少并发用户，以及一个速率在一段时间内能搬多少量。本篇只走传输时间这条路径，它是多数人首先打开的那条。
 
-速率用十进制 SI。1 Mbps 是 \(1\times 10^{6}\) bit/s，不是 \(2^{20}\)。文件大小可以是十进制（kB、MB）或 IEC（KiB、MiB）。引擎是生产工具上的 `js/engine.js` 与 `data/bandwidth-units.js`，读于 2026-11-07。
 
+## 概述
+
+速率用十进制 SI。1 Mbps 是 \(1\times 10^{6}\) bit/s，不是 \(2^{20}\)。文件大小可以是十进制（kB、MB）或 IEC（KiB、MiB）。引擎是生产工具上的 `js/engine.js` 与 `data/bandwidth-units.js`，读于 2026-11-07。
 ## 公式
 
 效率和利用率各自钳在 0…100，再除以 100。二者的乘积是合在一起的有效载荷比例：
@@ -91,3 +97,5 @@ https://netengineerlab.com/tools/bandwidth-calculator/zh/
 | 日期 | 2026-11-07 |
 | 文档版本 | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

@@ -1,11 +1,15 @@
 # Sinusoidal power triangle
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The Power Triangle Calculator takes active power and reactive power and returns apparent power, power factor, and phase angle for a sinusoidal steady state.
 
-Production logic in the power-triangle page bundle (`TOOL-005`), fetched 2026-11-04 from https://powerengineerlab.com/calculators/power-triangle/.
 
+## Overview
+
+Production logic in the power-triangle page bundle (`TOOL-005`), fetched 2026-11-04 from https://powerengineerlab.com/calculators/power-triangle/.
 ## Formula
 
 $$
@@ -27,6 +31,15 @@ Sign convention in the solver: \(P \ge 0\); \(Q > 0\) is lagging; \(Q < 0\) is l
 | \(\theta\) | `phaseAngle` | degree | derived, or null at zero |
 
 Input magnitude above \(10^{12}\) is rejected.
+
+
+## Constraints
+
+- \(P\): finite, \(\ge 0\)
+- \(Q\): finite
+- \(S\): derived
+- pf: derived, or null at zero
+- \(\theta\): derived, or null at zero
 
 ## Engineering Principles
 
@@ -80,3 +93,5 @@ Inventory tool ID: `power-triangle`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

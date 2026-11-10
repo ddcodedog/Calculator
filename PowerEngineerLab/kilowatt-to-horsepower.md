@@ -1,11 +1,15 @@
 # Kilowatt to mechanical horsepower
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The kW-to-hp calculator converts a positive power in kilowatts into horsepower. The English page uses an approximate mechanical horsepower. The zh-CN page of the same component uses metric horsepower (PS) and does not apply the mechanical factor.
 
-Production component `KwToHpCalculator` (`BACKLOG-025`, dataset `nist-fs376b-rounded-v1`), fetched 2026-11-04 from https://powerengineerlab.com/calculators/kw-to-hp/.
 
+## Overview
+
+Production component `KwToHpCalculator` (`BACKLOG-025`, dataset `nist-fs376b-rounded-v1`), fetched 2026-11-04 from https://powerengineerlab.com/calculators/kw-to-hp/.
 ## Formula
 
 English locale:
@@ -66,6 +70,10 @@ Verified from the PDF, not only from the tool:
 - NIST / Fed. Std. 376B, section 5.2.13 Power: “horsepower (550 foot pounds-force per second) → watt, multiply by 745.699 9.” File fetched 2026-11-04 from https://www.nist.gov/system/files/documents/2017/05/09/fs376-b.pdf (the tool’s `https://www.nist.gov/document/fs376-bpdf` link redirects there). Tool metadata `licenseStatus` is `review-required`.
 - The same standard, section 4.3.3, says metric horsepower shall not be used. The 735.49875 W factor is in the zh-CN code path only. A standards citation for that exact decimal is **pending**.
 
+
+
+Read again on 2026-11-10 from https://www.nist.gov/system/files/documents/2017/05/09/fs376-b.pdf. The file identifies itself as Fed. Std. 376B. Section 5.2.13 lists horsepower to watt as 745.699 9. Section 4.3.3 lists metric horsepower among units that shall not be used. A search of the extracted text did not find 735.49875. A calendar publication date was not on the pages extracted here; the 2017 path in the NIST URL is the file location, not a publication date copied from the standard. Standards status is VERIFIED for the mechanical horsepower factor only.
+
 ## Online Calculator
 
 https://powerengineerlab.com/calculators/kw-to-hp/
@@ -89,3 +97,5 @@ Inventory tool ID: `kw-to-hp`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | VERIFIED |

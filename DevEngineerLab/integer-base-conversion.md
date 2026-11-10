@@ -1,11 +1,15 @@
 # Integer base conversion
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The number-base converter reads an integer in one base from 2 through 36 and writes it in another base in that same range. Digits above 9 are letters. The output is lowercase. This is integer notation, not a floating-point format and not a checksum.
 
-TOOL-028 in the production page script, read 2026-11-07. The input may be at most 4096 UTF-16 code units, including spaces. The output may be at most 32768 code units (https://devengineerlab.com/tools/number-base-converter).
 
+## Overview
+
+TOOL-028 in the production page script, read 2026-11-07. The input may be at most 4096 UTF-16 code units, including spaces. The output may be at most 32768 code units (https://devengineerlab.com/tools/number-base-converter).
 ## Formula
 
 Trim the text. An optional leading `+` or `-` sets the sign. Each next character is a digit:
@@ -25,6 +29,13 @@ A digit value greater than or equal to the source base is an invalid digit. The 
 | Source base, target base | Integers 2…36 |
 | Text | Trimmed integer, optional sign, no fractional point |
 | Length | 4096 code units in, 32768 out |
+
+
+## Constraints
+
+- Source base, target base: Integers 2…36
+- Text: Trimmed integer, optional sign, no fractional point
+- Length: 4096 code units in, 32768 out
 
 ## Engineering Principles
 
@@ -69,3 +80,5 @@ https://devengineerlab.com/tools/number-base-converter
 | Date | 2026-11-07 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

@@ -1,13 +1,19 @@
 # File transfer time from link rate
 
+Locale: en
+
 Simplified Chinese edition: [由链路速率得到的文件传输时间](bandwidth-transfer-time.zh-CN.md).
 
-## Overview
+## Direct Answer
+
+This note answers a transfer-time question: how long a stated byte count takes at a stated link rate.
 
 The bandwidth calculator answers four planning questions from the same rate model: how long a file takes to cross a link, how much link rate a deadline needs, how many concurrent users fit, and how much volume a rate moves in a period. This note walks the transfer-time path, which is the one most people open first.
 
-Rates are decimal SI. 1 Mbps is \(1\times 10^{6}\) bit/s, not \(2^{20}\). File size can be decimal (kB, MB) or IEC (KiB, MiB). The engine is `js/engine.js` with `data/bandwidth-units.js` on the production tool, read 2026-11-07 (https://netengineerlab.com/tools/bandwidth-calculator/).
 
+## Overview
+
+Rates are decimal SI. 1 Mbps is \(1\times 10^{6}\) bit/s, not \(2^{20}\). File size can be decimal (kB, MB) or IEC (KiB, MiB). The engine is `js/engine.js` with `data/bandwidth-units.js` on the production tool, read 2026-11-07 (https://netengineerlab.com/tools/bandwidth-calculator/).
 ## Formula
 
 Efficiency and utilization are each clamped to 0…100 and then divided by 100. Their product is the combined payload fraction:
@@ -87,3 +93,5 @@ https://netengineerlab.com/tools/bandwidth-calculator/
 | Date | 2026-11-07 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

@@ -1,11 +1,15 @@
 # Which sensitive-text types disappeared
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 Metadata diff scans a before string and an after string with the local text rules, then classifies finding types as removed, remaining, or new. The page does not offer a download. Ranking is by type, not by how many times a type matched. A phone number that survives in the after string fails the comparison even if the email address is gone.
 
-The compare button calls `diffMetadata`, which calls `verifyCleanScans` version 1.0.0, read from the production chunks on 2026-11-08. The same function is also used by the clean-file verifier. This note covers the diff page and a case that fails. The ruleset chunk `3fwb4spx8jiw7.js` still supplies `EMAIL_ADDRESS` (severity MEDIUM) and `US_PHONE_NUMBER` (severity MEDIUM). The example addresses are documentation values, and the regexes were applied locally to confirm they match (https://privacyfilelab.com/metadata-diff).
 
+## Overview
+
+The compare button calls `diffMetadata`, which calls `verifyCleanScans` version 1.0.0, read from the production chunks on 2026-11-08. The same function is also used by the clean-file verifier. This note covers the diff page and a case that fails. The ruleset chunk `3fwb4spx8jiw7.js` still supplies `EMAIL_ADDRESS` (severity MEDIUM) and `US_PHONE_NUMBER` (severity MEDIUM). The example addresses are documentation values, and the regexes were applied locally to confirm they match (https://privacyfilelab.com/metadata-diff).
 ## Formula
 
 Let \(B\) be the set of finding types in the before scan and \(A\) the set in the after scan.
@@ -74,3 +78,5 @@ https://privacyfilelab.com/metadata-diff
 | Date | 2026-11-08 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

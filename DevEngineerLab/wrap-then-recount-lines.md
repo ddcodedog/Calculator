@@ -1,5 +1,7 @@
 # Wrap the relay note, then count again
 
+Locale: en
+
 ## What should change
 
 `Relay 7 tripped at dawn` is one line, 23 UTF-16 units, five tokens. Word wrap at width 10 should add line breaks and should not invent tokens. The statistics tool is how you check that, on the wrapped output, not on the original sentence.
@@ -67,3 +69,5 @@ https://devengineerlab.com/tools/text-wrap-calculator
 | Example result | 3 lines, 2 inserted breaks, tokens still 5, length still 23 |
 | Date | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

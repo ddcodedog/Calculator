@@ -1,11 +1,15 @@
 # Estimated backing pixels from the screen API
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The screen-information test reads the browser’s screen size and device-pixel ratio, then estimates a backing-pixel width and height. The production page says browser screen APIs usually report CSS coordinates rather than raw EDID pixels, and it labels the backing-pixel calculation as an estimate. This note does not claim a measured diagonal or a monitor model. Those are not available from the fields below (https://pcdog.com/tools/screen-information).
 
-The collector in chunk `38jyx3t4_ei-3.js`, test `test.display.screen-information` version 2.4.4, was read on 2026-11-08. No browser tab was driven. The example uses assumed reports from `screen.width`, `screen.height`, and `devicePixelRatio`.
 
+## Overview
+
+The collector in chunk `38jyx3t4_ei-3.js`, test `test.display.screen-information` version 2.4.4, was read on 2026-11-08. No browser tab was driven. The example uses assumed reports from `screen.width`, `screen.height`, and `devicePixelRatio`.
 ## Formula
 
 The collector stores
@@ -76,3 +80,5 @@ https://pcdog.com/tools/screen-information
 | Date | 2026-11-08 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

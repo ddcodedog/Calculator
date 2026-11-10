@@ -1,11 +1,15 @@
 # Board-foot lumber volume
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The Board Foot calculator converts thickness, width, length, and a piece count into board feet. One board foot is a volume of 144 cubic inches, which the module also expresses in cubic metres.
 
-Production module `board-foot`, fetched 2026-11-04 from https://diycalclab.com/lumber/board-foot-calculator/. The exported helper is `boardFeet(thicknessIn, widthIn, lengthFt, pieces) = thickness × width × length / 12 × pieces`.
 
+## Overview
+
+Production module `board-foot`, fetched 2026-11-04 from https://diycalclab.com/lumber/board-foot-calculator/. The exported helper is `boardFeet(thicknessIn, widthIn, lengthFt, pieces) = thickness × width × length / 12 × pieces`.
 ## Formula
 
 $$
@@ -85,3 +89,5 @@ Inventory tool ID: `board-foot`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

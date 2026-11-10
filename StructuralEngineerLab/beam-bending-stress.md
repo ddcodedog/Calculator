@@ -1,11 +1,15 @@
 # Elastic beam bending stress
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The Beam Bending Stress Calculator returns elastic extreme-fiber normal stress from a bending moment and either a section modulus or a second moment plus the distance to the extreme fiber.
 
-Production function in the beam-bending-stress page bundle, fetched 2026-11-04 from https://structuralengineerlab.com/tools/beam-bending-stress-calculator/. The default section-modulus example stored in the page is \(10\,\mathrm{kN\cdot m}\) and \(200\,\mathrm{cm^3}\).
 
+## Overview
+
+Production function in the beam-bending-stress page bundle, fetched 2026-11-04 from https://structuralengineerlab.com/tools/beam-bending-stress-calculator/. The default section-modulus example stored in the page is \(10\,\mathrm{kN\cdot m}\) and \(200\,\mathrm{cm^3}\).
 ## Formula
 
 Section-modulus mode:
@@ -92,3 +96,5 @@ Inventory tool ID: `TOOL-003`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

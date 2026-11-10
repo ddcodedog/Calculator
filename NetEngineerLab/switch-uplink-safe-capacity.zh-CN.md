@@ -1,13 +1,19 @@
 # 接入交换机需求与上行余量
 
+Locale: zh-CN
+
 本文是同目录英文稿的简体中文版，英文原文保持不变：[Access-switch demand against uplink headroom](switch-uplink-safe-capacity.md)。
 
-## 概述
+## 直接回答
+
+本文回答接入交换机上联：需求相对上联容量还剩多少余量。
 
 接入交换机可以提供远大于上行承载能力的边缘带宽。这个工具把端口数、端口速率、利用率、并发和开销乘成需求，再把需求与上行容量、以及容量中更安全的一部分比较，并报告目标比例需要多少条上行。算例留空 `engineering`、`peakPorts`、`growthPct`、`burstPct` 和 `failedUplinks`，所以引擎返回短基线对象。
 
-交换机上行工具的生产 `js/engine.js`，模型 `switch-uplink-engine/2.0.0`，读于 2026-11-08。显示的吉比特数先用 JavaScript `toFixed`，再做一元加号，所以两位小数时 4.536 变成 4.54。
 
+## 概述
+
+交换机上行工具的生产 `js/engine.js`，模型 `switch-uplink-engine/2.0.0`，读于 2026-11-08。显示的吉比特数先用 JavaScript `toFixed`，再做一元加号，所以两位小数时 4.536 变成 4.54。
 ## 公式
 
 需求和经突发调整的峰值，单位 Mbit/s：
@@ -96,3 +102,5 @@ https://netengineerlab.com/tools/switch-uplink-oversubscription-calculator/zh/
 | 日期 | 2026-11-08 |
 | 文档版本 | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

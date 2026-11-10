@@ -1,11 +1,15 @@
 # Weighted score for two drainage layouts
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The site-drainage comparator ranks layouts you have already sized. It normalizes the metrics you type and applies weights you type. The production page says no new hydraulic solver is introduced. Peak flow, capacity, pipe length, excavation, diameter, and outfall count are inputs. This note does not solve Manning flow or a rainfall hydrograph (https://waterengineerlab.com/tools/site-drainage-layout-scenario-comparator).
 
-Production function in the TOOL-015 page chunk, engine 1.0.0, formula id `FORMULA-TOOL015-SCENARIO-COMPARATOR-001`, read 2026-11-08. The worked pair is not the pair prefilled in the form.
 
+## Overview
+
+Production function in the TOOL-015 page chunk, engine 1.0.0, formula id `FORMULA-TOOL015-SCENARIO-COMPARATOR-001`, read 2026-11-08. The worked pair is not the pair prefilled in the form.
 ## Formula
 
 Capacity-margin ratio, higher is better:
@@ -87,3 +91,5 @@ https://waterengineerlab.com/tools/site-drainage-layout-scenario-comparator
 | Date | 2026-11-08 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

@@ -1,13 +1,19 @@
 # Fiber propagation delay and RTT
 
+Locale: en
+
 Simplified Chinese edition: [光纤传播时延与往返时间](fiber-propagation-latency.zh-CN.md).
 
-## Overview
+## Direct Answer
+
+This note answers a fiber propagation latency question: one-way delay and round-trip time from length, group index, and the speed of light.
 
 The Fiber Latency Calculator estimates one-way delay and round-trip time from route distance, a route factor, group index, per-device equipment delay, and optional serialization delay.
 
-Engine: `https://netengineerlab.com/tools/fiber-latency-calculator/js/engine.js` (`NELFiberLatencyEngine`), fetched 2026-11-04.
 
+## Overview
+
+Engine: `https://netengineerlab.com/tools/fiber-latency-calculator/js/engine.js` (`NELFiberLatencyEngine`), fetched 2026-11-04.
 ## Formula
 
 Distance is converted to kilometres (\(1\,\mathrm{mi} = 1.609344\,\mathrm{km}\), \(1\,\mathrm{m} = 0.001\,\mathrm{km}\)).
@@ -108,3 +114,5 @@ Inventory tool ID: `fiber-latency-calculator`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

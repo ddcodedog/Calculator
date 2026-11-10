@@ -1,11 +1,15 @@
 # Refresh estimate from a list of frame intervals
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The refresh-rate test summarizes frame intervals the browser already collected. It does not read the monitor’s EDID refresh. Given at least 20 positive finite intervals, it drops long outliers, takes a median, and converts that median to hertz. The score that sits beside the hertz value is a penalty on jitter, long frames, and the outlier fraction. It is not a pass/fail from a display specification.
 
-The summary function in chunk `38jyx3t4_ei-3.js`, measurement prefix `measurement.display.refresh-rate-test`, was read on 2026-11-08. The intervals below are an assumed sample, long enough to pass the 20-interval gate and short enough to show the low-confidence branch. No `requestAnimationFrame` loop was run (https://pcdog.com/tools/refresh-rate-test).
 
+## Overview
+
+The summary function in chunk `38jyx3t4_ei-3.js`, measurement prefix `measurement.display.refresh-rate-test`, was read on 2026-11-08. The intervals below are an assumed sample, long enough to pass the 20-interval gate and short enough to show the low-confidence branch. No `requestAnimationFrame` loop was run (https://pcdog.com/tools/refresh-rate-test).
 ## Formula
 
 Keep finite intervals greater than 0. If fewer than 20 remain, hertz, median, p95, jitter, long-frame percent, and score are null and confidence is `low`.
@@ -84,3 +88,5 @@ https://pcdog.com/tools/refresh-rate-test
 | Date | 2026-11-08 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

@@ -1,11 +1,15 @@
 # Single-source tree residual head
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The distribution-network planner checks one source feeding a tree: every node has one incoming pipe, the graph is connected, and there are no loops. Flow in each pipe is the downstream demand. Headloss on that pipe uses Darcy-Weisbach with the friction factor you type. Residual pressure at each node is source head minus elevation change minus those losses. It does not run EPANET, and it does not decide whether a code minimum is met beyond comparing the number you typed.
 
-Production planner chunk, read 2026-11-07. Segment count must equal node count. The demo topology is SOURCE → A → B (https://waterengineerlab.com/tools/water-distribution-network-preliminary-planner).
 
+## Overview
+
+Production planner chunk, read 2026-11-07. Segment count must equal node count. The demo topology is SOURCE → A → B (https://waterengineerlab.com/tools/water-distribution-network-preliminary-planner).
 ## Formula
 
 Accumulated flow is own demand plus every downstream accumulated flow. Velocity and major headloss, with \(D\) and \(L\) in metres and \(Q\) in m³/s:
@@ -84,3 +88,5 @@ https://waterengineerlab.com/tools/water-distribution-network-preliminary-planne
 | Date | 2026-11-07 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

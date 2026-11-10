@@ -1,5 +1,7 @@
 # One integer, a clock in one tool and hex in the other
 
+Locale: en
+
 ## Do not pick a tool by the shape of the digits
 
 `1712345678` can be typed into the timestamp converter and into the integer base converter. Both accept it. They do not describe the same object, and the hex string is not a time zone.
@@ -58,3 +60,5 @@ https://devengineerlab.com/tools/timestamp-converter
 | Example result | `2024-04-05T19:34:38.000Z` versus hex `6610524e` |
 | Date | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

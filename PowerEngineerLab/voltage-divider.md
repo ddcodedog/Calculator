@@ -1,11 +1,15 @@
 # Resistive voltage divider
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The Voltage Divider Calculator reports the unloaded output, the output with an optional resistive load across the lower resistor, and the current drawn from the input.
 
-Production function `computeVoltageDivider` (`TOOL-003`, model 1.0.0) in the voltage-divider page bundle, fetched 2026-11-04 from https://powerengineerlab.com/calculators/voltage-divider/. The page’s “Load example” is 12 V, 1000 Ω, 1000 Ω, and a 1000 Ω load.
 
+## Overview
+
+Production function `computeVoltageDivider` (`TOOL-003`, model 1.0.0) in the voltage-divider page bundle, fetched 2026-11-04 from https://powerengineerlab.com/calculators/voltage-divider/. The page’s “Load example” is 12 V, 1000 Ω, 1000 Ω, and a 1000 Ω load.
 ## Formula
 
 Unloaded:
@@ -38,6 +42,14 @@ If the load field is empty, \(R_e = R_2\), so the loaded and open-circuit voltag
 | \(R_1\) | `r1` | Ω | finite, \(> 0\) (upper resistor) |
 | \(R_2\) | `r2` | Ω | finite, \(> 0\) (lower resistor) |
 | \(R_L\) | `loadResistance` | Ω | omitted, or finite and \(> 0\) |
+
+
+## Constraints
+
+- \(V_{\mathrm{in}}\): finite, \(\ge 0\)
+- \(R_1\): finite, \(> 0\) (upper resistor)
+- \(R_2\): finite, \(> 0\) (lower resistor)
+- \(R_L\): omitted, or finite and \(> 0\)
 
 ## Engineering Principles
 
@@ -88,3 +100,5 @@ Inventory tool ID: `voltage-divider`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

@@ -145,3 +145,14 @@ Twenty-two topic files, two per site, each built around one decision and at leas
 | PrivacyFileLab | hash only after the verifier; a different digest on a failed diff | SHA-256 of the accepted after text. A remaining US phone stays `VERIFICATION_FAILED` even if the digest changed. No browser download. |
 
 Live guide, case, and topic pages closest to these decisions were read on 2026-11-10 so the datasets would not repeat those pages. That reading is not a web-wide similarity scan. Non-English site locales were not read in full.
+
+## Calculation status and standards status (2026-11-10)
+
+`status` in the table above remains the calculation status. It is not a standards verdict.
+
+| Status field | Meaning on 2026-11-10 |
+|---|---|
+| Calculation status | `VERIFIED` for 86 topics whose arithmetic was recomputed from the production engine or the published identity. `REVIEW_REQUIRED` for the two structural notes whose general EI integrator was not line-traced. |
+| Standards status | `VERIFIED` for one topic, kilowatt to horsepower, after Fed. Std. 376B section 5.2.13 was read again on 2026-11-10. `PENDING` for the other 87. `NOT_APPLICABLE` for none. |
+
+The mechanical horsepower factor 745.699 9 W is the standards claim. The metric factor 735.49875 is still only a code constant. OpenStax section 9.4 was read on 2026-11-10 and does state I = V/R, but the fetched page has no ISBN, so Ohm's law stays `PENDING`. The two beam notes were recomputed again and stay `REVIEW_REQUIRED`.

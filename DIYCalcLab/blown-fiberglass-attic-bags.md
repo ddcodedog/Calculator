@@ -1,11 +1,15 @@
 # Blown-fiberglass bags for an attic top-up
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The insulation calculator can count batts from a coverage table, or blown insulation from a chart of bags per 1,000 ft² and settled depth. This note uses the blown-fiberglass chart and an attic that already has some insulation, so the added R-value is the target minus what is there. The chart row is not a code check. The module mentions 2021 IECC attic R-values in help text; that text was not treated as a compliance result.
 
-Production module `insulation.n4EdxFLF.js`, read 2026-11-08. Imperial length and width are converted with 0.3048, then divided by \(0.3048^2\) to recover square feet. A 22 ft by 28 ft attic is therefore 616 ft² inside the formula. Bags use \(\lceil x-10^{-9}\rceil\) after waste. The fiberglass bag in the chart is labeled 27.5 lb (https://diycalclab.com/drywall/insulation-calculator/).
 
+## Overview
+
+Production module `insulation.n4EdxFLF.js`, read 2026-11-08. Imperial length and width are converted with 0.3048, then divided by \(0.3048^2\) to recover square feet. A 22 ft by 28 ft attic is therefore 616 ft² inside the formula. Bags use \(\lceil x-10^{-9}\rceil\) after waste. The fiberglass bag in the chart is labeled 27.5 lb (https://diycalclab.com/drywall/insulation-calculator/).
 ## Formula
 
 Added R-value:
@@ -84,3 +88,5 @@ https://diycalclab.com/drywall/insulation-calculator/
 | Date | 2026-11-08 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

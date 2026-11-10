@@ -1,5 +1,7 @@
 # Number the kept rows. Do not frequency-count that new column.
 
+Locale: en
+
 ## After the cities are clean
 
 The cleaned shipment file is:
@@ -66,3 +68,5 @@ https://datafilelab.com/csv-row-numberer
 | Example result | Numbers 1, 2, 3; city index becomes 2; column 0 is not a city tally |
 | Date | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

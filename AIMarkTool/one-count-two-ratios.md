@@ -1,5 +1,7 @@
 # Forty customers, then a ratio that sometimes equals ROAS
 
+Locale: en
+
 ## The trap
 
 A landing path and a money path can print the same 3.00x. That match is an algebra accident of this dataset. Change how often a customer buys and only one of the ratios moves.
@@ -77,3 +79,5 @@ https://aimarktool.com/tools/roas-calculator
 | Example result | 40 customers, ROAS 3.00x, LTV/CAC 3.00x or 12.00x |
 | Date | 2026-11-10 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

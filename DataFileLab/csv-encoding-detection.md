@@ -1,11 +1,15 @@
 # CSV encoding detection
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The encoding detector labels a CSV as UTF-8 with BOM, UTF-16 LE, UTF-16 BE, UTF-8 without BOM, or unknown. It does not convert the file and it does not name a legacy code page. Bytes that are not valid UTF-8 and do not look like UTF-16 come back as `unknown` with the offset of the first failing byte.
 
-`detectCsvEncoding` in production `encoding-browser.js`, read 2026-11-07. The file comment says it matches `src/core/csv/encoding.ts` (https://datafilelab.com/encoding).
 
+## Overview
+
+`detectCsvEncoding` in production `encoding-browser.js`, read 2026-11-07. The file comment says it matches `src/core/csv/encoding.ts` (https://datafilelab.com/encoding).
 ## Formula
 
 The checks run in order:
@@ -66,3 +70,5 @@ https://datafilelab.com/encoding
 | Date | 2026-11-07 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

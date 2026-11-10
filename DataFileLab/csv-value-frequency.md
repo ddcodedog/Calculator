@@ -1,11 +1,15 @@
 # CSV value frequency counts
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The CSV frequency tool counts how many times each exact cell text appears in one column. It does not trim, parse numbers, or fold case. A missing cell and an empty cell are different: a row that is too short increments `missingCells` and still counts an empty value, while a present empty field is only a value.
 
-Counting rules are in production `dist/csv/frequency.js`, read 2026-11-07. The row splitter is a separate module. The example below uses no quotes, so the splitter’s quote rules are not exercised. Limits stated in the UI: 25 MiB, 250000 records, 1000 columns, 2e6 cells, 1e5 distinct values. Bytes must be valid UTF-8. The delimiter is one character and cannot be the quote or a newline (https://datafilelab.com/csv-frequency).
 
+## Overview
+
+Counting rules are in production `dist/csv/frequency.js`, read 2026-11-07. The row splitter is a separate module. The example below uses no quotes, so the splitter’s quote rules are not exercised. Limits stated in the UI: 25 MiB, 250000 records, 1000 columns, 2e6 cells, 1e5 distinct values. Bytes must be valid UTF-8. The delimiter is one character and cannot be the quote or a newline (https://datafilelab.com/csv-frequency).
 ## Formula
 
 This is a count, not a physical formula. For the selected column index, walk records after the header when “header” is on (the default):
@@ -77,3 +81,5 @@ https://datafilelab.com/csv-frequency
 | Date | 2026-11-07 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

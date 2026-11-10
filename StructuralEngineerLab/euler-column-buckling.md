@@ -1,11 +1,15 @@
 # Euler elastic column buckling load
 
-## Overview
+Locale: en
+
+## Direct Answer
 
 The Column Euler Buckling Calculator returns the ideal elastic critical load from Young’s modulus, second moment of area, actual length, and a user-supplied effective-length factor \(K\). If a cross-sectional area is enabled, it also returns Euler stress.
 
-Production function in the column-euler-buckling page bundle (`FORMULA-EULER-BUCKLING-STRESS-001` and the effective-length formula id), fetched 2026-11-04 from https://structuralengineerlab.com/tools/column-euler-buckling-calculator/.
 
+## Overview
+
+Production function in the column-euler-buckling page bundle (`FORMULA-EULER-BUCKLING-STRESS-001` and the effective-length formula id), fetched 2026-11-04 from https://structuralengineerlab.com/tools/column-euler-buckling-calculator/.
 ## Formula
 
 $$
@@ -84,3 +88,5 @@ Inventory tool ID: `TOOL-004`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

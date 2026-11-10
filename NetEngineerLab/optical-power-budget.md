@@ -1,13 +1,19 @@
 # Optical link power budget
 
+Locale: en
+
 Simplified Chinese edition: [光链路功率预算](optical-power-budget.zh-CN.md).
 
-## Overview
+## Direct Answer
+
+This note answers an optical power budget question: the decibels between transmit power and receiver sensitivity after fiber, passive loss, penalty, and engineering margin, including the overload check.
 
 The Optical Power Budget Calculator builds a link budget from minimum transmit power and receiver sensitivity, subtracts a path penalty, then subtracts fiber, splice, connector, three splitter entries, other passive loss, and an engineering margin. It also checks the maximum transmit power against receiver overload after the same physical loss.
 
-Engine: `https://netengineerlab.com/tools/optical-power-budget/js/engine.js` (`NELOpticalPowerBudgetEngine`), fetched 2026-11-04.
 
+## Overview
+
+Engine: `https://netengineerlab.com/tools/optical-power-budget/js/engine.js` (`NELOpticalPowerBudgetEngine`), fetched 2026-11-04.
 ## Formula
 
 $$
@@ -61,11 +67,24 @@ Near-zero margins (\(\le 10^{-9}\,\mathrm{dB}\)) become 0. Status is `failed` if
 | \(L_1,L_2,L_3\) | `s1`, `s2`, `s3` | dB | \(\ge 0\) |
 | \(L_{\mathrm{other}}\), \(M\) | `other`, `margin` | dB | \(\ge 0\) |
 
+
+## Constraints
+
+- \(P_{\mathrm{tx,min}}\), \(P_{\mathrm{tx,max}}\): finite, \(P_{\mathrm{tx,min}} \le P_{\mathrm{tx,max}}\)
+- \(P_{\mathrm{sens}}\), \(P_{\mathrm{over}}\): finite, \(P_{\mathrm{sens}} < P_{\mathrm{over}}\)
+- \(P_{\mathrm{pen}}\): \(\ge 0\)
+- \(d\), \(\alpha\): \(d \ge 0\), \(\alpha > 0\)
+- \(N_{\mathrm{s}}\), \(\ell_{\mathrm{s}}\): count is a safe integer
+- \(N_{\mathrm{c}}\), \(\ell_{\mathrm{c}}\): count is a safe integer
+- \(L_1,L_2,L_3\): \(\ge 0\)
+- \(L_{\mathrm{other}}\), \(M\): \(\ge 0\)
+
 ## Engineering Principles
 
 The “standard” budget is the sensitivity window after a single penalty term. Overload uses the maximum launch, so a link can fail on too much power even when the sensitivity margin is large. Maximum distance assumes the same fixed loss and the same \(\alpha\) at every length; it is not a dispersion-limited reach.
 
 ## Worked Example
+
 
 | Input | Value |
 |---|---|
@@ -76,6 +95,9 @@ The “standard” budget is the sensitivity window after a single penalty term.
 | Splices, connectors | 4 × 0.10 dB, 2 × 0.50 dB |
 | Splitters and other | 0 dB |
 | Margin | 3 dB |
+
+
+## Calculation Steps
 
 Steps:
 
@@ -89,7 +111,6 @@ Steps:
 Result: design loss **11.40 dB**, remaining **17.60 dB**, status **healthy**. No intermediate rounding in the engine.
 
 Boundary: set overload to \(-8\,\mathrm{dBm}\). Overload margin becomes \(-8 - (-3.40) = -4.60\,\mathrm{dB}\) and status is **failed**, with sensitivity margin still positive. Attenuation must stay greater than 0; the engine rejects \(\alpha = 0\).
-
 ## Limitations
 
 - Three splitter fields are additive dB entries, not split ratios.
@@ -124,3 +145,5 @@ Inventory tool ID: `optical-power-budget`.
 | Date | 2026-11-04 |
 | Doc version | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |

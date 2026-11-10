@@ -1,13 +1,19 @@
 # 色度色散系数 D(λ)
 
+Locale: zh-CN
+
 本文是同目录英文稿的简体中文版，英文原文保持不变：[Chromatic dispersion coefficient D(λ)](chromatic-dispersion.md)。
 
-## 概述
+## 直接回答
+
+本文回答色度色散：色散系数 D(λ)，以及这段长度累积了多少色散。
 
 色散计算器计算 G.652 形式的色散系数，或使用手工输入的系数，再沿长度累加，减去补偿，并把剩余量与容限比较。它还给出长度窗口，以及由谱宽得到的脉冲展宽项。
 
-引擎：`https://netengineerlab.com/tools/chromatic-dispersion-calculator/js/engine.js`（`NELChromaticDispersionEngine`），取于 2026-11-04。
 
+## 概述
+
+引擎：`https://netengineerlab.com/tools/chromatic-dispersion-calculator/js/engine.js`（`NELChromaticDispersionEngine`），取于 2026-11-04。
 ## 公式
 
 模型模式：
@@ -53,6 +59,18 @@ $$
 | \(C\) | `compensation` | ps/nm | 有限 |
 | \(T\) | `tolerance` | ps/nm | \(> 0\) |
 | \(\Delta\lambda\) | `spectralWidth` | nm | \(\ge 0\) |
+
+
+## 约束
+
+- \(\lambda\): 1200 到 1700
+- \(\lambda_0\): 1200 到 1700
+- \(S_0\): \(0 < S_0 \le 0.2\)
+- \(D\): 绝对值 \(\le 50\)
+- \(L\): \(0 < L \le 20000\)
+- \(C\): 有限
+- \(T\): \(> 0\)
+- \(\Delta\lambda\): \(\ge 0\)
 
 ## 工程含义
 
@@ -113,3 +131,5 @@ https://netengineerlab.com/tools/chromatic-dispersion-calculator/zh/
 | 日期 | 2026-11-04 |
 | 文档版本 | 1.0.0 |
 | Status | VERIFIED |
+| Calculation status | VERIFIED |
+| Standards status | PENDING |
