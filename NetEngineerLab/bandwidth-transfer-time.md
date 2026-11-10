@@ -1,88 +1,94 @@
-# File transfer time from link rate
+# 由链路速率得到的文件传输时间
 
-## Overview
+## 概述
 
-The bandwidth calculator answers four planning questions from the same rate model: how long a file takes to cross a link, how much link rate a deadline needs, how many concurrent users fit, and how much volume a rate moves in a period. This note walks the transfer-time path, which is the one most people open first.
+带宽计算器用同一速率模型回答四个规划问题：文件穿过链路要多久、截止日期需要多大链路速率、能容纳多少并发用户，以及一个速率在一段时间内能搬多少量。本篇只走传输时间这条路径，它是多数人首先打开的那条。
 
-Rates are decimal SI. 1 Mbps is \(1\times 10^{6}\) bit/s, not \(2^{20}\). File size can be decimal (kB, MB) or IEC (KiB, MiB). The engine is `js/engine.js` with `data/bandwidth-units.js` on the production tool, read 2026-11-07.
+速率用十进制 SI。1 Mbps 是 \(1\times 10^{6}\) bit/s，不是 \(2^{20}\)。文件大小可以是十进制（kB、MB）或 IEC（KiB、MiB）。引擎是生产工具上的 `js/engine.js` 与 `data/bandwidth-units.js`，读于 2026-11-07。
 
-## Formula
+## 公式
 
-Efficiency and utilization are each clamped to 0…100 and then divided by 100. Their product is the combined payload fraction:
+效率和利用率各自钳在 0…100，再除以 100。二者的乘积是合在一起的有效载荷比例：
 
 $$
 \eta = \frac{\mathrm{efficiency}}{100}\times\frac{\mathrm{utilization}}{100}
 $$
 
-With \(B\) the link rate in bit/s, \(S\) the file size in bytes, \(N\) the concurrent transfers (`max(1, floor(count))`), \(R\) the round-trip time in milliseconds, and \(k\) the setup RTTs:
+\(B\) 是链路速率，单位 bit/s；\(S\) 是文件大小，单位字节；\(N\) 是并发传输数（`max(1, floor(count))`）；\(R\) 是往返时间，单位毫秒；\(k\) 是建立连接所用的 RTT 个数：
 
 $$
 t_{\mathrm{ser}} = \frac{8S}{B\,\eta / N}, \qquad t_{\mathrm{setup}} = \frac{R\,k}{1000}, \qquad t = t_{\mathrm{ser}}+t_{\mathrm{setup}}
 $$
 
-A non-finite input is invalid. Combined fraction below 0.5 is a warning, not a different formula. The burst factor used by the concurrent-user mode is not part of transfer time.
+非有限输入无效。合比例低于 0.5 只是告警，不是另一套公式。并发用户模式使用的突发系数不属于传输时间。
 
-## Variables
+## 变量
 
-| Name | Meaning | Unit |
+| 名称 | 含义 | 单位 |
 |---|---|---|
-| File size | Decimal or IEC, converted to bytes | B |
-| Link rate | Decimal SI | bit/s |
-| Efficiency, utilization | Clamped 0…100, then used as fractions | % |
-| Concurrent transfers | At least 1 after `floor` | count |
-| RTT and setup RTTs | Added as \(R k / 1000\) | ms, count |
+| 文件大小 | 十进制或 IEC，换算成字节 | B |
+| 链路速率 | 十进制 SI | bit/s |
+| 效率、利用率 | 钳在 0…100，再当作比例使用 | % |
+| 并发传输 | `floor` 之后至少为 1 | 个 |
+| RTT 与建立用 RTT 数 | 按 \(R k / 1000\) 相加 | ms，个 |
 
-## Engineering Principles
+## 工程含义
 
-Serialization time is file bits divided by the share of the link that one transfer actually gets. Protocol efficiency and a utilization cap both shrink that share, so they multiply. Setup delay is a fixed number of round trips; it does not grow with the file. Splitting one file across \(N\) concurrent transfers divides the payload rate by \(N\), which makes one file slower, not faster. That field is a contention model, not a speedup.
+串行化时间是文件比特数除以一次传输实际分到的链路份额。协议效率和利用率上限都会缩小这个份额，所以它们相乘。建立时延是固定次数的往返，不随文件变大。把一个文件拆成 \(N\) 个并发传输，是把载荷速率除以 \(N\)，这会让这一个文件更慢，而不是更快。该字段是争用模型，不是加速。
 
-## Worked Example
+## 算例
 
-File 100 MB decimal (\(100\times 10^{6}\) bytes), link 100 Mbps, one transfer, zero RTT.
+文件 100 MB 十进制（\(100\times 10^{6}\) 字节），链路 100 Mbps，一次传输，RTT 为 0。
 
-1. File bits = \(800\times 10^{6}\).
-2. Ideal efficiency 100% and utilization 100% give \(\eta = 1\).
-3. \(t = 800\times 10^{6} / 100\times 10^{6} = 8\) seconds. Setup is 0.
+1. 文件比特数 = \(800\times 10^{6}\)。
+2. 理想效率 100%、利用率 100%，\(\eta = 1\)。
+3. \(t = 800\times 10^{6} / 100\times 10^{6} = 8\) 秒。建立时间为 0。
 
-Same file and rate with the Ethernet preset values in the tool: efficiency 95%, utilization 90%, RTT 1 ms, one setup RTT.
+同一文件和速率，使用工具里的以太网预设：效率 95%，利用率 90%，RTT 1 ms，一次建立 RTT。
 
-1. \(\eta = 0.95\times 0.90 = 0.855\).
-2. Payload rate = \(85.5\times 10^{6}\) bit/s.
-3. \(t_{\mathrm{ser}} = 800\times 10^{6} / 85.5\times 10^{6} = 9.356725146\) seconds.
-4. \(t_{\mathrm{setup}} = 0.001\) second.
-5. Total \(9.357725146\) seconds.
+1. \(\eta = 0.95\times 0.90 = 0.855\)。
+2. 载荷速率 = \(85.5\times 10^{6}\) bit/s。
+3. \(t_{\mathrm{ser}} = 800\times 10^{6} / 85.5\times 10^{6} = 9.356725146\) 秒。
+4. \(t_{\mathrm{setup}} = 0.001\) 秒。
+5. 合计 \(9.357725146\) 秒。
 
-Boundary: efficiency 0 or utilization 0 makes \(\eta = 0\), and the transfer-time path reports a non-finite time. Required-bandwidth mode also returns infinity when the deadline is shorter than the setup delay.
+边界：效率为 0 或利用率为 0 时 \(\eta = 0\)，传输时间路径给出非有限时间。若截止时间短于建立时延，所需带宽模式也返回无穷大。
 
-## Limitations
+## 限制
 
-- No TCP slow start, loss, or application pacing. Setup is a flat RTT count.
-- Concurrent transfers share the link equally. They do not stripe one file faster.
-- A result under these inputs is not a throughput test of a live path.
+- 没有 TCP 慢启动、丢包或应用层节流。建立时间是平坦的 RTT 次数。
+- 并发传输平均分享链路。它们不会把一个文件分条传得更快。
+- 在这些输入下的结果不是现网路径的吞吐测试。
 
-## Reference Standards
+## 参考标准
 
-No standards PDF was re-read for this note. The SI decimal rate table is the one in `bandwidth-units.js`. Status of the cited documents: pending.
+本篇没有重读标准 PDF。十进制 SI 速率表是 `bandwidth-units.js` 里的那一张。所引文件的状态：待定。
+
+## 中文工具页
+
+同一工具的中文页已在 2026-11-10 的站点地图中，打开后标题为中文：https://netengineerlab.com/tools/bandwidth-calculator/zh/
+
+下一节的英文 URL 是验证记录中的生产页。引擎脚本从该路径读取，中文页没有另行抽取。
 
 ## Online Calculator
 
-The same inputs can be typed into the bandwidth calculator:
+可以把同样的输入填进带宽计算器：
 
 https://netengineerlab.com/tools/bandwidth-calculator/
 
-## Related Formulas
+## 相关公式
 
-- [MTU, MSS, and encapsulation overhead](mtu-mss-overhead.md)
-- [Fiber propagation delay and RTT](fiber-propagation-latency.md)
+- [MTU、MSS 与封装开销](mtu-mss-overhead.md)
+- [光纤传播时延与往返时间](fiber-propagation-latency.md)
 
 ## Verification
 
-| Item | Value |
+| 项 | 值 |
 |---|---|
-| Source tool | NetEngineerLab bandwidth calculator |
-| Evidence | Production `js/engine.js` transfer-time path and `data/bandwidth-units.js` |
-| Method | Recomputed 100 MB decimal at 100 Mbps, ideal and Ethernet-preset efficiency |
-| Example result | 8 s ideal; 9.357725146 s with 95% × 90% and 1 ms setup |
-| Date | 2026-11-07 |
-| Doc version | 1.0.0 |
+| 来源工具 | NetEngineerLab 带宽计算器 |
+| 证据 | 生产 `js/engine.js` 的传输时间路径，以及 `data/bandwidth-units.js` |
+| 方法 | 重算 100 MB 十进制、100 Mbps 下的理想情况和以太网预设效率 |
+| 算例结果 | 理想 8 s；95% × 90% 且建立 1 ms 时为 9.357725146 s |
+| 日期 | 2026-11-07 |
+| 文档版本 | 1.0.0 |
 | Status | VERIFIED |

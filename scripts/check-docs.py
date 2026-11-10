@@ -65,11 +65,6 @@ def markdown_files() -> list[Path]:
     return sorted(files)
 
 
-def is_locale_translation(path: Path) -> bool:
-    """A same-topic translation, not a second formula."""
-    return path.name.endswith(".zh-CN.md")
-
-
 def formula_files() -> list[Path]:
     found = []
     for site in SITES:
@@ -77,7 +72,7 @@ def formula_files() -> list[Path]:
         if not folder.is_dir():
             continue
         for path in sorted(folder.glob("*.md")):
-            if path.name != "README.md" and not is_locale_translation(path):
+            if path.name != "README.md":
                 found.append(path)
     return found
 
@@ -288,10 +283,7 @@ def check_toc(report: Report) -> None:
             report.fail("toc", f"missing {site}/README.md")
             continue
         readme = readme_path.read_text(encoding="utf-8")
-        topics = sorted(
-            p for p in folder.glob("*.md")
-            if p.name != "README.md" and not is_locale_translation(p)
-        )
+        topics = sorted(p for p in folder.glob("*.md") if p.name != "README.md")
         total += len(topics)
         match = re.search(r"^Published topics:\s*(\d+)\s*$", readme, re.M)
         if not match:
@@ -310,12 +302,9 @@ def check_toc(report: Report) -> None:
                 continue
             dest = (readme_path.parent / path_part).resolve()
             if dest.parent == folder.resolve() and dest.suffix == ".md" and dest.name != "README.md":
+                linked.add(dest.name)
                 if not dest.exists():
                     report.fail("toc", f"{site}/README.md links to missing {dest.name}")
-                    continue
-                if is_locale_translation(dest):
-                    continue
-                linked.add(dest.name)
         names = {path.name for path in topics}
         if linked != names:
             report.fail(

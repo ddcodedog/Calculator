@@ -1,89 +1,90 @@
-# Header bytes, then the safe uplink, then the clock
+# 先把报头算进字节，再取安全上行，最后算时间
 
-## Question
+## 问题
 
-A 500 GB decimal payload (exactly \(500\times 10^{9}\) bytes) has to cross one 10 Gbit/s uplink. The access ports could nameplate 16 Gbit/s. The MSS is not 1500 bytes. Which rate belongs in the transfer-time division, and which byte count belongs in the numerator?
+一份十进制 500 GB 的载荷，正好是 \(500\times 10^{9}\) 字节，要经过一条 10 Gbit/s 上行。接入侧端口的标称速率可以写成 16 Gbit/s。TCP 的 MSS 并不是 1500 字节。传文件的除法里，分母该用哪一个速率，分子该用哪一个字节数？
 
-## Roles
+## 各自的角色
 
-Three tools, in an order that only works if the units are handed across on purpose.
+三个工具要按单位交接，顺序不能倒。
 
-1. MTU calculator: underlay 1500 bytes, no extra tunnel layer, IPv4, TCP. It reports the inner length, the advertised MSS, and the Ethernet wire size of one full frame.
-2. Uplink calculator, short baseline (no engineering keys): it reports a safe gigabit slice. It does not know the file.
-3. Bandwidth calculator: file bytes, bit rate, efficiency, utilization, concurrency, RTT. It does not know MSS.
+1. MTU 计算器：底层 1500 字节，不再套隧道，IPv4，TCP。它给出内层长度、对外通告的 MSS，以及一个满帧在以太网上占用的字节。
+2. 上行计算器，短基线（不打开工程项）：它给出一条安全的吉比特切片。它不知道文件有多大。
+3. 带宽计算器：输入是文件字节、比特率、效率、利用率、并发和 RTT。它不知道 MSS。
 
-## Dataset
+## 数据
 
-| Quantity | Value |
+| 量 | 取值 |
 |---|---|
-| Underlay MTU | 1500 bytes, no VLAN, no PPPoE |
-| Address family | IPv4, TCP without options |
-| Payload | \(500\times 10^{9}\) bytes |
-| Access ports | 16 × 1000 Mbit/s |
-| Utilization, concurrency, overhead, burst | 25%, 40%, 0, 0 |
-| Uplink | one × 10,000 Mbit/s, target 50% |
-| Transfer efficiency and utilization | 100% and 100%, one transfer, RTT 0 |
+| 底层 MTU | 1500 字节，无 VLAN，无 PPPoE |
+| 地址族 | IPv4，TCP 不带选项 |
+| 载荷 | \(500\times 10^{9}\) 字节 |
+| 接入端口 | 16 × 1000 Mbit/s |
+| 利用率、并发、开销、突发 | 25%、40%、0、0 |
+| 上行 | 一条 × 10,000 Mbit/s，目标 50% |
+| 传输效率与利用率 | 100% 和 100%，一次传输，RTT 为 0 |
 
-This is not the site’s 48×1G with 2×10G oversubscription write-up, and not the bandwidth guide’s 100 GB example.
+这不是站点上 48×1G 对 2×10G 的超售说明，也不是带宽指南里的 100 GB 例题。
 
-## The handoff
+## 交接
 
-Advertised MSS = \(1500 - 20 - 20 = 1460\) bytes. A full frame on the wire is \(14 + 1500 + 4 = 1518\) bytes. The payload splits into 342,465,753 full segments and a last segment of 620 bytes. That last inner packet is \(620+40 = 660\) bytes, and its frame is \(14+660+4 = 678\) bytes.
+通告 MSS = \(1500 - 20 - 20 = 1460\) 字节。一个满帧在线上是 \(14 + 1500 + 4 = 1518\) 字节。载荷分成 342,465,753 个满段，末段 620 字节。末段内层包是 \(620+40 = 660\) 字节，对应帧是 \(14+660+4 = 678\) 字节。
 
 $$
 B_{\mathrm{wire}} = 342465753\times 1518 + 678 = 519863013732\ \mathrm{bytes}
 $$
 
-The extra over the 500 GB payload is 19,863,013,732 bytes. Those bytes are headers and FCS, not a second copy of the file.
+比 500 GB 载荷多出来的是 19,863,013,732 字节。这些是报头和 FCS，不是文件的第二份副本。
 
-Uplink demand = \(16\times 1000\times 0.25\times 0.40 = 1600\) Mbit/s, displayed 1.60 Gbit/s. Capacity is 10 Gbit/s. The safe slice at 50% is 5.00 Gbit/s. Peak is under that slice, so the short baseline status is `pass`. Oversubscription displays `1.6:1`. Required uplinks = \(\lceil 1600/5000\rceil = 1\).
+上行需求 = \(16\times 1000\times 0.25\times 0.40 = 1600\) Mbit/s，显示为 1.60 Gbit/s。容量是 10 Gbit/s。50% 目标下的安全切片是 5.00 Gbit/s。峰值低于这片切片，短基线状态为 `pass`。超售比显示 `1.6:1`。所需上行条数 = \(\lceil 1600/5000\rceil = 1\)。
 
-The transfer tool then sees the **wire** byte count and the **safe** rate, with \(\eta = 1\) and no setup RTT:
+带宽工具接着看到的是**线上**字节和**安全**速率，\(\eta = 1\)，没有建立连接的 RTT：
 
 $$
 t = \frac{8\times 519863013732}{5\times 10^{9}} = 831.78082197\ \mathrm{s}
 $$
 
-That is 13.863 minutes. Dividing the raw 500 GB payload by the same 5 Gbit/s instead gives exactly 800 s. The 31.8 s gap is the header tax, and only if you expanded the bytes **or** lowered efficiency, not both. Dividing by 16 Gbit/s of access-port nameplate would describe a different path than the one uplink the file actually crosses.
+合 13.863 分钟。若改用原始 500 GB 载荷除以同一个 5 Gbit/s，正好是 800 秒。两者相差 31.8 秒，这是报头占用的时间，而且只在你**已经把字节扩成线上长度**，或者**另外降低效率**，二者只做一件时才成立。两件事一起做，报头会被计两次。若改用接入端口标称的 16 Gbit/s 做除法，描述的是另一条路径，不是这份文件实际穿过的那一条上行。
 
-## Judgment
+## 判断
 
-Use 5 Gbit/s because that is the target fraction of the uplink, not because 16 ports exist. Use 519,863,013,732 bytes because each TCP segment grows by IP, TCP, Ethernet, and FCS. Leave efficiency at 100% once the bytes are already on-wire; the Ethernet preset of 95% × 90% would tax the headers a second time.
+分母用 5 Gbit/s，因为这是上行容量里设定的目标份额，不是因为存在 16 个端口。分子用 519,863,013,732 字节，因为每个 TCP 段都要加上 IP、TCP、以太网头和 FCS。字节已经是线上长度之后，效率留在 100%。以太网预设里的 95% × 90% 会把报头再扣一次。
 
-If the uplink target were the whole 10 Gbit/s, the same wire bytes would take half as long. The target is an input, not a measured queue.
+如果上行目标改成整条 10 Gbit/s，同样的线上字节耗时减半。目标是输入，不是测到的队列。
 
-## Limits
+## 限制
 
-- Full-size frames assume the path really allows a 1500-byte inner packet. A PPPoE layer would shrink MSS; this dataset has none.
-- Burst, N-1, and growth are omitted, so the safe slice is the short baseline only.
-- RTT is set to 0. A setup delay would add \(R k/1000\) seconds on top of 831.78 s and would not change the byte expansion.
+- 满帧成立的前提是路径确实允许 1500 字节的内层包。PPPoE 会缩小 MSS。这组数据里没有 PPPoE。
+- 突发、N-1 和增长都没有计入，所以安全切片只是短基线。
+- RTT 取 0。建立时延会在 831.78 秒之外再加 \(R k/1000\) 秒，不改变字节膨胀。
 
-## Tools
+## 工具
 
-- MTU and MSS: https://netengineerlab.com/tools/mtu-calculator/
-- Uplink slice: https://netengineerlab.com/tools/switch-uplink-oversubscription-calculator/
-- Transfer time: https://netengineerlab.com/tools/bandwidth-calculator/
+下列中文页已在 2026-11-10 的站点地图中，打开后标题为中文。下一节仍保留验证记录里的英文带宽页，因为登记的 `productionUrl` 指向该页，引擎也是从英文路径读取的。
+
+- MTU 与 MSS：https://netengineerlab.com/tools/mtu-calculator/zh/
+- 上行切片：https://netengineerlab.com/tools/switch-uplink-oversubscription-calculator/zh/
+- 传输时间：https://netengineerlab.com/tools/bandwidth-calculator/zh/
 
 ## Online Calculator
 
-The clock that answers “how long” is the bandwidth tool, after the other two have supplied bytes and rate:
+回答“要多久”的是带宽工具，另外两个工具已经给出字节和速率：
 
 https://netengineerlab.com/tools/bandwidth-calculator/
 
-## Related Formulas
+## 相关公式
 
-- [MTU, MSS, and encapsulation overhead](mtu-mss-overhead.md)
-- [Access-switch demand against uplink headroom](switch-uplink-safe-capacity.md)
-- [File transfer time from link rate](bandwidth-transfer-time.md)
-- [简体中文稿](on-wire-bytes-at-safe-uplink.zh-CN.md)
+- [MTU、MSS 与封装开销](mtu-mss-overhead.md)
+- [接入交换机需求与上行余量](switch-uplink-safe-capacity.md)
+- [由链路速率得到的文件传输时间](bandwidth-transfer-time.md)
 
 ## Verification
 
-| Item | Value |
+| 项 | 值 |
 |---|---|
-| Source tools | MTU engine byte table, uplink short baseline, bandwidth \(8S/(B\eta)\) |
-| Evidence | Python integer segment count; uplink arithmetic matches `engine.js` rounding rules; no browser click |
-| Dedup scope | Switch-oversubscription topic hub, the 2×10G guide, and the bandwidth guide were read 2026-11-10. Not a web-wide scan |
-| Example result | 519,863,013,732 wire bytes at 5 Gbit/s → 831.781 s |
-| Date | 2026-11-10 |
+| 来源工具 | MTU 引擎字节表、上行短基线、带宽公式 \(8S/(B\eta)\) |
+| 证据 | Python 整数段数；上行算术符合 `engine.js` 的舍入规则；没有浏览器点击 |
+| 去重范围 | 2026-11-10 读过交换机超售专题、2×10G 指南和带宽指南。不是全网扫描 |
+| 算例结果 | 519,863,013,732 线上字节，5 Gbit/s 下为 831.781 s |
+| 日期 | 2026-11-10 |
 | Status | VERIFIED |
